@@ -1,0 +1,425 @@
+[
+    {
+        "id": "b-14",
+        "class": "Block",
+        "children": [
+            {
+                "id": "c-4",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 8,
+                    "right": 27,
+                    "top": 77,
+                    "bottom": 93
+                }
+            },
+            {
+                "id": "c-3",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 16,
+                    "right": 39,
+                    "top": 41,
+                    "bottom": 67
+                }
+            },
+            {
+                "id": "l-1",
+                "class": "List",
+                "text_content": null,
+                "location": {
+                    "left": 29,
+                    "right": 449,
+                    "top": 38,
+                    "bottom": 93
+                },
+                "list_class": "multi",
+                "list_alignment": "h",
+                "list_items": [
+                    [
+                        {
+                            "id": "c-6",
+                            "class": "Compo",
+                            "text_content": null,
+                            "location": {
+                                "left": 83,
+                                "right": 159,
+                                "top": 77,
+                                "bottom": 93
+                            }
+                        },
+                        {
+                            "id": "c-8",
+                            "class": "Compo",
+                            "text_content": null,
+                            "location": {
+                                "left": 399,
+                                "right": 449,
+                                "top": 77,
+                                "bottom": 93
+                            }
+                        }
+                    ],
+                    [
+                        {
+                            "id": "c-7",
+                            "class": "Compo",
+                            "text_content": null,
+                            "location": {
+                                "left": 160,
+                                "right": 395,
+                                "top": 77,
+                                "bottom": 93
+                            }
+                        }
+                    ],
+                    [
+                        {
+                            "id": "c-1",
+                            "class": "Compo",
+                            "text_content": null,
+                            "location": {
+                                "left": 361,
+                                "right": 389,
+                                "top": 39,
+                                "bottom": 67
+                            }
+                        },
+                        {
+                            "id": "c-2",
+                            "class": "Compo",
+                            "text_content": null,
+                            "location": {
+                                "left": 406,
+                                "right": 435,
+                                "top": 38,
+                                "bottom": 66
+                            }
+                        },
+                        {
+                            "id": "c-5",
+                            "class": "Compo",
+                            "text_content": null,
+                            "location": {
+                                "left": 29,
+                                "right": 82,
+                                "top": 77,
+                                "bottom": 93
+                            }
+                        }
+                    ]
+                ]
+            },
+            {
+                "id": "c-25",
+                "class": "Text",
+                "text_content": "\uc0c1\uc138 \uc815\ubcf4",
+                "location": {
+                    "left": 53,
+                    "right": 121,
+                    "top": 38,
+                    "bottom": 59
+                }
+            },
+            {
+                "id": "c-0",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 442,
+                    "right": 449,
+                    "top": 30,
+                    "bottom": 66
+                }
+            }
+        ],
+        "location": {
+            "left": 8,
+            "right": 449,
+            "top": 30,
+            "bottom": 93
+        }
+    },
+    {
+        "id": "b-15",
+        "class": "Block",
+        "children": [
+            {
+                "id": "b-16",
+                "class": "Block",
+                "children": [
+                    {
+                        "id": "c-10",
+                        "class": "Compo",
+                        "text_content": null,
+                        "location": {
+                            "left": 10,
+                            "right": 401,
+                            "top": 467,
+                            "bottom": 493
+                        }
+                    },
+                    {
+                        "id": "c-12",
+                        "class": "Compo",
+                        "text_content": null,
+                        "location": {
+                            "left": 10,
+                            "right": 49,
+                            "top": 492,
+                            "bottom": 515
+                        }
+                    },
+                    {
+                        "id": "c-13",
+                        "class": "Compo",
+                        "text_content": null,
+                        "location": {
+                            "left": 53,
+                            "right": 138,
+                            "top": 492,
+                            "bottom": 520
+                        }
+                    },
+                    {
+                        "id": "c-14",
+                        "class": "Compo",
+                        "text_content": null,
+                        "location": {
+                            "left": 142,
+                            "right": 163,
+                            "top": 497,
+                            "bottom": 517
+                        }
+                    }
+                ],
+                "location": {
+                    "left": 10,
+                    "right": 401,
+                    "top": 467,
+                    "bottom": 520
+                }
+            },
+            {
+                "id": "c-11",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 402,
+                    "right": 420,
+                    "top": 467,
+                    "bottom": 492
+                }
+            }
+        ],
+        "location": {
+            "left": 10,
+            "right": 420,
+            "top": 467,
+            "bottom": 520
+        }
+    },
+    {
+        "id": "b-17",
+        "class": "Block",
+        "children": [
+            {
+                "id": "c-16",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 8,
+                    "right": 27,
+                    "top": 534,
+                    "bottom": 547
+                }
+            },
+            {
+                "id": "b-18",
+                "class": "Block",
+                "children": [
+                    {
+                        "id": "c-17",
+                        "class": "Compo",
+                        "text_content": null,
+                        "location": {
+                            "left": 153,
+                            "right": 179,
+                            "top": 533,
+                            "bottom": 553
+                        }
+                    },
+                    {
+                        "id": "c-26",
+                        "class": "Text",
+                        "text_content": "\uc2e0\ud55c % \uccad\uad6c \ud560\uc778 \ub9cc\uc6d0 \uc774\uc0c1",
+                        "location": {
+                            "left": 31,
+                            "right": 174,
+                            "top": 535,
+                            "bottom": 547
+                        }
+                    }
+                ],
+                "location": {
+                    "left": 31,
+                    "right": 179,
+                    "top": 533,
+                    "bottom": 553
+                }
+            },
+            {
+                "id": "c-15",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 183,
+                    "right": 205,
+                    "top": 530,
+                    "bottom": 551
+                }
+            }
+        ],
+        "location": {
+            "left": 8,
+            "right": 205,
+            "top": 530,
+            "bottom": 553
+        }
+    },
+    {
+        "id": "b-19",
+        "class": "Block",
+        "children": [
+            {
+                "id": "c-18",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 9,
+                    "right": 27,
+                    "top": 560,
+                    "bottom": 573
+                }
+            },
+            {
+                "id": "c-27",
+                "class": "Text",
+                "text_content": ". \ubb34\ub8cc \ubc30\uc1a1 \uc77c\ubd80 \uc81c\uc678",
+                "location": {
+                    "left": 21,
+                    "right": 124,
+                    "top": 558,
+                    "bottom": 572
+                }
+            }
+        ],
+        "location": {
+            "left": 9,
+            "right": 124,
+            "top": 558,
+            "bottom": 573
+        }
+    },
+    {
+        "id": "b-20",
+        "class": "Block",
+        "children": [
+            {
+                "id": "c-22",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 7,
+                    "right": 50,
+                    "top": 638,
+                    "bottom": 652
+                }
+            },
+            {
+                "id": "l-0",
+                "class": "List",
+                "text_content": null,
+                "location": {
+                    "left": 87,
+                    "right": 352,
+                    "top": 614,
+                    "bottom": 641
+                },
+                "list_class": "multi",
+                "list_alignment": "h",
+                "list_items": [
+                    [
+                        {
+                            "id": "c-19",
+                            "class": "Compo",
+                            "text_content": null,
+                            "location": {
+                                "left": 87,
+                                "right": 113,
+                                "top": 614,
+                                "bottom": 641
+                            }
+                        },
+                        {
+                            "id": "c-28",
+                            "class": "Text",
+                            "text_content": "\uacf5\uc720",
+                            "location": {
+                                "left": 330,
+                                "right": 352,
+                                "top": 620,
+                                "bottom": 633
+                            }
+                        },
+                        {
+                            "id": "c-29",
+                            "class": "Text",
+                            "text_content": "176",
+                            "location": {
+                                "left": 136,
+                                "right": 156,
+                                "top": 620,
+                                "bottom": 632
+                            }
+                        }
+                    ],
+                    [
+                        {
+                            "id": "c-21",
+                            "class": "Compo",
+                            "text_content": null,
+                            "location": {
+                                "left": 117,
+                                "right": 131,
+                                "top": 620,
+                                "bottom": 635
+                            }
+                        }
+                    ],
+                    [
+                        {
+                            "id": "c-20",
+                            "class": "Compo",
+                            "text_content": null,
+                            "location": {
+                                "left": 299,
+                                "right": 325,
+                                "top": 615,
+                                "bottom": 641
+                            }
+                        }
+                    ]
+                ]
+            }
+        ],
+        "location": {
+            "left": 7,
+            "right": 352,
+            "top": 614,
+            "bottom": 652
+        }
+    }
+]

@@ -1,0 +1,121 @@
+{
+    "compos": [
+        {
+            "id": 0,
+            "class": "Compo",
+            "height": 20,
+            "width": 20,
+            "position": {
+                "column_min": 23,
+                "row_min": 47,
+                "column_max": 43,
+                "row_max": 67
+            }
+        },
+        {
+            "id": 1,
+            "class": "Compo",
+            "height": 73,
+            "width": 73,
+            "position": {
+                "column_min": 188,
+                "row_min": 215,
+                "column_max": 261,
+                "row_max": 288
+            }
+        },
+        {
+            "id": 2,
+            "class": "Compo",
+            "height": 24,
+            "width": 22,
+            "position": {
+                "column_min": 180,
+                "row_min": 430,
+                "column_max": 202,
+                "row_max": 454
+            }
+        },
+        {
+            "id": 3,
+            "class": "Compo",
+            "height": 45,
+            "width": 223,
+            "position": {
+                "column_min": 113,
+                "row_min": 598,
+                "column_max": 336,
+                "row_max": 643
+            }
+        },
+        {
+            "id": 4,
+            "class": "Compo",
+            "height": 18,
+            "width": 46,
+            "position": {
+                "column_min": 84,
+                "row_min": 680,
+                "column_max": 130,
+                "row_max": 698
+            }
+        },
+        {
+            "id": 5,
+            "class": "Text",
+            "height": 20,
+            "width": 186,
+            "position": {
+                "column_min": 130,
+                "row_min": 45,
+                "column_max": 316,
+                "row_max": 65
+            },
+            "text_content": "Log in with Facebook"
+        },
+        {
+            "id": 6,
+            "class": "Text",
+            "height": 15,
+            "width": 162,
+            "position": {
+                "column_min": 143,
+                "row_min": 320,
+                "column_max": 305,
+                "row_max": 335
+            },
+            "text_content": "Continue as Sam"
+        },
+        {
+            "id": 7,
+            "class": "Text",
+            "height": 13,
+            "width": 63,
+            "position": {
+                "column_min": 207,
+                "row_min": 431,
+                "column_max": 270,
+                "row_max": 444
+            },
+            "text_content": "Edit This"
+        },
+        {
+            "id": 8,
+            "class": "Text",
+            "height": 14,
+            "width": 265,
+            "position": {
+                "column_min": 103,
+                "row_min": 681,
+                "column_max": 368,
+                "row_max": 695
+            },
+            "text_content": "This doesn't let the app post to Facebook ."
+        }
+    ],
+    "img_shape": [
+        800,
+        450,
+        3
+    ]
+}

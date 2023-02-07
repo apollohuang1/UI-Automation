@@ -1,0 +1,104 @@
+[
+    {
+        "id": "b-8",
+        "class": "Block",
+        "children": [
+            {
+                "id": "c-0",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 23,
+                    "right": 43,
+                    "top": 47,
+                    "bottom": 67
+                }
+            },
+            {
+                "id": "c-5",
+                "class": "Text",
+                "text_content": "Log in with Facebook",
+                "location": {
+                    "left": 130,
+                    "right": 316,
+                    "top": 45,
+                    "bottom": 65
+                }
+            }
+        ],
+        "location": {
+            "left": 23,
+            "right": 316,
+            "top": 45,
+            "bottom": 67
+        }
+    },
+    {
+        "id": "b-9",
+        "class": "Block",
+        "children": [
+            {
+                "id": "c-2",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 180,
+                    "right": 202,
+                    "top": 430,
+                    "bottom": 454
+                }
+            },
+            {
+                "id": "c-7",
+                "class": "Text",
+                "text_content": "Edit This",
+                "location": {
+                    "left": 207,
+                    "right": 270,
+                    "top": 431,
+                    "bottom": 444
+                }
+            }
+        ],
+        "location": {
+            "left": 180,
+            "right": 270,
+            "top": 430,
+            "bottom": 454
+        }
+    },
+    {
+        "id": "b-10",
+        "class": "Block",
+        "children": [
+            {
+                "id": "c-4",
+                "class": "Compo",
+                "text_content": null,
+                "location": {
+                    "left": 84,
+                    "right": 130,
+                    "top": 680,
+                    "bottom": 698
+                }
+            },
+            {
+                "id": "c-8",
+                "class": "Text",
+                "text_content": "This doesn't let the app post to Facebook .",
+                "location": {
+                    "left": 103,
+                    "right": 368,
+                    "top": 681,
+                    "bottom": 695
+                }
+            }
+        ],
+        "location": {
+            "left": 84,
+            "right": 368,
+            "top": 680,
+            "bottom": 698
+        }
+    }
+]

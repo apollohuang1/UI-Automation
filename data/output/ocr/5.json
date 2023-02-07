@@ -1,0 +1,129 @@
+{
+    "img_shape": [
+        960,
+        540,
+        3
+    ],
+    "texts": [
+        {
+            "id": 0,
+            "content": "Lib fb",
+            "column_min": 202,
+            "row_min": 6,
+            "column_max": 314,
+            "row_max": 28,
+            "width": 112,
+            "height": 22
+        },
+        {
+            "id": 1,
+            "content": "Log in with Facebook",
+            "column_min": 156,
+            "row_min": 54,
+            "column_max": 380,
+            "row_max": 78,
+            "width": 224,
+            "height": 24
+        },
+        {
+            "id": 2,
+            "content": "Straight",
+            "column_min": 244,
+            "row_min": 277,
+            "column_max": 296,
+            "row_max": 290,
+            "width": 52,
+            "height": 13
+        },
+        {
+            "id": 3,
+            "content": "Talk",
+            "column_min": 268,
+            "row_min": 297,
+            "column_max": 293,
+            "row_max": 309,
+            "width": 25,
+            "height": 12
+        },
+        {
+            "id": 4,
+            "content": "MY ACCOUNT",
+            "column_min": 238,
+            "row_min": 318,
+            "column_max": 304,
+            "row_max": 334,
+            "width": 66,
+            "height": 16
+        },
+        {
+            "id": 5,
+            "content": "Continue as Sam",
+            "column_min": 172,
+            "row_min": 385,
+            "column_max": 367,
+            "row_max": 403,
+            "width": 195,
+            "height": 18
+        },
+        {
+            "id": 6,
+            "content": "My Account Straight Talk will receive :",
+            "column_min": 105,
+            "row_min": 441,
+            "column_max": 434,
+            "row_max": 460,
+            "width": 329,
+            "height": 19
+        },
+        {
+            "id": 7,
+            "content": "your public profile and email address .",
+            "column_min": 106,
+            "row_min": 464,
+            "column_max": 431,
+            "row_max": 486,
+            "width": 325,
+            "height": 22
+        },
+        {
+            "id": 8,
+            "content": "Edit This",
+            "column_min": 249,
+            "row_min": 518,
+            "column_max": 324,
+            "row_max": 533,
+            "width": 75,
+            "height": 15
+        },
+        {
+            "id": 9,
+            "content": "Continue",
+            "column_min": 234,
+            "row_min": 736,
+            "column_max": 306,
+            "row_max": 749,
+            "width": 72,
+            "height": 13
+        },
+        {
+            "id": 10,
+            "content": "This doesn't let the app post to Facebook .",
+            "column_min": 124,
+            "row_min": 818,
+            "column_max": 442,
+            "row_max": 835,
+            "width": 318,
+            "height": 17
+        },
+        {
+            "id": 11,
+            "content": "11:33",
+            "column_min": 483,
+            "row_min": 9,
+            "column_max": 529,
+            "row_max": 21,
+            "width": 46,
+            "height": 12
+        }
+    ]
+}

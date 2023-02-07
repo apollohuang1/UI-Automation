@@ -1,0 +1,263 @@
+{
+    "compos": [
+        {
+            "id": 0,
+            "class": "Compo",
+            "height": 186,
+            "width": 493,
+            "position": {
+                "column_min": 0,
+                "row_min": 49,
+                "column_max": 493,
+                "row_max": 235
+            },
+            "children": [
+                9
+            ]
+        },
+        {
+            "id": 1,
+            "class": "Compo",
+            "height": 173,
+            "width": 238,
+            "position": {
+                "column_min": 6,
+                "row_min": 323,
+                "column_max": 244,
+                "row_max": 496
+            }
+        },
+        {
+            "id": 2,
+            "class": "Compo",
+            "height": 173,
+            "width": 237,
+            "position": {
+                "column_min": 249,
+                "row_min": 322,
+                "column_max": 486,
+                "row_max": 495
+            }
+        },
+        {
+            "id": 3,
+            "class": "Compo",
+            "height": 20,
+            "width": 19,
+            "position": {
+                "column_min": 142,
+                "row_min": 515,
+                "column_max": 161,
+                "row_max": 535
+            }
+        },
+        {
+            "id": 4,
+            "class": "Compo",
+            "height": 21,
+            "width": 18,
+            "position": {
+                "column_min": 385,
+                "row_min": 514,
+                "column_max": 403,
+                "row_max": 535
+            }
+        },
+        {
+            "id": 5,
+            "class": "Compo",
+            "height": 176,
+            "width": 236,
+            "position": {
+                "column_min": 7,
+                "row_min": 553,
+                "column_max": 243,
+                "row_max": 729
+            }
+        },
+        {
+            "id": 6,
+            "class": "Compo",
+            "height": 176,
+            "width": 235,
+            "position": {
+                "column_min": 249,
+                "row_min": 553,
+                "column_max": 484,
+                "row_max": 729
+            }
+        },
+        {
+            "id": 7,
+            "class": "Compo",
+            "height": 21,
+            "width": 26,
+            "position": {
+                "column_min": 109,
+                "row_min": 746,
+                "column_max": 135,
+                "row_max": 767
+            }
+        },
+        {
+            "id": 8,
+            "class": "Compo",
+            "height": 22,
+            "width": 26,
+            "position": {
+                "column_min": 357,
+                "row_min": 747,
+                "column_max": 383,
+                "row_max": 769
+            }
+        },
+        {
+            "id": 9,
+            "class": "Compo",
+            "height": 102,
+            "width": 189,
+            "position": {
+                "column_min": 208,
+                "row_min": 132,
+                "column_max": 397,
+                "row_max": 234
+            },
+            "parent": 0
+        },
+        {
+            "id": 10,
+            "class": "Text",
+            "height": 12,
+            "width": 68,
+            "position": {
+                "column_min": 27,
+                "row_min": 19,
+                "column_max": 95,
+                "row_max": 31
+            },
+            "text_content": "FEATURE"
+        },
+        {
+            "id": 11,
+            "class": "Text",
+            "height": 12,
+            "width": 31,
+            "position": {
+                "column_min": 10,
+                "row_min": 518,
+                "column_max": 41,
+                "row_max": 530
+            },
+            "text_content": "Free"
+        },
+        {
+            "id": 12,
+            "class": "Text",
+            "height": 12,
+            "width": 30,
+            "position": {
+                "column_min": 169,
+                "row_min": 19,
+                "column_max": 199,
+                "row_max": 31
+            },
+            "text_content": "TOP"
+        },
+        {
+            "id": 13,
+            "class": "Text",
+            "height": 12,
+            "width": 83,
+            "position": {
+                "column_min": 267,
+                "row_min": 19,
+                "column_max": 350,
+                "row_max": 31
+            },
+            "text_content": "CATEGORY"
+        },
+        {
+            "id": 14,
+            "class": "Text",
+            "height": 21,
+            "width": 131,
+            "position": {
+                "column_min": 182,
+                "row_min": 275,
+                "column_max": 313,
+                "row_max": 296
+            },
+            "text_content": "HOT Widgets !"
+        },
+        {
+            "id": 15,
+            "class": "Text",
+            "height": 11,
+            "width": 53,
+            "position": {
+                "column_min": 96,
+                "row_min": 776,
+                "column_max": 149,
+                "row_max": 787
+            },
+            "text_content": "Weather"
+        },
+        {
+            "id": 16,
+            "class": "Text",
+            "height": 12,
+            "width": 118,
+            "position": {
+                "column_min": 167,
+                "row_min": 518,
+                "column_max": 285,
+                "row_max": 530
+            },
+            "text_content": "Download Free"
+        },
+        {
+            "id": 17,
+            "class": "Text",
+            "height": 13,
+            "width": 39,
+            "position": {
+                "column_min": 413,
+                "row_min": 18,
+                "column_max": 452,
+                "row_max": 31
+            },
+            "text_content": "MINE"
+        },
+        {
+            "id": 18,
+            "class": "Text",
+            "height": 11,
+            "width": 51,
+            "position": {
+                "column_min": 345,
+                "row_min": 776,
+                "column_max": 396,
+                "row_max": 787
+            },
+            "text_content": "Creative"
+        },
+        {
+            "id": 19,
+            "class": "Text",
+            "height": 13,
+            "width": 73,
+            "position": {
+                "column_min": 410,
+                "row_min": 517,
+                "column_max": 483,
+                "row_max": 530
+            },
+            "text_content": "Download"
+        }
+    ],
+    "img_shape": [
+        800,
+        494,
+        3
+    ]
+}

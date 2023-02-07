@@ -1,0 +1,40 @@
+{
+    "ui": "11300",
+    "list": [
+        [
+            [
+                "Compo",
+                "Compo",
+                "Text"
+            ],
+            [
+                "Compo",
+                "Compo"
+            ],
+            [
+                "Compo",
+                "Compo",
+                "Text"
+            ],
+            [
+                "Compo",
+                "Compo"
+            ]
+        ],
+        [
+            [
+                "Text"
+            ],
+            [
+                "Text"
+            ],
+            [
+                "Text"
+            ],
+            [
+                "Text"
+            ]
+        ]
+    ],
+    "multitab": []
+}
