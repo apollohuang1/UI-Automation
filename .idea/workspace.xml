@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d2ce86a0-8bcb-49f8-b1b4-1a590e94f8b7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detection/detect_text/ocr.py" beforeDir="false" afterPath="$PROJECT_DIR$/detection/detect_text/ocr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dehai/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dehai/statistic.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/main.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +49,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675809613548</updated>
       <workItem from="1675809614601" duration="701000" />
-      <workItem from="1675810547666" duration="3407000" />
+      <workItem from="1675810547666" duration="6267000" />
     </task>
     <servers />
   </component>
