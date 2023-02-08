@@ -1,138 +1,138 @@
 [
     {
-        "class": "Block",
+        "id": "b-1",
         "children": [
             {
-                "class": "Text",
+                "id": "c-23",
                 "text_content": "Learn",
+                "class": "Text",
                 "location": {
-                    "bottom": 65,
-                    "left": 17,
                     "right": 71,
+                    "left": 17,
+                    "bottom": 65,
                     "top": 49
-                },
-                "id": "c-23"
+                }
             },
             {
-                "class": "Compo",
+                "id": "c-0",
                 "text_content": null,
+                "class": "Compo",
                 "location": {
-                    "bottom": 67,
-                    "left": 423,
                     "right": 429,
+                    "left": 423,
+                    "bottom": 67,
                     "top": 48
-                },
-                "id": "c-0"
+                }
             }
         ],
         "location": {
-            "bottom": 67,
-            "left": 17,
             "right": 429,
+            "left": 17,
+            "bottom": 67,
             "top": 48
         },
-        "id": "b-1"
+        "class": "Block"
     },
     {
-        "class": "Block",
+        "id": "b-2",
         "children": [
             {
-                "class": "Text",
+                "id": "c-24",
                 "text_content": "Every second month you stay in the\nChallenge you unlock a new random workout .\nMonth",
+                "class": "Text",
                 "location": {
-                    "bottom": 158,
-                    "left": 35,
                     "right": 413,
+                    "left": 35,
+                    "bottom": 158,
                     "top": 119
-                },
-                "id": "c-24"
+                }
             },
             {
-                "class": "Compo",
+                "id": "c-1",
                 "text_content": null,
+                "class": "Compo",
                 "location": {
-                    "bottom": 134,
-                    "left": 339,
                     "right": 349,
+                    "left": 339,
+                    "bottom": 134,
                     "top": 120
-                },
-                "id": "c-1"
+                }
             }
         ],
         "location": {
-            "bottom": 158,
-            "left": 35,
             "right": 413,
+            "left": 35,
+            "bottom": 158,
             "top": 119
         },
-        "id": "b-2"
+        "class": "Block"
     },
     {
-        "class": "Block",
+        "id": "b-3",
         "children": [
             {
-                "class": "Block",
+                "id": "b-4",
                 "children": [
                     {
-                        "class": "Text",
+                        "id": "c-32",
                         "text_content": "\u0628\u06be\u06cc",
+                        "class": "Text",
                         "location": {
-                            "bottom": 661,
-                            "left": 50,
                             "right": 110,
+                            "left": 50,
+                            "bottom": 661,
                             "top": 613
-                        },
-                        "id": "c-32"
+                        }
                     },
                     {
-                        "class": "Text",
+                        "id": "c-33",
                         "text_content": "Stroteh",
+                        "class": "Text",
                         "location": {
-                            "bottom": 686,
-                            "left": 51,
                             "right": 108,
+                            "left": 51,
+                            "bottom": 686,
                             "top": 679
-                        },
-                        "id": "c-33"
+                        }
                     }
                 ],
                 "location": {
-                    "bottom": 686,
-                    "left": 50,
                     "right": 110,
+                    "left": 50,
+                    "bottom": 686,
                     "top": 613
                 },
-                "id": "b-4"
+                "class": "Block"
             },
             {
-                "class": "Compo",
+                "id": "c-17",
                 "text_content": null,
+                "class": "Compo",
                 "location": {
-                    "bottom": 685,
-                    "left": 111,
                     "right": 156,
+                    "left": 111,
+                    "bottom": 685,
                     "top": 592
-                },
-                "id": "c-17"
+                }
             },
             {
-                "class": "Compo",
+                "id": "c-18",
                 "text_content": null,
+                "class": "Compo",
                 "location": {
-                    "bottom": 685,
-                    "left": 182,
                     "right": 296,
+                    "left": 182,
+                    "bottom": 685,
                     "top": 593
-                },
-                "id": "c-18"
+                }
             }
         ],
         "location": {
-            "bottom": 686,
-            "left": 50,
             "right": 296,
+            "left": 50,
+            "bottom": 686,
             "top": 592
         },
-        "id": "b-3"
+        "class": "Block"
     }
 ]
