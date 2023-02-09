@@ -1,60 +1,67 @@
-from classification.cnn.Data import Data
-from classification.cnn.CNN import CNN
-from classification.cnn.ImgClassifier import ImgClassifier
+import tensorflow.keras as keras
+from keras_applications.resnet50 import ResNet50
+from keras_applications import resnet50
+from keras_applications.imagenet_utils import decode_predictions
+from keras.preprocessing.image import img_to_array
+from keras.preprocessing.image import load_img
+import matplotlib.pyplot as plt
+import PIL
+
+import cv2
+import numpy as np
 
 
 class Classifier:
-    def __init__(self):
-        self.classifier_compo = None
-        self.classifier_icon = None
-        self.classifier_img = None
-
-    def load_classifiers(self, compo=True, icon=True, img=True):
-        if compo and self.classifier_compo is None:
-            data = Data(cls='compo')
-            self.classifier_compo = CNN(data)
-            self.classifier_compo.load()
-        if icon and self.classifier_icon is None:
-            data = Data(cls='icon')
-            self.classifier_icon = CNN(data)
-            self.classifier_icon.load()
-        if img and self.classifier_img is None:
-            self.classifier_img = ImgClassifier()
-
-    def predict_images(self, images, opt='compo', show=False):
+    def __init__(self, image_net_file='classification/data/imagenet1000.txt'):
         '''
-        :param images: list of cv2 images
-        :param opt: Classifier option
-            @ 'compo'
-            @ 'icon'
-            @ 'image'
-        :param show: Boolean
+        Use ImageNet pretrained model to classify content in image element
         '''
-        if opt == 'compo':
-            return self.classifier_compo.predict_images(images, show)
-        elif opt == 'icon':
-            return self.classifier_icon.predict_images(images, show)
-        elif opt == 'image':
-            return self.classifier_img.predict_images(images, show)
+        self.image_net_file = image_net_file
+        self.image_net_cls = [line.split(':')[-1][:-1].replace('\'', '').replace(',', '') for line in open(image_net_file, 'r')]
+        self.resnet = ResNet50(backend=keras.backend, layers=keras.layers, models=keras.models, utils=keras.utils)
+        print('*** Load ResNet50 pretrained on ImageNet ***')
 
-    def predict_img_files(self, img_files, opt='compo', show=False):
+    def predict_img_files(self, img_files, show=False):
         '''
+        Predict class for image files
         :param img_files: list of image file paths
-        :param opt: Classifier option
-            @ 'compo'
-            @ 'icon'
-            @ 'image'
-        :param show: Boolean
+        :param show: boolean
         '''
-        if opt == 'compo':
-            return self.classifier_compo.predict_img_files(img_files, show)
-        elif opt == 'icon':
-            return self.classifier_icon.predict_img_files(img_files, show)
-        elif opt == 'image':
-            return self.classifier_img.predict_img_files(img_files, show)
+        images = []
+        orgs = []
+        for img_file in img_files:
+            img = cv2.imread(img_file)
+            orgs.append(img)
+            images.append(img_to_array(cv2.resize(img, (224,224))))
+        x = resnet50.preprocess_input(np.array(images), 'channels_last')
+        predictions = self.resnet.predict(x)
+        labels = [self.image_net_cls[np.argmax(pred)] for pred in predictions]
+        if show:
+            for i in range(len(orgs)):
+                print(labels[i])
+                cv2.imshow('img', orgs[i])
+                key = cv2.waitKey()
+                if key == ord('q'):
+                    break
+            cv2.destroyWindow('img')
+        return labels
 
-
-if __name__ == '__main__':
-    cls = Classifier()
-    cls.load_classifiers()
-    cls.predict_img_files(['data/a1.jpg', 'data/a2.jpg'], opt='image', show=True)
+    def predict_images(self, images, show=False):
+        '''
+        Predict class for cv2 images
+        :param images: list of cv2 images
+        :param show: boolean
+        '''
+        images_proc = [img_to_array(cv2.resize(img, (224, 224))) for img in images]
+        x = resnet50.preprocess_input(np.array(images_proc), 'channels_last')
+        predictions = self.resnet.predict(x)
+        labels = [self.image_net_cls[np.argmax(pred)] for pred in predictions]
+        if show:
+            for i in range(len(images)):
+                print(labels[i])
+                cv2.imshow('img', images[i])
+                key = cv2.waitKey()
+                if key == ord('q'):
+                    break
+            cv2.destroyWindow('img')
+        return labels

@@ -3,8 +3,8 @@ import cv2
 
 class ElementAttributes:
     def __init__(self):
-        # for non-text
         self.element_class = None   # ['Compo', 'Text']
+        # for non-text
         self.compo_class = None     # ['Text Button', 'Input', 'Switch', 'Image', 'Icon', 'Checkbox']
         self.icon_class = None      # [99 classes]
         self.image_class = None     # [imageNet 1k classes]

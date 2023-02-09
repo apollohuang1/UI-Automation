@@ -6,8 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="d2ce86a0-8bcb-49f8-b1b4-1a590e94f8b7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dehai/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dehai/statistic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Element.py" beforeDir="false" afterPath="$PROJECT_DIR$/Element.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/Classifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/Compo classification.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/Icon classification.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/Image classification.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/cnn/CNN.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/cnn/Data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/cnn/ImgClassifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-processing/DataInspector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-processing/GUIData.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-processing/Rico-data-processing.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-processing/attributes.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/detection/Detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/detection/Detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping/Grouper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping/lib/draw.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping/lib/pairing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping/lib/repetition_recognition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping/obj/Block.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping/obj/Compo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping/obj/Compos_DF.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping/obj/Group.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping/obj/List.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/main.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +61,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/classification" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -49,11 +75,22 @@
       <option name="presentableId" value="Default" />
       <updated>1675809613548</updated>
       <workItem from="1675809614601" duration="701000" />
-      <workItem from="1675810547666" duration="6267000" />
+      <workItem from="1675810547666" duration="16095000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Element.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

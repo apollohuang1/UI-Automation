@@ -6,7 +6,7 @@ import json
 import detection.detect_text.text_detection as text
 import detection.detect_compo.ip_region_proposal as ip
 import detection.detect_merge.merge as merge
-import grouping.lib.draw as draw
+import detection.config.draw as draw
 
 
 class Detector:
