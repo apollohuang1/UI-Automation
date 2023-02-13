@@ -23,7 +23,7 @@ class GUI:
         self.img_resized = self.Detector.img_resized  # resized image by img_reshape
 
         self.elements = []  # list of Element objects
-        self.color_map = {'Compo': (0,255,0), 'Text':(0,0,255),  # element class
+        self.color_map = {'Compo': (0,255,0), 'Text':(0,0,255), 'Block':(166,166,0), # element class
                           'Text Button':(0,0,255), 'Input':(166,0,0), 'Switch':(166,166,0), 'Image':(0,166,166), 'Icon':(255,255,0), 'Checkbox':(255,0,166)}  # compo class
 
         self.detection_result_img = {'text': None, 'non-text': None, 'merge': None}     # visualized detection result
