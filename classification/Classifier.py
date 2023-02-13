@@ -1,9 +1,9 @@
-import tensorflow.keras as keras
+from tensorflow import keras
 from keras_applications.resnet50 import ResNet50
 from keras_applications import resnet50
 from keras_applications.imagenet_utils import decode_predictions
-from keras.preprocessing.image import img_to_array
-from keras.preprocessing.image import load_img
+from keras.utils import img_to_array
+from keras.utils import load_img
 import matplotlib.pyplot as plt
 import PIL
 
