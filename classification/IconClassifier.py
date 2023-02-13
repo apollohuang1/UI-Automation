@@ -20,7 +20,7 @@ class IconClassifier:
         self.model = torch.load(model_path, map_location=self.device).to(self.device)
         self.class_names = json.load(open(class_path, "r"))
 
-    def predict(self, imgs):
+    def predict_images(self, imgs):
         # convert cv2 image to PIL image
         if type(imgs[0]) == np.ndarray:
             imgs = [Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB)) for img in imgs]
@@ -48,6 +48,6 @@ if __name__ == '__main__':
     images = ['data/a1.jpg', 'data/a2.jpg', 'data/a3.jpg']
     # pil_img = [Image.open(img).convert('RGB') for img in images]
     pil_img = [cv2.imread(img) for img in images]
-    result = classifier.predict(pil_img)
+    result = classifier.predict_images(pil_img)
     print(result)
 

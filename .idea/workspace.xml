@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2ce86a0-8bcb-49f8-b1b4-1a590e94f8b7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/classification/IconClassifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classification/Classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification/Classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/main.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/IconClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification/IconClassifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/test.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +171,7 @@
       <workItem from="1676247177142" duration="1016000" />
       <workItem from="1676248206142" duration="1080000" />
       <workItem from="1676249397611" duration="1386000" />
-      <workItem from="1676253676570" duration="8258000" />
+      <workItem from="1676253676570" duration="9710000" />
     </task>
     <servers />
   </component>

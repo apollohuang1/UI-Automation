@@ -2,9 +2,10 @@ import time
 from os.path import join as pjoin
 import cv2
 import json
+time.clock = time.time
 
 from detection.Detector import Detector
-from classification.Classifier import Classifier
+from classification.IconClassifier import IconClassifier
 from Element import Element
 
 
@@ -64,7 +65,8 @@ class GUI:
         Classify non-text element's compo_class: ['Text Button', 'Input', 'Switch', 'Image', 'Icon', 'Checkbox']
         :saveto: element.attributes.compo_class
         '''
-        self.Classifier = Classifier()
+        self.Classifier = IconClassifier(model_path='classification/model/best-0.93.pt',
+                                         class_path='classification/model/iconModel_labels.json')
         compos = []
         for ele in self.elements:
             if ele.attributes.element_class == 'Compo':
@@ -72,7 +74,7 @@ class GUI:
         compos_clips = [compo.clip for compo in compos]
         labels = self.Classifier.predict_images(compos_clips)
         for i, compo in enumerate(compos):
-            compo.attributes.compo_class = labels[i]
+            compo.attributes.compo_class = labels[i][0]
 
     '''
     *********************
