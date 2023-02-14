@@ -6,7 +6,51 @@ time.clock = time.time
 
 from detection.Detector import Detector
 from classification.IconClassifier import IconClassifier
-from Element import Element
+
+
+class ElementAttributes:
+    def __init__(self):
+        self.element_class = None   # ['Compo', 'Text']
+        # for non-text
+        self.compo_class = None     # ['Text Button', 'Input', 'Switch', 'Image', 'Icon', 'Checkbox']
+        self.icon_class = None      # [99 classes]
+        self.image_class = None     # [imageNet 1k classes]
+        self.clickable = False      # Boolean
+        # for text
+        self.text_content = None    # Text content
+        self.text_ner = None        # NER ['Name', 'Date', 'Time', 'Location']
+        self.text_bold = False      # Boolean
+
+
+class BoundingBox:
+    def __init__(self, left, top, right, bottom):
+        self.left = left
+        self.top = top
+        self.right = right
+        self.bottom = bottom
+        self.width = right - left
+        self.height = bottom - top
+        self.area = self.width * self.height
+
+
+class Element:
+    def __init__(self, id, left, top, right, bottom):
+        self.id = id
+        self.attributes = ElementAttributes()
+        self.bounding = BoundingBox(left, top, right, bottom)
+        self.clip = None
+
+    def get_clip(self, img):
+        self.clip = img[self.bounding.top: self.bounding.bottom, self.bounding.left: self.bounding.right]
+
+    def draw_element(self, img, color, text=None, show=False):
+        cv2.rectangle(img, (self.bounding.left, self.bounding.top), (self.bounding.right, self.bounding.bottom), color, 2)
+        if text is not None:
+            cv2.putText(img, text, (self.bounding.left+5, self.bounding.top+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+        if show:
+            cv2.imshow('element', img)
+            cv2.waitKey()
+            cv2.destroyWindow('element')
 
 
 class GUI:
@@ -15,10 +59,12 @@ class GUI:
         self.img = cv2.imread(img_file)
         self.file_name = img_file.replace('\\', '/').split('/')[-1][:-4]
         self.output_dir = output_dir
+        self.color_map = {'Compo': (0,255,0), 'Text':(0,0,255),  # element class
+                          'Text Button':(0,0,255), 'Input':(166,0,0), 'Switch':(166,166,0), 'Image':(0,166,166), 'Icon':(255,255,0), 'Checkbox':(255,0,166)}  # compo class
 
         self.Detector = Detector(self.img_file, img_resize_longest_side, self.output_dir)            # GUI Element Detection
-        self.Classifier = None
-
+        self.Classifier = IconClassifier(model_path='classification/model/best-0.93.pt',
+                                         class_path='classification/model/iconModel_labels.json')
         self.img_reshape = self.Detector.img_reshape  # image reshape for element detection
         self.img_resized = self.Detector.img_resized  # resized image by img_reshape
 
@@ -27,6 +73,7 @@ class GUI:
                           'Text Button':(0,0,255), 'Input':(166,0,0), 'Switch':(166,166,0), 'Image':(0,166,166), 'Icon':(255,255,0), 'Checkbox':(255,0,166)}  # compo class
 
         self.detection_result_img = {'text': None, 'non-text': None, 'merge': None}     # visualized detection result
+        self.elements = []  # list of Element objects
 
     '''
     *****************************
@@ -52,13 +99,15 @@ class GUI:
             pos = compo['position']
             element = Element(compo['id'], pos['column_min'], pos['row_min'], pos['column_max'], pos['row_max'])
             element.attributes.element_class = compo['class']
+            if compo['class'] == 'Text':
+                element.attributes.text_content = compo['text_content']
             element.get_clip(self.img_resized)
             self.elements.append(element)
 
     '''
-    **********************************
-    *** GUI Element Classification ***
-    **********************************
+    *********************************
+    *** GUI Element Understanding ***
+    *********************************
     '''
     def classify_compo(self):
         '''
@@ -103,3 +152,11 @@ class GUI:
         cv2.imshow('compo class', board_compo_class)
         cv2.waitKey()
         cv2.destroyAllWindows()
+
+
+if __name__ == '__main__':
+    gui = GUI('data/input/11.jpg')
+    gui.detect_element()
+    gui.show_elements()
+    gui.classify_compo()
+    gui.show_element_classes()
