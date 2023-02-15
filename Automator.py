@@ -32,7 +32,7 @@ class Automator:
         for ele in self.GUI.elements:
             if ele.attributes.element_class == 'Text' and len(ele.attributes.text_content) < 25:
                 self.textual_elements.append(ele.attributes.text_content)
-            elif ele.attributes.element_class == 'Compo' and ele.attributes.element_class != 'other':
+            elif ele.attributes.element_class == 'Compo' and ele.attributes.compo_class != 'other':
                 self.textual_elements.append(ele.attributes.compo_class)
 
     def show_gui_elements(self):
@@ -61,3 +61,11 @@ class Automator:
         )
         self.openai_answer = self.openai_resp['choices'][0]['text']
         print('*** Answer ***\n', self.openai_answer)
+
+
+if __name__ == '__main__':
+    automator = Automator('data/input/2.jpg')
+    automator.detect_and_classify_gui_elements()
+    automator.get_textual_gui_elements()
+    automator.task = "Contact Lelya"
+    automator.ask_openai()
