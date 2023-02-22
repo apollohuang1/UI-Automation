@@ -110,3 +110,14 @@ class GUIData:
             if cv2.waitKey() == ord('q'):
                 break
         cv2.destroyAllWindows()
+
+    def show_screen(self):
+        cv2.imshow('screen', self.img)
+        cv2.waitKey()
+        cv2.destroyWindow('screen')
+
+
+if __name__ == '__main__':
+    gui = GUIData('data/1.jpg', 'data/1.json')
+    gui.extract_elements_from_vh()
+
