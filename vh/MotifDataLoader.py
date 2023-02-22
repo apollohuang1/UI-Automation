@@ -57,3 +57,9 @@ class MotifDataLoader:
     def get_screen_and_vh_file(self, screen_no):
         return self.dir_task_screens[screen_no], self.dir_task_vh[screen_no]
 
+
+if __name__ == '__main__':
+    dataloader = MotifDataLoader()
+    screen_file, vh_file = dataloader.get_screen_and_vh_file(0)
+    print(screen_file)
+    print(vh_file)
