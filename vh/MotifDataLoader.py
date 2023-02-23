@@ -30,7 +30,10 @@ class MotifDataLoader:
         print('* Loading task No %d from %s} *' % (self.processing_task_number, self.processing_task_path))
         self.dir_task_screens = glob(pjoin(self.processing_task_path, 'screens', '*'))
         self.dir_task_vh = glob(pjoin(self.processing_task_path, 'view_hierarchies', '*'))
+        # check if the json file is correctly ended with .json
         self.correct_vh_file_name()
+        # sort the files in operating order
+        self.sort_task_screen_and_vh_files()
 
     def load_app_task(self, app_number, task_number):
         self.processing_app_number = app_number
@@ -47,11 +50,17 @@ class MotifDataLoader:
         self.dir_task_vh = glob(pjoin(self.processing_task_path, 'view_hierarchies', '*'))
         # check if the json file is correctly ended with .json
         self.correct_vh_file_name()
+        # sort the files in operating order
+        self.sort_task_screen_and_vh_files()
+
+    def sort_task_screen_and_vh_files(self):
+        self.dir_task_screens = sorted(self.dir_task_screens, key=lambda x: int(os.path.basename(x).split('_')[1]))
+        self.dir_task_vh = sorted(self.dir_task_vh, key=lambda x: int(os.path.basename(x).split('_')[1]))
 
     def correct_vh_file_name(self):
         # check if the json file is correctly ended with .json
-        for vh_file in self.dir_task_vh:
-            os.rename(vh_file, vh_file.replace('jpg', 'json'))
+        for file in self.dir_task_vh:
+            os.rename(file, file.replace('jpg', 'json'))
         self.dir_task_vh = glob(pjoin(self.processing_task_path, 'view_hierarchies', '*'))
 
     def get_screen_and_vh_file(self, screen_no):
