@@ -18,8 +18,8 @@ class GUIData:
         self.element_id = 0
         self.elements_df = None  # pandas.dataframe
 
-        self.root_img_size = self.json['activity']['root']['bounds'][2:]   # the actual image size in the vh
-        self.img = cv2.resize(self.img, self.root_img_size)                # resize the image to be consistent with the vh
+        # self.root_img_size = self.json['activity']['root']['bounds'][2:]   # the actual image size in the vh
+        self.img = cv2.resize(self.img, (1080, 2160))                # resize the image to be consistent with the vh
 
     def extract_elements_from_vh(self):
         '''
@@ -99,7 +99,7 @@ class GUIData:
                 cv2.imwrite(pjoin(compo_cls_dir, clip_name), clip)
         print(icon_count)
 
-    def visualize_elements(self):
+    def show_elements(self):
         board = self.img.copy()
         for ele in self.elements:
             print(ele['id'], ele['class'])
@@ -112,6 +112,15 @@ class GUIData:
             if cv2.waitKey() == ord('q'):
                 break
         cv2.destroyAllWindows()
+
+    def show_all_elements(self):
+        board = self.img.copy()
+        for ele in self.elements:
+            bounds = ele['bounds']
+            cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), (0, 255, 0), 3)
+        cv2.imshow('elements', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
+        cv2.waitKey()
+        cv2.destroyWindow('elements')
 
     def show_screen(self):
         cv2.imshow('screen', self.img)

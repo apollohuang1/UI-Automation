@@ -64,6 +64,10 @@ class MotifDataLoader:
         self.dir_task_vh = glob(pjoin(self.processing_task_path, 'view_hierarchies', '*'))
 
     def get_screen_and_vh_file(self, screen_no):
+        print(self.dir_task_screens[screen_no])
+        print(self.dir_task_vh[screen_no])
+        assert os.path.basename(self.dir_task_screens[screen_no]).split('.')[0] ==\
+               os.path.basename(self.dir_task_vh[screen_no]).split('.')[0]
         return self.dir_task_screens[screen_no], self.dir_task_vh[screen_no]
 
 
