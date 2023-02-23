@@ -22,12 +22,12 @@ class MotifDataLoader:
 
         self.processing_app_number = processing_app_number
         self.processing_app_path = self.dir_apps[self.processing_app_number]
-        print('*** Loading app No %d from %s} ***' % (self.processing_app_number, self.processing_app_path))
+        print('*** Loading app No %d from %s ***' % (self.processing_app_number, self.processing_app_path))
         self.dir_tasks = glob(pjoin(self.processing_app_path, '*'))
 
         self.processing_task_number = processing_task_number
         self.processing_task_path = self.dir_tasks[self.processing_task_number]
-        print('* Loading task No %d from %s} *' % (self.processing_task_number, self.processing_task_path))
+        print('* Loading task No %d from %s *' % (self.processing_task_number, self.processing_task_path))
         self.dir_task_screens = glob(pjoin(self.processing_task_path, 'screens', '*'))
         self.dir_task_vh = glob(pjoin(self.processing_task_path, 'view_hierarchies', '*'))
         # check if the json file is correctly ended with .json
@@ -35,6 +35,12 @@ class MotifDataLoader:
         # sort the files in operating order
         self.sort_task_screen_and_vh_files()
 
+
+    '''
+    ************************
+    *** Loading Function ***
+    ************************
+    '''
     def load_app_task(self, app_number, task_number):
         self.processing_app_number = app_number
         self.processing_app_path = self.dir_apps[self.processing_app_number]
@@ -73,6 +79,7 @@ class MotifDataLoader:
 
 if __name__ == '__main__':
     dataloader = MotifDataLoader()
+    dataloader.load_app_task(0, 0)
     screen_file, vh_file = dataloader.get_screen_and_vh_file(0)
     print(screen_file)
     print(vh_file)

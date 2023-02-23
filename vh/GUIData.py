@@ -131,4 +131,5 @@ class GUIData:
 if __name__ == '__main__':
     gui = GUIData('data/1.jpg', 'data/1.json')
     gui.extract_elements_from_vh()
+    gui.show_all_elements()
 
