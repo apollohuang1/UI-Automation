@@ -11,12 +11,15 @@ class GUIData:
         self.json_file = gui_json_file
         self.gui_name = gui_img_file.replace('/', '\\').split('\\')[-1].split('.')[0]
 
-        self.img = cv2.resize(cv2.imread(gui_img_file), (1440, 2560))  # cv2 image, the screenshot of the GUI
+        self.img = cv2.imread(gui_img_file)  # cv2 image, the screenshot of the GUI
         self.json = json.load(open(gui_json_file, 'r', encoding='utf-8'))  # json data, the view hierarchy of the GUI
 
         self.elements = []       # list of element in dictionary {'id':, 'class':...}
         self.element_id = 0
         self.elements_df = None  # pandas.dataframe
+
+        self.root_img_size = self.json['activity']['root']['bounds'][2:]   # the actual image size in the vh
+        self.img = cv2.resize(self.img, self.root_img_size)                # resize the image to be consistent with the vh
 
     def extract_elements_from_vh(self):
         '''
@@ -55,8 +58,7 @@ class GUIData:
         Check if the element is valid and should be kept
         '''
         if (element['bounds'][0] >= element['bounds'][2] or element['bounds'][1] >= element['bounds'][3]) or \
-                'layout' in element['class'].lower() or\
-                'componentLabel' not in element:
+                'layout' in element['class'].lower():
             return False
         return True
 
