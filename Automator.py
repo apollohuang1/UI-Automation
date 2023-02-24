@@ -69,3 +69,4 @@ if __name__ == '__main__':
     automator.get_textual_gui_elements()
     automator.task = "Contact Lelya"
     automator.ask_openai()
+    automator.show_gui_elements()
