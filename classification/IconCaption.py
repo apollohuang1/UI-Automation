@@ -10,9 +10,10 @@ from torchvision import transforms
 
 
 class IconCaption:
-    def __init__(self):
-        self.vocab_path = "/classification/model_results/vocab_idx2word.json"
-        self.model_path = "/classification/model_results/labeldroid.pt"
+    def __init__(self, vocab_path="/classification/model_results/vocab_idx2word.json",
+                 model_path="/classification/model_results/labeldroid.pt"):
+        self.vocab_path = vocab_path
+        self.model_path = model_path
 
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.img_size = (224,224)
@@ -22,6 +23,8 @@ class IconCaption:
             transforms.Normalize(mean=[ 0.485, 0.456, 0.406 ], std=[ 0.229, 0.224, 0.225 ])])
         self.model = None
         self.idx2word = None
+
+        self.load_model()
 
     def load_model(self):
         # Load vocabulary idx2word dict

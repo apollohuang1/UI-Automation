@@ -6,6 +6,7 @@ time.clock = time.time
 
 from detection.Detector import Detector
 from classification.IconClassifier import IconClassifier
+from classification.IconCaption import IconCaption
 
 
 class ElementAttributes:
@@ -14,6 +15,7 @@ class ElementAttributes:
         # for non-text
         self.compo_class = None     # ['Text Button', 'Input', 'Switch', 'Image', 'Icon', 'Checkbox']
         self.icon_class = None      # [99 classes]
+        self.icon_caption = None    # a caption sentence of the icon
         self.image_class = None     # [imageNet 1k classes]
         self.clickable = False      # Boolean
         # for text
@@ -63,8 +65,8 @@ class GUI:
                           'Text Button':(0,0,255), 'Input':(166,0,0), 'Switch':(166,166,0), 'Image':(0,166,166), 'Icon':(255,255,0), 'Checkbox':(255,0,166)}  # compo class
 
         self.Detector = Detector(self.img_file, img_resize_longest_side, self.output_dir)            # GUI Element Detection
-        self.Classifier = IconClassifier(model_path='classification/model_results/best-0.93.pt',
-                                         class_path='classification/model_results/iconModel_labels.json')
+        self.Classifier = None      # IconClassifier
+        self.IconCaption = None     # IconCaption
         self.img_reshape = self.Detector.img_reshape  # image reshape for element detection
         self.img_resized = self.Detector.img_resized  # resized image by img_reshape
 
@@ -109,7 +111,7 @@ class GUI:
     *** GUI Element Understanding ***
     *********************************
     '''
-    def classify_compo(self):
+    def icon_classification(self):
         '''
         Classify non-text element's compo_class: ['Text Button', 'Input', 'Switch', 'Image', 'Icon', 'Checkbox']
         :saveto: element.attributes.compo_class
@@ -123,7 +125,19 @@ class GUI:
         compos_clips = [compo.clip for compo in compos]
         labels = self.Classifier.predict_images(compos_clips)
         for i, compo in enumerate(compos):
-            compo.attributes.compo_class = labels[i][0]
+            compo.attributes.icon_class = labels[i][0]
+
+    def icon_captioning(self):
+        self.IconCaption = IconCaption(vocab_path='classification/model_results/vocab_idx2word.json',
+                                       model_path='classification/model_results/labeldroid.pt')
+        compos = []
+        for ele in self.elements:
+            if ele.attributes.element_class == 'Compo':
+                compos.append(ele)
+        compos_clips = [compo.clip for compo in compos]
+        captions = self.IconCaption.predict_images(compos_clips)
+        for i, compo in enumerate(compos):
+            compo.attributes.icon_caption = captions[i]
 
     '''
     *********************
@@ -148,6 +162,8 @@ class GUI:
             element.draw_element(board_ele_class, self.color_map[element.attributes.element_class], text=element.attributes.element_class)
             if element.attributes.compo_class is not None:
                 element.draw_element(board_compo_class, self.color_map['Compo'], text=element.attributes.compo_class)
+            if element.attributes.icon_caption is not None:
+                element.draw_element(board_compo_class, self.color_map['Compo'], text=element.attributes.icon_caption)
         cv2.imshow('element class', board_ele_class)
         cv2.imshow('compo class', board_compo_class)
         cv2.waitKey()
@@ -158,5 +174,6 @@ if __name__ == '__main__':
     gui = GUI('data/input/11.jpg')
     gui.detect_element()
     gui.show_elements()
-    gui.classify_compo()
+    # gui.icon_classification()
+    gui.icon_captioning()
     gui.show_element_classes()
