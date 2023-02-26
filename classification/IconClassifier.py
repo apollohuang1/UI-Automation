@@ -11,7 +11,7 @@ import torch.multiprocessing as mp
 
 
 class IconClassifier:
-    def __init__(self, model_path='model/best-0.93.pt', class_path='model/iconModel_labels.json'):
+    def __init__(self, model_path='model_results/best-0.93.pt', class_path='model_results/iconModel_labels.json'):
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.transform_test = transforms.Compose([
             transforms.Resize((224, 224)),

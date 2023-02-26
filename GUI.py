@@ -63,8 +63,8 @@ class GUI:
                           'Text Button':(0,0,255), 'Input':(166,0,0), 'Switch':(166,166,0), 'Image':(0,166,166), 'Icon':(255,255,0), 'Checkbox':(255,0,166)}  # compo class
 
         self.Detector = Detector(self.img_file, img_resize_longest_side, self.output_dir)            # GUI Element Detection
-        self.Classifier = IconClassifier(model_path='classification/model/best-0.93.pt',
-                                         class_path='classification/model/iconModel_labels.json')
+        self.Classifier = IconClassifier(model_path='classification/model_results/best-0.93.pt',
+                                         class_path='classification/model_results/iconModel_labels.json')
         self.img_reshape = self.Detector.img_reshape  # image reshape for element detection
         self.img_resized = self.Detector.img_resized  # resized image by img_reshape
 
@@ -114,8 +114,8 @@ class GUI:
         Classify non-text element's compo_class: ['Text Button', 'Input', 'Switch', 'Image', 'Icon', 'Checkbox']
         :saveto: element.attributes.compo_class
         '''
-        self.Classifier = IconClassifier(model_path='classification/model/best-0.93.pt',
-                                         class_path='classification/model/iconModel_labels.json')
+        self.Classifier = IconClassifier(model_path='classification/model_results/best-0.93.pt',
+                                         class_path='classification/model_results/iconModel_labels.json')
         compos = []
         for ele in self.elements:
             if ele.attributes.element_class == 'Compo':
