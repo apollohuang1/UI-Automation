@@ -3,6 +3,8 @@ import json
 from os.path import join as pjoin
 from glob import glob
 
+from GUIData import GUIData
+
 
 class MotifDataLoader:
     def __init__(self, motif_data_root='C:/Mulong/Data/motif_raw_data/raw_data/', processing_app_number=0, processing_task_number=0):
@@ -19,6 +21,7 @@ class MotifDataLoader:
         '''
         self.motif_data_root = motif_data_root
         self.dir_apps = glob(pjoin(self.motif_data_root, '*'))
+        print('Totally %d apps loaded' %(len(self.dir_apps)))
 
         self.processing_app_number = processing_app_number
         self.processing_app_path = self.dir_apps[self.processing_app_number]
@@ -75,6 +78,14 @@ class MotifDataLoader:
         assert os.path.basename(self.dir_task_screens[screen_no]).split('.')[0] ==\
                os.path.basename(self.dir_task_vh[screen_no]).split('.')[0]
         return self.dir_task_screens[screen_no], self.dir_task_vh[screen_no]
+
+    def show_guis_in_current_task(self):
+        for i in range(len(self.dir_task_screens)):
+            print(i)
+            screen, vh = self.get_screen_and_vh_file(i)
+            gui = GUIData(screen, vh)
+            gui.extract_elements_from_vh()
+            gui.show_all_elements()
 
 
 if __name__ == '__main__':

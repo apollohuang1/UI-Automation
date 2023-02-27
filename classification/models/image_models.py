@@ -36,7 +36,6 @@ class ResNetFeats(nn.Module):
 
 
 	def forward(self, images):
-		print("image size:", list(images.size()))
 		"""Extract feature vectors from input images."""
 		with torch.no_grad():
 			x = self.resnet(images)
