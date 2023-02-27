@@ -171,7 +171,7 @@ class GUI:
 
 
 if __name__ == '__main__':
-    gui = GUI('data/input/11.jpg')
+    gui = GUI('data/input/v1.jpg')
     gui.detect_element()
     gui.show_elements()
     # gui.icon_classification()

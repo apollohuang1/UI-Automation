@@ -20,13 +20,13 @@ class MotifDataLoader:
         -------- [state_name.json]
         '''
         self.motif_data_root = motif_data_root
-        self.dir_apps = glob(pjoin(self.motif_data_root, '*'))
+        self.dir_apps = sorted(glob(pjoin(self.motif_data_root, '*')))
         print('Totally %d apps loaded' %(len(self.dir_apps)))
 
         self.processing_app_number = processing_app_number
         self.processing_app_path = self.dir_apps[self.processing_app_number]
         print('*** Loading app No %d from %s ***' % (self.processing_app_number, self.processing_app_path))
-        self.dir_tasks = glob(pjoin(self.processing_app_path, '*'))
+        self.dir_tasks = sorted(glob(pjoin(self.processing_app_path, '*')))
 
         self.processing_task_number = processing_task_number
         self.processing_task_path = self.dir_tasks[self.processing_task_number]
