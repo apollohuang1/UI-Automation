@@ -3,6 +3,7 @@ from os.path import join as pjoin
 import xmltodict
 import json
 
+
 class Device:
     def __init__(self, adb_device, file_save_dir='/home/ml/Code/github/UI-Automation/vh/data'):
         self.adb_device = adb_device  # ppadb device
@@ -24,10 +25,10 @@ class Device:
         with open(self.screenshot_path, "wb") as fp:
             fp.write(screen)
         self.screenshot = cv2.imread(self.screenshot_path)
+        print('Save screenshot to', self.screenshot_path)
         # recurrently load to avoid failure
         if recur_time < 3 and self.screenshot is None:
             self.cap_screenshot(recur_time+1)
-        return self.screenshot
 
     def cap_vh(self, dump_to_json=True):
         self.adb_device.shell('uiautomator dump')
@@ -35,6 +36,38 @@ class Device:
         self.vh = xmltodict.parse(open(self.vh_xml_path, 'r').read())
         if dump_to_json:
             json.dump(self.vh, open(self.vh_json_path, 'w'), indent=4)
+            print('Save view hierarchy to', self.vh_json_path)
+
+    def reformat_node(self, node):
+        node_new = {}
+        for key in node.keys():
+            if key == 'node':
+                node_new['children'] = node['node']
+            elif key == '@bounds':
+                node_new['bounds'] = eval(node['@bounds'].replace('][', ','))
+            elif key == '@index':
+                continue
+            else:
+                node_new[key.replace('@', '')] = node[key]
+        return node_new
+
+    def cvt_node_to_rico_format(self, node):
+        node = self.reformat_node(node)
+        if 'children' in node:
+            if type(node['children']) == list:
+                new_children = []
+                for child in node['children']:
+                    new_children.append(self.cvt_node_to_rico_format(child))
+                node['children'] = new_children
+            else:
+                node['children'] = [self.cvt_node_to_rico_format(node['children'])]
+        return node
+
+    def cvt_vh_to_rico_format(self, dump_json_file=True):
+        self.vh = {'activity': {'root': self.cvt_node_to_rico_format(self.vh['hierarchy']['node'])}}
+        if dump_json_file:
+            json.dump(self.vh, open(self.vh_json_path, 'w'), indent=4)
+            print('Save reformatted vh to', self.vh_json_path)
 
 
 if __name__ == '__main__':
