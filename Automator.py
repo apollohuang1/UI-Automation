@@ -1,6 +1,7 @@
 import openai
 from GUI import GUI
 
+
 class Automator:
     def __init__(self, cur_gui_img, task=''):
         self.GUI = GUI(cur_gui_img)
@@ -21,7 +22,7 @@ class Automator:
         # 1. element detection
         self.GUI.detect_element(show=False)
         # 2. classify non-text elements (Compos)
-        self.GUI.classify_compo()
+        self.GUI.icon_classification()
 
     def get_textual_gui_elements(self):
         '''
