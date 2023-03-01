@@ -25,6 +25,7 @@ class GUIData:
         self.elements_leaves = []   # leaf nodes that does not have children
 
         self.model_icon_caption = None   # IconCaption
+        self.model_icon_classification = None  # IconClassification
 
     '''
     ************************
@@ -115,6 +116,18 @@ class GUIData:
         captions = self.model_icon_caption.predict_images(clips)
         for i, ele in enumerate(self.elements_leaves):
             ele['caption'] = captions[i]
+
+    def classify_icon(self):
+        if self.model_icon_classification is None:
+            self.model_icon_classification = IconClassifier(model_path='classification/model_results/best-0.93.pt',
+                                                            class_path='classification/model_results/iconModel_labels.json')
+        clips = []
+        for ele in self.elements_leaves:
+            bound = ele['bounds']
+            clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
+        classes = self.model_icon_classification.predict_images(clips)
+        for i, ele in enumerate(self.elements_leaves):
+            ele['icon-cls'] = classes[i]
 
     '''
     *********************
