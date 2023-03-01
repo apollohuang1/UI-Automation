@@ -79,6 +79,17 @@ class Device:
 
 
 if __name__ == '__main__':
+    from GUIData import GUIData
     from ppadb.client import Client as AdbClient
     client = AdbClient(host="127.0.0.1", port=5037)
-    device = Device(client.devices()[0])
+
+    device = Device(client.devices()[0], 'data')
+    device.cap_screenshot()
+    device.cap_vh()
+    device.cvt_vh_to_rico_format()
+
+    gui = GUIData(device.screenshot_path, device.vh_json_path)
+    gui.extract_elements_from_vh()
+    gui.show_all_elements()
+    gui.inherit_clickablility()
+    gui.show_all_elements()
