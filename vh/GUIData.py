@@ -18,8 +18,9 @@ class GUIData:
         self.element_id = 0
         self.elements_df = None  # pandas.dataframe
 
-        # self.root_img_size = self.json['activity']['root']['bounds'][2:]   # the actual image size in the vh
-        self.img = cv2.resize(self.img, (1080, 2160))                # resize the image to be consistent with the vh
+        self.root_img_size = self.json['activity']['root']['bounds'][2:]   # the actual image size in the vh
+        # self.img = cv2.resize(self.img, self.root_img_size)                # resize the image to be consistent with the vh
+        self.img = cv2.resize(self.img, (1080, 2280))                # resize the image to be consistent with the vh
 
     def extract_elements_from_vh(self):
         '''
@@ -51,7 +52,8 @@ class GUIData:
                 self.extract_children_elements(child)
             # replace wordy 'children' with 'children-id'
             del element['children']
-        del element['ancestors']
+        if 'ancestors' in element:
+            del element['ancestors']
 
     def check_if_element_valid(self, element):
         '''
