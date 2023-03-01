@@ -22,12 +22,17 @@ class GUIData:
         # self.img = cv2.resize(self.img, self.root_img_size)                # resize the image to be consistent with the vh
         self.img = cv2.resize(self.img, (1080, 2280))                # resize the image to be consistent with the vh
 
+    '''
+    ************************
+    *** Extract Elements ***
+    ************************
+    '''
     def extract_elements_from_vh(self):
         '''
         Extract elements from raw view hierarchy Json file and store them as dictionaries
         '''
         element_root = self.json['activity']['root']
-        self.prone_valid_children(element_root)
+        self.prone_invalid_children(element_root)
         self.extract_children_elements(element_root)
 
     def extract_children_elements(self, element):
@@ -47,15 +52,20 @@ class GUIData:
         if 'ancestors' in element:
             del element['ancestors']
 
-    def prone_valid_children(self, element):
+    def prone_invalid_children(self, element):
+        '''
+        Prone invalid children elements
+        Leave valid children and prone their children recursively
+        Take invalid children's children as its own directly
+        '''
         valid_children = []
         if 'children' in element:
             for child in element['children']:
                 if self.check_if_element_valid(child):
                     valid_children.append(child)
-                    self.prone_valid_children(child)
+                    self.prone_invalid_children(child)
                 else:
-                    valid_children += self.prone_valid_children(child)
+                    valid_children += self.prone_invalid_children(child)
             element['children'] = valid_children
         return valid_children
 
@@ -77,6 +87,11 @@ class GUIData:
                 for c_id in ele['children-id']:
                     self.elements[c_id - self.elements[0]['id']]['clickable'] = True
 
+    '''
+    *********************
+    *** Visualization ***
+    *********************
+    '''
     def show_elements(self):
         board = self.img.copy()
         for ele in self.elements:
