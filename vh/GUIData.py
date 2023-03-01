@@ -60,7 +60,7 @@ class GUIData:
         Check if the element is valid and should be kept
         '''
         if (element['bounds'][0] >= element['bounds'][2] or element['bounds'][1] >= element['bounds'][3]) or \
-                'layout' in element['class'].lower():
+                ('layout' in element['class'].lower() and not element['clickable']):
             return False
         return True
 
@@ -108,7 +108,8 @@ class GUIData:
             print(ele, '\n')
             bounds = ele['bounds']
             clip = self.img[bounds[1]: bounds[3], bounds[0]: bounds[2]]
-            cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), (0, 255, 0), 3)
+            color = (0,255,0) if not ele['clickable'] else (166,166,166)
+            cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), color, 3)
             cv2.imshow('clip', cv2.resize(clip, (clip.shape[1] // 3, clip.shape[0] // 3)))
             cv2.imshow('ele', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
             if cv2.waitKey() == ord('q'):
@@ -119,7 +120,8 @@ class GUIData:
         board = self.img.copy()
         for ele in self.elements:
             bounds = ele['bounds']
-            cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), (0, 255, 0), 3)
+            color = (0,255,0) if ele['clickable'] else (166,0,0)
+            cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), color, 3)
         cv2.imshow('elements', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
         cv2.waitKey()
         cv2.destroyWindow('elements')

@@ -41,6 +41,11 @@ class Device:
     def reformat_node(self, node):
         node_new = {}
         for key in node.keys():
+            if node[key] == 'true':
+                node[key] = True
+            elif node[key] == 'false':
+                node[key] = False
+
             if key == 'node':
                 node_new['children'] = node['node']
             elif key == '@bounds':
