@@ -4,7 +4,6 @@ import cv2
 import json
 time.clock = time.time
 
-from detection.Detector import Detector
 from classification.IconClassifier import IconClassifier
 from classification.IconCaption import IconCaption
 

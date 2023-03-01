@@ -93,5 +93,3 @@ if __name__ == '__main__':
     gui = GUIData(device.screenshot_path, device.vh_json_path)
     gui.extract_elements_from_vh()
     gui.show_all_elements()
-    gui.inherit_clickablility()
-    gui.show_all_elements()
