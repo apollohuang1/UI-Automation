@@ -38,6 +38,9 @@ class Device:
             json.dump(self.vh, open(self.vh_json_path, 'w'), indent=4)
             print('Save view hierarchy to', self.vh_json_path)
 
+    '''
+    *** Convert the format of json to Rico format ***
+    '''
     def reformat_node(self, node):
         node_new = {}
         for key in node.keys():
