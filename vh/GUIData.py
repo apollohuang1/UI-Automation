@@ -14,9 +14,9 @@ class GUIData:
         self.img = cv2.imread(gui_img_file)  # cv2 image, the screenshot of the GUI
         self.json = json.load(open(gui_json_file, 'r', encoding='utf-8'))  # json data, the view hierarchy of the GUI
 
-        self.elements = []       # list of element in dictionary {'id':, 'class':...}
         self.element_id = 0
-        self.elements_df = None  # pandas.dataframe
+        self.elements = []          # list of element in dictionary {'id':, 'class':...}
+        self.elements_leaves = []   # leaf nodes that does not have children
 
         self.root_img_size = self.json['activity']['root']['bounds'][2:]   # the actual image size in the vh
         # self.img = cv2.resize(self.img, self.root_img_size)                # resize the image to be consistent with the vh
@@ -34,6 +34,9 @@ class GUIData:
         element_root = self.json['activity']['root']
         self.prone_invalid_children(element_root)
         self.extract_children_elements(element_root)
+
+        self.inherit_clickablility()
+        self.gather_leaf_elements()
 
     def extract_children_elements(self, element):
         '''
@@ -78,6 +81,11 @@ class GUIData:
             return False
         return True
 
+    '''
+    ***********************
+    *** Extract Process ***
+    ***********************
+    '''
     def inherit_clickablility(self):
         '''
         If a node's parent is clickable, make it clickable
@@ -87,14 +95,24 @@ class GUIData:
                 for c_id in ele['children-id']:
                     self.elements[c_id - self.elements[0]['id']]['clickable'] = True
 
+    def gather_leaf_elements(self):
+        for ele in self.elements:
+            if 'children-id' not in ele:
+                self.elements_leaves.append(ele)
+
     '''
     *********************
     *** Visualization ***
     *********************
     '''
-    def show_elements(self):
+    def show_each_element(self, only_leaves=False):
         board = self.img.copy()
-        for ele in self.elements:
+        if only_leaves:
+            elements = self.elements_leaves
+            print(len(elements))
+        else:
+            elements = self.elements
+        for ele in elements:
             print(ele['id'], ele['class'])
             print(ele, '\n')
             bounds = ele['bounds']
@@ -107,9 +125,13 @@ class GUIData:
                 break
         cv2.destroyAllWindows()
 
-    def show_all_elements(self):
+    def show_all_elements(self, only_leaves=False):
         board = self.img.copy()
-        for ele in self.elements:
+        if only_leaves:
+            elements = self.elements_leaves
+        else:
+            elements = self.elements
+        for ele in elements:
             bounds = ele['bounds']
             color = (0,255,0) if not ele['clickable'] else (0,0,255)
             cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), color, 3)
