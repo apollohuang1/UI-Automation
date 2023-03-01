@@ -4,6 +4,12 @@ import json
 import pandas as pd
 from os.path import join as pjoin
 
+from classification.IconClassifier import IconClassifier
+from classification.IconCaption import IconCaption
+
+import sys
+sys.path.append('classification')
+
 
 class GUIData:
     def __init__(self, gui_img_file, gui_json_file):
@@ -11,16 +17,14 @@ class GUIData:
         self.json_file = gui_json_file
         self.gui_name = gui_img_file.replace('/', '\\').split('\\')[-1].split('.')[0]
 
-        self.img = cv2.imread(gui_img_file)  # cv2 image, the screenshot of the GUI
+        self.img = cv2.resize(cv2.imread(gui_img_file), (1080, 2280))      # resize the image to be consistent with the vh
         self.json = json.load(open(gui_json_file, 'r', encoding='utf-8'))  # json data, the view hierarchy of the GUI
 
         self.element_id = 0
         self.elements = []          # list of element in dictionary {'id':, 'class':...}
         self.elements_leaves = []   # leaf nodes that does not have children
 
-        self.root_img_size = self.json['activity']['root']['bounds'][2:]   # the actual image size in the vh
-        # self.img = cv2.resize(self.img, self.root_img_size)                # resize the image to be consistent with the vh
-        self.img = cv2.resize(self.img, (1080, 2280))                # resize the image to be consistent with the vh
+        self.model_icon_caption = None   # IconCaption
 
     '''
     ************************
@@ -72,11 +76,11 @@ class GUIData:
             element['children'] = valid_children
         return valid_children
 
-    def check_if_element_valid(self, element):
+    def check_if_element_valid(self, element, min_length=5):
         '''
         Check if the element is valid and should be kept
         '''
-        if (element['bounds'][0] >= element['bounds'][2] or element['bounds'][1] >= element['bounds'][3]) or \
+        if (element['bounds'][0] >= element['bounds'][2] - min_length or element['bounds'][1] >= element['bounds'][3] - min_length) or \
                 ('layout' in element['class'].lower() and not element['clickable']):
             return False
         return True
@@ -99,6 +103,18 @@ class GUIData:
         for ele in self.elements:
             if 'children-id' not in ele:
                 self.elements_leaves.append(ele)
+
+    def get_caption_for_leaf_captions(self):
+        if self.model_icon_caption is None:
+            self.model_icon_caption = IconCaption(vocab_path='classification/model_results/vocab_idx2word.json',
+                                                  model_path='classification/model_results/labeldroid.pt')
+        clips = []
+        for ele in self.elements_leaves:
+            bound = ele['bounds']
+            clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
+        captions = self.model_icon_caption.predict_images(clips)
+        for ele in self.elements_leaves:
+            ele['caption'] = captions
 
     '''
     *********************

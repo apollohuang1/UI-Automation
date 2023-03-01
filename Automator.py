@@ -61,8 +61,6 @@ class Automator:
 
 if __name__ == '__main__':
     automator = Automator('data/input/2.jpg')
-    automator.detect_and_classify_gui_elements()
     automator.get_textual_gui_elements()
     automator.task = "Contact Lelya"
     automator.ask_openai()
-    automator.show_gui_elements()
