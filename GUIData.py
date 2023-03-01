@@ -113,8 +113,8 @@ class GUIData:
             bound = ele['bounds']
             clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
         captions = self.model_icon_caption.predict_images(clips)
-        for ele in self.elements_leaves:
-            ele['caption'] = captions
+        for i, ele in enumerate(self.elements_leaves):
+            ele['caption'] = captions[i]
 
     '''
     *********************

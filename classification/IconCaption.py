@@ -59,7 +59,7 @@ class IconCaption:
                 words.append(word)
             sentence = ' '.join(words[1:])  # combine the words into a caption sentence
             sentences.append(sentence)
-            print(sentences)
+        print(sentences)
         return sentences
 
     def predict_image_files(self, file_names):
