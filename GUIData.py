@@ -82,9 +82,9 @@ class GUIData:
         return True
 
     '''
-    ***********************
-    *** Extract Process ***
-    ***********************
+    ************************
+    *** Elements Process ***
+    ************************
     '''
     def inherit_clickablility(self):
         '''
@@ -139,6 +139,15 @@ class GUIData:
         cv2.waitKey()
         cv2.destroyWindow('elements')
 
+    def show_element(self, element):
+        board = self.img.copy()
+        color = (0,255,0) if not element['clickable'] else (0,0,255)
+        bounds = element['bounds']
+        cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), color, 3)
+        cv2.imshow('element', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
+        cv2.waitKey()
+        cv2.destroyWindow('element')
+
     def show_screen(self):
         cv2.imshow('screen', self.img)
         cv2.waitKey()
@@ -146,7 +155,7 @@ class GUIData:
 
 
 if __name__ == '__main__':
-    gui = GUIData('data/1.jpg', 'data/1.json')
+    gui = GUIData('data/emulator-5554.png', 'data/emulator-5554.json')
     gui.extract_elements_from_vh()
     gui.show_all_elements()
     gui.inherit_clickablility()
