@@ -23,7 +23,6 @@ class GUIData:
         self.element_id = 0
         self.elements = []          # list of element in dictionary {'id':, 'class':...}
         self.elements_leaves = []   # leaf nodes that does not have children
-        self.elements_leaves_textual = []   # caption or text content/description of the elements
 
         self.model_icon_caption = None   # IconCaption
         self.model_icon_classification = None  # IconClassification
@@ -135,21 +134,21 @@ class GUIData:
             else:
                 ele['icon-cls'] = None
 
-    def extract_elements_info_in_textual(self):
+    def extract_elements_description(self):
         self.caption_elements()
         self.classify_elements()
         for ele in self.elements_leaves:
-            textual = ''
+            description = ''
             # check text
             if len(ele['text']) > 0:
-                textual += ele['text']
+                description += ele['text']
             # check content description
             if 'content-desc' in ele and len(ele['content-desc']) > 0:
-                textual = ele['content-desc'] if len(textual) == 0 else textual + ' / ' + ele['content-desc']
+                description = ele['content-desc'] if len(description) == 0 else description + ' / ' + ele['content-desc']
             # if no text and content description, check caption
-            if len(textual) == 0:
-                textual = ele['caption'] if '<unk>' not in ele['caption'] else ele['icon-cls']
-            self.elements_leaves_textual.append(textual)
+            if len(description) == 0:
+                description = ele['caption'] if '<unk>' not in ele['caption'] else ele['icon-cls']
+            ele['description'] = description
 
 
     '''
@@ -165,7 +164,7 @@ class GUIData:
         else:
             elements = self.elements
         for ele in elements:
-            print(ele['id'], ele['class'])
+            print(ele['class'], ele['description'])
             print(ele, '\n')
             bounds = ele['bounds']
             clip = self.img[bounds[1]: bounds[3], bounds[0]: bounds[2]]
