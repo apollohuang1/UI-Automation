@@ -23,6 +23,7 @@ class GUIData:
         self.element_id = 0
         self.elements = []          # list of element in dictionary {'id':, 'class':...}
         self.elements_leaves = []   # leaf nodes that does not have children
+        self.elements_leaves_textual = []   # caption or text content/description of the elements
 
         self.model_icon_caption = None   # IconCaption
         self.model_icon_classification = None  # IconClassification
@@ -129,24 +130,26 @@ class GUIData:
             clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
         classes = self.model_icon_classification.predict_images(clips)
         for i, ele in enumerate(elements):
-            ele['icon-cls'] = classes[i]
+            if classes[i][1] > 0.95:
+                ele['icon-cls'] = classes[i][0]
+            else:
+                ele['icon-cls'] = None
 
-    # def categorize_elements(self):
-    #     texts = []
-    #     icons = []
-    #     images = []
-    #     for ele in self.elements_leaves:
-    #         bound = ele['bounds']
-    #         if 'textview' in ele['class'].lower() or len(ele['text']) > 0:
-    #             ele['category'] = 'Text'
-    #             texts.append(ele)
-    #         elif 0.8 < (bound[2] - bound[0]) / (bound[3] - bound[1]) < 1.2:
-    #             icons.app
-    #
-    # def extract_elements_info_in_text(self):
-    #     texts = []
-    #     icons = []
-    #     images = []
+    def extract_elements_info_in_textual(self):
+        self.caption_elements()
+        self.classify_elements()
+        for ele in self.elements_leaves:
+            textual = ''
+            # check text
+            if len(ele['text']) > 0:
+                textual += ele['text']
+            # check content description
+            if 'content-desc' in ele and len(ele['content-desc']) > 0:
+                textual = ele['content-desc'] if len(textual) == 0 else textual + ' / ' + ele['content-desc']
+            # if no text and content description, check caption
+            if len(textual) == 0:
+                textual = ele['caption'] if '<unk>' not in ele['caption'] else ele['icon-cls']
+            self.elements_leaves_textual.append(textual)
 
 
     '''
