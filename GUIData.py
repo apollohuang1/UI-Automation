@@ -105,29 +105,49 @@ class GUIData:
             if 'children-id' not in ele:
                 self.elements_leaves.append(ele)
 
-    def get_caption_for_leaf_captions(self):
+    def caption_elements(self, elements=None):
         if self.model_icon_caption is None:
             self.model_icon_caption = IconCaption(vocab_path='classification/model_results/vocab_idx2word.json',
                                                   model_path='classification/model_results/labeldroid.pt')
+        elements = self.elements_leaves if elements is None else elements
         clips = []
-        for ele in self.elements_leaves:
+        for ele in elements:
             bound = ele['bounds']
             clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
         captions = self.model_icon_caption.predict_images(clips)
-        for i, ele in enumerate(self.elements_leaves):
+        for i, ele in enumerate(elements):
             ele['caption'] = captions[i]
 
-    def classify_icon(self):
+    def classify_elements(self, elements=None):
         if self.model_icon_classification is None:
             self.model_icon_classification = IconClassifier(model_path='classification/model_results/best-0.93.pt',
                                                             class_path='classification/model_results/iconModel_labels.json')
+        elements = self.elements_leaves if elements is None else elements
         clips = []
-        for ele in self.elements_leaves:
+        for ele in elements:
             bound = ele['bounds']
             clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
         classes = self.model_icon_classification.predict_images(clips)
-        for i, ele in enumerate(self.elements_leaves):
+        for i, ele in enumerate(elements):
             ele['icon-cls'] = classes[i]
+
+    # def categorize_elements(self):
+    #     texts = []
+    #     icons = []
+    #     images = []
+    #     for ele in self.elements_leaves:
+    #         bound = ele['bounds']
+    #         if 'textview' in ele['class'].lower() or len(ele['text']) > 0:
+    #             ele['category'] = 'Text'
+    #             texts.append(ele)
+    #         elif 0.8 < (bound[2] - bound[0]) / (bound[3] - bound[1]) < 1.2:
+    #             icons.app
+    #
+    # def extract_elements_info_in_text(self):
+    #     texts = []
+    #     icons = []
+    #     images = []
+
 
     '''
     *********************
