@@ -10,8 +10,8 @@ class Automator:
         openai.api_key = open('openaikey.txt', 'r').readline()
         self.task = task            # string, a NL sentence to describe the task, e.g. "Turn on voice"
         self.prompt = None          # string, prompt including the task and textual_element as options sent to the LLM
-        self.openai_resp = None     # the response from openai asked the prompt
-        self.openai_answer = None   # the text answer in the openai_resp
+        self.openai_responses = []  # the response from openai asked the prompt
+        self.openai_answers = []    # the text answer in the openai_resp
 
     '''
     *********************************
@@ -45,22 +45,26 @@ class Automator:
         post_prompt = 'Components:[' + ';'.join(self.textual_elements) + ';'
         self.prompt = pre_prompt + post_prompt + ']'
 
-    def ask_openai(self, task=None):
+    def select_element_to_perform_task(self, task):
         self.task = task
         self.assemble_prompt()
-        print('*** Asking ***\n', self.prompt)
-        self.openai_resp = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=self.prompt,
-            max_tokens=7,
-            temperature=0
-        )
-        self.openai_answer = self.openai_resp['choices'][0]['text']
-        print('*** Answer ***\n', self.openai_answer)
+        self.ask_openai(self.prompt)
+
+    def ask_openai(self, prompt):
+        print('*** Asking ***\n', prompt)
+        resp = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {'role': 'system', 'content': 'You are a mobile virtual assistant that understands and interacts with the user interface to complete given task.'},
+                    {'role': 'user', 'content': prompt}
+                ]
+            )
+        self.openai_responses.append(resp)
+        self.openai_answers.append(resp['choices'][0].message)
+        print('*** Answer ***\n', resp['choices'][0].message)
 
 
 if __name__ == '__main__':
     automator = Automator('data/input/2.jpg')
     automator.get_textual_gui_elements()
-    automator.task = "Contact Lelya"
-    automator.ask_openai()
+    automator.select_element_to_perform_task("Contact Lelya")
