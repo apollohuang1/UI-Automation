@@ -150,9 +150,11 @@ class GUIData:
                 description = ele['content-desc'] if len(description) == 0 else description + ' / ' + ele['content-desc']
             # if no text and content description, check caption
             if len(description) == 0:
-                description = ele['caption'] if '<unk>' not in ele['caption'] else ele['icon-cls']
+                if ele['icon-cls']:
+                    description = ele['icon-cls']
+                else:
+                    description = ele['caption'] if '<unk>' not in ele['caption'] else None
             ele['description'] = description
-
 
     '''
     *********************
@@ -201,6 +203,10 @@ class GUIData:
         cv2.imshow('element', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
         cv2.waitKey()
         cv2.destroyWindow('element')
+
+    def show_element_by_id(self, ele_id):
+        element = self.elements[ele_id]
+        self.show_element(element)
 
     def show_screen(self):
         cv2.imshow('screen', self.img)

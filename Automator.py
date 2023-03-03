@@ -17,6 +17,10 @@ class Automator:
             if ele['description']:
                 self.element_desc.append((ele['leaf-id'], ele['description']))
 
+    def show_target_element(self, ele_id):
+        print(self.gui.elements_leaves[ele_id])
+        self.gui.show_element(self.gui.elements_leaves[ele_id])
+
     '''
     ******************
     *** OpenAI LLM ***
