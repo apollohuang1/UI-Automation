@@ -33,7 +33,7 @@ class Device:
     def cap_vh(self, dump_to_json=True):
         self.adb_device.shell('uiautomator dump')
         self.adb_device.pull('/sdcard/window_dump.xml', self.vh_xml_path)
-        self.vh = xmltodict.parse(open(self.vh_xml_path, 'r').read())
+        self.vh = xmltodict.parse(open(self.vh_xml_path, 'r', encoding='utf-8').read())
         if dump_to_json:
             json.dump(self.vh, open(self.vh_json_path, 'w'), indent=4)
             print('Save view hierarchy to', self.vh_json_path)

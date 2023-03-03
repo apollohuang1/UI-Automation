@@ -101,9 +101,12 @@ class GUIData:
                     self.elements[c_id - self.elements[0]['id']]['clickable'] = True
 
     def gather_leaf_elements(self):
+        i = 0
         for ele in self.elements:
             if 'children-id' not in ele:
+                ele['leaf-id'] = i
                 self.elements_leaves.append(ele)
+                i += 1
 
     def caption_elements(self, elements=None):
         if self.model_icon_caption is None:

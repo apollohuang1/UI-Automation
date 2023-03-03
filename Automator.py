@@ -1,11 +1,10 @@
 import openai
-from GUI import GUI
 
 
 class Automator:
-    def __init__(self, gui, task=''):
+    def __init__(self, gui=None, task=''):
         self.gui = gui
-        self.textual_elements = []
+        self.element_desc = []
 
         openai.api_key = open('openaikey.txt', 'r').readline()
         self.task = task            # string, a NL sentence to describe the task, e.g. "Turn on voice"
@@ -13,37 +12,24 @@ class Automator:
         self.openai_responses = []  # the response from openai asked the prompt
         self.openai_answers = []    # the text answer in the openai_resp
 
-    '''
-    *********************************
-    *** GUI Element Understanding ***
-    *********************************
-    '''
-    def get_textual_gui_elements(self):
-        '''
-        Get all the gui element in textual, including text elements and textual Compo labels
-        '''
+    def gather_element_descriptions(self):
         for ele in self.gui.elements_leaves:
-            if 'text' in ele and ele['text'] != '':
-                text = ele['text']
-                if 'content-desc' in ele and ele['content-desc'] != '':
-                    text += ' / ' + ele['content-desc']
-                    self.textual_elements.append(text)
-                else:
-                    self.textual_elements.append(ele['text'])
-            else:
-                if 'content-desc' in ele and ele['content-desc'] != '':
-                    self.textual_elements.append(ele['content-desc'])
-                # else:
-                #     self.textual_elements.append(ele['caption'])
+            if ele['description']:
+                self.element_desc.append((ele['leaf-id'], ele['description']))
+
     '''
     ******************
     *** OpenAI LLM ***
     ******************
     '''
     def assemble_prompt(self):
-        pre_prompt = 'I will give you several UI components on a UI page, which one of them is more related to the task "' + self.task + '"?'
-        post_prompt = 'Components:[' + ';'.join(self.textual_elements) + ';'
-        self.prompt = pre_prompt + post_prompt + ']'
+        pre_prompt = 'You have a list of UI components on the current UI page, which one of them is more related to the task "' + self.task + '"?\n'
+        post_prompt = 'Components:['
+        for desc in self.element_desc:
+            post_prompt += str(desc) + ';'
+        self.prompt = pre_prompt + post_prompt + ']\n'
+        self.prompt += 'Note that it may take multiple steps to reach the target UI with the target component to complete the task. ' \
+                       'If no component in the current UI that directly related to the task, which of them is more possible to lead to the target UI?'
 
     def select_element_to_perform_task(self, task):
         self.task = task
@@ -61,10 +47,17 @@ class Automator:
             )
         self.openai_responses.append(resp)
         self.openai_answers.append(resp['choices'][0].message)
-        print('*** Answer ***\n', resp['choices'][0].message)
+        print('\n*** Answer ***\n', resp['choices'][0].message)
 
 
 if __name__ == '__main__':
-    automator = Automator('data/input/2.jpg')
-    automator.get_textual_gui_elements()
-    automator.select_element_to_perform_task("Contact Lelya")
+    from GUIData import GUIData
+    gui = GUIData('data/emulator-5554.png', 'data/emulator-5554.json')
+    gui.extract_elements_from_vh()
+    gui.show_all_elements()
+    gui.show_all_elements(only_leaves=True)
+    gui.extract_elements_description()
+
+    aut = Automator(gui)
+    aut.gather_element_descriptions()
+    aut.select_element_to_perform_task(task='Change display language')
