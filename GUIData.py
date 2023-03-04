@@ -3,6 +3,7 @@ import cv2
 import json
 import pandas as pd
 from os.path import join as pjoin
+import copy
 
 from classification.IconClassifier import IconClassifier
 from classification.IconCaption import IconCaption
@@ -36,7 +37,8 @@ class GUIData:
         '''
         Extract elements from raw view hierarchy Json file and store them as dictionaries
         '''
-        element_root = self.json['activity']['root']
+        json_cp = copy.deepcopy(self.json)
+        element_root = json_cp['activity']['root']
         self.prone_invalid_children(element_root)
         self.extract_children_elements(element_root)
 
