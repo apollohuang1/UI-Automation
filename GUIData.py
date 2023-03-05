@@ -24,6 +24,7 @@ class GUIData:
         self.element_id = 0
         self.elements = []          # list of element in dictionary {'id':, 'class':...}
         self.elements_leaves = []   # leaf nodes that does not have children
+        self.element_tree = None    # structural element tree, dict type
 
         self.model_icon_caption = None   # IconCaption
         self.model_icon_classification = None  # IconClassification
@@ -39,6 +40,7 @@ class GUIData:
         '''
         json_cp = copy.deepcopy(self.json)
         element_root = json_cp['activity']['root']
+        element_root['class'] = 'root'
         self.prone_invalid_children(element_root)
         self.extract_children_elements(element_root)
 
@@ -87,6 +89,29 @@ class GUIData:
                 ('layout' in element['class'].lower() and not element['clickable']):
             return False
         return True
+
+    '''
+    ***********************
+    *** Structural Tree ***
+    ***********************
+    '''
+    def form_element_tree(self):
+        self.element_tree = self.combine_children(self.elements[0])
+
+    def combine_children(self, element):
+        element_cp = copy.deepcopy(element)
+        if 'children-id' in element_cp:
+            element_cp['children'] = []
+            for c_id in element_cp['children-id']:
+                element_cp['children'].append(self.combine_children(self.elements[c_id]))
+        self.select_ele_attr(element_cp, ['id', 'text', 'resource-id', 'class', 'content-desc', 'clickable', 'scrollable', 'children', 'description'])
+        return element_cp
+
+    def select_ele_attr(self, element, selected_attrs):
+        element_cp = copy.deepcopy(element)
+        for key in element_cp.keys():
+            if key not in selected_attrs or element[key] is None or element[key] == '':
+                del(element[key])
 
     '''
     ************************

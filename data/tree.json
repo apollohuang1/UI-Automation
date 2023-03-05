@@ -1,0 +1,883 @@
+{
+    "class": "root",
+    "clickable": false,
+    "scrollable": false,
+    "id": 0,
+    "children": [
+        {
+            "resource-id": "com.twitter.android:id/root_coordinator_layout",
+            "class": "android.widget.ScrollView",
+            "clickable": false,
+            "scrollable": true,
+            "id": 1,
+            "children": [
+                {
+                    "resource-id": "com.twitter.android:id/toolbar",
+                    "class": "android.view.ViewGroup",
+                    "clickable": true,
+                    "scrollable": false,
+                    "id": 2,
+                    "children": [
+                        {
+                            "class": "android.widget.ImageButton",
+                            "content-desc": "Show navigation drawer",
+                            "clickable": true,
+                            "scrollable": false,
+                            "id": 3,
+                            "description": "Show navigation drawer"
+                        },
+                        {
+                            "resource-id": "com.twitter.android:id/logo",
+                            "class": "android.widget.ImageView",
+                            "clickable": true,
+                            "scrollable": false,
+                            "id": 4,
+                            "description": "twitter"
+                        }
+                    ]
+                },
+                {
+                    "resource-id": "com.twitter.android:id/pager",
+                    "class": "androidx.viewpager.widget.ViewPager",
+                    "clickable": false,
+                    "scrollable": true,
+                    "id": 5,
+                    "children": [
+                        {
+                            "resource-id": "com.twitter.android:id/view_pager",
+                            "class": "androidx.viewpager.widget.ViewPager",
+                            "clickable": false,
+                            "scrollable": true,
+                            "id": 6,
+                            "children": [
+                                {
+                                    "resource-id": "com.twitter.android:id/tab_layout",
+                                    "class": "android.widget.HorizontalScrollView",
+                                    "clickable": false,
+                                    "scrollable": false,
+                                    "id": 7,
+                                    "children": [
+                                        {
+                                            "text": "For you",
+                                            "class": "android.widget.TextView",
+                                            "clickable": false,
+                                            "scrollable": false,
+                                            "id": 8,
+                                            "description": "For you"
+                                        },
+                                        {
+                                            "class": "android.widget.LinearLayout",
+                                            "content-desc": "Following",
+                                            "clickable": true,
+                                            "scrollable": false,
+                                            "id": 9,
+                                            "children": [
+                                                {
+                                                    "text": "Following",
+                                                    "class": "android.widget.TextView",
+                                                    "clickable": true,
+                                                    "scrollable": false,
+                                                    "id": 10,
+                                                    "description": "Following"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "resource-id": "com.twitter.android:id/nested_coordinator_layout",
+                                    "class": "android.widget.ScrollView",
+                                    "clickable": false,
+                                    "scrollable": true,
+                                    "id": 11,
+                                    "children": [
+                                        {
+                                            "class": "android.view.ViewGroup",
+                                            "clickable": false,
+                                            "scrollable": false,
+                                            "id": 12,
+                                            "children": [
+                                                {
+                                                    "resource-id": "android:id/list",
+                                                    "class": "androidx.recyclerview.widget.RecyclerView",
+                                                    "content-desc": "Home timeline list",
+                                                    "clickable": false,
+                                                    "scrollable": true,
+                                                    "id": 13,
+                                                    "children": [
+                                                        {
+                                                            "class": "android.view.ViewGroup",
+                                                            "clickable": true,
+                                                            "scrollable": false,
+                                                            "id": 14,
+                                                            "children": [
+                                                                {
+                                                                    "resource-id": "com.twitter.android:id/row",
+                                                                    "class": "android.view.ViewGroup",
+                                                                    "content-desc": "David Sacks @DavidSacks Verified The All-In Podcast.    BREAKING: NBC News / MSNBC concedes that Zelensky\u2019s goal of retaking Crimea is unrealistic and dangerous..        Elon Musk replied.      1 day ago.  1391 replies.  3083 retweets.  14551 likes.  4898446 verified views. ",
+                                                                    "clickable": true,
+                                                                    "scrollable": false,
+                                                                    "id": 15,
+                                                                    "children": [
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/social_context_badge",
+                                                                            "class": "android.widget.ImageView",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 16,
+                                                                            "description": "chat"
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_social_context",
+                                                                            "class": "android.view.ViewGroup",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 17,
+                                                                            "children": [
+                                                                                {
+                                                                                    "text": "Elon Musk replied",
+                                                                                    "resource-id": "com.twitter.android:id/social_context_text",
+                                                                                    "class": "android.widget.TextView",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 18,
+                                                                                    "description": "Elon Musk replied"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_profile_image",
+                                                                            "class": "android.widget.FrameLayout",
+                                                                            "content-desc": "Profile image",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 19,
+                                                                            "children": [
+                                                                                {
+                                                                                    "class": "android.widget.ImageView",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 20,
+                                                                                    "description": "avatar"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_header",
+                                                                            "class": "android.view.ViewGroup",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 21
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_curation_action",
+                                                                            "class": "android.widget.ImageView",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 22,
+                                                                            "description": "more"
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_content_text",
+                                                                            "class": "android.view.View",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 23,
+                                                                            "children": [
+                                                                                {
+                                                                                    "text": "BREAKING: NBC News / MSNBC concedes that Zelensky\u2019s goal of retaking Crimea is unrealistic and dangerous.",
+                                                                                    "class": "android.view.View",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 24,
+                                                                                    "description": "BREAKING: NBC News / MSNBC concedes that Zelensky\u2019s goal of retaking Crimea is unrealistic and dangerous."
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_connector_bottom",
+                                                                            "class": "android.view.View",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 25,
+                                                                            "description": "loading"
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/player",
+                                                                            "class": "android.widget.FrameLayout",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 26,
+                                                                            "children": [
+                                                                                {
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 27,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "class": "ddw",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 28,
+                                                                                            "description": "thumbnail"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 29,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "class": "android.view.View",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 30
+                                                                                        },
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/audio_toggle_view",
+                                                                                            "class": "android.widget.FrameLayout",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 31,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "resource-id": "com.twitter.android:id/audio_toggle_icon",
+                                                                                                    "class": "android.widget.ImageView",
+                                                                                                    "content-desc": "Unmute audio",
+                                                                                                    "clickable": true,
+                                                                                                    "scrollable": false,
+                                                                                                    "id": 32,
+                                                                                                    "description": "Unmute audio"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "text": "1.5M views",
+                                                                            "resource-id": "com.twitter.android:id/view_counts",
+                                                                            "class": "android.widget.TextView",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 33,
+                                                                            "description": "1.5M views"
+                                                                        },
+                                                                        {
+                                                                            "text": "\u2022",
+                                                                            "resource-id": "com.twitter.android:id/divider_interpunct",
+                                                                            "class": "android.widget.TextView",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 34,
+                                                                            "description": "\u2022"
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/site_user",
+                                                                            "class": "android.widget.RelativeLayout",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 35,
+                                                                            "children": [
+                                                                                {
+                                                                                    "text": "From",
+                                                                                    "resource-id": "com.twitter.android:id/default_text",
+                                                                                    "class": "android.widget.TextView",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 36,
+                                                                                    "description": "From"
+                                                                                },
+                                                                                {
+                                                                                    "text": "kanekoa.substack.com",
+                                                                                    "resource-id": "com.twitter.android:id/screenname_item",
+                                                                                    "class": "android.widget.TextView",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 37,
+                                                                                    "description": "kanekoa.substack.com"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "class": "android.view.ViewGroup",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 38,
+                                                                            "children": [
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_reply",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 39,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 40,
+                                                                                            "description": "chat"
+                                                                                        },
+                                                                                        {
+                                                                                            "text": "1,391",
+                                                                                            "class": "android.widget.TextView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 41,
+                                                                                            "description": "1,391"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_retweet",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 42,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 43,
+                                                                                            "description": "switch direction"
+                                                                                        },
+                                                                                        {
+                                                                                            "text": "3,083",
+                                                                                            "class": "android.widget.TextView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 44,
+                                                                                            "description": "3,083"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_like",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 45,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 46,
+                                                                                            "description": "favorite"
+                                                                                        },
+                                                                                        {
+                                                                                            "text": "14.5K",
+                                                                                            "class": "android.widget.TextView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 47,
+                                                                                            "description": "14.5K"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_view_count",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 48,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 49,
+                                                                                            "description": "settings"
+                                                                                        },
+                                                                                        {
+                                                                                            "text": "4.8M",
+                                                                                            "class": "android.widget.TextView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 50,
+                                                                                            "description": "4.8M"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_twitter_share",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 51,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 52,
+                                                                                            "description": "share"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "class": "android.view.ViewGroup",
+                                                            "clickable": true,
+                                                            "scrollable": false,
+                                                            "id": 53,
+                                                            "children": [
+                                                                {
+                                                                    "resource-id": "com.twitter.android:id/row",
+                                                                    "class": "android.view.ViewGroup",
+                                                                    "content-desc": "Elon Musk @elonmusk Verified.   Replying to \ufeff\u200e@DavidSacks\ufeff.  Accurate.             1 day ago.  1086 replies.  717 retweets.  14653 likes.  2658280 verified views. ",
+                                                                    "clickable": true,
+                                                                    "scrollable": false,
+                                                                    "id": 54,
+                                                                    "children": [
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_connector_top",
+                                                                            "class": "android.view.View",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 55,
+                                                                            "description": "search"
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_profile_image",
+                                                                            "class": "android.widget.FrameLayout",
+                                                                            "content-desc": "Profile image",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 56,
+                                                                            "children": [
+                                                                                {
+                                                                                    "class": "android.widget.ImageView",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 57,
+                                                                                    "description": "avatar"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_header",
+                                                                            "class": "android.view.ViewGroup",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 58
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_curation_action",
+                                                                            "class": "android.widget.ImageView",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 59,
+                                                                            "description": "more"
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_content_text",
+                                                                            "class": "android.view.View",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 60,
+                                                                            "children": [
+                                                                                {
+                                                                                    "text": "Accurate",
+                                                                                    "class": "android.view.View",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 61,
+                                                                                    "description": "Accurate"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "class": "android.view.ViewGroup",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 62,
+                                                                            "children": [
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_reply",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 63,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 64,
+                                                                                            "description": "chat"
+                                                                                        },
+                                                                                        {
+                                                                                            "text": "1,086",
+                                                                                            "class": "android.widget.TextView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 65,
+                                                                                            "description": "1,086"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_retweet",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 66,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 67,
+                                                                                            "description": "switch direction"
+                                                                                        },
+                                                                                        {
+                                                                                            "text": "717",
+                                                                                            "class": "android.widget.TextView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 68,
+                                                                                            "description": "717"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_like",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 69,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 70,
+                                                                                            "description": "favorite"
+                                                                                        },
+                                                                                        {
+                                                                                            "text": "14.6K",
+                                                                                            "class": "android.widget.TextView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 71,
+                                                                                            "description": "14.6K"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_view_count",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 72,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 73,
+                                                                                            "description": "settings"
+                                                                                        },
+                                                                                        {
+                                                                                            "text": "2.6M",
+                                                                                            "class": "android.widget.TextView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 74,
+                                                                                            "description": "2.6M"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "resource-id": "com.twitter.android:id/inline_twitter_share",
+                                                                                    "class": "android.view.ViewGroup",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 75,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/inline_action_item_icon",
+                                                                                            "class": "android.widget.ImageView",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 76,
+                                                                                            "description": "share"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "class": "android.view.ViewGroup",
+                                                            "clickable": true,
+                                                            "scrollable": false,
+                                                            "id": 77,
+                                                            "children": [
+                                                                {
+                                                                    "resource-id": "com.twitter.android:id/row",
+                                                                    "class": "android.view.ViewGroup",
+                                                                    "content-desc": "Syngenta ANZ @SyngentaANZ.    LET'S CATCH A CEREAL KILLER BEFORE IT'S TOO LATE.\nYou've made it through Harvest. Now is the time to test, plan ahead and manage your crown rot risk for 2023..   Video. Learn more and register for a free PREDICTA* B test kit today. . syngenta.com.au. .          Promoted.  feb 07.  1 reply.  2 retweets.  7 likes.  146079 verified views. ",
+                                                                    "clickable": true,
+                                                                    "scrollable": false,
+                                                                    "id": 78,
+                                                                    "children": [
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_profile_image",
+                                                                            "class": "android.widget.FrameLayout",
+                                                                            "content-desc": "Profile image",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 79,
+                                                                            "children": [
+                                                                                {
+                                                                                    "class": "android.widget.ImageView",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 80,
+                                                                                    "description": "avatar"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_header",
+                                                                            "class": "android.view.ViewGroup",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 81
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_curation_action",
+                                                                            "class": "android.widget.ImageView",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 82,
+                                                                            "description": "more"
+                                                                        },
+                                                                        {
+                                                                            "resource-id": "com.twitter.android:id/tweet_content_text",
+                                                                            "class": "android.view.View",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 83,
+                                                                            "children": [
+                                                                                {
+                                                                                    "text": "LET'S CATCH A CEREAL KILLER BEFORE IT'S TOO LATE.\nYou've made it through Harvest. Now is the time to test, plan ahead and manage your crown rot risk for 2023.",
+                                                                                    "class": "android.view.View",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 84,
+                                                                                    "description": "LET'S CATCH A CEREAL KILLER BEFORE IT'S TOO LATE.\nYou've made it through Harvest. Now is the time to test, plan ahead and manage your crown rot risk for 2023."
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "class": "android.widget.FrameLayout",
+                                                                            "clickable": true,
+                                                                            "scrollable": false,
+                                                                            "id": 85,
+                                                                            "children": [
+                                                                                {
+                                                                                    "class": "android.widget.FrameLayout",
+                                                                                    "clickable": true,
+                                                                                    "scrollable": false,
+                                                                                    "id": 86,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "resource-id": "com.twitter.android:id/video_container",
+                                                                                            "class": "android.widget.FrameLayout",
+                                                                                            "clickable": true,
+                                                                                            "scrollable": false,
+                                                                                            "id": 87,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "class": "android.view.ViewGroup",
+                                                                                                    "clickable": true,
+                                                                                                    "scrollable": false,
+                                                                                                    "id": 88,
+                                                                                                    "description": "splashscreen"
+                                                                                                },
+                                                                                                {
+                                                                                                    "class": "android.view.ViewGroup",
+                                                                                                    "clickable": true,
+                                                                                                    "scrollable": false,
+                                                                                                    "id": 89,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "class": "android.widget.ImageView",
+                                                                                                            "clickable": true,
+                                                                                                            "scrollable": false,
+                                                                                                            "id": 90,
+                                                                                                            "description": "splashscreen"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "class": "android.view.ViewGroup",
+                                                                                                    "clickable": true,
+                                                                                                    "scrollable": false,
+                                                                                                    "id": 91,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "class": "android.view.View",
+                                                                                                            "clickable": true,
+                                                                                                            "scrollable": false,
+                                                                                                            "id": 92,
+                                                                                                            "description": "splashscreen"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "class": "android.view.ViewGroup",
+                    "clickable": false,
+                    "scrollable": false,
+                    "id": 93,
+                    "children": [
+                        {
+                            "resource-id": "com.twitter.android:id/composer_write",
+                            "class": "android.widget.ImageButton",
+                            "content-desc": "New Tweet",
+                            "clickable": true,
+                            "scrollable": false,
+                            "id": 94,
+                            "description": "New Tweet"
+                        }
+                    ]
+                },
+                {
+                    "resource-id": "com.twitter.android:id/tabs",
+                    "class": "android.widget.HorizontalScrollView",
+                    "clickable": false,
+                    "scrollable": false,
+                    "id": 95,
+                    "children": [
+                        {
+                            "resource-id": "com.twitter.android:id/channels",
+                            "class": "android.view.View",
+                            "clickable": false,
+                            "scrollable": false,
+                            "id": 96
+                        },
+                        {
+                            "class": "android.widget.LinearLayout",
+                            "content-desc": "Search and Explore",
+                            "clickable": true,
+                            "scrollable": false,
+                            "id": 97,
+                            "children": [
+                                {
+                                    "class": "android.view.View",
+                                    "clickable": true,
+                                    "scrollable": false,
+                                    "id": 98,
+                                    "description": "search"
+                                }
+                            ]
+                        },
+                        {
+                            "class": "android.widget.LinearLayout",
+                            "content-desc": "Spaces",
+                            "clickable": true,
+                            "scrollable": false,
+                            "id": 99,
+                            "children": [
+                                {
+                                    "resource-id": "com.twitter.android:id/spaces",
+                                    "class": "android.view.View",
+                                    "clickable": true,
+                                    "scrollable": false,
+                                    "id": 100
+                                }
+                            ]
+                        },
+                        {
+                            "class": "android.widget.LinearLayout",
+                            "content-desc": "Notifications",
+                            "clickable": true,
+                            "scrollable": false,
+                            "id": 101,
+                            "children": [
+                                {
+                                    "resource-id": "com.twitter.android:id/notifications",
+                                    "class": "android.view.View",
+                                    "clickable": true,
+                                    "scrollable": false,
+                                    "id": 102,
+                                    "description": "notifications"
+                                }
+                            ]
+                        },
+                        {
+                            "class": "android.widget.LinearLayout",
+                            "content-desc": "Messages",
+                            "clickable": true,
+                            "scrollable": false,
+                            "id": 103,
+                            "children": [
+                                {
+                                    "resource-id": "com.twitter.android:id/dms",
+                                    "class": "android.view.View",
+                                    "clickable": true,
+                                    "scrollable": false,
+                                    "id": 104,
+                                    "description": "email"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource-id": "android:id/statusBarBackground",
+            "class": "android.view.View",
+            "clickable": false,
+            "scrollable": false,
+            "id": 105
+        }
+    ]
+}
