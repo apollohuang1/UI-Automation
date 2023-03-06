@@ -95,8 +95,10 @@ class GUIData:
     *** Structural Tree ***
     ***********************
     '''
-    def form_element_tree(self):
+    def form_element_tree(self, save=True):
         self.element_tree = self.combine_children(self.elements[0])
+        if save:
+            json.dump(self.element_tree, open(pjoin('data', self.gui_name + '_tree.json'), 'w'), indent=4)
 
     def combine_children(self, element):
         element_cp = copy.deepcopy(element)
@@ -104,7 +106,9 @@ class GUIData:
             element_cp['children'] = []
             for c_id in element_cp['children-id']:
                 element_cp['children'].append(self.combine_children(self.elements[c_id]))
-        self.select_ele_attr(element_cp, ['id', 'text', 'resource-id', 'class', 'content-desc', 'clickable', 'scrollable', 'children', 'description'])
+        # self.select_ele_attr(element_cp, ['id', 'text', 'resource-id', 'class', 'content-desc', 'clickable', 'scrollable', 'children', 'description'])
+        self.select_ele_attr(element_cp, ['id', 'resource-id', 'class', 'clickable', 'children', 'description'])
+        # self.revise_ele_attr(element_cp)
         return element_cp
 
     def select_ele_attr(self, element, selected_attrs):
@@ -112,6 +116,12 @@ class GUIData:
         for key in element_cp.keys():
             if key not in selected_attrs or element[key] is None or element[key] == '':
                 del(element[key])
+
+    # def revise_ele_attr(self, element):
+        # if 'resource-id' in element:
+        #     element['resource-id'] = element['resource-id'].split('/')[-1]
+        # if 'class' in element:
+        #     element['class'] = element['class'].split('.')[-2:]
 
     '''
     ************************
@@ -196,7 +206,7 @@ class GUIData:
         else:
             elements = self.elements
         for ele in elements:
-            print(ele['class'], ele['description'])
+            print(ele['class'])
             print(ele, '\n')
             bounds = ele['bounds']
             clip = self.img[bounds[1]: bounds[3], bounds[0]: bounds[2]]
