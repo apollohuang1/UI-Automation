@@ -30,13 +30,14 @@ class GUIData:
         self.model_icon_classification = None  # IconClassification
 
     '''
-    ************************
-    *** Extract Elements ***
-    ************************
+    **************************
+    *** UI Info Extraction ***
+    **************************
     '''
-    def extract_elements_from_vh(self):
+    def ui_info_extraction(self):
         '''
         Extract elements from raw view hierarchy Json file and store them as dictionaries
+        => self.elements; self.elements_leaves
         '''
         json_cp = copy.deepcopy(self.json)
         element_root = json_cp['activity']['root']
@@ -108,11 +109,15 @@ class GUIData:
                 i += 1
 
     '''
-    ************************
-    *** Elements Process ***
-    ************************
+    *******************
+    *** UI Analysis ***
+    *******************
     '''
-    def extract_elements_description(self):
+    def ui_analysis_elements_description(self):
+        '''
+        Extract description for UI elements through 'text', 'content-desc', 'classification' and 'caption'
+        => element['description']
+        '''
         self.caption_elements()
         self.classify_elements()
         for ele in self.elements_leaves:
@@ -165,7 +170,11 @@ class GUIData:
     *** Structural Tree ***
     ***********************
     '''
-    def form_element_tree(self, save=True):
+    def ui_analysis_element_tree(self, save=True):
+        '''
+        Form a hierarchical element tree with a few key attributes to represent the vh
+        => self.element_tree
+        '''
         self.element_tree = self.combine_children(self.elements[0])
         if save:
             json.dump(self.element_tree, open(pjoin('data', self.gui_name + '_tree.json'), 'w'), indent=4)
@@ -255,7 +264,8 @@ class GUIData:
 
 if __name__ == '__main__':
     gui = GUIData('data/emulator-5554.png', 'data/emulator-5554.json')
-    gui.extract_elements_from_vh()
-    gui.show_all_elements()
-    gui.inherit_clickablility()
-    gui.show_all_elements()
+    gui.ui_info_extraction()
+    gui.ui_analysis_elements_description()
+    gui.ui_analysis_element_tree()
+    print(gui.element_tree)
+    gui.show_all_elements(only_leaves=True)
