@@ -25,6 +25,7 @@ class GUIData:
         self.elements = []          # list of element in dictionary {'id':, 'class':...}
         self.elements_leaves = []   # leaf nodes that does not have children
         self.element_tree = None    # structural element tree, dict type
+        self.blocks = []            # list of blocks from element tree
 
         self.model_icon_caption = None   # IconCaption
         self.model_icon_classification = None  # IconClassification
@@ -170,14 +171,16 @@ class GUIData:
     *** Structural Tree ***
     ***********************
     '''
-    def ui_analysis_element_tree(self, save=True):
+    def ui_element_block_tree(self, save=True):
         '''
         Form a hierarchical element tree with a few key attributes to represent the vh
         => self.element_tree
+        => self.blocks
         '''
         self.element_tree = self.combine_children(self.elements[0])
         if save:
             json.dump(self.element_tree, open(pjoin('data', self.gui_name + '_tree.json'), 'w'), indent=4)
+        self.partition_blocks()
 
     def combine_children(self, element):
         element_cp = copy.deepcopy(element)
@@ -203,6 +206,35 @@ class GUIData:
         if 'class' in element:
             element['class'] = element['class'].replace('android.', '')
 
+    def partition_blocks(self):
+        '''
+        Partition the UI into several blocks
+        => self.blocks
+        '''
+        l1_children = self.element_tree['children']
+        deeper = False
+        for child in l1_children:
+            desc = ''
+            if 'class' in child:
+                desc += child['class'].lower()
+            if 'resource-id' in child:
+                desc += child['resource-id'].lower()
+            if 'description' in child:
+                desc += child['description'].lower()
+            print(desc, 'background' in desc, 'children' not in child)
+            # if there is a background in the first level of root children, go deeper
+            if 'background' in desc and 'children' not in child:
+                deeper = True
+            else:
+                self.blocks.append(child)
+        if deeper:
+            l2_blocks = []
+            for block in self.blocks:
+                if 'children' in block:
+                    l2_blocks += block['children']
+                else:
+                    l2_blocks.append(block)
+            self.blocks = l2_blocks
 
     '''
     *********************
@@ -261,11 +293,16 @@ class GUIData:
         cv2.waitKey()
         cv2.destroyWindow('screen')
 
+    def show_blocks(self):
+        for block in self.blocks:
+            print(block)
+            self.show_element_by_id(block['id'])
+
 
 if __name__ == '__main__':
     gui = GUIData('data/emulator-5554.png', 'data/emulator-5554.json')
     gui.ui_info_extraction()
     gui.ui_analysis_elements_description()
-    gui.ui_analysis_element_tree()
+    gui.ui_element_block_tree()
     print(gui.element_tree)
     gui.show_all_elements(only_leaves=True)
