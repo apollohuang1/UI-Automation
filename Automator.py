@@ -4,6 +4,7 @@ import json
 
 class Automator:
     def __init__(self, gui=None, task=''):
+        self.output_root = 'data/openai'
         self.gui = gui
         self.element_desc = []
 
@@ -12,13 +13,15 @@ class Automator:
         self.conversation = [{'role': 'system', 'content': self.role}]    # store the conversation history [{'role':, 'content':}]
         self.task = task                # string, a NL sentence to describe the task, e.g. "Turn on voice"
 
-        self.block_description = []     # list of strings describing block
+        self.block_descriptions = []     # list of strings describing block
         self.block_identification = ''  # answer for block_identification
 
-    def generate_descriptions_for_blocks(self):
+    def generate_descriptions_for_blocks(self, save=True):
         prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
         for block in self.gui.blocks:
-            self.block_description.append(self.ask_openai_prompt(prompt + str(block))['content'])
+            self.block_descriptions.append(self.ask_openai_prompt(prompt + str(block))['content'])
+        if save:
+            self.save_block_descriptions()
 
     '''
     ****************
@@ -29,10 +32,10 @@ class Automator:
         if not task: task = self.task
         prompt = 'I will give you a list of blocks in the UI, is any of them related to the task "' + task + '"? ' \
                  'If yes, which block is the most related to complete the task?\n'
-        for i, block_desc in enumerate(self.block_description):
+        for i, block_desc in enumerate(self.block_descriptions):
             prompt += '[Block ' + str(i) + ']:' + block_desc + '\n'
-        prompt += '\n Just ask [Yes, Block id] if any block is related or [No] if not.'
-        self.conversation.append({'role': 'user', 'content': prompt})
+        prompt += '\n Just answer [Yes] with the most related block if any or [No] if not.'
+        self.conversation[-1] = {'role': 'user', 'content': prompt}
         self.conversation.append(self.ask_openai_conversation())
         self.block_identification = self.conversation[-1]['content']
 
@@ -53,7 +56,7 @@ class Automator:
                     {'role': 'user', 'content': prompt}
                 ]
             )
-        print('\n*** Answer ***\n', resp['choices'][0].message)
+        print('\n*** Answer ***\n', resp['choices'][0].message, '\n')
         return resp['choices'][0].message
 
     def ask_openai_conversation(self, conversation=None):
@@ -63,7 +66,7 @@ class Automator:
                 model="gpt-3.5-turbo",
                 messages=conversation
             )
-        print('\n*** Answer ***\n', resp['choices'][0].message)
+        print('\n*** Answer ***\n', resp['choices'][0].message, '\n')
         return resp['choices'][0].message
 
     '''
@@ -71,11 +74,17 @@ class Automator:
     *** Utilities ***
     *****************
     '''
-    def save_conversation(self, file='data/conversation.json'):
+    def save_conversation(self, file='data/openai/conversation.json'):
         json.dump(self.conversation, open(file, 'w', encoding='utf-8'), indent=4)
 
-    def load_conversation(self, file='data/conversation.json'):
+    def load_conversation(self, file='data/openai/conversation.json'):
         self.conversation = json.load(open(file, 'r', encoding='utf-8'))
+
+    def save_block_descriptions(self, file='data/openai/blocks.json'):
+        json.dump(self.block_descriptions, open(file, 'w', encoding='utf-8'), indent=4)
+
+    def load_block_descriptions(self, file='data/openai/blocks.json'):
+        self.block_descriptions = json.load(open(file, 'r', encoding='utf-8'))
 
     def show_target_element(self, ele_id):
         print(self.gui.elements_leaves[ele_id])
