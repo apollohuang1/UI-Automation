@@ -1,4 +1,5 @@
 import openai
+import json
 
 
 class Automator:
@@ -14,27 +15,26 @@ class Automator:
         self.block_description = []     # list of strings describing block
         self.block_identification = ''  # answer for block_identification
 
-    def show_target_element(self, ele_id):
-        print(self.gui.elements_leaves[ele_id])
-        self.gui.show_element(self.gui.elements_leaves[ele_id])
-
-    '''
-    ***************
-    *** AI Chain***
-    ***************
-    '''
     def generate_descriptions_for_blocks(self):
         prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
         for block in self.gui.blocks:
-            self.block_description.append(self.ask_openai(prompt + str(block)))
+            self.block_description.append(self.ask_openai_prompt(prompt + str(block))['content'])
 
-    def target_block_identification(self):
-        prompt = 'I will give you a list of blocks in the UI, is any of them related to the task "' + self.task + '"? ' \
+    '''
+    ****************
+    *** AI Chain ***
+    ****************
+    '''
+    def target_block_identification(self, task=None):
+        if not task: task = self.task
+        prompt = 'I will give you a list of blocks in the UI, is any of them related to the task "' + task + '"? ' \
                  'If yes, which block is the most related to complete the task?\n'
         for i, block_desc in enumerate(self.block_description):
-            prompt += '[Block ' + str(i) + ':' + block_desc + '\n'
+            prompt += '[Block ' + str(i) + ']:' + block_desc + '\n'
         prompt += '\n Just ask [Yes, Block id] if any block is related or [No] if not.'
-        self.block_identification = self.ask_openai(prompt)
+        self.conversation.append({'role': 'user', 'content': prompt})
+        self.conversation.append(self.ask_openai_conversation())
+        self.block_identification = self.conversation[-1]['content']
 
     # def scrollable_block_check(self):
 
@@ -56,17 +56,30 @@ class Automator:
         print('\n*** Answer ***\n', resp['choices'][0].message)
         return resp['choices'][0].message
 
-    def ask_openai_conversation(self, conversation):
+    def ask_openai_conversation(self, conversation=None):
         if not conversation: conversation = self.conversation
         print('*** Asking ***\n', conversation)
         resp = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                messages=[
-                    conversation
-                ]
+                messages=conversation
             )
         print('\n*** Answer ***\n', resp['choices'][0].message)
         return resp['choices'][0].message
+
+    '''
+    *****************
+    *** Utilities ***
+    *****************
+    '''
+    def save_conversation(self, file='data/conversation.json'):
+        json.dump(self.conversation, open(file, 'w', encoding='utf-8'), indent=4)
+
+    def load_conversation(self, file='data/conversation.json'):
+        self.conversation = json.load(open(file, 'r', encoding='utf-8'))
+
+    def show_target_element(self, ele_id):
+        print(self.gui.elements_leaves[ele_id])
+        self.gui.show_element(self.gui.elements_leaves[ele_id])
 
 
 if __name__ == '__main__':
