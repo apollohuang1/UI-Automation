@@ -108,7 +108,7 @@ class GUIData:
                 element_cp['children'].append(self.combine_children(self.elements[c_id]))
         # self.select_ele_attr(element_cp, ['id', 'text', 'resource-id', 'class', 'content-desc', 'clickable', 'scrollable', 'children', 'description'])
         self.select_ele_attr(element_cp, ['id', 'resource-id', 'class', 'clickable', 'children', 'description'])
-        # self.revise_ele_attr(element_cp)
+        self.revise_ele_attr(element_cp)
         return element_cp
 
     def select_ele_attr(self, element, selected_attrs):
@@ -117,11 +117,12 @@ class GUIData:
             if key not in selected_attrs or element[key] is None or element[key] == '':
                 del(element[key])
 
-    # def revise_ele_attr(self, element):
-        # if 'resource-id' in element:
-        #     element['resource-id'] = element['resource-id'].split('/')[-1]
-        # if 'class' in element:
-        #     element['class'] = element['class'].split('.')[-2:]
+    def revise_ele_attr(self, element):
+        if 'resource-id' in element:
+            element['resource-id'] = element['resource-id'].replace('com.', '')
+            element['resource-id'] = element['resource-id'].replace('android.', '')
+        if 'class' in element:
+            element['class'] = element['class'].replace('android.', '')
 
     '''
     ************************
