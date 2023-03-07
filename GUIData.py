@@ -90,6 +90,76 @@ class GUIData:
             return False
         return True
 
+    def inherit_clickablility(self):
+        '''
+        If a node's parent is clickable, make it clickable
+        '''
+        for ele in self.elements:
+            if ele['clickable'] and 'children-id' in ele:
+                for c_id in ele['children-id']:
+                    self.elements[c_id - self.elements[0]['id']]['clickable'] = True
+
+    def gather_leaf_elements(self):
+        i = 0
+        for ele in self.elements:
+            if 'children-id' not in ele:
+                ele['leaf-id'] = i
+                self.elements_leaves.append(ele)
+                i += 1
+
+    '''
+    ************************
+    *** Elements Process ***
+    ************************
+    '''
+    def extract_elements_description(self):
+        self.caption_elements()
+        self.classify_elements()
+        for ele in self.elements_leaves:
+            description = ''
+            # check text
+            if len(ele['text']) > 0:
+                description += ele['text']
+            # check content description
+            if 'content-desc' in ele and len(ele['content-desc']) > 0:
+                description = ele['content-desc'] if len(description) == 0 else description + ' / ' + ele['content-desc']
+            # if no text and content description, check caption
+            if len(description) == 0:
+                if ele['icon-cls']:
+                    description = ele['icon-cls']
+                else:
+                    description = ele['caption'] if '<unk>' not in ele['caption'] else None
+            ele['description'] = description
+
+    def caption_elements(self, elements=None):
+        if self.model_icon_caption is None:
+            self.model_icon_caption = IconCaption(vocab_path='classification/model_results/vocab_idx2word.json',
+                                                  model_path='classification/model_results/labeldroid.pt')
+        elements = self.elements_leaves if elements is None else elements
+        clips = []
+        for ele in elements:
+            bound = ele['bounds']
+            clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
+        captions = self.model_icon_caption.predict_images(clips)
+        for i, ele in enumerate(elements):
+            ele['caption'] = captions[i]
+
+    def classify_elements(self, elements=None):
+        if self.model_icon_classification is None:
+            self.model_icon_classification = IconClassifier(model_path='classification/model_results/best-0.93.pt',
+                                                            class_path='classification/model_results/iconModel_labels.json')
+        elements = self.elements_leaves if elements is None else elements
+        clips = []
+        for ele in elements:
+            bound = ele['bounds']
+            clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
+        classes = self.model_icon_classification.predict_images(clips)
+        for i, ele in enumerate(elements):
+            if classes[i][1] > 0.95:
+                ele['icon-cls'] = classes[i][0]
+            else:
+                ele['icon-cls'] = None
+
     '''
     ***********************
     *** Structural Tree ***
@@ -124,75 +194,6 @@ class GUIData:
         if 'class' in element:
             element['class'] = element['class'].replace('android.', '')
 
-    '''
-    ************************
-    *** Elements Process ***
-    ************************
-    '''
-    def inherit_clickablility(self):
-        '''
-        If a node's parent is clickable, make it clickable
-        '''
-        for ele in self.elements:
-            if ele['clickable'] and 'children-id' in ele:
-                for c_id in ele['children-id']:
-                    self.elements[c_id - self.elements[0]['id']]['clickable'] = True
-
-    def gather_leaf_elements(self):
-        i = 0
-        for ele in self.elements:
-            if 'children-id' not in ele:
-                ele['leaf-id'] = i
-                self.elements_leaves.append(ele)
-                i += 1
-
-    def caption_elements(self, elements=None):
-        if self.model_icon_caption is None:
-            self.model_icon_caption = IconCaption(vocab_path='classification/model_results/vocab_idx2word.json',
-                                                  model_path='classification/model_results/labeldroid.pt')
-        elements = self.elements_leaves if elements is None else elements
-        clips = []
-        for ele in elements:
-            bound = ele['bounds']
-            clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
-        captions = self.model_icon_caption.predict_images(clips)
-        for i, ele in enumerate(elements):
-            ele['caption'] = captions[i]
-
-    def classify_elements(self, elements=None):
-        if self.model_icon_classification is None:
-            self.model_icon_classification = IconClassifier(model_path='classification/model_results/best-0.93.pt',
-                                                            class_path='classification/model_results/iconModel_labels.json')
-        elements = self.elements_leaves if elements is None else elements
-        clips = []
-        for ele in elements:
-            bound = ele['bounds']
-            clips.append(self.img[bound[1]: bound[3], bound[0]:bound[2]])
-        classes = self.model_icon_classification.predict_images(clips)
-        for i, ele in enumerate(elements):
-            if classes[i][1] > 0.95:
-                ele['icon-cls'] = classes[i][0]
-            else:
-                ele['icon-cls'] = None
-
-    def extract_elements_description(self):
-        self.caption_elements()
-        self.classify_elements()
-        for ele in self.elements_leaves:
-            description = ''
-            # check text
-            if len(ele['text']) > 0:
-                description += ele['text']
-            # check content description
-            if 'content-desc' in ele and len(ele['content-desc']) > 0:
-                description = ele['content-desc'] if len(description) == 0 else description + ' / ' + ele['content-desc']
-            # if no text and content description, check caption
-            if len(description) == 0:
-                if ele['icon-cls']:
-                    description = ele['icon-cls']
-                else:
-                    description = ele['caption'] if '<unk>' not in ele['caption'] else None
-            ele['description'] = description
 
     '''
     *********************
