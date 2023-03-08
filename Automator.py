@@ -30,7 +30,6 @@ class Automator:
         self.output_chain_block = pjoin(self.output_root, self.gui_name + '_chain_block.json')
         self.output_chain_element = pjoin(self.output_root, self.gui_name + '_chain_element.json')
 
-
     '''
     **********************
     *** AI Chain Block ***
