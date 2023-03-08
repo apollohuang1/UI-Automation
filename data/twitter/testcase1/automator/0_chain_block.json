@@ -1,0 +1,30 @@
+[
+    {
+        "role": "system",
+        "content": "You are a mobile virtual assistant that understands and interacts with the user interface to complete given task."
+    },
+    {
+        "role": "user",
+        "content": "I will give you a list of blocks in the UI, is any of them related to the task \"Change display language\"? If yes, which block is the most related to complete the task?\n[Block 0]:[Not Scrollable] This code snippet describes the toolbar of the Twitter Android application, which contains an image button that allows users to open the navigation drawer for exploring various options and features of the app. It also features the Twitter logo as a clickable image button.\n[Block 1]:[Scrollable] This code snippet describes a UI component of the Twitter Android app that displays a scrollable list of tweets. The list is divided into two tabs, \"For You\" and \"Following,\" which are displayed as buttons on a horizontal scroll bar. Each tweet is displayed as a card with the author's profile picture, name, handle, tweet content, and engagement metrics such as likes, retweets, and views. Users can interact with each tweet card by replying, retweeting, liking, sharing, and more. Additionally, users can follow topics displayed in the tweet's social context section. The UI component also includes a search bar, which allows users to look up specific topics of interest within the Twitter app.\n[Block 2]:[Not Scrollable] This code snippet describes a portion of a user interface related to the Twitter Android app. The 'view' element seems to be a container for the UI elements, while the 'ImageButton' element with an ID of 73 is the New Tweet button that the user can click on to create a new tweet. The 'clickable' attribute set to True indicates that this UI element can be interacted with by the user.\n[Block 3]:[Not Scrollable] This code snippet describes a horizontal scrolling tab view in the Twitter Android app that contains several clickable UI elements including a search icon, spaces icon, notifications icon and direct messages (DMs) icon. Clicking on each icon will take the user to their respective features or functions within the app. The UI design provides easy and quick access to the app's key features. The mobile virtual assistant can interact with this UI to launch the user's desired feature with a voice command or a tap.\n\n Answer [Yes] with the most related block if any or [No] if not."
+    },
+    {
+        "role": "assistant",
+        "content": "No."
+    },
+    {
+        "role": "user",
+        "content": "For scrollable blocks, is it possible that the UI elements related to the task would show up after scroll? Answer [Yes] with the most related block if any or [No] if not"
+    },
+    {
+        "role": "assistant",
+        "content": "Yes, it is possible. There may be UI elements related to the \"Change display language\" task that show up after scroll in Block 1."
+    },
+    {
+        "role": "user",
+        "content": "The task may take multiple steps to complete, is there any block likely to jump to the UI that is related to the task? Answer [Yes] with the most related block if any or [No] if not"
+    },
+    {
+        "role": "assistant",
+        "content": "No, there isn't any block that is likely to jump to the UI related to the \"Change display language\" task."
+    }
+]

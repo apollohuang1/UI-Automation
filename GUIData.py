@@ -13,7 +13,7 @@ sys.path.append('classification')
 
 
 class GUIData:
-    def __init__(self, gui_img_file, gui_json_file, output_file_root):
+    def __init__(self, gui_img_file, gui_json_file, output_file_root='data/twitter/testcase1/guidata'):
         self.img_file = gui_img_file
         self.json_file = gui_json_file
         self.gui_name = gui_img_file.replace('/', '\\').split('\\')[-1].split('.')[0]
@@ -31,6 +31,7 @@ class GUIData:
         self.model_icon_classification = None  # IconClassification
 
         # output file paths
+        os.makedirs(output_file_root, exist_ok=True)
         self.output_file_path_elements = pjoin(output_file_root, self.gui_name + '_elements.json')
         self.output_file_path_element_tree = pjoin(output_file_root, self.gui_name + '_tree.json')
 
@@ -324,12 +325,16 @@ class GUIData:
 
 
 if __name__ == '__main__':
-    gui = GUIData(gui_img_file='data/twitter/testcase1/device/0.png', gui_json_file='data/twitter/testcase1/device/0.json',
+    load = True
+    gui = GUIData(gui_img_file='data/twitter/testcase1/device/0.png',
+                  gui_json_file='data/twitter/testcase1/device/0.json',
                   output_file_root='data/twitter/testcase1/guidata')
-    # process from scratch
-    # gui.ui_info_extraction()
-    # gui.ui_analysis_elements_description()
-    # gui.ui_element_block_tree()
     # load previous result
-    gui.load_elements()
+    if load:
+        gui.load_elements()
+    # process from scratch
+    else:
+        gui.ui_info_extraction()
+        gui.ui_analysis_elements_description()
+        gui.ui_element_block_tree()
     gui.show_all_elements(only_leaves=True)

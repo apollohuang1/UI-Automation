@@ -1,17 +1,13 @@
 import openai
 import json
 from os.path import join as pjoin
+import os
 
 
 class Automator:
-    def __init__(self, gui=None, task=''):
+    def __init__(self, gui=None, task='', output_file_root='data/twitter/testcase1/automator', gui_name='test'):
         self.gui = gui
-        self.element_desc = []
-
-        self.output_root = 'data/openai'
-        self.output_block_desc = pjoin(self.output_root, 'block_desc.json')
-        self.output_chain_block = pjoin(self.output_root, 'chain_block.json')
-        self.output_chain_element = pjoin(self.output_root, 'chain_element.json')
+        self.gui_name = self.gui.gui_name if self.gui else gui_name
 
         openai.api_key = open('openaikey.txt', 'r').readline()
         self.role = 'You are a mobile virtual assistant that understands and interacts with the user interface to complete given task.'
@@ -27,7 +23,28 @@ class Automator:
         self.element_complete = ''          # answer for task_completion_check()
         self.element_intermediate = ''      # answer for intermediate_element_check()
 
-    def generate_descriptions_for_blocks(self, save=True):
+        # output file paths
+        self.output_root = output_file_root
+        os.makedirs(output_file_root, exist_ok=True)
+        self.output_block_desc = pjoin(self.output_root, self.gui_name + '_block_desc.json')
+        self.output_chain_block = pjoin(self.output_root, self.gui_name + '_chain_block.json')
+        self.output_chain_element = pjoin(self.output_root, self.gui_name + '_chain_element.json')
+
+
+    '''
+    **********************
+    *** AI Chain Block ***
+    **********************
+    '''
+    def ai_chain_block(self, task=None):
+        self.generate_descriptions_for_blocks()
+        self.target_block_identification(task)
+        self.scrollable_block_check()
+        self.intermediate_block_check()
+        json.dump(self.chain_block, open(self.output_chain_block, 'w', encoding='utf-8'), indent=4)
+
+    def generate_descriptions_for_blocks(self):
+        print('------ Generate Block Descriptions ------')
         prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
         for block in self.gui.blocks:
             desc = self.ask_openai_prompt(prompt + str(block))['content']
@@ -35,15 +52,10 @@ class Automator:
                 self.block_descriptions.append('[Scrollable] ' + desc)
             else:
                 self.block_descriptions.append('[Not Scrollable] ' + desc)
-        if save:
-            self.save_block_descriptions()
+        json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
 
-    '''
-    **********************
-    *** AI Chain Block ***
-    **********************
-    '''
     def target_block_identification(self, task=None):
+        print('------ Target Block Identification ------')
         if not task: task = self.task
         prompt = 'I will give you a list of blocks in the UI, is any of them related to the task "' + task + '"? ' \
                  'If yes, which block is the most related to complete the task?\n'
@@ -56,6 +68,7 @@ class Automator:
         self.block_identification = self.chain_block[-1]['content']
 
     def scrollable_block_check(self):
+        print('------ Scrollable Block Check ------')
         prompt = {'role': 'user',
                   'content': 'For scrollable blocks, is it possible that the UI elements related to the task would show up after scroll? '
                              'Answer [Yes] with the most related block if any or [No] if not'}
@@ -64,6 +77,7 @@ class Automator:
         self.block_scrollable_check = self.chain_block[-1]['content']
 
     def intermediate_block_check(self):
+        print('------ Intermediate Block Check ------')
         prompt = {'role': 'user',
                   'content': 'The task may take multiple steps to complete, is there any block likely to jump to the UI that is related to the task? ' +
                              'Answer [Yes] with the most related block if any or [No] if not'}
@@ -76,6 +90,11 @@ class Automator:
     *** AI Chain Element ***
     ************************
     '''
+    def ai_chain_element(self, target_block):
+        self.task_completion_check(target_block)
+        self.intermediate_element_check()
+        json.dump(self.chain_block, open(self.output_chain_element, 'w', encoding='utf-8'), indent=4)
+
     def task_completion_check(self, target_block):
         prompt = {'role': 'user',
                   'content': 'Can any elements in the given UI block complete the task directly? \n' +
@@ -126,19 +145,14 @@ class Automator:
     *** Utilities ***
     *****************
     '''
-    def save_conversation(self):
-        json.dump(self.chain_block, open(self.output_chain_block, 'w', encoding='utf-8'), indent=4)
-        json.dump(self.chain_block, open(self.output_chain_element, 'w', encoding='utf-8'), indent=4)
-
     def load_conversation(self):
         self.chain_block = json.load(open(self.output_chain_block, 'r', encoding='utf-8'))
         self.chain_element = json.load(open(self.output_chain_element, 'r', encoding='utf-8'))
-
-    def save_block_descriptions(self):
-        json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
+        print('Load ai chain conversation from', self.output_chain_block, self.output_chain_element)
 
     def load_block_descriptions(self):
         self.block_descriptions = json.load(open(self.output_block_desc, 'r', encoding='utf-8'))
+        print('Load ai chain conversation from', self.output_chain_block, self.output_chain_element)
 
     def show_target_element(self, ele_id):
         print(self.gui.elements_leaves[ele_id])
@@ -147,12 +161,14 @@ class Automator:
 
 if __name__ == '__main__':
     from GUIData import GUIData
-    gui = GUIData('data/emulator-5554.png', 'data/emulator-5554.json')
-    gui.ui_info_extraction()
-    gui.ui_analysis_elements_description()
-    gui.ui_element_block_tree()
+    gui = GUIData(gui_img_file='data/twitter/testcase1/device/0.png',
+                  gui_json_file='data/twitter/testcase1/device/0.json',
+                  output_file_root='data/twitter/testcase1/guidata')
+    # gui.ui_info_extraction()
+    # gui.ui_analysis_elements_description()
+    # gui.ui_element_block_tree()
+    gui.load_elements()
     gui.show_all_elements(only_leaves=True)
 
     aut = Automator(gui)
-    aut.gather_element_descriptions()
-    aut.select_element_to_perform_task(task='Change display language')
+    aut.ai_chain_block('Change display language')
