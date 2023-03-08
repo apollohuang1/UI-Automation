@@ -13,13 +13,18 @@ class Automator:
         self.conversation = [{'role': 'system', 'content': self.role}]    # store the conversation history [{'role':, 'content':}]
         self.task = task                # string, a NL sentence to describe the task, e.g. "Turn on voice"
 
-        self.block_descriptions = []     # list of strings describing block
-        self.block_identification = ''  # answer for block_identification
+        self.block_descriptions = []        # list of strings describing block
+        self.block_identification = ''      # answer for target_block_identification()
+        self.block_scrollable_check = ''    # answer for scrollable_block_check()
 
     def generate_descriptions_for_blocks(self, save=True):
         prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
         for block in self.gui.blocks:
-            self.block_descriptions.append(self.ask_openai_prompt(prompt + str(block))['content'])
+            desc = self.ask_openai_prompt(prompt + str(block))['content']
+            if self.gui.elements[block['id']]['scrollable']:
+                self.block_descriptions.append('[Scrollable] ' + desc)
+            else:
+                self.block_descriptions.append('[Not Scrollable] ' + desc)
         if save:
             self.save_block_descriptions()
 
@@ -28,18 +33,27 @@ class Automator:
     *** AI Chain ***
     ****************
     '''
-    def target_block_identification(self, task=None):
+    def target_block_identification(self, task=None, new_conversation=True):
         if not task: task = self.task
         prompt = 'I will give you a list of blocks in the UI, is any of them related to the task "' + task + '"? ' \
                  'If yes, which block is the most related to complete the task?\n'
         for i, block_desc in enumerate(self.block_descriptions):
             prompt += '[Block ' + str(i) + ']:' + block_desc + '\n'
-        prompt += '\n Just answer [Yes] with the most related block if any or [No] if not.'
-        self.conversation[-1] = {'role': 'user', 'content': prompt}
+        prompt += '\n Answer [Yes] with the most related block if any or [No] if not.'
+        if new_conversation:
+            self.conversation = [{'role': 'system', 'content': self.role}]
+        self.conversation.append({'role': 'user', 'content': prompt})
         self.conversation.append(self.ask_openai_conversation())
         self.block_identification = self.conversation[-1]['content']
 
-    # def scrollable_block_check(self):
+    def scrollable_block_check(self):
+        prompt = {'role': 'user',
+                  'content': 'For scrollable blocks, is it possible that the elements related to the task would show up after scroll? '
+                             'Answer [Yes] with the most related block if any or [No] if not'}
+        self.conversation.append(prompt)
+        self.conversation.append(self.ask_openai_conversation())
+        self.block_scrollable_check = self.conversation[-1]['content']
+
 
     '''
     ******************
@@ -57,7 +71,7 @@ class Automator:
                 ]
             )
         print('\n*** Answer ***\n', resp['choices'][0].message, '\n')
-        return resp['choices'][0].message
+        return dict(resp['choices'][0].message)
 
     def ask_openai_conversation(self, conversation=None):
         if not conversation: conversation = self.conversation
@@ -67,7 +81,7 @@ class Automator:
                 messages=conversation
             )
         print('\n*** Answer ***\n', resp['choices'][0].message, '\n')
-        return resp['choices'][0].message
+        return dict(resp['choices'][0].message)
 
     '''
     *****************
