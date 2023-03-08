@@ -120,13 +120,11 @@ class Automator:
     '''
     def ask_openai_prompt(self, prompt, role=None):
         if not role: role = self.role
-        print('*** Asking ***\n', role, '\n', prompt)
+        conversation = [{'role': 'system', 'content': self.role}, {'role': 'user', 'content': prompt}]
+        print('*** Asking ***\n', conversation)
         resp = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                messages=[
-                    {'role': 'system', 'content': self.role},
-                    {'role': 'user', 'content': prompt}
-                ]
+                messages=conversation
             )
         print('\n*** Answer ***\n', resp['choices'][0].message, '\n')
         return dict(resp['choices'][0].message)
