@@ -19,12 +19,14 @@ class Device:
         self.vh = None          # dict
 
         # output file paths
-        self.testcase_save_dir = pjoin(output_file_root, app_name, 'testcase' + str(test_case_no), 'device')
+        self.testcase_save_dir = pjoin(output_file_root, app_name, 'testcase' + str(test_case_no))
+        self.device_save_dir = pjoin(self.testcase_save_dir, 'device')
         os.makedirs(self.testcase_save_dir, exist_ok=True)
-        print('*** Save data to dir', self.testcase_save_dir, '***')
-        self.output_file_path_screenshot = pjoin(self.testcase_save_dir, str(self.ui_no) + '.png')
-        self.output_file_path_xml = pjoin(self.testcase_save_dir, str(self.ui_no) + '.xml')
-        self.output_file_path_json = pjoin(self.testcase_save_dir, str(self.ui_no) + '.json')
+        os.makedirs(self.device_save_dir, exist_ok=True)
+        print('*** Save data to dir', self.device_save_dir, '***')
+        self.output_file_path_screenshot = pjoin(self.device_save_dir, str(self.ui_no) + '.png')
+        self.output_file_path_xml = pjoin(self.device_save_dir, str(self.ui_no) + '.xml')
+        self.output_file_path_json = pjoin(self.device_save_dir, str(self.ui_no) + '.json')
 
     def get_devices_info(self):
         print("Device Name:%s Resolution:%s" % (self.device_name, self.adb_device.wm_size()))
@@ -90,6 +92,7 @@ class Device:
 
 if __name__ == '__main__':
     # start emulator in Android studio first and run to capture screenshot and view hierarchy
+    # save vh xml, json and screenshot image to 'data/app_name/test_case_no/device'
     from ppadb.client import Client as AdbClient
     client = AdbClient(host="127.0.0.1", port=5037)
 

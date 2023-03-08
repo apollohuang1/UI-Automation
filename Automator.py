@@ -5,7 +5,7 @@ import os
 
 
 class Automator:
-    def __init__(self, gui=None, task='', output_file_root='data/twitter/testcase1/automator', gui_name='test'):
+    def __init__(self, gui=None, task='', output_file_root='data/twitter/testcase1', gui_name='test'):
         self.gui = gui
         self.gui_name = self.gui.gui_name if self.gui else gui_name
 
@@ -24,7 +24,7 @@ class Automator:
         self.element_intermediate = ''      # answer for intermediate_element_check()
 
         # output file paths
-        self.output_root = output_file_root
+        self.output_root = pjoin(output_file_root, 'automator')
         os.makedirs(output_file_root, exist_ok=True)
         self.output_block_desc = pjoin(self.output_root, self.gui_name + '_block_desc.json')
         self.output_chain_block = pjoin(self.output_root, self.gui_name + '_chain_block.json')
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     from GUIData import GUIData
     gui = GUIData(gui_img_file='data/twitter/testcase1/device/0.png',
                   gui_json_file='data/twitter/testcase1/device/0.json',
-                  output_file_root='data/twitter/testcase1/guidata')
+                  output_file_root='data/twitter/testcase1')
     # gui.ui_info_extraction()
     # gui.ui_analysis_elements_description()
     # gui.ui_element_block_tree()
@@ -169,4 +169,4 @@ if __name__ == '__main__':
     gui.show_all_elements(only_leaves=True)
 
     aut = Automator(gui)
-    aut.ai_chain_block('Change display language')
+    aut.ai_chain_block('Follow Elon Musk')

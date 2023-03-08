@@ -13,7 +13,7 @@ sys.path.append('classification')
 
 
 class GUIData:
-    def __init__(self, gui_img_file, gui_json_file, output_file_root='data/twitter/testcase1/guidata'):
+    def __init__(self, gui_img_file, gui_json_file, output_file_root='data/twitter/testcase1'):
         self.img_file = gui_img_file
         self.json_file = gui_json_file
         self.gui_name = gui_img_file.replace('/', '\\').split('\\')[-1].split('.')[0]
@@ -31,9 +31,10 @@ class GUIData:
         self.model_icon_classification = None  # IconClassification
 
         # output file paths
-        os.makedirs(output_file_root, exist_ok=True)
-        self.output_file_path_elements = pjoin(output_file_root, self.gui_name + '_elements.json')
-        self.output_file_path_element_tree = pjoin(output_file_root, self.gui_name + '_tree.json')
+        self.output_dir = pjoin(output_file_root, 'guidata')
+        os.makedirs(self.output_dir, exist_ok=True)
+        self.output_file_path_elements = pjoin(self.output_dir, self.gui_name + '_elements.json')
+        self.output_file_path_element_tree = pjoin(self.output_dir, self.gui_name + '_tree.json')
 
     def load_elements(self, file_path_elements=None, file_path_element_tree=None):
         if not file_path_elements: file_path_elements = self.output_file_path_elements
@@ -325,10 +326,10 @@ class GUIData:
 
 
 if __name__ == '__main__':
-    load = True
+    load = False
     gui = GUIData(gui_img_file='data/twitter/testcase1/device/0.png',
                   gui_json_file='data/twitter/testcase1/device/0.json',
-                  output_file_root='data/twitter/testcase1/guidata')
+                  output_file_root='data/twitter/testcase1')
     # load previous result
     if load:
         gui.load_elements()
