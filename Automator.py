@@ -16,6 +16,7 @@ class Automator:
         self.block_descriptions = []        # list of strings describing block
         self.block_identification = ''      # answer for target_block_identification()
         self.block_scrollable_check = ''    # answer for scrollable_block_check()
+        self.block_intermediate_check = ''  # answer for intermediate_block_check()
 
     def generate_descriptions_for_blocks(self, save=True):
         prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
@@ -29,9 +30,9 @@ class Automator:
             self.save_block_descriptions()
 
     '''
-    ****************
-    *** AI Chain ***
-    ****************
+    **********************
+    *** AI Chain Block ***
+    **********************
     '''
     def target_block_identification(self, task=None, new_conversation=True):
         if not task: task = self.task
@@ -48,12 +49,19 @@ class Automator:
 
     def scrollable_block_check(self):
         prompt = {'role': 'user',
-                  'content': 'For scrollable blocks, is it possible that the elements related to the task would show up after scroll? '
+                  'content': 'For scrollable blocks, is it possible that the UI elements related to the task would show up after scroll? '
                              'Answer [Yes] with the most related block if any or [No] if not'}
         self.conversation.append(prompt)
         self.conversation.append(self.ask_openai_conversation())
         self.block_scrollable_check = self.conversation[-1]['content']
 
+    def intermediate_block_check(self):
+        prompt = {'role': 'user',
+                  'content': 'The task may take multiple steps to complete, is there any block likely to jump to the UI that is related to the task? ' +
+                             'Answer [Yes] with the most related block if any or [No] if not'}
+        self.conversation.append(prompt)
+        self.conversation.append(self.ask_openai_conversation())
+        self.block_intermediate_check = self.conversation[-1]['content']
 
     '''
     ******************
