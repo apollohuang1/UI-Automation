@@ -35,14 +35,14 @@ class Automator:
     *** AI Chain Block ***
     **********************
     '''
-    def ai_chain_block(self, task=None):
-        self.generate_descriptions_for_blocks()
+    def ai_chain_block(self, task=None, show_block=False):
+        self.generate_descriptions_for_blocks(show_block)
         self.target_block_identification(task)
         self.scrollable_block_check()
         self.intermediate_block_check()
         json.dump(self.chain_block, open(self.output_chain_block, 'w', encoding='utf-8'), indent=4)
 
-    def generate_descriptions_for_blocks(self):
+    def generate_descriptions_for_blocks(self, show=False):
         print('------ Generate Block Descriptions ------')
         prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
         for block in self.gui.blocks:
@@ -51,6 +51,9 @@ class Automator:
                 self.block_descriptions.append('[Scrollable] ' + desc)
             else:
                 self.block_descriptions.append('[Not Scrollable] ' + desc)
+            print(self.block_descriptions[-1])
+            if show:
+                self.gui.show_element(self.gui.elements[block['id']])
         json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
 
     def target_block_identification(self, task=None):
@@ -65,6 +68,7 @@ class Automator:
         self.chain_block.append({'role': 'user', 'content': prompt})
         self.chain_block.append(self.ask_openai_conversation(self.chain_block))
         self.block_identification = self.chain_block[-1]['content']
+        print(self.block_identification)
 
     def scrollable_block_check(self):
         print('------ Scrollable Block Check ------')
@@ -74,6 +78,7 @@ class Automator:
         self.chain_block.append(prompt)
         self.chain_block.append(self.ask_openai_conversation(self.chain_block))
         self.block_scrollable_check = self.chain_block[-1]['content']
+        print(self.block_scrollable_check)
 
     def intermediate_block_check(self):
         print('------ Intermediate Block Check ------')
@@ -83,6 +88,7 @@ class Automator:
         self.chain_block.append(prompt)
         self.chain_block.append(self.ask_openai_conversation(self.chain_block))
         self.block_intermediate_check = self.chain_block[-1]['content']
+        print(self.block_intermediate_check)
 
     '''
     ************************
@@ -103,6 +109,7 @@ class Automator:
         self.chain_element.append(prompt)
         self.chain_element.append(self.ask_openai_conversation(self.chain_element))
         self.element_complete = self.chain_element[-1]['content']
+        print(self.element_complete)
 
     def intermediate_element_check(self):
         prompt = {'role': 'user',
@@ -111,30 +118,35 @@ class Automator:
         self.chain_element.append(prompt)
         self.chain_element.append(self.ask_openai_conversation(self.chain_element))
         self.element_intermediate = self.chain_element[-1]['content']
+        print(self.element_intermediate)
 
     '''
     ******************
     *** OpenAI LLM ***
     ******************
     '''
-    def ask_openai_prompt(self, prompt, role=None):
+    def ask_openai_prompt(self, prompt, role=None, printlog=False):
         if not role: role = self.role
-        conversation = [{'role': 'system', 'content': self.role}, {'role': 'user', 'content': prompt}]
-        print('*** Asking ***\n', conversation)
+        conversation = [{'role': 'system', 'content': role}, {'role': 'user', 'content': prompt}]
+        if printlog:
+            print('*** Asking ***\n', conversation)
         resp = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=conversation
             )
-        print('\n*** Answer ***\n', resp['choices'][0].message, '\n')
+        if printlog:
+            print('\n*** Answer ***\n', resp['choices'][0].message, '\n')
         return dict(resp['choices'][0].message)
 
-    def ask_openai_conversation(self, conversation):
-        print('*** Asking ***\n', conversation)
+    def ask_openai_conversation(self, conversation, printlog=False):
+        if printlog:
+            print('*** Asking ***\n', conversation)
         resp = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=conversation
             )
-        print('\n*** Answer ***\n', resp['choices'][0].message, '\n')
+        if printlog:
+            print('\n*** Answer ***\n', resp['choices'][0].message, '\n')
         return dict(resp['choices'][0].message)
 
     '''
