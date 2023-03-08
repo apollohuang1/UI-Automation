@@ -13,7 +13,7 @@ sys.path.append('classification')
 
 
 class GUIData:
-    def __init__(self, gui_img_file, gui_json_file):
+    def __init__(self, gui_img_file, gui_json_file, output_file_root):
         self.img_file = gui_img_file
         self.json_file = gui_json_file
         self.gui_name = gui_img_file.replace('/', '\\').split('\\')[-1].split('.')[0]
@@ -30,6 +30,22 @@ class GUIData:
         self.model_icon_caption = None   # IconCaption
         self.model_icon_classification = None  # IconClassification
 
+        # output file paths
+        self.output_file_path_elements = pjoin(output_file_root, self.gui_name + '_elements.json')
+        self.output_file_path_element_tree = pjoin(output_file_root, self.gui_name + '_tree.json')
+
+    def load_elements(self, file_path_elements=None, file_path_element_tree=None):
+        if not file_path_elements: file_path_elements = self.output_file_path_elements
+        if not file_path_element_tree: file_path_element_tree = self.output_file_path_element_tree
+
+        print('Load elements from', file_path_elements)
+        self.elements = json.load(open(file_path_elements, 'r', encoding='utf-8'))           # => self.elements
+        self.gather_leaf_elements()                     # => self.elements_leaves
+        self.element_id = self.elements[-1]['id'] + 1         # => self.element_id
+        print('Load element tree from', file_path_element_tree)
+        self.element_tree = json.load(open(file_path_element_tree, 'r', encoding='utf-8'))   # => self.element_tree
+        self.partition_blocks()     # => self.blocks
+
     '''
     **************************
     *** UI Info Extraction ***
@@ -43,11 +59,14 @@ class GUIData:
         json_cp = copy.deepcopy(self.json)
         element_root = json_cp['activity']['root']
         element_root['class'] = 'root'
+        # clean up the json tree to remove redundant layout node
         self.prone_invalid_children(element_root)
         self.extract_children_elements(element_root)
-
+        # inherit clickablility from parent to children node
         self.inherit_clickablility()
         self.gather_leaf_elements()
+        json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
+        print('Save elements to', self.output_file_path_elements)
 
     def extract_children_elements(self, element):
         '''
@@ -119,8 +138,11 @@ class GUIData:
         Extract description for UI elements through 'text', 'content-desc', 'classification' and 'caption'
         => element['description']
         '''
+        # generate caption for non-text elements
         self.caption_elements()
+        # classify non-text elements
         self.classify_elements()
+        # extract element description from 'text', 'content-desc', 'icon-cls' and 'caption'
         for ele in self.elements_leaves:
             description = ''
             # check text
@@ -136,6 +158,9 @@ class GUIData:
                 else:
                     description = ele['caption'] if '<unk>' not in ele['caption'] else None
             ele['description'] = description
+        # save the elements with 'description' attribute
+        json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
+        print('Save elements to', self.output_file_path_elements)
 
     def caption_elements(self, elements=None):
         if self.model_icon_caption is None:
@@ -171,7 +196,7 @@ class GUIData:
     *** Structural Tree ***
     ***********************
     '''
-    def ui_element_block_tree(self, save=True):
+    def ui_element_block_tree(self):
         '''
         Form a hierarchical element tree with a few key attributes to represent the vh
         => self.element_tree
@@ -179,9 +204,8 @@ class GUIData:
         '''
         self.element_tree = self.combine_children(self.elements[0])
         self.partition_blocks()
-        if save:
-            json.dump(self.element_tree, open(pjoin('data', self.gui_name + '_tree.json'), 'w'), indent=4)
-            json.dump(self.blocks, open(pjoin('data', self.gui_name + '_blocks.json'), 'w'), indent=4)
+        json.dump(self.element_tree, open(self.output_file_path_element_tree, 'w'), indent=4)
+        print('Save element tree to', self.output_file_path_element_tree)
 
     def combine_children(self, element):
         element_cp = copy.deepcopy(element)
@@ -222,7 +246,6 @@ class GUIData:
                 desc += child['resource-id'].lower()
             if 'description' in child:
                 desc += child['description'].lower()
-            print(desc, 'background' in desc, 'children' not in child)
             # if there is a background in the first level of root children, go deeper
             if 'background' in desc and 'children' not in child:
                 deeper = True
@@ -301,9 +324,12 @@ class GUIData:
 
 
 if __name__ == '__main__':
-    gui = GUIData('data/emulator-5554.png', 'data/emulator-5554.json')
-    gui.ui_info_extraction()
-    gui.ui_analysis_elements_description()
-    gui.ui_element_block_tree()
-    print(gui.element_tree)
+    gui = GUIData(gui_img_file='data/twitter/testcase1/device/0.png', gui_json_file='data/twitter/testcase1/device/0.json',
+                  output_file_root='data/twitter/testcase1/guidata')
+    # process from scratch
+    # gui.ui_info_extraction()
+    # gui.ui_analysis_elements_description()
+    # gui.ui_element_block_tree()
+    # load previous result
+    gui.load_elements()
     gui.show_all_elements(only_leaves=True)

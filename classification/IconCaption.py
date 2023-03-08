@@ -29,11 +29,11 @@ class IconCaption:
     def load_model(self):
         # Load vocabulary idx2word dict
         with open(self.vocab_path, 'r') as f:
-            print(('[INFO] Loading idx2word %s' % self.vocab_path))
+            # print(('[INFO] Loading idx2word %s' % self.vocab_path))
             self.idx2word = json.load(f)
         # Load model
         if os.path.exists(self.model_path):
-            print(('[INFO] Loading checkpoint %s' % self.model_path))
+            # print(('[INFO] Loading checkpoint %s' % self.model_path))
             self.model = torch.load(self.model_path)
             self.model.to(self.device)
             self.model.eval()

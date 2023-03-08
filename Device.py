@@ -7,7 +7,7 @@ import json
 
 
 class Device:
-    def __init__(self, adb_device, app_name='twitter', test_case_no=1, file_save_root='data'):
+    def __init__(self, adb_device, app_name='twitter', test_case_no=1, output_file_root='data'):
         self.adb_device = adb_device  # ppadb device
         self.device_name = self.adb_device.get_serial_no()
 
@@ -15,15 +15,16 @@ class Device:
         self.test_case_no = test_case_no
         self.ui_no = 0
 
-        self.testcase_save_dir = pjoin(file_save_root, app_name, 'testcase' + str(test_case_no), 'device')
+        self.screenshot = None  # cv2 image
+        self.vh = None          # dict
+
+        # output file paths
+        self.testcase_save_dir = pjoin(output_file_root, app_name, 'testcase' + str(test_case_no), 'device')
         os.makedirs(self.testcase_save_dir, exist_ok=True)
         print('*** Save data to dir', self.testcase_save_dir, '***')
         self.output_file_path_screenshot = pjoin(self.testcase_save_dir, str(self.ui_no) + '.png')
         self.output_file_path_xml = pjoin(self.testcase_save_dir, str(self.ui_no) + '.xml')
         self.output_file_path_json = pjoin(self.testcase_save_dir, str(self.ui_no) + '.json')
-
-        self.screenshot = None  # cv2 image
-        self.vh = None          # dict
 
     def get_devices_info(self):
         print("Device Name:%s Resolution:%s" % (self.device_name, self.adb_device.wm_size()))
@@ -43,7 +44,7 @@ class Device:
         self.adb_device.pull('/sdcard/window_dump.xml', self.output_file_path_xml)
         print('Save xml to', self.output_file_path_xml)
         self.vh = xmltodict.parse(open(self.output_file_path_xml, 'r', encoding='utf-8').read())
-        json.dump(self.vh, open(self.output_file_path_json, 'w'), indent=4)
+        json.dump(self.vh, open(self.output_file_path_json, 'w', encoding='utf-8'), indent=4)
         print('Save view hierarchy to', self.output_file_path_json)
 
     '''
@@ -83,12 +84,12 @@ class Device:
 
     def reformat_vh_json(self):
         self.vh = {'activity': {'root': self.cvt_node_to_rico_format(self.vh['hierarchy']['node'])}}
-        json.dump(self.vh, open(self.output_file_path_json, 'w'), indent=4)
+        json.dump(self.vh, open(self.output_file_path_json, 'w', encoding='utf-8'), indent=4)
         print('Save reformatted vh to', self.output_file_path_json)
 
 
 if __name__ == '__main__':
-    from GUIData import GUIData
+    # start emulator in Android studio first and run to capture screenshot and view hierarchy
     from ppadb.client import Client as AdbClient
     client = AdbClient(host="127.0.0.1", port=5037)
 
@@ -96,7 +97,3 @@ if __name__ == '__main__':
     device.cap_screenshot()
     device.cap_vh()
     device.reformat_vh_json()
-
-    # gui = GUIData(device.screenshot_path, device.vh_json_path)
-    # gui.extract_elements_from_vh()
-    # gui.show_all_elements()
