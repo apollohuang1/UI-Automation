@@ -25,7 +25,7 @@ class Automator:
         self.block_intermediate_check = ''  # answer for intermediate_block_check()
 
         self.element_complete = ''          # answer for task_completion_check()
-        self.element_intermediate = ''      # answer for
+        self.element_intermediate = ''      # answer for intermediate_element_check()
 
     def generate_descriptions_for_blocks(self, save=True):
         prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'

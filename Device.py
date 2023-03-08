@@ -1,3 +1,5 @@
+import os
+
 import cv2
 from os.path import join as pjoin
 import xmltodict
@@ -5,38 +7,44 @@ import json
 
 
 class Device:
-    def __init__(self, adb_device, file_save_dir='/home/ml/Code/github/UI-Automation/vh/data'):
+    def __init__(self, adb_device, app_name='twitter', test_case_no=1, file_save_root='data'):
         self.adb_device = adb_device  # ppadb device
-        self.name = self.adb_device.get_serial_no()
+        self.device_name = self.adb_device.get_serial_no()
 
-        self.file_save_dir = file_save_dir
-        self.screenshot_path = pjoin(file_save_dir, str(self.name) + '.png')
-        self.vh_xml_path = pjoin(file_save_dir, str(self.name) + '.xml')
-        self.vh_json_path = pjoin(file_save_dir, str(self.name) + '.json')
+        self.app_name = app_name
+        self.test_case_no = test_case_no
+        self.ui_no = 0
+
+        self.testcase_save_dir = pjoin(file_save_root, app_name, 'testcase' + str(test_case_no), 'device')
+        os.makedirs(self.testcase_save_dir, exist_ok=True)
+        print('*** Save data to dir', self.testcase_save_dir, '***')
+        self.output_file_path_screenshot = pjoin(self.testcase_save_dir, str(self.ui_no) + '.png')
+        self.output_file_path_xml = pjoin(self.testcase_save_dir, str(self.ui_no) + '.xml')
+        self.output_file_path_json = pjoin(self.testcase_save_dir, str(self.ui_no) + '.json')
 
         self.screenshot = None  # cv2 image
         self.vh = None          # dict
 
     def get_devices_info(self):
-        print("Device Name:%s Resolution:%s" % (self.name, self.adb_device.wm_size()))
+        print("Device Name:%s Resolution:%s" % (self.device_name, self.adb_device.wm_size()))
 
     def cap_screenshot(self, recur_time=0):
         screen = self.adb_device.screencap()
-        with open(self.screenshot_path, "wb") as fp:
+        with open(self.output_file_path_screenshot, "wb") as fp:
             fp.write(screen)
-        self.screenshot = cv2.imread(self.screenshot_path)
-        print('Save screenshot to', self.screenshot_path)
+        self.screenshot = cv2.imread(self.output_file_path_screenshot)
+        print('Save screenshot to', self.output_file_path_screenshot)
         # recurrently load to avoid failure
         if recur_time < 3 and self.screenshot is None:
             self.cap_screenshot(recur_time+1)
 
-    def cap_vh(self, dump_to_json=True):
+    def cap_vh(self):
         self.adb_device.shell('uiautomator dump')
-        self.adb_device.pull('/sdcard/window_dump.xml', self.vh_xml_path)
-        self.vh = xmltodict.parse(open(self.vh_xml_path, 'r', encoding='utf-8').read())
-        if dump_to_json:
-            json.dump(self.vh, open(self.vh_json_path, 'w'), indent=4)
-            print('Save view hierarchy to', self.vh_json_path)
+        self.adb_device.pull('/sdcard/window_dump.xml', self.output_file_path_xml)
+        print('Save xml to', self.output_file_path_xml)
+        self.vh = xmltodict.parse(open(self.output_file_path_xml, 'r', encoding='utf-8').read())
+        json.dump(self.vh, open(self.output_file_path_json, 'w'), indent=4)
+        print('Save view hierarchy to', self.output_file_path_json)
 
     '''
     ********************************************
@@ -73,11 +81,10 @@ class Device:
                 node['children'] = [self.cvt_node_to_rico_format(node['children'])]
         return node
 
-    def cvt_vh_to_rico_format(self, dump_json_file=True):
+    def reformat_vh_json(self):
         self.vh = {'activity': {'root': self.cvt_node_to_rico_format(self.vh['hierarchy']['node'])}}
-        if dump_json_file:
-            json.dump(self.vh, open(self.vh_json_path, 'w'), indent=4)
-            print('Save reformatted vh to', self.vh_json_path)
+        json.dump(self.vh, open(self.output_file_path_json, 'w'), indent=4)
+        print('Save reformatted vh to', self.output_file_path_json)
 
 
 if __name__ == '__main__':
@@ -85,11 +92,11 @@ if __name__ == '__main__':
     from ppadb.client import Client as AdbClient
     client = AdbClient(host="127.0.0.1", port=5037)
 
-    device = Device(client.devices()[0], 'data')
+    device = Device(client.devices()[0], app_name='twitter', test_case_no=1)
     device.cap_screenshot()
     device.cap_vh()
-    device.cvt_vh_to_rico_format()
+    device.reformat_vh_json()
 
-    gui = GUIData(device.screenshot_path, device.vh_json_path)
-    gui.extract_elements_from_vh()
-    gui.show_all_elements()
+    # gui = GUIData(device.screenshot_path, device.vh_json_path)
+    # gui.extract_elements_from_vh()
+    # gui.show_all_elements()

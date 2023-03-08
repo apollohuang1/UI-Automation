@@ -178,9 +178,10 @@ class GUIData:
         => self.blocks
         '''
         self.element_tree = self.combine_children(self.elements[0])
+        self.partition_blocks()
         if save:
             json.dump(self.element_tree, open(pjoin('data', self.gui_name + '_tree.json'), 'w'), indent=4)
-        self.partition_blocks()
+            json.dump(self.blocks, open(pjoin('data', self.gui_name + '_blocks.json'), 'w'), indent=4)
 
     def combine_children(self, element):
         element_cp = copy.deepcopy(element)
