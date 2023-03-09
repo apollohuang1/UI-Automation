@@ -78,7 +78,7 @@ class Automator:
         print('------ Generate Block Descriptions ------')
         prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
         for block in self.gui.blocks:
-            desc = self.ask_openai_prompt(prompt + str(block))['content']
+            desc = self.ask_openai_prompt(prompt + str(block), self.role)['content']
             if self.gui.elements[block['id']]['scrollable']:
                 self.block_descriptions.append('[Scrollable] ' + desc)
             else:
@@ -181,9 +181,11 @@ class Automator:
     *** OpenAI LLM ***
     ******************
     '''
-    def ask_openai_prompt(self, prompt, role=None, printlog=False):
-        if not role: role = self.role
-        conversation = [{'role': 'system', 'content': role}, {'role': 'user', 'content': prompt}]
+    def ask_openai_prompt(self, prompt, role, printlog=False):
+        if role is None:
+            conversation = [{'role': 'user', 'content': prompt}]
+        else:
+            conversation = [{'role': 'system', 'content': role}, {'role': 'user', 'content': prompt}]
         if printlog:
             print('*** Asking ***\n', conversation)
         resp = openai.ChatCompletion.create(
