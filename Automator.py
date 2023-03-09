@@ -2,6 +2,7 @@ import openai
 import json
 from os.path import join as pjoin
 import os
+import re
 
 
 class Automator:
@@ -23,12 +24,40 @@ class Automator:
         self.element_complete = ''          # answer for task_completion_check()
         self.element_intermediate = ''      # answer for intermediate_element_check()
 
+        self.target_block_id = None         # target block ids grounded from answers
+        self.target_element_id = None       # target element ids grounded from answers
+
         # output file paths
         self.output_root = pjoin(output_file_root, 'automator')
         os.makedirs(output_file_root, exist_ok=True)
         self.output_block_desc = pjoin(self.output_root, self.gui_name + '_block_desc.json')
         self.output_chain_block = pjoin(self.output_root, self.gui_name + '_chain_block.json')
         self.output_chain_element = pjoin(self.output_root, self.gui_name + '_chain_element.json')
+
+    def ai_chain(self, task=None, show_block=False):
+        # Block description
+        self.generate_descriptions_for_blocks(show_block)
+        # Related target block
+        self.target_block_identification(task)
+        # search thoroughly if no directly related block
+        if 'No' in self.block_identification:
+            # Related block after scroll
+            self.scrollable_block_check()
+            if 'Yes' in self.block_scrollable_check:
+                # *** Identify target element in related block
+                return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_scrollable_check))
+            else:
+                # Intermediate block that is indirectly related
+                self.intermediate_block_check()
+                if 'Yes' in self.block_intermediate_check:
+                    # *** Identify target element in related block
+                    return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_scrollable_check))
+                else:
+                    print('*** No related blocks ***')
+                    return False
+        # *** Identify target element in related block
+        elif 'Yes' in self.block_identification:
+            return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_identification))
 
     '''
     **********************
@@ -57,7 +86,7 @@ class Automator:
         json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
 
     def target_block_identification(self, task=None):
-        print('------ Target Block Identification ------')
+        print('\n------ Target Block Identification ------')
         if not task: task = self.task
         prompt = 'I will give you a list of blocks in the UI, is any of them related to the task "' + task + '"? ' \
                  'If yes, which block is the most related to complete the task?\n'
@@ -71,7 +100,7 @@ class Automator:
         print(self.block_identification)
 
     def scrollable_block_check(self):
-        print('------ Scrollable Block Check ------')
+        print('\n------ Scrollable Block Check ------')
         prompt = {'role': 'user',
                   'content': 'For scrollable blocks, is it possible that the UI elements related to the task would show up after scroll? '
                              'Answer [Yes] with the most related block if any or [No] if not'}
@@ -81,7 +110,7 @@ class Automator:
         print(self.block_scrollable_check)
 
     def intermediate_block_check(self):
-        print('------ Intermediate Block Check ------')
+        print('\n------ Intermediate Block Check ------')
         prompt = {'role': 'user',
                   'content': 'The task may take multiple steps to complete, is there any block likely to jump to the UI that is related to the task? ' +
                              'Answer [Yes] with the most related block if any or [No] if not'}
@@ -95,12 +124,20 @@ class Automator:
     *** AI Chain Element ***
     ************************
     '''
-    def ai_chain_element(self, target_block):
+    def ai_chain_element(self, block_id):
+        print('\n*** Identify the target element in Block %d ***' % block_id)
+        target_block = self.gui.blocks[block_id]
+        # check if the task can be completed directly
         self.task_completion_check(target_block)
-        self.intermediate_element_check()
-        json.dump(self.chain_block, open(self.output_chain_element, 'w', encoding='utf-8'), indent=4)
+        if 'Yes' in self.element_complete:
+            return self.extract_element_id_from_sentence(self.element_complete)
+        # if no, select the most related element
+        else:
+            self.intermediate_element_check()
+            return self.extract_element_id_from_sentence(self.element_intermediate)
 
     def task_completion_check(self, target_block):
+        print('\n------ Task Completion Check ------')
         prompt = {'role': 'user',
                   'content': 'Can any elements in the given UI block complete the task directly? \n' +
                              'UI block: ' + str(target_block) +
@@ -112,6 +149,7 @@ class Automator:
         print(self.element_complete)
 
     def intermediate_element_check(self):
+        print('\n------ Intermediate Element Check ------')
         prompt = {'role': 'user',
                   'content': 'The task may take multiple steps to complete, is there any UI element in the block likely to jump to the UI that is related to the task? ' +
                              'Answer [Yes] with the most related block if any or [No] if not'}
@@ -119,6 +157,19 @@ class Automator:
         self.chain_element.append(self.ask_openai_conversation(self.chain_element))
         self.element_intermediate = self.chain_element[-1]['content']
         print(self.element_intermediate)
+
+    '''
+    ***********************************
+    *** Grounding Block and Element ***
+    ***********************************
+    '''
+    def extract_block_id_from_sentence(self, sentence):
+        b = re.findall('[Bb]lock\s*\d+', sentence)[0]
+        return int(re.findall('\d+', b)[0])
+
+    def extract_element_id_from_sentence(self, sentence):
+        e = re.findall('[Ee]lement\s*\d+', sentence)[0]
+        return int(re.findall('\d+', e)[0])
 
     '''
     ******************
@@ -155,13 +206,16 @@ class Automator:
     *****************
     '''
     def load_conversation(self):
-        self.chain_block = json.load(open(self.output_chain_block, 'r', encoding='utf-8'))
-        self.chain_element = json.load(open(self.output_chain_element, 'r', encoding='utf-8'))
-        print('Load ai chain conversation from', self.output_chain_block, self.output_chain_element)
+        if os.path.exists(self.output_chain_block):
+            self.chain_block = json.load(open(self.output_chain_block, 'r', encoding='utf-8'))
+            print('Load ai chain block from', self.output_chain_block)
+        if os.path.exists(self.output_chain_element):
+            self.chain_element = json.load(open(self.output_chain_element, 'r', encoding='utf-8'))
+            print('Load ai chain element from', self.output_chain_element)
 
     def load_block_descriptions(self):
         self.block_descriptions = json.load(open(self.output_block_desc, 'r', encoding='utf-8'))
-        print('Load ai chain conversation from', self.output_chain_block, self.output_chain_element)
+        print('Load block description from', self.output_block_desc)
 
     def show_target_element(self, ele_id):
         print(self.gui.elements_leaves[ele_id])
