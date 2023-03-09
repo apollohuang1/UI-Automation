@@ -35,6 +35,7 @@ class Automator:
         self.output_chain_element = pjoin(self.output_root, self.gui_name + '_chain_element.json')
 
     def ai_chain(self, task=None, show_block=False):
+        self.task = task
         # Block description
         self.generate_descriptions_for_blocks(show_block)
         # Related target block
@@ -44,20 +45,22 @@ class Automator:
             # Related block after scroll
             self.scrollable_block_check()
             if 'Yes' in self.block_scrollable_check:
+                block_id = self.extract_block_id_from_sentence(self.block_scrollable_check)
+                print('*** Scroll [BLock %d] ***' % block_id)
                 # *** Identify target element in related block
-                return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_scrollable_check))
+                return self.ai_chain_element(block_id=block_id, task=task)
             else:
                 # Intermediate block that is indirectly related
                 self.intermediate_block_check()
                 if 'Yes' in self.block_intermediate_check:
                     # *** Identify target element in related block
-                    return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_scrollable_check))
+                    return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_scrollable_check), task=task)
                 else:
                     print('*** No related blocks ***')
                     return False
         # *** Identify target element in related block
         elif 'Yes' in self.block_identification:
-            return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_identification))
+            return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_identification), task=task)
 
     '''
     **********************
@@ -87,7 +90,6 @@ class Automator:
 
     def target_block_identification(self, task=None):
         print('\n------ Target Block Identification ------')
-        if not task: task = self.task
         prompt = 'I will give you a list of blocks in the UI, is any of them related to the task "' + task + '"? ' \
                  'If yes, which block is the most related to complete the task?\n'
         for i, block_desc in enumerate(self.block_descriptions):
@@ -124,22 +126,25 @@ class Automator:
     *** AI Chain Element ***
     ************************
     '''
-    def ai_chain_element(self, block_id):
-        print('\n*** Identify the target element in Block %d ***' % block_id)
+    def ai_chain_element(self, block_id, task):
+        print('\n====== Identify the target element in Block %d ======' % block_id)
         target_block = self.gui.blocks[block_id]
         # check if the task can be completed directly
-        self.task_completion_check(target_block)
+        self.task_completion_check(target_block, task)
         if 'Yes' in self.element_complete:
-            return self.extract_element_id_from_sentence(self.element_complete)
+            element_id = self.extract_element_id_from_sentence(self.element_complete)
+            print('*** [Element %d] can complete the task ***' % element_id)
         # if no, select the most related element
         else:
             self.intermediate_element_check()
-            return self.extract_element_id_from_sentence(self.element_intermediate)
+            element_id = self.extract_element_id_from_sentence(self.element_intermediate)
+            print('*** [Element %d] can complete the task ***' % element_id)
+        return element_id
 
-    def task_completion_check(self, target_block):
+    def task_completion_check(self, target_block, task):
         print('\n------ Task Completion Check ------')
         prompt = {'role': 'user',
-                  'content': 'Can any elements in the given UI block complete the task directly? \n' +
+                  'content': 'Can any elements in the given UI block complete the task "' + task + '" directly? \n' +
                              'UI block: ' + str(target_block) +
                              '\nAnswer [Yes] with the target element if any or [No] if not'}
         self.chain_element = [{'role': 'system', 'content': self.role}]
