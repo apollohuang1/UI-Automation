@@ -114,7 +114,7 @@ class Automator:
     def intermediate_block_check(self):
         print('\n------ Intermediate Block Check ------')
         prompt = {'role': 'user',
-                  'content': 'The task may take multiple steps to complete, is there any block likely to jump to the UI that is related to the task? ' +
+                  'content': 'The task may take multiple steps to complete, is there any block likely to direct to the UI that is related to the task? ' +
                              'Answer [Yes] with the most related block if any or [No] if not'}
         self.chain_block.append(prompt)
         self.chain_block.append(self.ask_openai_conversation(self.chain_block))
@@ -134,19 +134,23 @@ class Automator:
         if 'Yes' in self.element_complete:
             element_id = self.extract_element_id_from_sentence(self.element_complete)
             print('*** [Element %d] can complete the task ***' % element_id)
+            return element_id
         # if no, select the most related element
         else:
             self.intermediate_element_check()
-            element_id = self.extract_element_id_from_sentence(self.element_intermediate)
-            print('*** [Element %d] can complete the task ***' % element_id)
-        return element_id
+            if 'Yes' in self.element_intermediate:
+                element_id = self.extract_element_id_from_sentence(self.element_intermediate)
+                print('*** [Element %d] is the intermediate element to complete the task ***' % element_id)
+                return element_id
+            else:
+                print('*** No related elements ***')
 
     def task_completion_check(self, target_block, task):
         print('\n------ Task Completion Check ------')
         prompt = {'role': 'user',
-                  'content': 'Can any elements in the given UI block complete the task "' + task + '" directly? \n' +
-                             'UI block: ' + str(target_block) +
-                             '\nAnswer [Yes] with the target element if any or [No] if not'}
+                  'content': "This given UI block is related to the task '" + task + "'. Can your click on any element in it to complete the task directly? \n" +
+                             "UI block: " + str(target_block) +
+                             "\nAnswer [Yes] with the target element if any or [No] if not"}
         self.chain_element = [{'role': 'system', 'content': self.role}]
         self.chain_element.append(prompt)
         self.chain_element.append(self.ask_openai_conversation(self.chain_element))
@@ -156,8 +160,8 @@ class Automator:
     def intermediate_element_check(self):
         print('\n------ Intermediate Element Check ------')
         prompt = {'role': 'user',
-                  'content': 'The task may take multiple steps to complete, is there any UI element in the block likely to jump to the UI that is related to the task? ' +
-                             'Answer [Yes] with the most related block if any or [No] if not'}
+                  'content': 'The task may take multiple steps to complete, can your click on any element in the block to direct to the UI that is more related to the task? ' +
+                             'Answer [Yes] with the most related element if any or [No] if not'}
         self.chain_element.append(prompt)
         self.chain_element.append(self.ask_openai_conversation(self.chain_element))
         self.element_intermediate = self.chain_element[-1]['content']

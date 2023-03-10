@@ -262,6 +262,18 @@ class GUIData:
                     l2_blocks.append(block)
             self.blocks = l2_blocks
 
+    def flatten_block_to_elements(self, block):
+        elements = []
+        nodes = [block]
+        while len(nodes) > 0:
+            cur_node = nodes.pop()
+            elements.append(cur_node)
+            if 'children' not in cur_node:
+                continue
+            nodes += cur_node['children']
+            del(cur_node['children'])
+        return elements
+
     '''
     *********************
     *** Visualization ***
