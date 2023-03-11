@@ -39,29 +39,38 @@ class Automator:
         # Block description
         if not load_block_desc:
             self.generate_descriptions_for_blocks(show_block)
-        # Related target block
+        # 1. Related target block
         self.target_block_identification(task)
+        # identify the target element if the block is directly related
+        if 'Yes' in self.block_identification:
+            # *** 1.1 Identify target element in related block
+            ele_id = self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_identification), task=task)
+            if ele_id:
+                return 'click', ele_id
+            else:
+                return None
         # search thoroughly if no directly related block
-        if 'No' in self.block_identification:
-            # Related block after scroll
+        else:
+            # 2. Related block after scroll
             self.scrollable_block_check()
             if 'Yes' in self.block_scrollable_check:
                 block_id = self.extract_block_id_from_sentence(self.block_scrollable_check)
                 print('\n*** Scroll [BLock %d] ***\n' % block_id)
-                # *** Identify target element in related block
-                return self.ai_chain_element(block_id=block_id, task=task)
+                # Scroll the block
+                return 'scroll', block_id
             else:
-                # Intermediate block that is indirectly related
+                # 3. Intermediate block that is indirectly related
                 self.intermediate_block_check()
                 if 'Yes' in self.block_intermediate_check:
-                    # *** Identify target element in related block
-                    return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_scrollable_check), task=task)
+                    # *** 3.1 Identify target element in related block
+                    ele_id = self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_intermediate_check), task=task)
+                    if ele_id is not None:
+                        return 'click', ele_id
+                    else:
+                        return None
                 else:
                     print('\n*** No related blocks ***\n')
                     return None
-        # *** Identify target element in related block
-        elif 'Yes' in self.block_identification:
-            return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_identification), task=task)
 
     '''
     **********************
