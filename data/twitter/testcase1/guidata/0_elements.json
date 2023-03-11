@@ -196,11 +196,11 @@
         ]
     },
     {
-        "text": "Thu, Mar 9",
+        "text": "Sat, Mar 11",
         "resource-id": "com.google.android.apps.nexuslauncher:id/date",
         "class": "android.widget.TextView",
         "package": "com.google.android.apps.nexuslauncher",
-        "content-desc": "Thu, Mar 9",
+        "content-desc": "Sat, Mar 11",
         "checkable": false,
         "checked": false,
         "clickable": true,
@@ -219,9 +219,9 @@
         ],
         "id": 7,
         "leaf-id": 1,
-        "caption": "flash selfie",
+        "caption": "open navigation drawer",
         "icon-cls": null,
-        "description": "Thu, Mar 9 / Thu, Mar 9"
+        "description": "Sat, Mar 11 / Sat, Mar 11"
     },
     {
         "text": "",

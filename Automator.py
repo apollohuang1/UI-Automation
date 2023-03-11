@@ -34,10 +34,11 @@ class Automator:
         self.output_chain_block = pjoin(self.output_root, self.gui_name + '_chain_block.json')
         self.output_chain_element = pjoin(self.output_root, self.gui_name + '_chain_element.json')
 
-    def ai_chain(self, task=None, show_block=False):
+    def ai_chain(self, task=None, show_block=False, load_block_desc=False):
         self.task = task
         # Block description
-        self.generate_descriptions_for_blocks(show_block)
+        if not load_block_desc:
+            self.generate_descriptions_for_blocks(show_block)
         # Related target block
         self.target_block_identification(task)
         # search thoroughly if no directly related block
@@ -46,7 +47,7 @@ class Automator:
             self.scrollable_block_check()
             if 'Yes' in self.block_scrollable_check:
                 block_id = self.extract_block_id_from_sentence(self.block_scrollable_check)
-                print('*** Scroll [BLock %d] ***' % block_id)
+                print('\n*** Scroll [BLock %d] ***\n' % block_id)
                 # *** Identify target element in related block
                 return self.ai_chain_element(block_id=block_id, task=task)
             else:
@@ -56,8 +57,8 @@ class Automator:
                     # *** Identify target element in related block
                     return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_scrollable_check), task=task)
                 else:
-                    print('*** No related blocks ***')
-                    return False
+                    print('\n*** No related blocks ***\n')
+                    return None
         # *** Identify target element in related block
         elif 'Yes' in self.block_identification:
             return self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_identification), task=task)
@@ -105,7 +106,7 @@ class Automator:
         print('\n------ Scrollable Block Check ------')
         prompt = {'role': 'user',
                   'content': 'For scrollable blocks, is it possible that the UI elements related to the task would show up after scroll? '
-                             'Answer [Yes] with the most related block if any or [No] if not'}
+                             'Answer [Yes] with the most related block (for example, "Yes, Block 1") if any or [No] if not'}
         self.chain_block.append(prompt)
         self.chain_block.append(self.ask_openai_conversation(self.chain_block))
         self.block_scrollable_check = self.chain_block[-1]['content']
@@ -115,7 +116,7 @@ class Automator:
         print('\n------ Intermediate Block Check ------')
         prompt = {'role': 'user',
                   'content': 'The task may take multiple steps to complete, is there any block likely to direct to the UI that is related to the task? ' +
-                             'Answer [Yes] with the most related block if any or [No] if not'}
+                             'Answer [Yes] with the most related block (for example, "Yes, Element 1") if any or [No] if not'}
         self.chain_block.append(prompt)
         self.chain_block.append(self.ask_openai_conversation(self.chain_block))
         self.block_intermediate_check = self.chain_block[-1]['content']
@@ -140,17 +141,18 @@ class Automator:
             self.intermediate_element_check()
             if 'Yes' in self.element_intermediate:
                 element_id = self.extract_element_id_from_sentence(self.element_intermediate)
-                print('*** [Element %d] is the intermediate element to complete the task ***' % element_id)
+                print('\n*** [Element %d] is the intermediate element to complete the task ***' % element_id)
                 return element_id
             else:
-                print('*** No related elements ***')
+                print('\n*** No related elements ***')
+                return None
 
     def task_completion_check(self, target_block, task):
         print('\n------ Task Completion Check ------')
         prompt = {'role': 'user',
-                  'content': "This given UI block is related to the task '" + task + "'. Can your click on any element in it to complete the task directly? \n" +
-                             "UI block: " + str(target_block) +
-                             "\nAnswer [Yes] with the target element if any or [No] if not"}
+                  'content': "This given UI block is related to the task '" + task + "'. Can your click on any element in it to complete the task? \n" +
+                             "UI block: " + json.dumps(target_block, indent=2) +
+                             "\nAnswer [Yes] with the target element id (for example, 'Yes, Element 1') if any or [No] if not"}
         self.chain_element = [{'role': 'system', 'content': self.role}]
         self.chain_element.append(prompt)
         self.chain_element.append(self.ask_openai_conversation(self.chain_element))
@@ -161,7 +163,7 @@ class Automator:
         print('\n------ Intermediate Element Check ------')
         prompt = {'role': 'user',
                   'content': 'The task may take multiple steps to complete, can your click on any element in the block to direct to the UI that is more related to the task? ' +
-                             'Answer [Yes] with the most related element if any or [No] if not'}
+                             'Answer [Yes] with the most related element (for example, "Yes, Element 1") if any or [No] if not'}
         self.chain_element.append(prompt)
         self.chain_element.append(self.ask_openai_conversation(self.chain_element))
         self.element_intermediate = self.chain_element[-1]['content']
