@@ -230,10 +230,14 @@ class GUIData:
 
     def revise_ele_attr(self, element):
         if 'resource-id' in element:
-            element['resource-id'] = element['resource-id'].replace('com.', '')
-            element['resource-id'] = element['resource-id'].replace('android.', '')
+            element['resource-id'] = element['resource-id'].replace('com', '')
+            element['resource-id'] = element['resource-id'].replace('android', '')
+            element['resource-id'] = element['resource-id'].replace('..', '.')
+            element['resource-id'] = element['resource-id'].replace('.:', ':')
         if 'class' in element:
-            element['class'] = element['class'].replace('android.', '')
+            element['class'] = element['class'].replace('android', '')
+            element['class'] = element['class'].replace('..', '.')
+            element['class'] = element['class'].replace('.:', ':')
 
     def partition_blocks(self):
         '''
