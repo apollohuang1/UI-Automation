@@ -65,12 +65,59 @@ class GUIData:
         element_root['class'] = 'root'
         # clean up the json tree to remove redundant layout node
         self.prone_invalid_children(element_root)
+        self.remove_redundant_nesting(element_root)
         self.extract_children_elements(element_root)
-        # inherit clickablility from parent to children node
-        self.inherit_clickablility()
         self.gather_leaf_elements()
         json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
         print('Save elements to', self.output_file_path_elements)
+
+    def prone_invalid_children(self, element):
+        '''
+        Prone invalid children elements
+        Leave valid children and prone their children recursively
+        Take invalid children's children as its own directly
+        '''
+        def check_if_element_valid(ele, min_length=5):
+            '''
+            Check if the element is valid and should be kept
+            '''
+            if (ele['bounds'][0] >= ele['bounds'][2] - min_length or ele['bounds'][1] >= ele['bounds'][
+                3] - min_length) or \
+                    ('layout' in ele['class'].lower() and not ele['clickable']):
+                return False
+            return True
+
+        valid_children = []
+        if 'children' in element:
+            for child in element['children']:
+                if check_if_element_valid(child):
+                    valid_children.append(child)
+                    self.prone_invalid_children(child)
+                else:
+                    valid_children += self.prone_invalid_children(child)
+            element['children'] = valid_children
+        return valid_children
+
+    def remove_redundant_nesting(self, element):
+        '''
+        Remove redundant parent node whose bounds are same
+        '''
+        if 'children' in element and len(element['children']) > 0:
+            redundant = False
+            new_children = []
+            for child in element['children']:
+                # inherit clickability
+                if element['clickable']:
+                    child['clickable'] = True
+                # recursively inspect child node
+                new_children += self.remove_redundant_nesting(child)
+                if child['bounds'] == element['bounds']:
+                    redundant = True
+            if redundant:
+                return new_children
+            else:
+                element['children'] = new_children
+        return [element]
 
     def extract_children_elements(self, element):
         '''
@@ -78,7 +125,7 @@ class GUIData:
         '''
         element['id'] = self.element_id
         self.elements.append(element)
-        if 'children' in element:
+        if 'children' in element and len(element['children']) > 0:
             element['children-id'] = []
             for child in element['children']:
                 self.element_id += 1
@@ -88,41 +135,6 @@ class GUIData:
             del element['children']
         if 'ancestors' in element:
             del element['ancestors']
-
-    def prone_invalid_children(self, element):
-        '''
-        Prone invalid children elements
-        Leave valid children and prone their children recursively
-        Take invalid children's children as its own directly
-        '''
-        valid_children = []
-        if 'children' in element:
-            for child in element['children']:
-                if self.check_if_element_valid(child):
-                    valid_children.append(child)
-                    self.prone_invalid_children(child)
-                else:
-                    valid_children += self.prone_invalid_children(child)
-            element['children'] = valid_children
-        return valid_children
-
-    def check_if_element_valid(self, element, min_length=5):
-        '''
-        Check if the element is valid and should be kept
-        '''
-        if (element['bounds'][0] >= element['bounds'][2] - min_length or element['bounds'][1] >= element['bounds'][3] - min_length) or \
-                ('layout' in element['class'].lower() and not element['clickable']):
-            return False
-        return True
-
-    def inherit_clickablility(self):
-        '''
-        If a node's parent is clickable, make it clickable
-        '''
-        for ele in self.elements:
-            if ele['clickable'] and 'children-id' in ele:
-                for c_id in ele['children-id']:
-                    self.elements[c_id - self.elements[0]['id']]['clickable'] = True
 
     def gather_leaf_elements(self):
         i = 0
@@ -244,30 +256,30 @@ class GUIData:
         Partition the UI into several blocks
         => self.blocks
         '''
-        l1_children = self.element_tree['children']
-        deeper = False
-        for child in l1_children:
-            desc = ''
-            if 'class' in child:
-                desc += child['class'].lower()
-            if 'resource-id' in child:
-                desc += child['resource-id'].lower()
-            if 'description' in child:
-                desc += child['description'].lower()
-            # if there is a background in the first level of root children, go deeper
-            if 'background' in desc and 'children' not in child:
-                deeper = True
-            else:
-                self.blocks.append(child)
-        if deeper:
-            l2_blocks = []
-            for block in self.blocks:
-                if 'children' in block:
-                    l2_blocks += block['children']
-                else:
-                    if block['bounds'][2] - block['bounds'][0] > 20 and block['bounds'][3] - block['bounds'][1] > 20:
-                        l2_blocks.append(block)
-            self.blocks = l2_blocks
+        self.blocks = self.element_tree['children']
+        # deeper = False
+        # for child in l1_children:
+        #     desc = ''
+        #     if 'class' in child:
+        #         desc += child['class'].lower()
+        #     if 'resource-id' in child:
+        #         desc += child['resource-id'].lower()
+        #     if 'description' in child:
+        #         desc += child['description'].lower()
+        #     # if there is a background in the first level of root children, go deeper
+        #     if 'background' in desc and 'children' not in child:
+        #         deeper = True
+        #     else:
+        #         self.blocks.append(child)
+        # if deeper:
+        #     l2_blocks = []
+        #     for block in self.blocks:
+        #         if 'children' in block:
+        #             l2_blocks += block['children']
+        #         else:
+        #             if block['bounds'][2] - block['bounds'][0] > 20 and block['bounds'][3] - block['bounds'][1] > 20:
+        #                 l2_blocks.append(block)
+        #     self.blocks = l2_blocks
 
     def flatten_block_to_elements(self, block):
         block_cp = copy.deepcopy(block)
@@ -326,8 +338,8 @@ class GUIData:
         color = (0,255,0) if not element['clickable'] else (0,0,255)
         bounds = element['bounds']
         cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), color, 3)
-        if show_children and 'children_id' in element:
-            for c_id in element['children_id']:
+        if show_children and 'children-id' in element:
+            for c_id in element['children-id']:
                 bounds = self.elements[c_id]['bounds']
                 cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), (255,0,255), 3)
         cv2.imshow('element', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
