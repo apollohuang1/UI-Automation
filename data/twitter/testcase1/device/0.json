@@ -323,11 +323,11 @@
                                                                                                             ],
                                                                                                             "children": [
                                                                                                                 {
-                                                                                                                    "text": "Sat, Mar 11",
+                                                                                                                    "text": "Sun, Mar 12",
                                                                                                                     "resource-id": "com.google.android.apps.nexuslauncher:id/date",
                                                                                                                     "class": "android.widget.TextView",
                                                                                                                     "package": "com.google.android.apps.nexuslauncher",
-                                                                                                                    "content-desc": "Sat, Mar 11",
+                                                                                                                    "content-desc": "Sun, Mar 12",
                                                                                                                     "checkable": false,
                                                                                                                     "checked": false,
                                                                                                                     "clickable": true,

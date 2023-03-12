@@ -16,6 +16,7 @@ class Automator:
         self.chain_block = [{'role': 'system', 'content': self.role}]       # store the conversation history for block ai chain
         self.chain_element = [{'role': 'system', 'content': self.role}]     # store the conversation history for element ai chain
         self.task = task                # string, a NL sentence to describe the task, e.g. "Turn on voice"
+        self.task_complete = False      # indicate whether the task is complete in this GUI
 
         self.block_descriptions = []        # list of strings describing block
         self.block_identification = ''      # answer for target_block_identification()
@@ -138,13 +139,14 @@ class Automator:
     ************************
     '''
     def ai_chain_element(self, block_id, task):
-        print('\n====== Identify the target element in Block %d ======' % block_id)
+        # print('\n------ Identify the target element in Block %d ------' % block_id)
         target_block = self.gui.blocks[block_id]
         # check if the task can be completed directly
         self.task_completion_check(target_block, task)
         if 'Yes' in self.element_complete:
             element_id = self.extract_element_id_from_sentence(self.element_complete)
-            print('*** [Element %d] can complete the task ***' % element_id)
+            self.task_complete = True
+            print('\n*** [Element %d] can complete the task ***' % element_id)
             return element_id
         # if no, select the most related element
         else:
@@ -203,16 +205,15 @@ class Automator:
         bounds = ele['bounds']
         if op_type == 'click':
             centroid = ((bounds[2] + bounds[0]) // 2, (bounds[3] + bounds[1]) // 2)
-            device.input_tap(centroid[0], centroid[1])
             if show:
                 board = self.gui.img.copy()
                 cv2.circle(board, (centroid[0], centroid[1]), 20, (255, 0, 255), 8)
                 cv2.imshow('click', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
                 cv2.waitKey()
                 cv2.destroyWindow('click')
+            device.input_tap(centroid[0], centroid[1])
         elif op_type == 'scroll':
             bias = 5
-            device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)
             if show:
                 board = self.gui.img.copy()
                 cv2.circle(board, (bounds[2]-bias, bounds[3]+bias), 20, (255, 0, 255), 8)
@@ -220,6 +221,7 @@ class Automator:
                 cv2.imshow('scroll', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
                 cv2.waitKey()
                 cv2.destroyWindow('scroll')
+            device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)
 
     '''
     ******************

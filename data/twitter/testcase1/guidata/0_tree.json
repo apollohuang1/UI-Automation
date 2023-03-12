@@ -42,7 +42,7 @@
                                                     "class": "widget.TextView",
                                                     "clickable": true,
                                                     "id": 7,
-                                                    "description": "Sat, Mar 11 / Sat, Mar 11"
+                                                    "description": "Sun, Mar 12"
                                                 },
                                                 {
                                                     "resource-id": "google.apps.nexuslauncher:id/smartspace_subtitle_group",
@@ -59,7 +59,7 @@
                                     "class": "widget.TextView",
                                     "clickable": true,
                                     "id": 9,
-                                    "description": "Twitter / Twitter"
+                                    "description": "Twitter"
                                 }
                             ]
                         }
@@ -95,31 +95,31 @@
                             "class": "widget.TextView",
                             "clickable": true,
                             "id": 14,
-                            "description": "Phone / Phone"
+                            "description": "Phone"
                         },
                         {
                             "class": "widget.TextView",
                             "clickable": true,
                             "id": 15,
-                            "description": "Messages / Messages"
+                            "description": "Messages"
                         },
                         {
                             "class": "widget.TextView",
                             "clickable": true,
                             "id": 16,
-                            "description": "Play Store / Play Store"
+                            "description": "Play Store"
                         },
                         {
                             "class": "widget.TextView",
                             "clickable": true,
                             "id": 17,
-                            "description": "Chrome / Chrome"
+                            "description": "Chrome"
                         },
                         {
                             "class": "widget.TextView",
                             "clickable": true,
                             "id": 18,
-                            "description": "Camera / Camera"
+                            "description": "Camera"
                         }
                     ]
                 },

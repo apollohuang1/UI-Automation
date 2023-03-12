@@ -196,11 +196,11 @@
         ]
     },
     {
-        "text": "Sat, Mar 11",
+        "text": "Sun, Mar 12",
         "resource-id": "com.google.android.apps.nexuslauncher:id/date",
         "class": "android.widget.TextView",
         "package": "com.google.android.apps.nexuslauncher",
-        "content-desc": "Sat, Mar 11",
+        "content-desc": "Sun, Mar 12",
         "checkable": false,
         "checked": false,
         "clickable": true,
@@ -219,9 +219,9 @@
         ],
         "id": 7,
         "leaf-id": 1,
-        "caption": "open navigation drawer",
+        "caption": "<unk>",
         "icon-cls": null,
-        "description": "Sat, Mar 11 / Sat, Mar 11"
+        "description": "Sun, Mar 12"
     },
     {
         "text": "",
@@ -277,7 +277,7 @@
         "leaf-id": 3,
         "caption": "<unk>",
         "icon-cls": "twitter",
-        "description": "Twitter / Twitter"
+        "description": "Twitter"
     },
     {
         "text": "",
@@ -303,7 +303,7 @@
         ],
         "id": 10,
         "leaf-id": 4,
-        "caption": "channel view window",
+        "caption": "illustration",
         "icon-cls": "more",
         "description": "Home"
     },
@@ -420,7 +420,7 @@
         "leaf-id": 6,
         "caption": "take <unk>",
         "icon-cls": "call",
-        "description": "Phone / Phone"
+        "description": "Phone"
     },
     {
         "text": "Messages",
@@ -448,7 +448,7 @@
         "leaf-id": 7,
         "caption": "<unk>",
         "icon-cls": null,
-        "description": "Messages / Messages"
+        "description": "Messages"
     },
     {
         "text": "Play Store",
@@ -476,7 +476,7 @@
         "leaf-id": 8,
         "caption": "<unk>",
         "icon-cls": "play",
-        "description": "Play Store / Play Store"
+        "description": "Play Store"
     },
     {
         "text": "Chrome",
@@ -504,7 +504,7 @@
         "leaf-id": 9,
         "caption": "take <unk>",
         "icon-cls": null,
-        "description": "Chrome / Chrome"
+        "description": "Chrome"
     },
     {
         "text": "Camera",
@@ -532,7 +532,7 @@
         "leaf-id": 10,
         "caption": "sound",
         "icon-cls": "photo",
-        "description": "Camera / Camera"
+        "description": "Camera"
     },
     {
         "text": "",
