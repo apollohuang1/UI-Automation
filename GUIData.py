@@ -151,7 +151,7 @@ class GUIData:
             if len(ele['text']) > 0:
                 description += ele['text']
             # check content description
-            if 'content-desc' in ele and len(ele['content-desc']) > 0:
+            if 'content-desc' in ele and len(ele['content-desc']) > 0 and ele['content-desc'] != ele['text']:
                 description = ele['content-desc'] if len(description) == 0 else description + ' / ' + ele['content-desc']
             # if no text and content description, check caption
             if len(description) == 0:
@@ -259,7 +259,8 @@ class GUIData:
                 if 'children' in block:
                     l2_blocks += block['children']
                 else:
-                    l2_blocks.append(block)
+                    if block['bounds'][2] - block['bounds'][0] > 20 and block['bounds'][3] - block['bounds'][1] > 20:
+                        l2_blocks.append(block)
             self.blocks = l2_blocks
 
     def flatten_block_to_elements(self, block):
