@@ -321,18 +321,22 @@ class GUIData:
         cv2.waitKey()
         cv2.destroyWindow('elements')
 
-    def show_element(self, element):
+    def show_element(self, element, show_children=True):
         board = self.img.copy()
         color = (0,255,0) if not element['clickable'] else (0,0,255)
         bounds = element['bounds']
         cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), color, 3)
+        if show_children and 'children_id' in element:
+            for c_id in element['children_id']:
+                bounds = self.elements[c_id]['bounds']
+                cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), (255,0,255), 3)
         cv2.imshow('element', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
         cv2.waitKey()
         cv2.destroyWindow('element')
 
-    def show_element_by_id(self, ele_id):
+    def show_element_by_id(self, ele_id, show_children=True):
         element = self.elements[ele_id]
-        self.show_element(element)
+        self.show_element(element, show_children)
 
     def show_screen(self):
         cv2.imshow('screen', self.img)
