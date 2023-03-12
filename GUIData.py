@@ -66,6 +66,7 @@ class GUIData:
         # clean up the json tree to remove redundant layout node
         self.prone_invalid_children(element_root)
         self.remove_redundant_nesting(element_root)
+        self.merge_element_with_single_leaf_child(element_root)
         self.extract_children_elements(element_root)
         self.gather_leaf_elements()
         json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
@@ -118,6 +119,25 @@ class GUIData:
             else:
                 element['children'] = new_children
         return [element]
+
+    def merge_element_with_single_leaf_child(self, element):
+        '''
+        Keep the resource-id and class and clickable of the child element
+        '''
+        if 'children' in element:
+            if len(element['children']) == 1 and 'children' not in element['children'][0]:
+                child = element['children'][0]
+                element['resource-id'] = child['resource-id']
+                element['class'] = child['class']
+                element['clickable'] = child['clickable']
+                del element['children']
+            else:
+                new_children = []
+                for child in element['children']:
+                    new_children.append(self.merge_element_with_single_leaf_child(child))
+                element['children'] = new_children
+        return element
+
 
     def extract_children_elements(self, element):
         '''
@@ -256,30 +276,30 @@ class GUIData:
         Partition the UI into several blocks
         => self.blocks
         '''
-        self.blocks = self.element_tree['children']
-        # deeper = False
-        # for child in l1_children:
-        #     desc = ''
-        #     if 'class' in child:
-        #         desc += child['class'].lower()
-        #     if 'resource-id' in child:
-        #         desc += child['resource-id'].lower()
-        #     if 'description' in child:
-        #         desc += child['description'].lower()
-        #     # if there is a background in the first level of root children, go deeper
-        #     if 'background' in desc and 'children' not in child:
-        #         deeper = True
-        #     else:
-        #         self.blocks.append(child)
-        # if deeper:
-        #     l2_blocks = []
-        #     for block in self.blocks:
-        #         if 'children' in block:
-        #             l2_blocks += block['children']
-        #         else:
-        #             if block['bounds'][2] - block['bounds'][0] > 20 and block['bounds'][3] - block['bounds'][1] > 20:
-        #                 l2_blocks.append(block)
-        #     self.blocks = l2_blocks
+        l1_children = self.element_tree['children']
+        deeper = False
+        for child in l1_children:
+            desc = ''
+            if 'class' in child:
+                desc += child['class'].lower()
+            if 'resource-id' in child:
+                desc += child['resource-id'].lower()
+            if 'description' in child:
+                desc += child['description'].lower()
+            # if there is a background in the first level of root children, go deeper
+            if 'background' in desc and 'children' not in child:
+                deeper = True
+            else:
+                self.blocks.append(child)
+        if deeper:
+            l2_blocks = []
+            for block in self.blocks:
+                if 'children' in block:
+                    l2_blocks += block['children']
+                else:
+                    if block['bounds'][2] - block['bounds'][0] > 20 and block['bounds'][3] - block['bounds'][1] > 20:
+                        l2_blocks.append(block)
+            self.blocks = l2_blocks
 
     def flatten_block_to_elements(self, block):
         block_cp = copy.deepcopy(block)

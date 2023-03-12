@@ -49,17 +49,10 @@
                                     "description": "For you"
                                 },
                                 {
-                                    "class": ".widget.LinearLayout",
+                                    "class": ".widget.TextView",
                                     "clickable": true,
                                     "id": 8,
-                                    "children": [
-                                        {
-                                            "class": ".widget.TextView",
-                                            "clickable": true,
-                                            "id": 9,
-                                            "description": "Following"
-                                        }
-                                    ]
+                                    "description": "Following"
                                 }
                             ]
                         },
@@ -67,53 +60,53 @@
                             "resource-id": ".twitter:id/nested_coordinator_layout",
                             "class": ".widget.ScrollView",
                             "clickable": false,
-                            "id": 10,
+                            "id": 9,
                             "children": [
                                 {
                                     "resource-id": ":id/list",
                                     "class": "x.recyclerview.widget.RecyclerView",
                                     "clickable": false,
-                                    "id": 11,
+                                    "id": 10,
                                     "children": [
                                         {
                                             "class": ".view.ViewGroup",
                                             "clickable": true,
-                                            "id": 12,
+                                            "id": 11,
                                             "children": [
                                                 {
                                                     "resource-id": ".twitter:id/row",
                                                     "class": ".view.ViewGroup",
                                                     "clickable": true,
-                                                    "id": 13,
+                                                    "id": 12,
                                                     "children": [
                                                         {
                                                             "class": "ddw",
                                                             "clickable": true,
-                                                            "id": 14,
+                                                            "id": 13,
                                                             "description": "primary photo"
                                                         },
                                                         {
                                                             "class": ".widget.ImageView",
                                                             "clickable": true,
-                                                            "id": 15,
+                                                            "id": 14,
                                                             "description": "primary photo"
                                                         },
                                                         {
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
-                                                            "id": 16,
+                                                            "id": 15,
                                                             "children": [
                                                                 {
                                                                     "class": ".view.View",
                                                                     "clickable": true,
-                                                                    "id": 17,
+                                                                    "id": 16,
                                                                     "description": "primary photo"
                                                                 },
                                                                 {
                                                                     "resource-id": ".twitter:id/av_badge_duration_text",
                                                                     "class": ".widget.TextView",
                                                                     "clickable": true,
-                                                                    "id": 18,
+                                                                    "id": 17,
                                                                     "description": "0:59"
                                                                 }
                                                             ]
@@ -122,31 +115,31 @@
                                                             "resource-id": ".twitter:id/view_counts",
                                                             "class": ".widget.TextView",
                                                             "clickable": true,
-                                                            "id": 19,
+                                                            "id": 18,
                                                             "description": "1,633 views"
                                                         },
                                                         {
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
-                                                            "id": 20,
+                                                            "id": 19,
                                                             "children": [
                                                                 {
                                                                     "resource-id": ".twitter:id/inline_reply",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
-                                                                    "id": 21,
+                                                                    "id": 20,
                                                                     "children": [
                                                                         {
                                                                             "resource-id": ".twitter:id/inline_action_item_icon",
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
-                                                                            "id": 22,
+                                                                            "id": 21,
                                                                             "description": "chat"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
                                                                             "clickable": true,
-                                                                            "id": 23,
+                                                                            "id": 22,
                                                                             "description": "2"
                                                                         }
                                                                     ]
@@ -155,19 +148,19 @@
                                                                     "resource-id": ".twitter:id/inline_retweet",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
-                                                                    "id": 24,
+                                                                    "id": 23,
                                                                     "children": [
                                                                         {
                                                                             "resource-id": ".twitter:id/inline_action_item_icon",
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
-                                                                            "id": 25,
+                                                                            "id": 24,
                                                                             "description": "switch direction"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
                                                                             "clickable": true,
-                                                                            "id": 26,
+                                                                            "id": 25,
                                                                             "description": "11"
                                                                         }
                                                                     ]
@@ -176,19 +169,19 @@
                                                                     "resource-id": ".twitter:id/inline_like",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
-                                                                    "id": 27,
+                                                                    "id": 26,
                                                                     "children": [
                                                                         {
                                                                             "resource-id": ".twitter:id/inline_action_item_icon",
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
-                                                                            "id": 28,
+                                                                            "id": 27,
                                                                             "description": "favorite"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
                                                                             "clickable": true,
-                                                                            "id": 29,
+                                                                            "id": 28,
                                                                             "description": "54"
                                                                         }
                                                                     ]
@@ -197,204 +190,28 @@
                                                                     "resource-id": ".twitter:id/inline_view_count",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
-                                                                    "id": 30,
+                                                                    "id": 29,
                                                                     "children": [
                                                                         {
                                                                             "resource-id": ".twitter:id/inline_action_item_icon",
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
-                                                                            "id": 31,
+                                                                            "id": 30,
                                                                             "description": "settings"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
                                                                             "clickable": true,
-                                                                            "id": 32,
+                                                                            "id": 31,
                                                                             "description": "4,829"
                                                                         }
                                                                     ]
                                                                 },
                                                                 {
-                                                                    "resource-id": ".twitter:id/inline_twitter_share",
-                                                                    "class": ".view.ViewGroup",
-                                                                    "clickable": true,
-                                                                    "id": 33,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 34,
-                                                                            "description": "share"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "resource-id": ".twitter:id/row",
-                                            "class": ".view.ViewGroup",
-                                            "clickable": true,
-                                            "id": 35,
-                                            "children": [
-                                                {
-                                                    "resource-id": ".twitter:id/social_context_badge",
-                                                    "class": ".widget.ImageView",
-                                                    "clickable": true,
-                                                    "id": 36,
-                                                    "description": "chat"
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/tweet_social_context",
-                                                    "class": ".view.ViewGroup",
-                                                    "clickable": true,
-                                                    "id": 37,
-                                                    "children": [
-                                                        {
-                                                            "resource-id": ".twitter:id/social_context_text",
-                                                            "class": ".widget.TextView",
-                                                            "clickable": true,
-                                                            "id": 38,
-                                                            "description": "Elon Musk replied"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "class": ".widget.ImageView",
-                                                    "clickable": true,
-                                                    "id": 39,
-                                                    "description": "avatar"
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/tweet_header",
-                                                    "class": ".view.ViewGroup",
-                                                    "clickable": true,
-                                                    "id": 40
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/tweet_curation_action",
-                                                    "class": ".widget.ImageView",
-                                                    "clickable": true,
-                                                    "id": 41,
-                                                    "description": "more"
-                                                },
-                                                {
-                                                    "class": ".view.View",
-                                                    "clickable": true,
-                                                    "id": 42,
-                                                    "description": "\ud83c\uddf3\ud83c\uddf1 The Dutch government is ramping up the intimidation & obstruction tactics in light of the upcoming farmers protest in The Hague this Saturday: the mayor has said army trucks may be deployed and has ordered the farmers to not take tractors to the protest."
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/tweet_connector_bottom",
-                                                    "class": ".view.View",
-                                                    "clickable": true,
-                                                    "id": 43,
-                                                    "description": "loading"
-                                                },
-                                                {
-                                                    "class": ".view.ViewGroup",
-                                                    "clickable": true,
-                                                    "id": 44,
-                                                    "children": [
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_reply",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "id": 45,
-                                                            "children": [
-                                                                {
                                                                     "resource-id": ".twitter:id/inline_action_item_icon",
                                                                     "class": ".widget.ImageView",
                                                                     "clickable": true,
-                                                                    "id": 46,
-                                                                    "description": "chat"
-                                                                },
-                                                                {
-                                                                    "class": ".widget.TextView",
-                                                                    "clickable": true,
-                                                                    "id": 47,
-                                                                    "description": "995"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_retweet",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "id": 48,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 49,
-                                                                    "description": "switch direction"
-                                                                },
-                                                                {
-                                                                    "class": ".widget.TextView",
-                                                                    "clickable": true,
-                                                                    "id": 50,
-                                                                    "description": "4,727"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_like",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "id": 51,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 52,
-                                                                    "description": "favorite"
-                                                                },
-                                                                {
-                                                                    "class": ".widget.TextView",
-                                                                    "clickable": true,
-                                                                    "id": 53,
-                                                                    "description": "17.8K"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_view_count",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "id": 54,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 55,
-                                                                    "description": "settings"
-                                                                },
-                                                                {
-                                                                    "class": ".widget.TextView",
-                                                                    "clickable": true,
-                                                                    "id": 56,
-                                                                    "description": "2.7M"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_twitter_share",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "id": 57,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 58,
+                                                                    "id": 32,
                                                                     "description": "share"
                                                                 }
                                                             ]
@@ -404,70 +221,221 @@
                                             ]
                                         },
                                         {
+                                            "resource-id": ".twitter:id/row",
                                             "class": ".view.ViewGroup",
                                             "clickable": true,
-                                            "id": 59,
+                                            "id": 33,
+                                            "children": [
+                                                {
+                                                    "resource-id": ".twitter:id/social_context_badge",
+                                                    "class": ".widget.ImageView",
+                                                    "clickable": true,
+                                                    "id": 34,
+                                                    "description": "chat"
+                                                },
+                                                {
+                                                    "resource-id": ".twitter:id/social_context_text",
+                                                    "class": ".widget.TextView",
+                                                    "clickable": true,
+                                                    "id": 35
+                                                },
+                                                {
+                                                    "class": ".widget.ImageView",
+                                                    "clickable": true,
+                                                    "id": 36,
+                                                    "description": "avatar"
+                                                },
+                                                {
+                                                    "resource-id": ".twitter:id/tweet_header",
+                                                    "class": ".view.ViewGroup",
+                                                    "clickable": true,
+                                                    "id": 37
+                                                },
+                                                {
+                                                    "resource-id": ".twitter:id/tweet_curation_action",
+                                                    "class": ".widget.ImageView",
+                                                    "clickable": true,
+                                                    "id": 38,
+                                                    "description": "more"
+                                                },
+                                                {
+                                                    "class": ".view.View",
+                                                    "clickable": true,
+                                                    "id": 39,
+                                                    "description": "\ud83c\uddf3\ud83c\uddf1 The Dutch government is ramping up the intimidation & obstruction tactics in light of the upcoming farmers protest in The Hague this Saturday: the mayor has said army trucks may be deployed and has ordered the farmers to not take tractors to the protest."
+                                                },
+                                                {
+                                                    "resource-id": ".twitter:id/tweet_connector_bottom",
+                                                    "class": ".view.View",
+                                                    "clickable": true,
+                                                    "id": 40,
+                                                    "description": "loading"
+                                                },
+                                                {
+                                                    "class": ".view.ViewGroup",
+                                                    "clickable": true,
+                                                    "id": 41,
+                                                    "children": [
+                                                        {
+                                                            "resource-id": ".twitter:id/inline_reply",
+                                                            "class": ".view.ViewGroup",
+                                                            "clickable": true,
+                                                            "id": 42,
+                                                            "children": [
+                                                                {
+                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                    "class": ".widget.ImageView",
+                                                                    "clickable": true,
+                                                                    "id": 43,
+                                                                    "description": "chat"
+                                                                },
+                                                                {
+                                                                    "class": ".widget.TextView",
+                                                                    "clickable": true,
+                                                                    "id": 44,
+                                                                    "description": "995"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "resource-id": ".twitter:id/inline_retweet",
+                                                            "class": ".view.ViewGroup",
+                                                            "clickable": true,
+                                                            "id": 45,
+                                                            "children": [
+                                                                {
+                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                    "class": ".widget.ImageView",
+                                                                    "clickable": true,
+                                                                    "id": 46,
+                                                                    "description": "switch direction"
+                                                                },
+                                                                {
+                                                                    "class": ".widget.TextView",
+                                                                    "clickable": true,
+                                                                    "id": 47,
+                                                                    "description": "4,727"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "resource-id": ".twitter:id/inline_like",
+                                                            "class": ".view.ViewGroup",
+                                                            "clickable": true,
+                                                            "id": 48,
+                                                            "children": [
+                                                                {
+                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                    "class": ".widget.ImageView",
+                                                                    "clickable": true,
+                                                                    "id": 49,
+                                                                    "description": "favorite"
+                                                                },
+                                                                {
+                                                                    "class": ".widget.TextView",
+                                                                    "clickable": true,
+                                                                    "id": 50,
+                                                                    "description": "17.8K"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "resource-id": ".twitter:id/inline_view_count",
+                                                            "class": ".view.ViewGroup",
+                                                            "clickable": true,
+                                                            "id": 51,
+                                                            "children": [
+                                                                {
+                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                    "class": ".widget.ImageView",
+                                                                    "clickable": true,
+                                                                    "id": 52,
+                                                                    "description": "settings"
+                                                                },
+                                                                {
+                                                                    "class": ".widget.TextView",
+                                                                    "clickable": true,
+                                                                    "id": 53,
+                                                                    "description": "2.7M"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "resource-id": ".twitter:id/inline_action_item_icon",
+                                                            "class": ".widget.ImageView",
+                                                            "clickable": true,
+                                                            "id": 54,
+                                                            "description": "share"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "class": ".view.ViewGroup",
+                                            "clickable": true,
+                                            "id": 55,
                                             "children": [
                                                 {
                                                     "resource-id": ".twitter:id/row",
                                                     "class": ".view.ViewGroup",
                                                     "clickable": true,
-                                                    "id": 60,
+                                                    "id": 56,
                                                     "children": [
                                                         {
                                                             "resource-id": ".twitter:id/tweet_connector_top",
                                                             "class": ".view.View",
                                                             "clickable": true,
-                                                            "id": 61,
+                                                            "id": 57,
                                                             "description": "search"
                                                         },
                                                         {
                                                             "class": ".widget.ImageView",
                                                             "clickable": true,
-                                                            "id": 62,
+                                                            "id": 58,
                                                             "description": "avatar"
                                                         },
                                                         {
                                                             "resource-id": ".twitter:id/tweet_header",
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
-                                                            "id": 63
+                                                            "id": 59
                                                         },
                                                         {
                                                             "resource-id": ".twitter:id/tweet_curation_action",
                                                             "class": ".widget.ImageView",
                                                             "clickable": true,
-                                                            "id": 64,
+                                                            "id": 60,
                                                             "description": "more"
                                                         },
                                                         {
                                                             "class": ".view.View",
                                                             "clickable": true,
-                                                            "id": 65,
+                                                            "id": 61,
                                                             "description": "!"
                                                         },
                                                         {
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
-                                                            "id": 66,
+                                                            "id": 62,
                                                             "children": [
                                                                 {
                                                                     "resource-id": ".twitter:id/inline_reply",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
-                                                                    "id": 67,
+                                                                    "id": 63,
                                                                     "children": [
                                                                         {
                                                                             "resource-id": ".twitter:id/inline_action_item_icon",
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
-                                                                            "id": 68,
+                                                                            "id": 64,
                                                                             "description": "chat"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
                                                                             "clickable": true,
-                                                                            "id": 69,
+                                                                            "id": 65,
                                                                             "description": "536"
                                                                         }
                                                                     ]
@@ -476,19 +444,19 @@
                                                                     "resource-id": ".twitter:id/inline_retweet",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
-                                                                    "id": 70,
+                                                                    "id": 66,
                                                                     "children": [
                                                                         {
                                                                             "resource-id": ".twitter:id/inline_action_item_icon",
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
-                                                                            "id": 71,
+                                                                            "id": 67,
                                                                             "description": "switch direction"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
                                                                             "clickable": true,
-                                                                            "id": 72,
+                                                                            "id": 68,
                                                                             "description": "698"
                                                                         }
                                                                     ]
@@ -497,19 +465,19 @@
                                                                     "resource-id": ".twitter:id/inline_like",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
-                                                                    "id": 73,
+                                                                    "id": 69,
                                                                     "children": [
                                                                         {
                                                                             "resource-id": ".twitter:id/inline_action_item_icon",
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
-                                                                            "id": 74,
+                                                                            "id": 70,
                                                                             "description": "favorite"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
                                                                             "clickable": true,
-                                                                            "id": 75,
+                                                                            "id": 71,
                                                                             "description": "9,049"
                                                                         }
                                                                     ]
@@ -518,37 +486,29 @@
                                                                     "resource-id": ".twitter:id/inline_view_count",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
-                                                                    "id": 76,
+                                                                    "id": 72,
                                                                     "children": [
                                                                         {
                                                                             "resource-id": ".twitter:id/inline_action_item_icon",
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
-                                                                            "id": 77,
+                                                                            "id": 73,
                                                                             "description": "settings"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
                                                                             "clickable": true,
-                                                                            "id": 78,
+                                                                            "id": 74,
                                                                             "description": "1.3M"
                                                                         }
                                                                     ]
                                                                 },
                                                                 {
-                                                                    "resource-id": ".twitter:id/inline_twitter_share",
-                                                                    "class": ".view.ViewGroup",
+                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                    "class": ".widget.ImageView",
                                                                     "clickable": true,
-                                                                    "id": 79,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 80,
-                                                                            "description": "share"
-                                                                        }
-                                                                    ]
+                                                                    "id": 75,
+                                                                    "description": "share"
                                                                 }
                                                             ]
                                                         }
@@ -560,56 +520,49 @@
                                             "resource-id": ".twitter:id/row",
                                             "class": ".view.ViewGroup",
                                             "clickable": true,
-                                            "id": 81,
+                                            "id": 76,
                                             "children": [
                                                 {
                                                     "class": ".widget.ImageView",
                                                     "clickable": true,
-                                                    "id": 82,
+                                                    "id": 77,
                                                     "description": "avatar"
                                                 },
                                                 {
                                                     "resource-id": ".twitter:id/tweet_header",
                                                     "class": ".view.ViewGroup",
                                                     "clickable": true,
-                                                    "id": 83
+                                                    "id": 78
                                                 },
                                                 {
                                                     "resource-id": ".twitter:id/tweet_curation_action",
                                                     "class": ".widget.ImageView",
                                                     "clickable": true,
-                                                    "id": 84,
+                                                    "id": 79,
                                                     "description": "more"
                                                 },
                                                 {
                                                     "class": ".view.View",
                                                     "clickable": true,
-                                                    "id": 85,
+                                                    "id": 80,
                                                     "description": "Discover the roles and see how you can safeguard the skies. #WhatIsUp"
                                                 },
                                                 {
                                                     "class": ".widget.FrameLayout",
                                                     "clickable": true,
-                                                    "id": 86,
+                                                    "id": 81,
                                                     "children": [
                                                         {
                                                             "class": "ddw",
                                                             "clickable": true,
-                                                            "id": 87,
+                                                            "id": 82,
                                                             "description": "loading wallpaper"
                                                         },
                                                         {
-                                                            "class": ".view.ViewGroup",
+                                                            "class": ".view.View",
                                                             "clickable": true,
-                                                            "id": 88,
-                                                            "children": [
-                                                                {
-                                                                    "class": ".view.View",
-                                                                    "clickable": true,
-                                                                    "id": 89,
-                                                                    "description": "loading wallpaper"
-                                                                }
-                                                            ]
+                                                            "id": 83,
+                                                            "description": "loading wallpaper"
                                                         }
                                                     ]
                                                 }
@@ -622,85 +575,51 @@
                     ]
                 },
                 {
-                    "class": ".view.ViewGroup",
-                    "clickable": false,
-                    "id": 90,
-                    "children": [
-                        {
-                            "resource-id": ".twitter:id/poser_write",
-                            "class": ".widget.ImageButton",
-                            "clickable": true,
-                            "id": 91,
-                            "description": "New Tweet"
-                        }
-                    ]
+                    "resource-id": ".twitter:id/poser_write",
+                    "class": ".widget.ImageButton",
+                    "clickable": true,
+                    "id": 84,
+                    "description": "add"
                 },
                 {
                     "resource-id": ".twitter:id/tabs",
                     "class": ".widget.HorizontalScrollView",
                     "clickable": false,
-                    "id": 92,
+                    "id": 85,
                     "children": [
                         {
                             "resource-id": ".twitter:id/channels",
                             "class": ".view.View",
                             "clickable": false,
-                            "id": 93,
+                            "id": 86,
                             "description": "close navigation drawer"
                         },
                         {
-                            "class": ".widget.LinearLayout",
+                            "class": ".view.View",
                             "clickable": true,
-                            "id": 94,
-                            "children": [
-                                {
-                                    "class": ".view.View",
-                                    "clickable": true,
-                                    "id": 95,
-                                    "description": "search"
-                                }
-                            ]
+                            "id": 87,
+                            "description": "Search and Explore"
                         },
                         {
-                            "class": ".widget.LinearLayout",
+                            "resource-id": ".twitter:id/spaces",
+                            "class": ".view.View",
                             "clickable": true,
-                            "id": 96,
-                            "children": [
-                                {
-                                    "resource-id": ".twitter:id/spaces",
-                                    "class": ".view.View",
-                                    "clickable": true,
-                                    "id": 97
-                                }
-                            ]
+                            "id": 88,
+                            "description": "Spaces"
                         },
                         {
-                            "class": ".widget.LinearLayout",
+                            "resource-id": ".twitter:id/notifications",
+                            "class": ".view.View",
                             "clickable": true,
-                            "id": 98,
-                            "children": [
-                                {
-                                    "resource-id": ".twitter:id/notifications",
-                                    "class": ".view.View",
-                                    "clickable": true,
-                                    "id": 99,
-                                    "description": "notifications"
-                                }
-                            ]
+                            "id": 89,
+                            "description": "Notifications"
                         },
                         {
-                            "class": ".widget.LinearLayout",
+                            "resource-id": ".twitter:id/dms",
+                            "class": ".view.View",
                             "clickable": true,
-                            "id": 100,
-                            "children": [
-                                {
-                                    "resource-id": ".twitter:id/dms",
-                                    "class": ".view.View",
-                                    "clickable": true,
-                                    "id": 101,
-                                    "description": "email"
-                                }
-                            ]
+                            "id": 90,
+                            "description": "Messages"
                         }
                     ]
                 }
@@ -710,7 +629,7 @@
             "resource-id": ":id/statusBarBackground",
             "class": ".view.View",
             "clickable": false,
-            "id": 102
+            "id": 91
         }
     ]
 }

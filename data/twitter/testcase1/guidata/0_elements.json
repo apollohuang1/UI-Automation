@@ -24,7 +24,7 @@
         "id": 0,
         "children-id": [
             1,
-            102
+            91
         ]
     },
     {
@@ -53,8 +53,8 @@
         "children-id": [
             2,
             5,
-            90,
-            92
+            84,
+            85
         ]
     },
     {
@@ -166,7 +166,7 @@
         "id": 5,
         "children-id": [
             6,
-            10
+            9
         ]
     },
     {
@@ -228,7 +228,7 @@
     {
         "text": "",
         "resource-id": "",
-        "class": "android.widget.LinearLayout",
+        "class": "android.widget.TextView",
         "package": "com.twitter.android",
         "content-desc": "Following",
         "checkable": false,
@@ -248,35 +248,8 @@
             352
         ],
         "id": 8,
-        "children-id": [
-            9
-        ]
-    },
-    {
-        "text": "Following",
-        "resource-id": "",
-        "class": "android.widget.TextView",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            715,
-            261,
-            893,
-            311
-        ],
-        "id": 9,
         "leaf-id": 3,
-        "caption": "<unk>",
+        "caption": "loading",
         "icon-cls": null,
         "description": "Following"
     },
@@ -302,9 +275,9 @@
             1080,
             2214
         ],
-        "id": 10,
+        "id": 9,
         "children-id": [
-            11
+            10
         ]
     },
     {
@@ -329,12 +302,12 @@
             1080,
             2214
         ],
-        "id": 11,
+        "id": 10,
         "children-id": [
-            12,
-            35,
-            59,
-            81
+            11,
+            33,
+            55,
+            76
         ]
     },
     {
@@ -359,9 +332,9 @@
             1080,
             689
         ],
-        "id": 12,
+        "id": 11,
         "children-id": [
-            13
+            12
         ]
     },
     {
@@ -386,13 +359,13 @@
             1080,
             688
         ],
-        "id": 13,
+        "id": 12,
         "children-id": [
+            13,
             14,
             15,
-            16,
-            19,
-            20
+            18,
+            19
         ]
     },
     {
@@ -417,7 +390,7 @@
             1047,
             512
         ],
-        "id": 14,
+        "id": 13,
         "leaf-id": 4,
         "caption": "primary photo",
         "icon-cls": null,
@@ -445,7 +418,7 @@
             1047,
             512
         ],
-        "id": 15,
+        "id": 14,
         "leaf-id": 5,
         "caption": "primary photo",
         "icon-cls": null,
@@ -473,10 +446,10 @@
             1047,
             512
         ],
-        "id": 16,
+        "id": 15,
         "children-id": [
-            17,
-            18
+            16,
+            17
         ]
     },
     {
@@ -501,7 +474,7 @@
             1003,
             468
         ],
-        "id": 17,
+        "id": 16,
         "leaf-id": 6,
         "caption": "primary photo",
         "icon-cls": null,
@@ -529,7 +502,7 @@
             322,
             490
         ],
-        "id": 18,
+        "id": 17,
         "leaf-id": 7,
         "caption": "search",
         "icon-cls": null,
@@ -557,7 +530,7 @@
             397,
             578
         ],
-        "id": 19,
+        "id": 18,
         "leaf-id": 8,
         "caption": "<unk>",
         "icon-cls": null,
@@ -585,13 +558,13 @@
             1047,
             688
         ],
-        "id": 20,
+        "id": 19,
         "children-id": [
-            21,
-            24,
-            27,
-            30,
-            33
+            20,
+            23,
+            26,
+            29,
+            32
         ]
     },
     {
@@ -616,10 +589,10 @@
             370,
             688
         ],
-        "id": 21,
+        "id": 20,
         "children-id": [
-            22,
-            23
+            21,
+            22
         ]
     },
     {
@@ -644,7 +617,7 @@
             262,
             658
         ],
-        "id": 22,
+        "id": 21,
         "leaf-id": 9,
         "caption": "<unk>",
         "icon-cls": "chat",
@@ -672,7 +645,7 @@
             288,
             654
         ],
-        "id": 23,
+        "id": 22,
         "leaf-id": 10,
         "caption": "go to the selected page",
         "icon-cls": null,
@@ -700,10 +673,10 @@
             558,
             688
         ],
-        "id": 24,
+        "id": 23,
         "children-id": [
-            25,
-            26
+            24,
+            25
         ]
     },
     {
@@ -728,7 +701,7 @@
             450,
             658
         ],
-        "id": 25,
+        "id": 24,
         "leaf-id": 11,
         "caption": "switch direction",
         "icon-cls": null,
@@ -756,7 +729,7 @@
             486,
             654
         ],
-        "id": 26,
+        "id": 25,
         "leaf-id": 12,
         "caption": "switch direction",
         "icon-cls": null,
@@ -784,10 +757,10 @@
             746,
             688
         ],
-        "id": 27,
+        "id": 26,
         "children-id": [
-            28,
-            29
+            27,
+            28
         ]
     },
     {
@@ -812,7 +785,7 @@
             638,
             658
         ],
-        "id": 28,
+        "id": 27,
         "leaf-id": 13,
         "caption": "add to favorites",
         "icon-cls": "favorite",
@@ -840,7 +813,7 @@
             686,
             654
         ],
-        "id": 29,
+        "id": 28,
         "leaf-id": 14,
         "caption": "<unk>",
         "icon-cls": null,
@@ -868,10 +841,10 @@
             934,
             688
         ],
-        "id": 30,
+        "id": 29,
         "children-id": [
-            31,
-            32
+            30,
+            31
         ]
     },
     {
@@ -896,7 +869,7 @@
             826,
             658
         ],
-        "id": 31,
+        "id": 30,
         "leaf-id": 15,
         "caption": "settings",
         "icon-cls": null,
@@ -924,7 +897,7 @@
             924,
             654
         ],
-        "id": 32,
+        "id": 31,
         "leaf-id": 16,
         "caption": "choose stream",
         "icon-cls": "group",
@@ -933,8 +906,8 @@
     {
         "NAF": true,
         "text": "",
-        "resource-id": "com.twitter.android:id/inline_twitter_share",
-        "class": "android.view.ViewGroup",
+        "resource-id": "com.twitter.android:id/inline_action_item_icon",
+        "class": "android.widget.ImageView",
         "package": "com.twitter.android",
         "content-desc": "",
         "checkable": false,
@@ -953,36 +926,9 @@
             1047,
             688
         ],
-        "id": 33,
-        "children-id": [
-            34
-        ]
-    },
-    {
-        "text": "",
-        "resource-id": "com.twitter.android:id/inline_action_item_icon",
-        "class": "android.widget.ImageView",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            964,
-            608,
-            1014,
-            658
-        ],
-        "id": 34,
+        "id": 32,
         "leaf-id": 17,
-        "caption": "search",
+        "caption": "<unk>",
         "icon-cls": "share",
         "description": "share"
     },
@@ -1008,16 +954,16 @@
             1080,
             1269
         ],
-        "id": 35,
+        "id": 33,
         "children-id": [
+            34,
+            35,
             36,
             37,
+            38,
             39,
             40,
-            41,
-            42,
-            43,
-            44
+            41
         ]
     },
     {
@@ -1042,7 +988,7 @@
             182,
             761
         ],
-        "id": 36,
+        "id": 34,
         "leaf-id": 18,
         "caption": "paint",
         "icon-cls": "chat",
@@ -1050,8 +996,8 @@
     },
     {
         "text": "",
-        "resource-id": "com.twitter.android:id/tweet_social_context",
-        "class": "android.view.ViewGroup",
+        "resource-id": "com.twitter.android:id/social_context_text",
+        "class": "android.widget.TextView",
         "package": "com.twitter.android",
         "content-desc": "",
         "checkable": false,
@@ -1070,38 +1016,11 @@
             1080,
             766
         ],
-        "id": 37,
-        "children-id": [
-            38
-        ]
-    },
-    {
-        "text": "Elon Musk replied",
-        "resource-id": "com.twitter.android:id/social_context_text",
-        "class": "android.widget.TextView",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": true,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            210,
-            689,
-            512,
-            766
-        ],
-        "id": 38,
+        "id": 35,
         "leaf-id": 19,
-        "caption": "<unk>",
+        "caption": "<unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk>",
         "icon-cls": null,
-        "description": "Elon Musk replied"
+        "description": null
     },
     {
         "text": "",
@@ -1125,7 +1044,7 @@
             182,
             937
         ],
-        "id": 39,
+        "id": 36,
         "leaf-id": 20,
         "caption": "profile photo",
         "icon-cls": "avatar",
@@ -1153,7 +1072,7 @@
             981,
             829
         ],
-        "id": 40,
+        "id": 37,
         "leaf-id": 21,
         "caption": "<unk>",
         "icon-cls": null,
@@ -1182,7 +1101,7 @@
             1069,
             847
         ],
-        "id": 41,
+        "id": 38,
         "leaf-id": 22,
         "caption": "more options",
         "icon-cls": "more",
@@ -1210,7 +1129,7 @@
             1047,
             1159
         ],
-        "id": 42,
+        "id": 39,
         "leaf-id": 23,
         "caption": "<unk> image",
         "icon-cls": null,
@@ -1238,7 +1157,7 @@
             111,
             1269
         ],
-        "id": 43,
+        "id": 40,
         "leaf-id": 24,
         "caption": "loading",
         "icon-cls": null,
@@ -1266,13 +1185,13 @@
             1047,
             1269
         ],
-        "id": 44,
+        "id": 41,
         "children-id": [
+            42,
             45,
             48,
             51,
-            54,
-            57
+            54
         ]
     },
     {
@@ -1297,10 +1216,10 @@
             370,
             1269
         ],
-        "id": 45,
+        "id": 42,
         "children-id": [
-            46,
-            47
+            43,
+            44
         ]
     },
     {
@@ -1325,7 +1244,7 @@
             262,
             1239
         ],
-        "id": 46,
+        "id": 43,
         "leaf-id": 25,
         "caption": "<unk>",
         "icon-cls": "chat",
@@ -1353,7 +1272,7 @@
             331,
             1235
         ],
-        "id": 47,
+        "id": 44,
         "leaf-id": 26,
         "caption": "choose stream",
         "icon-cls": null,
@@ -1381,10 +1300,10 @@
             558,
             1269
         ],
-        "id": 48,
+        "id": 45,
         "children-id": [
-            49,
-            50
+            46,
+            47
         ]
     },
     {
@@ -1409,7 +1328,7 @@
             450,
             1239
         ],
-        "id": 49,
+        "id": 46,
         "leaf-id": 27,
         "caption": "switch direction",
         "icon-cls": null,
@@ -1437,7 +1356,7 @@
             542,
             1235
         ],
-        "id": 50,
+        "id": 47,
         "leaf-id": 28,
         "caption": "choose stream",
         "icon-cls": null,
@@ -1465,10 +1384,10 @@
             746,
             1269
         ],
-        "id": 51,
+        "id": 48,
         "children-id": [
-            52,
-            53
+            49,
+            50
         ]
     },
     {
@@ -1493,7 +1412,7 @@
             638,
             1239
         ],
-        "id": 52,
+        "id": 49,
         "leaf-id": 29,
         "caption": "add to favorites",
         "icon-cls": "favorite",
@@ -1521,7 +1440,7 @@
             728,
             1235
         ],
-        "id": 53,
+        "id": 50,
         "leaf-id": 30,
         "caption": "choose stream",
         "icon-cls": null,
@@ -1549,10 +1468,10 @@
             934,
             1269
         ],
-        "id": 54,
+        "id": 51,
         "children-id": [
-            55,
-            56
+            52,
+            53
         ]
     },
     {
@@ -1577,7 +1496,7 @@
             826,
             1239
         ],
-        "id": 55,
+        "id": 52,
         "leaf-id": 31,
         "caption": "settings",
         "icon-cls": null,
@@ -1605,7 +1524,7 @@
             910,
             1235
         ],
-        "id": 56,
+        "id": 53,
         "leaf-id": 32,
         "caption": "choose",
         "icon-cls": null,
@@ -1614,8 +1533,8 @@
     {
         "NAF": true,
         "text": "",
-        "resource-id": "com.twitter.android:id/inline_twitter_share",
-        "class": "android.view.ViewGroup",
+        "resource-id": "com.twitter.android:id/inline_action_item_icon",
+        "class": "android.widget.ImageView",
         "package": "com.twitter.android",
         "content-desc": "",
         "checkable": false,
@@ -1634,36 +1553,9 @@
             1047,
             1269
         ],
-        "id": 57,
-        "children-id": [
-            58
-        ]
-    },
-    {
-        "text": "",
-        "resource-id": "com.twitter.android:id/inline_action_item_icon",
-        "class": "android.widget.ImageView",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            964,
-            1189,
-            1014,
-            1239
-        ],
-        "id": 58,
+        "id": 54,
         "leaf-id": 33,
-        "caption": "search",
+        "caption": "<unk>",
         "icon-cls": "share",
         "description": "share"
     },
@@ -1689,9 +1581,9 @@
             1080,
             1507
         ],
-        "id": 59,
+        "id": 55,
         "children-id": [
-            60
+            56
         ]
     },
     {
@@ -1716,14 +1608,14 @@
             1080,
             1506
         ],
-        "id": 60,
+        "id": 56,
         "children-id": [
+            57,
+            58,
+            59,
+            60,
             61,
-            62,
-            63,
-            64,
-            65,
-            66
+            62
         ]
     },
     {
@@ -1748,7 +1640,7 @@
             111,
             1296
         ],
-        "id": 61,
+        "id": 57,
         "leaf-id": 34,
         "caption": "search",
         "icon-cls": null,
@@ -1776,7 +1668,7 @@
             182,
             1451
         ],
-        "id": 62,
+        "id": 58,
         "leaf-id": 35,
         "caption": "profile photo",
         "icon-cls": "avatar",
@@ -1804,7 +1696,7 @@
             981,
             1341
         ],
-        "id": 63,
+        "id": 59,
         "leaf-id": 36,
         "caption": "<unk> wifi",
         "icon-cls": null,
@@ -1833,7 +1725,7 @@
             1069,
             1360
         ],
-        "id": 64,
+        "id": 60,
         "leaf-id": 37,
         "caption": "more options",
         "icon-cls": "more",
@@ -1861,7 +1753,7 @@
             1047,
             1396
         ],
-        "id": 65,
+        "id": 61,
         "leaf-id": 38,
         "caption": "<unk>",
         "icon-cls": null,
@@ -1889,13 +1781,13 @@
             1047,
             1506
         ],
-        "id": 66,
+        "id": 62,
         "children-id": [
-            67,
-            70,
-            73,
-            76,
-            79
+            63,
+            66,
+            69,
+            72,
+            75
         ]
     },
     {
@@ -1920,10 +1812,10 @@
             370,
             1506
         ],
-        "id": 67,
+        "id": 63,
         "children-id": [
-            68,
-            69
+            64,
+            65
         ]
     },
     {
@@ -1948,7 +1840,7 @@
             262,
             1476
         ],
-        "id": 68,
+        "id": 64,
         "leaf-id": 39,
         "caption": "<unk>",
         "icon-cls": "chat",
@@ -1976,7 +1868,7 @@
             331,
             1472
         ],
-        "id": 69,
+        "id": 65,
         "leaf-id": 40,
         "caption": "choose stream",
         "icon-cls": null,
@@ -2004,10 +1896,10 @@
             558,
             1506
         ],
-        "id": 70,
+        "id": 66,
         "children-id": [
-            71,
-            72
+            67,
+            68
         ]
     },
     {
@@ -2032,7 +1924,7 @@
             450,
             1476
         ],
-        "id": 71,
+        "id": 67,
         "leaf-id": 41,
         "caption": "switch direction",
         "icon-cls": null,
@@ -2060,7 +1952,7 @@
             519,
             1472
         ],
-        "id": 72,
+        "id": 68,
         "leaf-id": 42,
         "caption": "choose stream",
         "icon-cls": null,
@@ -2088,10 +1980,10 @@
             746,
             1506
         ],
-        "id": 73,
+        "id": 69,
         "children-id": [
-            74,
-            75
+            70,
+            71
         ]
     },
     {
@@ -2116,7 +2008,7 @@
             638,
             1476
         ],
-        "id": 74,
+        "id": 70,
         "leaf-id": 43,
         "caption": "add to favorites",
         "icon-cls": "favorite",
@@ -2144,7 +2036,7 @@
             740,
             1472
         ],
-        "id": 75,
+        "id": 71,
         "leaf-id": 44,
         "caption": "choose stream",
         "icon-cls": null,
@@ -2172,10 +2064,10 @@
             934,
             1506
         ],
-        "id": 76,
+        "id": 72,
         "children-id": [
-            77,
-            78
+            73,
+            74
         ]
     },
     {
@@ -2200,7 +2092,7 @@
             826,
             1476
         ],
-        "id": 77,
+        "id": 73,
         "leaf-id": 45,
         "caption": "settings",
         "icon-cls": null,
@@ -2228,7 +2120,7 @@
             909,
             1472
         ],
-        "id": 78,
+        "id": 74,
         "leaf-id": 46,
         "caption": "choose stream",
         "icon-cls": null,
@@ -2237,8 +2129,8 @@
     {
         "NAF": true,
         "text": "",
-        "resource-id": "com.twitter.android:id/inline_twitter_share",
-        "class": "android.view.ViewGroup",
+        "resource-id": "com.twitter.android:id/inline_action_item_icon",
+        "class": "android.widget.ImageView",
         "package": "com.twitter.android",
         "content-desc": "",
         "checkable": false,
@@ -2257,36 +2149,9 @@
             1047,
             1506
         ],
-        "id": 79,
-        "children-id": [
-            80
-        ]
-    },
-    {
-        "text": "",
-        "resource-id": "com.twitter.android:id/inline_action_item_icon",
-        "class": "android.widget.ImageView",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            964,
-            1426,
-            1014,
-            1476
-        ],
-        "id": 80,
+        "id": 75,
         "leaf-id": 47,
-        "caption": "search",
+        "caption": "<unk>",
         "icon-cls": "share",
         "description": "share"
     },
@@ -2312,13 +2177,13 @@
             1080,
             2214
         ],
-        "id": 81,
+        "id": 76,
         "children-id": [
-            82,
-            83,
-            84,
-            85,
-            86
+            77,
+            78,
+            79,
+            80,
+            81
         ]
     },
     {
@@ -2343,7 +2208,7 @@
             182,
             1689
         ],
-        "id": 82,
+        "id": 77,
         "leaf-id": 48,
         "caption": "<unk>",
         "icon-cls": "avatar",
@@ -2371,7 +2236,7 @@
             981,
             1579
         ],
-        "id": 83,
+        "id": 78,
         "leaf-id": 49,
         "caption": "<unk>",
         "icon-cls": null,
@@ -2400,7 +2265,7 @@
             1069,
             1598
         ],
-        "id": 84,
+        "id": 79,
         "leaf-id": 50,
         "caption": "more options",
         "icon-cls": "more",
@@ -2428,7 +2293,7 @@
             1047,
             1689
         ],
-        "id": 85,
+        "id": 80,
         "leaf-id": 51,
         "caption": "minimize map",
         "icon-cls": null,
@@ -2456,10 +2321,10 @@
             1047,
             2214
         ],
-        "id": 86,
+        "id": 81,
         "children-id": [
-            87,
-            88
+            82,
+            83
         ]
     },
     {
@@ -2484,38 +2349,11 @@
             1046,
             2214
         ],
-        "id": 87,
+        "id": 82,
         "leaf-id": 52,
         "caption": "loading wallpaper",
         "icon-cls": null,
         "description": "loading wallpaper"
-    },
-    {
-        "text": "",
-        "resource-id": "",
-        "class": "android.view.ViewGroup",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            211,
-            1709,
-            1046,
-            2214
-        ],
-        "id": 88,
-        "children-id": [
-            89
-        ]
     },
     {
         "text": "",
@@ -2534,12 +2372,12 @@
         "password": false,
         "selected": false,
         "bounds": [
-            255,
-            1753,
-            1002,
+            211,
+            1709,
+            1046,
             2214
         ],
-        "id": 89,
+        "id": 83,
         "leaf-id": 53,
         "caption": "loading wallpaper",
         "icon-cls": null,
@@ -2547,13 +2385,13 @@
     },
     {
         "text": "",
-        "resource-id": "",
-        "class": "android.view.ViewGroup",
+        "resource-id": "com.twitter.android:id/composer_write",
+        "class": "android.widget.ImageButton",
         "package": "com.twitter.android",
         "content-desc": "",
         "checkable": false,
         "checked": false,
-        "clickable": false,
+        "clickable": true,
         "enabled": true,
         "focusable": false,
         "focused": false,
@@ -2567,38 +2405,11 @@
             1080,
             2060
         ],
-        "id": 90,
-        "children-id": [
-            91
-        ]
-    },
-    {
-        "text": "",
-        "resource-id": "com.twitter.android:id/composer_write",
-        "class": "android.widget.ImageButton",
-        "package": "com.twitter.android",
-        "content-desc": "New Tweet",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": true,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            882,
-            1862,
-            1036,
-            2016
-        ],
-        "id": 91,
+        "id": 84,
         "leaf-id": 54,
-        "caption": "add alarm",
+        "caption": "add first task",
         "icon-cls": "add",
-        "description": "New Tweet"
+        "description": "add"
     },
     {
         "text": "",
@@ -2622,13 +2433,13 @@
             1080,
             2214
         ],
-        "id": 92,
+        "id": 85,
         "children-id": [
-            93,
-            94,
-            96,
-            98,
-            100
+            86,
+            87,
+            88,
+            89,
+            90
         ]
     },
     {
@@ -2653,7 +2464,7 @@
             183,
             2214
         ],
-        "id": 93,
+        "id": 86,
         "leaf-id": 55,
         "caption": "close navigation drawer",
         "icon-cls": null,
@@ -2662,7 +2473,7 @@
     {
         "text": "",
         "resource-id": "",
-        "class": "android.widget.LinearLayout",
+        "class": "android.view.View",
         "package": "com.twitter.android",
         "content-desc": "Search and Explore",
         "checkable": false,
@@ -2681,43 +2492,16 @@
             432,
             2214
         ],
-        "id": 94,
-        "children-id": [
-            95
-        ]
-    },
-    {
-        "text": "",
-        "resource-id": "",
-        "class": "android.view.View",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            249,
-            2060,
-            399,
-            2214
-        ],
-        "id": 95,
+        "id": 87,
         "leaf-id": 56,
-        "caption": "search",
+        "caption": "<unk>",
         "icon-cls": "search",
-        "description": "search"
+        "description": "Search and Explore"
     },
     {
         "text": "",
-        "resource-id": "",
-        "class": "android.widget.LinearLayout",
+        "resource-id": "com.twitter.android:id/spaces",
+        "class": "android.view.View",
         "package": "com.twitter.android",
         "content-desc": "Spaces",
         "checkable": false,
@@ -2736,43 +2520,16 @@
             648,
             2214
         ],
-        "id": 96,
-        "children-id": [
-            97
-        ]
-    },
-    {
-        "text": "",
-        "resource-id": "com.twitter.android:id/spaces",
-        "class": "android.view.View",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            465,
-            2060,
-            615,
-            2214
-        ],
-        "id": 97,
+        "id": 88,
         "leaf-id": 57,
         "caption": "<unk>",
         "icon-cls": null,
-        "description": null
+        "description": "Spaces"
     },
     {
         "text": "",
-        "resource-id": "",
-        "class": "android.widget.LinearLayout",
+        "resource-id": "com.twitter.android:id/notifications",
+        "class": "android.view.View",
         "package": "com.twitter.android",
         "content-desc": "Notifications",
         "checkable": false,
@@ -2791,43 +2548,16 @@
             864,
             2214
         ],
-        "id": 98,
-        "children-id": [
-            99
-        ]
-    },
-    {
-        "text": "",
-        "resource-id": "com.twitter.android:id/notifications",
-        "class": "android.view.View",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            681,
-            2060,
-            831,
-            2214
-        ],
-        "id": 99,
+        "id": 89,
         "leaf-id": 58,
         "caption": "<unk>",
         "icon-cls": "notifications",
-        "description": "notifications"
+        "description": "Notifications"
     },
     {
         "text": "",
-        "resource-id": "",
-        "class": "android.widget.LinearLayout",
+        "resource-id": "com.twitter.android:id/dms",
+        "class": "android.view.View",
         "package": "com.twitter.android",
         "content-desc": "Messages",
         "checkable": false,
@@ -2846,38 +2576,11 @@
             1080,
             2214
         ],
-        "id": 100,
-        "children-id": [
-            101
-        ]
-    },
-    {
-        "text": "",
-        "resource-id": "com.twitter.android:id/dms",
-        "class": "android.view.View",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            897,
-            2060,
-            1047,
-            2214
-        ],
-        "id": 101,
+        "id": 90,
         "leaf-id": 59,
         "caption": "<unk>",
         "icon-cls": "email",
-        "description": "email"
+        "description": "Messages"
     },
     {
         "text": "",
@@ -2901,7 +2604,7 @@
             1080,
             66
         ],
-        "id": 102,
+        "id": 91,
         "leaf-id": 60,
         "caption": "<unk>",
         "icon-cls": null,
