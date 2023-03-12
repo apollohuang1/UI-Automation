@@ -266,8 +266,9 @@ class GUIData:
             self.blocks = l2_blocks
 
     def flatten_block_to_elements(self, block):
+        block_cp = copy.deepcopy(block)
         elements = []
-        nodes = [block]
+        nodes = [block_cp]
         while len(nodes) > 0:
             cur_node = nodes.pop()
             elements.append(cur_node)

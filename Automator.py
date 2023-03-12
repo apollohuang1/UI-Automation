@@ -224,6 +224,23 @@ class Automator:
             device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)
 
     '''
+    ***************
+    *** Testing ***
+    ***************
+    '''
+    def one_prompt_at_once(self, task, ui, role, printlog=False):
+        '''
+        Ask to complete the task without partitioning blocks
+        '''
+        conv = [{'role': 'system', 'content': role},
+                  {'role': 'user',
+                  'content': "Is the given UI related to the task '" + task + "'?\n" +
+                             "UI block: " + json.dumps(ui, indent=2) +
+                             "\nAnswer [Yes] with the id of the target element that is related to the task (for example, 'Yes, Element 1') if any or [No] if not"}]
+        self.ask_openai_conversation(conv, printlog)
+
+
+    '''
     ******************
     *** OpenAI LLM ***
     ******************
