@@ -4,151 +4,79 @@
     "id": 0,
     "children": [
         {
-            "resource-id": "google.apps.nexuslauncher:id/scrim_view",
-            "class": "view.View",
+            "resource-id": "twitter.android:id/coordinator",
+            "class": "view.ViewGroup",
             "clickable": false,
             "id": 1,
-            "description": "more"
-        },
-        {
-            "resource-id": "google.apps.nexuslauncher:id/workspace",
-            "class": "widget.ScrollView",
-            "clickable": false,
-            "id": 2,
             "children": [
                 {
-                    "class": "view.ViewGroup",
+                    "resource-id": "twitter.android:id/touch_outside",
+                    "class": "view.View",
+                    "clickable": true,
+                    "id": 2,
+                    "description": "thumbnail"
+                },
+                {
+                    "resource-id": "twitter.android:id/gripper",
+                    "class": "widget.ImageView",
                     "clickable": false,
                     "id": 3,
+                    "description": "page 4"
+                },
+                {
+                    "class": "widget.ScrollView",
+                    "clickable": false,
+                    "id": 4,
                     "children": [
                         {
-                            "class": "view.ViewGroup",
+                            "resource-id": "twitter.android:id/action_sheet_recycler_view",
+                            "class": "androidx.recyclerview.widget.RecyclerView",
                             "clickable": false,
-                            "id": 4,
+                            "id": 5,
                             "children": [
                                 {
-                                    "resource-id": "google.apps.nexuslauncher:id/smartspace_card_pager",
-                                    "class": "androidx.viewpager.widget.ViewPager",
-                                    "clickable": false,
-                                    "id": 5,
+                                    "class": "view.ViewGroup",
+                                    "clickable": true,
+                                    "id": 6,
                                     "children": [
                                         {
-                                            "class": "view.ViewGroup",
+                                            "resource-id": "twitter.android:id/action_sheet_item_icon",
+                                            "class": "widget.ImageView",
                                             "clickable": true,
-                                            "id": 6,
-                                            "children": [
-                                                {
-                                                    "resource-id": "google.apps.nexuslauncher:id/date",
-                                                    "class": "widget.TextView",
-                                                    "clickable": true,
-                                                    "id": 7,
-                                                    "description": "Sun, Mar 12"
-                                                },
-                                                {
-                                                    "resource-id": "google.apps.nexuslauncher:id/smartspace_subtitle_group",
-                                                    "class": "view.ViewGroup",
-                                                    "clickable": true,
-                                                    "id": 8,
-                                                    "description": "navigate up"
-                                                }
-                                            ]
+                                            "id": 7,
+                                            "description": "search"
+                                        },
+                                        {
+                                            "resource-id": "twitter.android:id/action_sheet_item_title",
+                                            "class": "widget.TextView",
+                                            "clickable": true,
+                                            "id": 8,
+                                            "description": "Retweet"
                                         }
                                     ]
                                 },
                                 {
-                                    "class": "widget.TextView",
+                                    "class": "view.ViewGroup",
                                     "clickable": true,
                                     "id": 9,
-                                    "description": "Twitter"
+                                    "children": [
+                                        {
+                                            "resource-id": "twitter.android:id/action_sheet_item_icon",
+                                            "class": "widget.ImageView",
+                                            "clickable": true,
+                                            "id": 10,
+                                            "description": "share"
+                                        },
+                                        {
+                                            "resource-id": "twitter.android:id/action_sheet_item_title",
+                                            "class": "widget.TextView",
+                                            "clickable": true,
+                                            "id": 11,
+                                            "description": "Quote Tweet"
+                                        }
+                                    ]
                                 }
                             ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "class": "view.View",
-            "clickable": false,
-            "id": 10,
-            "description": "Home"
-        },
-        {
-            "resource-id": "google.apps.nexuslauncher:id/page_indicator",
-            "class": "view.View",
-            "clickable": false,
-            "id": 11,
-            "description": "navigate up"
-        },
-        {
-            "resource-id": "google.apps.nexuslauncher:id/hotseat",
-            "class": "view.ViewGroup",
-            "clickable": false,
-            "id": 12,
-            "children": [
-                {
-                    "class": "view.ViewGroup",
-                    "clickable": false,
-                    "id": 13,
-                    "children": [
-                        {
-                            "class": "widget.TextView",
-                            "clickable": true,
-                            "id": 14,
-                            "description": "Phone"
-                        },
-                        {
-                            "class": "widget.TextView",
-                            "clickable": true,
-                            "id": 15,
-                            "description": "Messages"
-                        },
-                        {
-                            "class": "widget.TextView",
-                            "clickable": true,
-                            "id": 16,
-                            "description": "Play Store"
-                        },
-                        {
-                            "class": "widget.TextView",
-                            "clickable": true,
-                            "id": 17,
-                            "description": "Chrome"
-                        },
-                        {
-                            "class": "widget.TextView",
-                            "clickable": true,
-                            "id": 18,
-                            "description": "Camera"
-                        }
-                    ]
-                },
-                {
-                    "resource-id": "google.apps.nexuslauncher:id/search_container_hotseat",
-                    "class": "widget.FrameLayout",
-                    "clickable": true,
-                    "id": 19,
-                    "children": [
-                        {
-                            "resource-id": "google.apps.nexuslauncher:id/g_icon",
-                            "class": "widget.ImageView",
-                            "clickable": true,
-                            "id": 20,
-                            "description": "refresh"
-                        },
-                        {
-                            "resource-id": "google.apps.nexuslauncher:id/mic_icon",
-                            "class": "widget.ImageView",
-                            "clickable": true,
-                            "id": 21,
-                            "description": "Voice search"
-                        },
-                        {
-                            "resource-id": "google.apps.nexuslauncher:id/lens_icon",
-                            "class": "widget.ImageButton",
-                            "clickable": true,
-                            "id": 22,
-                            "description": "Google Lens"
                         }
                     ]
                 }

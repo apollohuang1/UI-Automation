@@ -4,7 +4,7 @@
             "text": "",
             "resource-id": "",
             "class": "android.widget.FrameLayout",
-            "package": "com.google.android.apps.nexuslauncher",
+            "package": "com.twitter.android",
             "content-desc": "",
             "checkable": false,
             "checked": false,
@@ -27,7 +27,7 @@
                     "text": "",
                     "resource-id": "",
                     "class": "android.widget.LinearLayout",
-                    "package": "com.google.android.apps.nexuslauncher",
+                    "package": "com.twitter.android",
                     "content-desc": "",
                     "checkable": false,
                     "checked": false,
@@ -48,9 +48,9 @@
                     "children": [
                         {
                             "text": "",
-                            "resource-id": "android:id/content",
+                            "resource-id": "",
                             "class": "android.widget.FrameLayout",
-                            "package": "com.google.android.apps.nexuslauncher",
+                            "package": "com.twitter.android",
                             "content-desc": "",
                             "checkable": false,
                             "checked": false,
@@ -71,9 +71,9 @@
                             "children": [
                                 {
                                     "text": "",
-                                    "resource-id": "com.google.android.apps.nexuslauncher:id/launcher",
+                                    "resource-id": "com.twitter.android:id/action_bar_root",
                                     "class": "android.widget.FrameLayout",
-                                    "package": "com.google.android.apps.nexuslauncher",
+                                    "package": "com.twitter.android",
                                     "content-desc": "",
                                     "checkable": false,
                                     "checked": false,
@@ -94,9 +94,9 @@
                                     "children": [
                                         {
                                             "text": "",
-                                            "resource-id": "com.google.android.apps.nexuslauncher:id/drag_layer",
+                                            "resource-id": "android:id/content",
                                             "class": "android.widget.FrameLayout",
-                                            "package": "com.google.android.apps.nexuslauncher",
+                                            "package": "com.twitter.android",
                                             "content-desc": "",
                                             "checkable": false,
                                             "checked": false,
@@ -117,9 +117,9 @@
                                             "children": [
                                                 {
                                                     "text": "",
-                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/scrim_view",
-                                                    "class": "android.view.View",
-                                                    "package": "com.google.android.apps.nexuslauncher",
+                                                    "resource-id": "com.twitter.android:id/container",
+                                                    "class": "android.widget.FrameLayout",
+                                                    "package": "com.twitter.android",
                                                     "content-desc": "",
                                                     "checkable": false,
                                                     "checked": false,
@@ -136,36 +136,13 @@
                                                         0,
                                                         1080,
                                                         2214
-                                                    ]
-                                                },
-                                                {
-                                                    "text": "",
-                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/workspace",
-                                                    "class": "android.widget.ScrollView",
-                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                    "content-desc": "",
-                                                    "checkable": false,
-                                                    "checked": false,
-                                                    "clickable": false,
-                                                    "enabled": true,
-                                                    "focusable": false,
-                                                    "focused": false,
-                                                    "scrollable": true,
-                                                    "long-clickable": false,
-                                                    "password": false,
-                                                    "selected": false,
-                                                    "bounds": [
-                                                        0,
-                                                        0,
-                                                        1080,
-                                                        2214
                                                     ],
                                                     "children": [
                                                         {
                                                             "text": "",
-                                                            "resource-id": "",
+                                                            "resource-id": "com.twitter.android:id/coordinator",
                                                             "class": "android.view.ViewGroup",
-                                                            "package": "com.google.android.apps.nexuslauncher",
+                                                            "package": "com.twitter.android",
                                                             "content-desc": "",
                                                             "checkable": false,
                                                             "checked": false,
@@ -179,16 +156,40 @@
                                                             "selected": false,
                                                             "bounds": [
                                                                 0,
-                                                                83,
+                                                                66,
                                                                 1080,
-                                                                1758
+                                                                2214
                                                             ],
                                                             "children": [
                                                                 {
+                                                                    "NAF": true,
                                                                     "text": "",
-                                                                    "resource-id": "",
-                                                                    "class": "android.view.ViewGroup",
-                                                                    "package": "com.google.android.apps.nexuslauncher",
+                                                                    "resource-id": "com.twitter.android:id/touch_outside",
+                                                                    "class": "android.view.View",
+                                                                    "package": "com.twitter.android",
+                                                                    "content-desc": "",
+                                                                    "checkable": false,
+                                                                    "checked": false,
+                                                                    "clickable": true,
+                                                                    "enabled": true,
+                                                                    "focusable": false,
+                                                                    "focused": false,
+                                                                    "scrollable": false,
+                                                                    "long-clickable": false,
+                                                                    "password": false,
+                                                                    "selected": false,
+                                                                    "bounds": [
+                                                                        0,
+                                                                        66,
+                                                                        1080,
+                                                                        2214
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "text": "",
+                                                                    "resource-id": "com.twitter.android:id/design_bottom_sheet",
+                                                                    "class": "android.widget.FrameLayout",
+                                                                    "package": "com.twitter.android",
                                                                     "content-desc": "",
                                                                     "checkable": false,
                                                                     "checked": false,
@@ -201,17 +202,17 @@
                                                                     "password": false,
                                                                     "selected": false,
                                                                     "bounds": [
-                                                                        23,
-                                                                        113,
-                                                                        1057,
-                                                                        1728
+                                                                        0,
+                                                                        1792,
+                                                                        1080,
+                                                                        2214
                                                                     ],
                                                                     "children": [
                                                                         {
                                                                             "text": "",
-                                                                            "resource-id": "com.google.android.apps.nexuslauncher:id/search_container_workspace",
-                                                                            "class": "android.widget.FrameLayout",
-                                                                            "package": "com.google.android.apps.nexuslauncher",
+                                                                            "resource-id": "",
+                                                                            "class": "android.widget.LinearLayout",
+                                                                            "package": "com.twitter.android",
                                                                             "content-desc": "",
                                                                             "checkable": false,
                                                                             "checked": false,
@@ -224,17 +225,17 @@
                                                                             "password": false,
                                                                             "selected": false,
                                                                             "bounds": [
-                                                                                23,
-                                                                                113,
-                                                                                1057,
-                                                                                436
+                                                                                0,
+                                                                                1792,
+                                                                                1080,
+                                                                                2214
                                                                             ],
                                                                             "children": [
                                                                                 {
                                                                                     "text": "",
-                                                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/bc_smartspace_view",
-                                                                                    "class": "android.widget.FrameLayout",
-                                                                                    "package": "com.google.android.apps.nexuslauncher",
+                                                                                    "resource-id": "com.twitter.android:id/gripper",
+                                                                                    "class": "android.widget.ImageView",
+                                                                                    "package": "com.twitter.android",
                                                                                     "content-desc": "",
                                                                                     "checkable": false,
                                                                                     "checked": false,
@@ -247,87 +248,110 @@
                                                                                     "password": false,
                                                                                     "selected": false,
                                                                                     "bounds": [
-                                                                                        67,
-                                                                                        131,
-                                                                                        1057,
-                                                                                        417
+                                                                                        492,
+                                                                                        1792,
+                                                                                        588,
+                                                                                        1840
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "text": "",
+                                                                                    "resource-id": "",
+                                                                                    "class": "android.widget.ScrollView",
+                                                                                    "package": "com.twitter.android",
+                                                                                    "content-desc": "",
+                                                                                    "checkable": false,
+                                                                                    "checked": false,
+                                                                                    "clickable": false,
+                                                                                    "enabled": true,
+                                                                                    "focusable": true,
+                                                                                    "focused": false,
+                                                                                    "scrollable": false,
+                                                                                    "long-clickable": false,
+                                                                                    "password": false,
+                                                                                    "selected": false,
+                                                                                    "bounds": [
+                                                                                        0,
+                                                                                        1840,
+                                                                                        1080,
+                                                                                        2214
                                                                                     ],
                                                                                     "children": [
                                                                                         {
                                                                                             "text": "",
-                                                                                            "resource-id": "com.google.android.apps.nexuslauncher:id/smartspace_card_pager",
-                                                                                            "class": "androidx.viewpager.widget.ViewPager",
-                                                                                            "package": "com.google.android.apps.nexuslauncher",
+                                                                                            "resource-id": "",
+                                                                                            "class": "android.widget.LinearLayout",
+                                                                                            "package": "com.twitter.android",
                                                                                             "content-desc": "",
                                                                                             "checkable": false,
                                                                                             "checked": false,
                                                                                             "clickable": false,
                                                                                             "enabled": true,
-                                                                                            "focusable": true,
+                                                                                            "focusable": false,
                                                                                             "focused": false,
                                                                                             "scrollable": false,
-                                                                                            "long-clickable": true,
+                                                                                            "long-clickable": false,
                                                                                             "password": false,
                                                                                             "selected": false,
                                                                                             "bounds": [
-                                                                                                67,
-                                                                                                131,
-                                                                                                1057,
-                                                                                                417
+                                                                                                0,
+                                                                                                1840,
+                                                                                                1080,
+                                                                                                2214
                                                                                             ],
                                                                                             "children": [
                                                                                                 {
                                                                                                     "text": "",
-                                                                                                    "resource-id": "",
-                                                                                                    "class": "android.view.ViewGroup",
-                                                                                                    "package": "com.google.android.apps.nexuslauncher",
+                                                                                                    "resource-id": "com.twitter.android:id/action_sheet_recycler_view_holder",
+                                                                                                    "class": "android.widget.LinearLayout",
+                                                                                                    "package": "com.twitter.android",
                                                                                                     "content-desc": "",
                                                                                                     "checkable": false,
                                                                                                     "checked": false,
-                                                                                                    "clickable": true,
+                                                                                                    "clickable": false,
                                                                                                     "enabled": true,
-                                                                                                    "focusable": true,
+                                                                                                    "focusable": false,
                                                                                                     "focused": false,
                                                                                                     "scrollable": false,
                                                                                                     "long-clickable": false,
                                                                                                     "password": false,
                                                                                                     "selected": false,
                                                                                                     "bounds": [
-                                                                                                        67,
-                                                                                                        131,
-                                                                                                        1057,
-                                                                                                        417
+                                                                                                        0,
+                                                                                                        1840,
+                                                                                                        1080,
+                                                                                                        2181
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
                                                                                                             "text": "",
-                                                                                                            "resource-id": "com.google.android.apps.nexuslauncher:id/text_group",
-                                                                                                            "class": "android.widget.RelativeLayout",
-                                                                                                            "package": "com.google.android.apps.nexuslauncher",
+                                                                                                            "resource-id": "com.twitter.android:id/action_sheet_recycler_view",
+                                                                                                            "class": "androidx.recyclerview.widget.RecyclerView",
+                                                                                                            "package": "com.twitter.android",
                                                                                                             "content-desc": "",
                                                                                                             "checkable": false,
                                                                                                             "checked": false,
                                                                                                             "clickable": false,
                                                                                                             "enabled": true,
-                                                                                                            "focusable": false,
+                                                                                                            "focusable": true,
                                                                                                             "focused": false,
                                                                                                             "scrollable": false,
                                                                                                             "long-clickable": false,
                                                                                                             "password": false,
                                                                                                             "selected": false,
                                                                                                             "bounds": [
-                                                                                                                67,
-                                                                                                                223,
-                                                                                                                1057,
-                                                                                                                386
+                                                                                                                0,
+                                                                                                                1840,
+                                                                                                                1080,
+                                                                                                                2181
                                                                                                             ],
                                                                                                             "children": [
                                                                                                                 {
-                                                                                                                    "text": "Sun, Mar 12",
-                                                                                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/date",
-                                                                                                                    "class": "android.widget.TextView",
-                                                                                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                                                                                    "content-desc": "Sun, Mar 12",
+                                                                                                                    "text": "",
+                                                                                                                    "resource-id": "",
+                                                                                                                    "class": "android.view.ViewGroup",
+                                                                                                                    "package": "com.twitter.android",
+                                                                                                                    "content-desc": "",
                                                                                                                     "checkable": false,
                                                                                                                     "checked": false,
                                                                                                                     "clickable": true,
@@ -339,33 +363,129 @@
                                                                                                                     "password": false,
                                                                                                                     "selected": false,
                                                                                                                     "bounds": [
-                                                                                                                        67,
-                                                                                                                        223,
-                                                                                                                        1057,
-                                                                                                                        287
+                                                                                                                        0,
+                                                                                                                        1873,
+                                                                                                                        1080,
+                                                                                                                        2027
+                                                                                                                    ],
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "text": "",
+                                                                                                                            "resource-id": "com.twitter.android:id/action_sheet_item_icon",
+                                                                                                                            "class": "android.widget.ImageView",
+                                                                                                                            "package": "com.twitter.android",
+                                                                                                                            "content-desc": "",
+                                                                                                                            "checkable": false,
+                                                                                                                            "checked": false,
+                                                                                                                            "clickable": false,
+                                                                                                                            "enabled": true,
+                                                                                                                            "focusable": false,
+                                                                                                                            "focused": false,
+                                                                                                                            "scrollable": false,
+                                                                                                                            "long-clickable": false,
+                                                                                                                            "password": false,
+                                                                                                                            "selected": false,
+                                                                                                                            "bounds": [
+                                                                                                                                66,
+                                                                                                                                1917,
+                                                                                                                                132,
+                                                                                                                                1983
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "text": "Retweet",
+                                                                                                                            "resource-id": "com.twitter.android:id/action_sheet_item_title",
+                                                                                                                            "class": "android.widget.TextView",
+                                                                                                                            "package": "com.twitter.android",
+                                                                                                                            "content-desc": "",
+                                                                                                                            "checkable": false,
+                                                                                                                            "checked": false,
+                                                                                                                            "clickable": false,
+                                                                                                                            "enabled": true,
+                                                                                                                            "focusable": false,
+                                                                                                                            "focused": false,
+                                                                                                                            "scrollable": false,
+                                                                                                                            "long-clickable": false,
+                                                                                                                            "password": false,
+                                                                                                                            "selected": false,
+                                                                                                                            "bounds": [
+                                                                                                                                176,
+                                                                                                                                1920,
+                                                                                                                                1058,
+                                                                                                                                1980
+                                                                                                                            ]
+                                                                                                                        }
                                                                                                                     ]
                                                                                                                 },
                                                                                                                 {
                                                                                                                     "text": "",
-                                                                                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/smartspace_subtitle_group",
+                                                                                                                    "resource-id": "",
                                                                                                                     "class": "android.view.ViewGroup",
-                                                                                                                    "package": "com.google.android.apps.nexuslauncher",
+                                                                                                                    "package": "com.twitter.android",
                                                                                                                     "content-desc": "",
                                                                                                                     "checkable": false,
                                                                                                                     "checked": false,
-                                                                                                                    "clickable": false,
+                                                                                                                    "clickable": true,
                                                                                                                     "enabled": true,
-                                                                                                                    "focusable": false,
+                                                                                                                    "focusable": true,
                                                                                                                     "focused": false,
                                                                                                                     "scrollable": false,
                                                                                                                     "long-clickable": false,
                                                                                                                     "password": false,
                                                                                                                     "selected": false,
                                                                                                                     "bounds": [
-                                                                                                                        67,
-                                                                                                                        312,
-                                                                                                                        89,
-                                                                                                                        364
+                                                                                                                        0,
+                                                                                                                        2027,
+                                                                                                                        1080,
+                                                                                                                        2181
+                                                                                                                    ],
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "text": "",
+                                                                                                                            "resource-id": "com.twitter.android:id/action_sheet_item_icon",
+                                                                                                                            "class": "android.widget.ImageView",
+                                                                                                                            "package": "com.twitter.android",
+                                                                                                                            "content-desc": "",
+                                                                                                                            "checkable": false,
+                                                                                                                            "checked": false,
+                                                                                                                            "clickable": false,
+                                                                                                                            "enabled": true,
+                                                                                                                            "focusable": false,
+                                                                                                                            "focused": false,
+                                                                                                                            "scrollable": false,
+                                                                                                                            "long-clickable": false,
+                                                                                                                            "password": false,
+                                                                                                                            "selected": false,
+                                                                                                                            "bounds": [
+                                                                                                                                66,
+                                                                                                                                2071,
+                                                                                                                                132,
+                                                                                                                                2137
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "text": "Quote Tweet",
+                                                                                                                            "resource-id": "com.twitter.android:id/action_sheet_item_title",
+                                                                                                                            "class": "android.widget.TextView",
+                                                                                                                            "package": "com.twitter.android",
+                                                                                                                            "content-desc": "",
+                                                                                                                            "checkable": false,
+                                                                                                                            "checked": false,
+                                                                                                                            "clickable": false,
+                                                                                                                            "enabled": true,
+                                                                                                                            "focusable": false,
+                                                                                                                            "focused": false,
+                                                                                                                            "scrollable": false,
+                                                                                                                            "long-clickable": false,
+                                                                                                                            "password": false,
+                                                                                                                            "selected": false,
+                                                                                                                            "bounds": [
+                                                                                                                                176,
+                                                                                                                                2074,
+                                                                                                                                1058,
+                                                                                                                                2134
+                                                                                                                            ]
+                                                                                                                        }
                                                                                                                     ]
                                                                                                                 }
                                                                                                             ]
@@ -377,388 +497,11 @@
                                                                                     ]
                                                                                 }
                                                                             ]
-                                                                        },
-                                                                        {
-                                                                            "text": "Twitter",
-                                                                            "resource-id": "",
-                                                                            "class": "android.widget.TextView",
-                                                                            "package": "com.google.android.apps.nexuslauncher",
-                                                                            "content-desc": "Twitter",
-                                                                            "checkable": false,
-                                                                            "checked": false,
-                                                                            "clickable": true,
-                                                                            "enabled": true,
-                                                                            "focusable": true,
-                                                                            "focused": false,
-                                                                            "scrollable": false,
-                                                                            "long-clickable": true,
-                                                                            "password": false,
-                                                                            "selected": false,
-                                                                            "bounds": [
-                                                                                851,
-                                                                                1405,
-                                                                                1057,
-                                                                                1728
-                                                                            ]
                                                                         }
                                                                     ]
                                                                 }
                                                             ]
                                                         }
-                                                    ]
-                                                },
-                                                {
-                                                    "text": "",
-                                                    "resource-id": "",
-                                                    "class": "android.view.View",
-                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                    "content-desc": "Home",
-                                                    "checkable": false,
-                                                    "checked": false,
-                                                    "clickable": false,
-                                                    "enabled": true,
-                                                    "focusable": false,
-                                                    "focused": false,
-                                                    "scrollable": false,
-                                                    "long-clickable": false,
-                                                    "password": false,
-                                                    "selected": false,
-                                                    "bounds": [
-                                                        0,
-                                                        83,
-                                                        1080,
-                                                        2214
-                                                    ]
-                                                },
-                                                {
-                                                    "text": "",
-                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/page_indicator",
-                                                    "class": "android.view.View",
-                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                    "content-desc": "",
-                                                    "checkable": false,
-                                                    "checked": false,
-                                                    "clickable": false,
-                                                    "enabled": true,
-                                                    "focusable": false,
-                                                    "focused": false,
-                                                    "scrollable": false,
-                                                    "long-clickable": false,
-                                                    "password": false,
-                                                    "selected": false,
-                                                    "bounds": [
-                                                        0,
-                                                        1695,
-                                                        1080,
-                                                        1761
-                                                    ]
-                                                },
-                                                {
-                                                    "text": "",
-                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/hotseat",
-                                                    "class": "android.view.ViewGroup",
-                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                    "content-desc": "",
-                                                    "checkable": false,
-                                                    "checked": false,
-                                                    "clickable": false,
-                                                    "enabled": true,
-                                                    "focusable": false,
-                                                    "focused": false,
-                                                    "scrollable": false,
-                                                    "long-clickable": false,
-                                                    "password": false,
-                                                    "selected": false,
-                                                    "bounds": [
-                                                        0,
-                                                        1761,
-                                                        1080,
-                                                        2214
-                                                    ],
-                                                    "children": [
-                                                        {
-                                                            "text": "",
-                                                            "resource-id": "",
-                                                            "class": "android.view.ViewGroup",
-                                                            "package": "com.google.android.apps.nexuslauncher",
-                                                            "content-desc": "",
-                                                            "checkable": false,
-                                                            "checked": false,
-                                                            "clickable": false,
-                                                            "enabled": true,
-                                                            "focusable": false,
-                                                            "focused": false,
-                                                            "scrollable": false,
-                                                            "long-clickable": false,
-                                                            "password": false,
-                                                            "selected": false,
-                                                            "bounds": [
-                                                                23,
-                                                                1761,
-                                                                1057,
-                                                                1929
-                                                            ],
-                                                            "children": [
-                                                                {
-                                                                    "text": "Phone",
-                                                                    "resource-id": "",
-                                                                    "class": "android.widget.TextView",
-                                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                                    "content-desc": "Phone",
-                                                                    "checkable": false,
-                                                                    "checked": false,
-                                                                    "clickable": true,
-                                                                    "enabled": true,
-                                                                    "focusable": true,
-                                                                    "focused": false,
-                                                                    "scrollable": false,
-                                                                    "long-clickable": true,
-                                                                    "password": false,
-                                                                    "selected": false,
-                                                                    "bounds": [
-                                                                        23,
-                                                                        1761,
-                                                                        230,
-                                                                        1929
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "text": "Messages",
-                                                                    "resource-id": "",
-                                                                    "class": "android.widget.TextView",
-                                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                                    "content-desc": "Messages",
-                                                                    "checkable": false,
-                                                                    "checked": false,
-                                                                    "clickable": true,
-                                                                    "enabled": true,
-                                                                    "focusable": true,
-                                                                    "focused": false,
-                                                                    "scrollable": false,
-                                                                    "long-clickable": true,
-                                                                    "password": false,
-                                                                    "selected": false,
-                                                                    "bounds": [
-                                                                        230,
-                                                                        1761,
-                                                                        437,
-                                                                        1929
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "text": "Play Store",
-                                                                    "resource-id": "",
-                                                                    "class": "android.widget.TextView",
-                                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                                    "content-desc": "Play Store",
-                                                                    "checkable": false,
-                                                                    "checked": false,
-                                                                    "clickable": true,
-                                                                    "enabled": true,
-                                                                    "focusable": true,
-                                                                    "focused": false,
-                                                                    "scrollable": false,
-                                                                    "long-clickable": true,
-                                                                    "password": false,
-                                                                    "selected": false,
-                                                                    "bounds": [
-                                                                        437,
-                                                                        1761,
-                                                                        644,
-                                                                        1929
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "text": "Chrome",
-                                                                    "resource-id": "",
-                                                                    "class": "android.widget.TextView",
-                                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                                    "content-desc": "Chrome",
-                                                                    "checkable": false,
-                                                                    "checked": false,
-                                                                    "clickable": true,
-                                                                    "enabled": true,
-                                                                    "focusable": true,
-                                                                    "focused": false,
-                                                                    "scrollable": false,
-                                                                    "long-clickable": true,
-                                                                    "password": false,
-                                                                    "selected": false,
-                                                                    "bounds": [
-                                                                        644,
-                                                                        1761,
-                                                                        851,
-                                                                        1929
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "text": "Camera",
-                                                                    "resource-id": "",
-                                                                    "class": "android.widget.TextView",
-                                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                                    "content-desc": "Camera",
-                                                                    "checkable": false,
-                                                                    "checked": false,
-                                                                    "clickable": true,
-                                                                    "enabled": true,
-                                                                    "focusable": true,
-                                                                    "focused": false,
-                                                                    "scrollable": false,
-                                                                    "long-clickable": true,
-                                                                    "password": false,
-                                                                    "selected": false,
-                                                                    "bounds": [
-                                                                        851,
-                                                                        1761,
-                                                                        1057,
-                                                                        1929
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "text": "",
-                                                            "resource-id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat",
-                                                            "class": "android.widget.FrameLayout",
-                                                            "package": "com.google.android.apps.nexuslauncher",
-                                                            "content-desc": "Search",
-                                                            "checkable": false,
-                                                            "checked": false,
-                                                            "clickable": true,
-                                                            "enabled": true,
-                                                            "focusable": true,
-                                                            "focused": false,
-                                                            "scrollable": false,
-                                                            "long-clickable": true,
-                                                            "password": false,
-                                                            "selected": false,
-                                                            "bounds": [
-                                                                51,
-                                                                1992,
-                                                                1028,
-                                                                2165
-                                                            ],
-                                                            "children": [
-                                                                {
-                                                                    "NAF": true,
-                                                                    "text": "",
-                                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/g_icon",
-                                                                    "class": "android.widget.ImageView",
-                                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                                    "content-desc": "",
-                                                                    "checkable": false,
-                                                                    "checked": false,
-                                                                    "clickable": true,
-                                                                    "enabled": true,
-                                                                    "focusable": true,
-                                                                    "focused": false,
-                                                                    "scrollable": false,
-                                                                    "long-clickable": false,
-                                                                    "password": false,
-                                                                    "selected": false,
-                                                                    "bounds": [
-                                                                        62,
-                                                                        2012,
-                                                                        194,
-                                                                        2144
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "text": "",
-                                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/end_part",
-                                                                    "class": "android.widget.LinearLayout",
-                                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                                    "content-desc": "",
-                                                                    "checkable": false,
-                                                                    "checked": false,
-                                                                    "clickable": false,
-                                                                    "enabled": true,
-                                                                    "focusable": false,
-                                                                    "focused": false,
-                                                                    "scrollable": false,
-                                                                    "long-clickable": false,
-                                                                    "password": false,
-                                                                    "selected": false,
-                                                                    "bounds": [
-                                                                        753,
-                                                                        1992,
-                                                                        1017,
-                                                                        2165
-                                                                    ],
-                                                                    "children": [
-                                                                        {
-                                                                            "text": "",
-                                                                            "resource-id": "com.google.android.apps.nexuslauncher:id/mic_icon",
-                                                                            "class": "android.widget.ImageView",
-                                                                            "package": "com.google.android.apps.nexuslauncher",
-                                                                            "content-desc": "Voice search",
-                                                                            "checkable": false,
-                                                                            "checked": false,
-                                                                            "clickable": true,
-                                                                            "enabled": true,
-                                                                            "focusable": false,
-                                                                            "focused": false,
-                                                                            "scrollable": false,
-                                                                            "long-clickable": false,
-                                                                            "password": false,
-                                                                            "selected": false,
-                                                                            "bounds": [
-                                                                                753,
-                                                                                1992,
-                                                                                885,
-                                                                                2165
-                                                                            ]
-                                                                        },
-                                                                        {
-                                                                            "text": "",
-                                                                            "resource-id": "com.google.android.apps.nexuslauncher:id/lens_icon",
-                                                                            "class": "android.widget.ImageButton",
-                                                                            "package": "com.google.android.apps.nexuslauncher",
-                                                                            "content-desc": "Google Lens",
-                                                                            "checkable": false,
-                                                                            "checked": false,
-                                                                            "clickable": true,
-                                                                            "enabled": true,
-                                                                            "focusable": true,
-                                                                            "focused": false,
-                                                                            "scrollable": false,
-                                                                            "long-clickable": false,
-                                                                            "password": false,
-                                                                            "selected": false,
-                                                                            "bounds": [
-                                                                                885,
-                                                                                1992,
-                                                                                1017,
-                                                                                2165
-                                                                            ]
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "text": "",
-                                                    "resource-id": "com.google.android.apps.nexuslauncher:id/overview_actions_view",
-                                                    "class": "android.widget.FrameLayout",
-                                                    "package": "com.google.android.apps.nexuslauncher",
-                                                    "content-desc": "",
-                                                    "checkable": false,
-                                                    "checked": false,
-                                                    "clickable": false,
-                                                    "enabled": true,
-                                                    "focusable": false,
-                                                    "focused": false,
-                                                    "scrollable": false,
-                                                    "long-clickable": false,
-                                                    "password": false,
-                                                    "selected": false,
-                                                    "bounds": [
-                                                        0,
-                                                        1860,
-                                                        1080,
-                                                        2214
                                                     ]
                                                 }
                                             ]
@@ -767,6 +510,29 @@
                                 }
                             ]
                         }
+                    ]
+                },
+                {
+                    "text": "",
+                    "resource-id": "android:id/navigationBarBackground",
+                    "class": "android.view.View",
+                    "package": "com.twitter.android",
+                    "content-desc": "",
+                    "checkable": false,
+                    "checked": false,
+                    "clickable": false,
+                    "enabled": true,
+                    "focusable": false,
+                    "focused": false,
+                    "scrollable": false,
+                    "long-clickable": false,
+                    "password": false,
+                    "selected": false,
+                    "bounds": [
+                        0,
+                        0,
+                        0,
+                        0
                     ]
                 }
             ]

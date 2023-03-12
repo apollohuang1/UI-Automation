@@ -9,7 +9,9 @@ from classification.IconClassifier import IconClassifier
 from classification.IconCaption import IconCaption
 
 import sys
+import warnings
 sys.path.append('classification')
+warnings.filterwarnings("ignore", category=Warning)
 
 
 class GUIData:
