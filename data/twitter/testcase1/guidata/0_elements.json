@@ -22,6 +22,7 @@
             2214
         ],
         "id": 0,
+        "layer": 0,
         "children-id": [
             1,
             91
@@ -50,6 +51,7 @@
             2214
         ],
         "id": 1,
+        "layer": 1,
         "children-id": [
             2,
             5,
@@ -80,6 +82,7 @@
             220
         ],
         "id": 2,
+        "layer": 2,
         "children-id": [
             3,
             4
@@ -108,6 +111,7 @@
             220
         ],
         "id": 3,
+        "layer": 3,
         "leaf-id": 0,
         "caption": "thumbnail",
         "icon-cls": "avatar",
@@ -136,6 +140,7 @@
             176
         ],
         "id": 4,
+        "layer": 3,
         "leaf-id": 1,
         "caption": "twitter",
         "icon-cls": "twitter",
@@ -164,6 +169,7 @@
             2214
         ],
         "id": 5,
+        "layer": 2,
         "children-id": [
             6,
             9
@@ -192,6 +198,7 @@
             352
         ],
         "id": 6,
+        "layer": 3,
         "children-id": [
             7,
             8
@@ -220,6 +227,7 @@
             311
         ],
         "id": 7,
+        "layer": 4,
         "leaf-id": 2,
         "caption": "close",
         "icon-cls": null,
@@ -248,6 +256,7 @@
             352
         ],
         "id": 8,
+        "layer": 4,
         "leaf-id": 3,
         "caption": "loading",
         "icon-cls": null,
@@ -276,6 +285,7 @@
             2214
         ],
         "id": 9,
+        "layer": 3,
         "children-id": [
             10
         ]
@@ -303,6 +313,7 @@
             2214
         ],
         "id": 10,
+        "layer": 4,
         "children-id": [
             11,
             33,
@@ -333,6 +344,7 @@
             689
         ],
         "id": 11,
+        "layer": 5,
         "children-id": [
             12
         ]
@@ -360,6 +372,7 @@
             688
         ],
         "id": 12,
+        "layer": 6,
         "children-id": [
             13,
             14,
@@ -391,6 +404,7 @@
             512
         ],
         "id": 13,
+        "layer": 7,
         "leaf-id": 4,
         "caption": "primary photo",
         "icon-cls": null,
@@ -419,6 +433,7 @@
             512
         ],
         "id": 14,
+        "layer": 7,
         "leaf-id": 5,
         "caption": "primary photo",
         "icon-cls": null,
@@ -447,6 +462,7 @@
             512
         ],
         "id": 15,
+        "layer": 7,
         "children-id": [
             16,
             17
@@ -475,6 +491,7 @@
             468
         ],
         "id": 16,
+        "layer": 8,
         "leaf-id": 6,
         "caption": "primary photo",
         "icon-cls": null,
@@ -503,6 +520,7 @@
             490
         ],
         "id": 17,
+        "layer": 8,
         "leaf-id": 7,
         "caption": "search",
         "icon-cls": null,
@@ -531,6 +549,7 @@
             578
         ],
         "id": 18,
+        "layer": 7,
         "leaf-id": 8,
         "caption": "<unk>",
         "icon-cls": null,
@@ -559,6 +578,7 @@
             688
         ],
         "id": 19,
+        "layer": 7,
         "children-id": [
             20,
             23,
@@ -590,6 +610,7 @@
             688
         ],
         "id": 20,
+        "layer": 8,
         "children-id": [
             21,
             22
@@ -618,6 +639,7 @@
             658
         ],
         "id": 21,
+        "layer": 9,
         "leaf-id": 9,
         "caption": "<unk>",
         "icon-cls": "chat",
@@ -646,6 +668,7 @@
             654
         ],
         "id": 22,
+        "layer": 9,
         "leaf-id": 10,
         "caption": "go to the selected page",
         "icon-cls": null,
@@ -674,6 +697,7 @@
             688
         ],
         "id": 23,
+        "layer": 8,
         "children-id": [
             24,
             25
@@ -702,6 +726,7 @@
             658
         ],
         "id": 24,
+        "layer": 9,
         "leaf-id": 11,
         "caption": "switch direction",
         "icon-cls": null,
@@ -730,6 +755,7 @@
             654
         ],
         "id": 25,
+        "layer": 9,
         "leaf-id": 12,
         "caption": "switch direction",
         "icon-cls": null,
@@ -758,6 +784,7 @@
             688
         ],
         "id": 26,
+        "layer": 8,
         "children-id": [
             27,
             28
@@ -786,6 +813,7 @@
             658
         ],
         "id": 27,
+        "layer": 9,
         "leaf-id": 13,
         "caption": "add to favorites",
         "icon-cls": "favorite",
@@ -814,6 +842,7 @@
             654
         ],
         "id": 28,
+        "layer": 9,
         "leaf-id": 14,
         "caption": "<unk>",
         "icon-cls": null,
@@ -842,6 +871,7 @@
             688
         ],
         "id": 29,
+        "layer": 8,
         "children-id": [
             30,
             31
@@ -870,6 +900,7 @@
             658
         ],
         "id": 30,
+        "layer": 9,
         "leaf-id": 15,
         "caption": "settings",
         "icon-cls": null,
@@ -898,6 +929,7 @@
             654
         ],
         "id": 31,
+        "layer": 9,
         "leaf-id": 16,
         "caption": "choose stream",
         "icon-cls": "group",
@@ -927,6 +959,7 @@
             688
         ],
         "id": 32,
+        "layer": 8,
         "leaf-id": 17,
         "caption": "<unk>",
         "icon-cls": "share",
@@ -955,6 +988,7 @@
             1269
         ],
         "id": 33,
+        "layer": 5,
         "children-id": [
             34,
             35,
@@ -989,6 +1023,7 @@
             761
         ],
         "id": 34,
+        "layer": 6,
         "leaf-id": 18,
         "caption": "paint",
         "icon-cls": "chat",
@@ -1017,6 +1052,7 @@
             766
         ],
         "id": 35,
+        "layer": 6,
         "leaf-id": 19,
         "caption": "<unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk>",
         "icon-cls": null,
@@ -1045,6 +1081,7 @@
             937
         ],
         "id": 36,
+        "layer": 6,
         "leaf-id": 20,
         "caption": "profile photo",
         "icon-cls": "avatar",
@@ -1073,6 +1110,7 @@
             829
         ],
         "id": 37,
+        "layer": 6,
         "leaf-id": 21,
         "caption": "<unk>",
         "icon-cls": null,
@@ -1102,6 +1140,7 @@
             847
         ],
         "id": 38,
+        "layer": 6,
         "leaf-id": 22,
         "caption": "more options",
         "icon-cls": "more",
@@ -1130,6 +1169,7 @@
             1159
         ],
         "id": 39,
+        "layer": 6,
         "leaf-id": 23,
         "caption": "<unk> image",
         "icon-cls": null,
@@ -1158,6 +1198,7 @@
             1269
         ],
         "id": 40,
+        "layer": 6,
         "leaf-id": 24,
         "caption": "loading",
         "icon-cls": null,
@@ -1186,6 +1227,7 @@
             1269
         ],
         "id": 41,
+        "layer": 6,
         "children-id": [
             42,
             45,
@@ -1217,6 +1259,7 @@
             1269
         ],
         "id": 42,
+        "layer": 7,
         "children-id": [
             43,
             44
@@ -1245,6 +1288,7 @@
             1239
         ],
         "id": 43,
+        "layer": 8,
         "leaf-id": 25,
         "caption": "<unk>",
         "icon-cls": "chat",
@@ -1273,6 +1317,7 @@
             1235
         ],
         "id": 44,
+        "layer": 8,
         "leaf-id": 26,
         "caption": "choose stream",
         "icon-cls": null,
@@ -1301,6 +1346,7 @@
             1269
         ],
         "id": 45,
+        "layer": 7,
         "children-id": [
             46,
             47
@@ -1329,6 +1375,7 @@
             1239
         ],
         "id": 46,
+        "layer": 8,
         "leaf-id": 27,
         "caption": "switch direction",
         "icon-cls": null,
@@ -1357,6 +1404,7 @@
             1235
         ],
         "id": 47,
+        "layer": 8,
         "leaf-id": 28,
         "caption": "choose stream",
         "icon-cls": null,
@@ -1385,6 +1433,7 @@
             1269
         ],
         "id": 48,
+        "layer": 7,
         "children-id": [
             49,
             50
@@ -1413,6 +1462,7 @@
             1239
         ],
         "id": 49,
+        "layer": 8,
         "leaf-id": 29,
         "caption": "add to favorites",
         "icon-cls": "favorite",
@@ -1441,6 +1491,7 @@
             1235
         ],
         "id": 50,
+        "layer": 8,
         "leaf-id": 30,
         "caption": "choose stream",
         "icon-cls": null,
@@ -1469,6 +1520,7 @@
             1269
         ],
         "id": 51,
+        "layer": 7,
         "children-id": [
             52,
             53
@@ -1497,6 +1549,7 @@
             1239
         ],
         "id": 52,
+        "layer": 8,
         "leaf-id": 31,
         "caption": "settings",
         "icon-cls": null,
@@ -1525,6 +1578,7 @@
             1235
         ],
         "id": 53,
+        "layer": 8,
         "leaf-id": 32,
         "caption": "choose",
         "icon-cls": null,
@@ -1554,6 +1608,7 @@
             1269
         ],
         "id": 54,
+        "layer": 7,
         "leaf-id": 33,
         "caption": "<unk>",
         "icon-cls": "share",
@@ -1582,6 +1637,7 @@
             1507
         ],
         "id": 55,
+        "layer": 5,
         "children-id": [
             56
         ]
@@ -1609,6 +1665,7 @@
             1506
         ],
         "id": 56,
+        "layer": 6,
         "children-id": [
             57,
             58,
@@ -1641,6 +1698,7 @@
             1296
         ],
         "id": 57,
+        "layer": 7,
         "leaf-id": 34,
         "caption": "search",
         "icon-cls": null,
@@ -1669,6 +1727,7 @@
             1451
         ],
         "id": 58,
+        "layer": 7,
         "leaf-id": 35,
         "caption": "profile photo",
         "icon-cls": "avatar",
@@ -1697,6 +1756,7 @@
             1341
         ],
         "id": 59,
+        "layer": 7,
         "leaf-id": 36,
         "caption": "<unk> wifi",
         "icon-cls": null,
@@ -1726,6 +1786,7 @@
             1360
         ],
         "id": 60,
+        "layer": 7,
         "leaf-id": 37,
         "caption": "more options",
         "icon-cls": "more",
@@ -1754,6 +1815,7 @@
             1396
         ],
         "id": 61,
+        "layer": 7,
         "leaf-id": 38,
         "caption": "<unk>",
         "icon-cls": null,
@@ -1782,6 +1844,7 @@
             1506
         ],
         "id": 62,
+        "layer": 7,
         "children-id": [
             63,
             66,
@@ -1813,6 +1876,7 @@
             1506
         ],
         "id": 63,
+        "layer": 8,
         "children-id": [
             64,
             65
@@ -1841,6 +1905,7 @@
             1476
         ],
         "id": 64,
+        "layer": 9,
         "leaf-id": 39,
         "caption": "<unk>",
         "icon-cls": "chat",
@@ -1869,6 +1934,7 @@
             1472
         ],
         "id": 65,
+        "layer": 9,
         "leaf-id": 40,
         "caption": "choose stream",
         "icon-cls": null,
@@ -1897,6 +1963,7 @@
             1506
         ],
         "id": 66,
+        "layer": 8,
         "children-id": [
             67,
             68
@@ -1925,6 +1992,7 @@
             1476
         ],
         "id": 67,
+        "layer": 9,
         "leaf-id": 41,
         "caption": "switch direction",
         "icon-cls": null,
@@ -1953,6 +2021,7 @@
             1472
         ],
         "id": 68,
+        "layer": 9,
         "leaf-id": 42,
         "caption": "choose stream",
         "icon-cls": null,
@@ -1981,6 +2050,7 @@
             1506
         ],
         "id": 69,
+        "layer": 8,
         "children-id": [
             70,
             71
@@ -2009,6 +2079,7 @@
             1476
         ],
         "id": 70,
+        "layer": 9,
         "leaf-id": 43,
         "caption": "add to favorites",
         "icon-cls": "favorite",
@@ -2037,6 +2108,7 @@
             1472
         ],
         "id": 71,
+        "layer": 9,
         "leaf-id": 44,
         "caption": "choose stream",
         "icon-cls": null,
@@ -2065,6 +2137,7 @@
             1506
         ],
         "id": 72,
+        "layer": 8,
         "children-id": [
             73,
             74
@@ -2093,6 +2166,7 @@
             1476
         ],
         "id": 73,
+        "layer": 9,
         "leaf-id": 45,
         "caption": "settings",
         "icon-cls": null,
@@ -2121,6 +2195,7 @@
             1472
         ],
         "id": 74,
+        "layer": 9,
         "leaf-id": 46,
         "caption": "choose stream",
         "icon-cls": null,
@@ -2150,6 +2225,7 @@
             1506
         ],
         "id": 75,
+        "layer": 8,
         "leaf-id": 47,
         "caption": "<unk>",
         "icon-cls": "share",
@@ -2178,6 +2254,7 @@
             2214
         ],
         "id": 76,
+        "layer": 5,
         "children-id": [
             77,
             78,
@@ -2209,6 +2286,7 @@
             1689
         ],
         "id": 77,
+        "layer": 6,
         "leaf-id": 48,
         "caption": "<unk>",
         "icon-cls": "avatar",
@@ -2237,6 +2315,7 @@
             1579
         ],
         "id": 78,
+        "layer": 6,
         "leaf-id": 49,
         "caption": "<unk>",
         "icon-cls": null,
@@ -2266,6 +2345,7 @@
             1598
         ],
         "id": 79,
+        "layer": 6,
         "leaf-id": 50,
         "caption": "more options",
         "icon-cls": "more",
@@ -2294,6 +2374,7 @@
             1689
         ],
         "id": 80,
+        "layer": 6,
         "leaf-id": 51,
         "caption": "minimize map",
         "icon-cls": null,
@@ -2322,6 +2403,7 @@
             2214
         ],
         "id": 81,
+        "layer": 6,
         "children-id": [
             82,
             83
@@ -2350,6 +2432,7 @@
             2214
         ],
         "id": 82,
+        "layer": 7,
         "leaf-id": 52,
         "caption": "loading wallpaper",
         "icon-cls": null,
@@ -2378,6 +2461,7 @@
             2214
         ],
         "id": 83,
+        "layer": 7,
         "leaf-id": 53,
         "caption": "loading wallpaper",
         "icon-cls": null,
@@ -2406,6 +2490,7 @@
             2060
         ],
         "id": 84,
+        "layer": 2,
         "leaf-id": 54,
         "caption": "add first task",
         "icon-cls": "add",
@@ -2434,6 +2519,7 @@
             2214
         ],
         "id": 85,
+        "layer": 2,
         "children-id": [
             86,
             87,
@@ -2465,6 +2551,7 @@
             2214
         ],
         "id": 86,
+        "layer": 3,
         "leaf-id": 55,
         "caption": "close navigation drawer",
         "icon-cls": null,
@@ -2493,6 +2580,7 @@
             2214
         ],
         "id": 87,
+        "layer": 3,
         "leaf-id": 56,
         "caption": "<unk>",
         "icon-cls": "search",
@@ -2521,6 +2609,7 @@
             2214
         ],
         "id": 88,
+        "layer": 3,
         "leaf-id": 57,
         "caption": "<unk>",
         "icon-cls": null,
@@ -2549,6 +2638,7 @@
             2214
         ],
         "id": 89,
+        "layer": 3,
         "leaf-id": 58,
         "caption": "<unk>",
         "icon-cls": "notifications",
@@ -2577,6 +2667,7 @@
             2214
         ],
         "id": 90,
+        "layer": 3,
         "leaf-id": 59,
         "caption": "<unk>",
         "icon-cls": "email",
@@ -2605,6 +2696,7 @@
             66
         ],
         "id": 91,
+        "layer": 1,
         "leaf-id": 60,
         "caption": "<unk>",
         "icon-cls": null,

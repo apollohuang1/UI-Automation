@@ -67,7 +67,7 @@ class GUIData:
         self.prone_invalid_children(element_root)
         self.remove_redundant_nesting(element_root)
         self.merge_element_with_single_leaf_child(element_root)
-        self.extract_children_elements(element_root)
+        self.extract_children_elements(element_root, 0)
         self.gather_leaf_elements()
         json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
         print('Save elements to', self.output_file_path_elements)
@@ -138,19 +138,19 @@ class GUIData:
                 element['children'] = new_children
         return element
 
-
-    def extract_children_elements(self, element):
+    def extract_children_elements(self, element, layer):
         '''
         Recursively extract children from an element
         '''
         element['id'] = self.element_id
+        element['layer'] = layer
         self.elements.append(element)
         if 'children' in element and len(element['children']) > 0:
             element['children-id'] = []
             for child in element['children']:
                 self.element_id += 1
                 element['children-id'].append(self.element_id)
-                self.extract_children_elements(child)
+                self.extract_children_elements(child, layer+1)
             # replace wordy 'children' with 'children-id'
             del element['children']
         if 'ancestors' in element:
@@ -250,7 +250,7 @@ class GUIData:
             for c_id in element_cp['children-id']:
                 element_cp['children'].append(self.combine_children(self.elements[c_id]))
         # self.select_ele_attr(element_cp, ['id', 'text', 'resource-id', 'class', 'content-desc', 'clickable', 'scrollable', 'children', 'description'])
-        self.select_ele_attr(element_cp, ['id', 'resource-id', 'class', 'clickable', 'children', 'description'])
+        self.select_ele_attr(element_cp, ['id', 'resource-id', 'class', 'clickable', 'children', 'description', 'layer'])
         self.revise_ele_attr(element_cp)
         return element_cp
 
