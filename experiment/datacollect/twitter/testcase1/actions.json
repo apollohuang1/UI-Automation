@@ -5,57 +5,18 @@
     ],
     "task": "Opem Twitter",
     "testcase-no": 1,
-    "step-no": 4,
+    "step-no": 1,
     "actions": [
         {
             "type": "swipe",
             "coordinate": [
                 [
-                    627,
-                    1530
+                    522,
+                    1848
                 ],
                 [
-                    690,
-                    642
-                ]
-            ]
-        },
-        {
-            "type": "click",
-            "coordinate": [
-                [
-                    126,
-                    2148
-                ],
-                [
-                    -1,
-                    -1
-                ]
-            ]
-        },
-        {
-            "type": "click",
-            "coordinate": [
-                [
-                    969,
-                    1929
-                ],
-                [
-                    -1,
-                    -1
-                ]
-            ]
-        },
-        {
-            "type": "swipe",
-            "coordinate": [
-                [
-                    450,
-                    1011
-                ],
-                [
-                    489,
-                    585
+                    612,
+                    1116
                 ]
             ]
         }

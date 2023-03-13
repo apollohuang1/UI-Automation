@@ -62,6 +62,7 @@ class DataCollector:
         self.update_output_file_path()
         self.cap_screenshot()
         self.cap_vh()
+        self.reformat_vh_json()
 
     def update_output_file_path(self):
         self.output_file_path_screenshot = pjoin(self.testcase_save_dir, str(self.ui_no) + '.png')
@@ -161,28 +162,43 @@ class DataCollector:
                     self.action['coordinate'][1] = (-1, -1)
                 self.record['actions'].append(copy.deepcopy(self.action))
 
-                # next ui
+                # *** next ui ***
                 self.ui_no += 1
                 self.save_actions()
+                # wait for loading
                 time.sleep(wait_loading_time)
                 self.cap_ui_info()
                 params[0] = cv2.resize(self.screenshot.copy(), window_size)
                 cv2.imshow(win_name, params[0])
+                # visualize vh
+                board_draw = self.screenshot.copy()
+                self.draw_vh(board_draw, self.vh['activity']['root'])
+                cv2.imshow('vh', cv2.resize(board_draw, (board_draw.shape[1] // window_resize_ratio, board_draw.shape[0] // window_resize_ratio)))
 
         self.cap_ui_info()
         board = cv2.resize(self.screenshot.copy(), window_size)
         cv2.imshow(win_name, board)
+        # visualize vh
+        board_draw = self.screenshot.copy()
+        self.draw_vh(board_draw, self.vh['activity']['root'])
+        cv2.imshow('vh', cv2.resize(board_draw, (board_draw.shape[1] // window_resize_ratio, board_draw.shape[0] // window_resize_ratio)))
         cv2.setMouseCallback(win_name, on_mouse, [board, False])
         key = cv2.waitKey()
         if key == ord('q'):
-            cv2.destroyWindow(win_name)
+            cv2.destroyAllWindows()
             return
 
     def save_actions(self):
         self.record['step-no'] = self.ui_no
         json.dump(self.record, open(self.output_file_path_actions, 'w'), indent=4)
         print('*** Record action save to %s ***' % self.output_file_path_actions)
-        print(self.record)
+
+    def draw_vh(self, board, element):
+        bounds = element['bounds']
+        cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), (255,0,0), 3)
+        if 'children' in element:
+            for child in element['children']:
+                self.draw_vh(board, child)
 
 
 if __name__ == '__main__':
