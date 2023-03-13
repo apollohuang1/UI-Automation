@@ -205,5 +205,5 @@ if __name__ == '__main__':
     from ppadb.client import Client as AdbClient
     client = AdbClient(host="127.0.0.1", port=5037)
 
-    data = DataCollector(client.devices()[0], app_name='twitter', test_case_no=1, ui_no=0, output_file_root='datacollect')
+    data = DataCollector(client.devices()[0], app_name='twitter', test_case_no=1, ui_no=0, task='Open Twitter', output_file_root='datacollect')
     data.record_action(wait_loading_time=1)
