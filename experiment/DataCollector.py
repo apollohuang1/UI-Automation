@@ -7,13 +7,13 @@ import json
 
 
 class DataCollector:
-    def __init__(self, adb_device, app_name='twitter', test_case_no=1, output_file_root='datacollect'):
+    def __init__(self, adb_device, app_name='twitter', test_case_no=1, gui_no=0, output_file_root='datacollect'):
         self.adb_device = adb_device  # ppadb device
         self.device_name = self.adb_device.get_serial_no()
 
         self.app_name = app_name
         self.test_case_no = test_case_no
-        self.ui_no = 0
+        self.ui_no = gui_no
 
         self.screenshot = None  # cv2 image
         self.vh = None          # dict
@@ -105,8 +105,9 @@ class DataCollector:
     *** Record action ***
     *********************
     '''
-    def record_action(self, window_resize_ratio=3):
+    def record_action(self, wait_loading_time=1.0, window_resize_ratio=3):
         '''
+        :param wait_loading_time: float, wait time for screen loading
         :param window_resize_ratio: the ratio to shrink the window for better view
             window_size = device_size // window_resize_ratio
         '''
@@ -116,7 +117,7 @@ class DataCollector:
 
         def on_mouse(event, x, y, flag, params):
             '''
-            :param params: [board (image), is pressing (boolean), press time (float)]
+            :param params: [board (image), is pressing (boolean)]
             :param x: (width direction) click position on the window
             :param y: (height direction) click position on the window
             '''
@@ -128,7 +129,6 @@ class DataCollector:
                 cv2.circle(params[0], (x, y), 10, (255, 0, 255), -1)
                 cv2.imshow(win_name, params[0])
                 self.action['coordinate'][0] = (x_device, y_device)
-                params[2] = time.time()     # record the time of pressing down, for checking long press action
             # Drag
             elif params[1] and event == cv2.EVENT_MOUSEMOVE:
                 cv2.circle(params[0], (x, y), 10, (255, 0, 255), 2)
@@ -139,7 +139,7 @@ class DataCollector:
                 x_start, y_start = self.action['coordinate'][0]
                 # swipe
                 if abs(x_start - x_device) >= 10 or abs(y_start - y_device) >= 10:
-                    print('\n****** Scroll from (%d, %d) to (%d, %d) in %.3fs ******' % (x_start, y_start, x_device, y_device, time.time() - params[2]))
+                    print('\n****** Scroll from (%d, %d) to (%d, %d) ******' % (x_start, y_start, x_device, y_device))
                     self.adb_device.input_swipe(x_start, y_start, x_device, y_device, 500)
                     # record action
                     self.action['type'] = 'swipe'
@@ -153,7 +153,7 @@ class DataCollector:
                     self.action['coordinate'][1] = (-1, -1)
                 self.actions.append(self.action)
                 # next ui
-                time.sleep(0.5)
+                time.sleep(wait_loading_time)
                 self.ui_no += 1
                 self.cap_ui_info()
                 params[0] = cv2.resize(self.screenshot.copy(), window_size)
@@ -162,7 +162,7 @@ class DataCollector:
         self.cap_ui_info()
         board = cv2.resize(self.screenshot.copy(), window_size)
         cv2.imshow(win_name, board)
-        cv2.setMouseCallback(win_name, on_mouse, [board, False, time.time()])
+        cv2.setMouseCallback(win_name, on_mouse, [board, False])
         key = cv2.waitKey()
         if key == ord('q'):
             cv2.destroyWindow(win_name)
@@ -170,12 +170,8 @@ class DataCollector:
 
 
 if __name__ == '__main__':
-    # start emulator in Android studio first and run to capture screenshot and view hierarchy
-    # save vh xml, json and screenshot image to 'data/app_name/test_case_no/device'
     from ppadb.client import Client as AdbClient
     client = AdbClient(host="127.0.0.1", port=5037)
 
-    device = DataCollector(client.devices()[0], app_name='twitter', test_case_no=1)
-    device.cap_screenshot()
-    device.cap_vh()
-    device.reformat_vh_json()
+    data = DataCollector(client.devices()[0], app_name='twitter', test_case_no=1, gui_no=0, output_file_root='datacollect')
+    data.record_action(wait_loading_time=1)
