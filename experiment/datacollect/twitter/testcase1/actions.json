@@ -3,20 +3,46 @@
         1080,
         2280
     ],
-    "task": "Opem Twitter",
+    "task": "Open Twitter",
     "testcase-no": 1,
-    "step-no": 1,
+    "step-no": 3,
     "actions": [
         {
             "type": "swipe",
             "coordinate": [
                 [
-                    522,
-                    1848
+                    519,
+                    1485
                 ],
                 [
+                    516,
+                    828
+                ]
+            ]
+        },
+        {
+            "type": "click",
+            "coordinate": [
+                [
+                    336,
+                    2133
+                ],
+                [
+                    -1,
+                    -1
+                ]
+            ]
+        },
+        {
+            "type": "swipe",
+            "coordinate": [
+                [
                     612,
-                    1116
+                    1722
+                ],
+                [
+                    675,
+                    918
                 ]
             ]
         }

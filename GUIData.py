@@ -28,6 +28,7 @@ class GUIData:
         self.elements_leaves = []   # leaf nodes that does not have children
         self.element_tree = None    # structural element tree, dict type
         self.blocks = []            # list of blocks from element tree
+        self.removed_node_no = 0    # for the record of the number of removed nodes
 
         self.model_icon_caption = None   # IconCaption
         self.model_icon_classification = None  # IconClassification
@@ -96,6 +97,7 @@ class GUIData:
                     self.prone_invalid_children(child)
                 else:
                     valid_children += self.prone_invalid_children(child)
+                    self.removed_node_no += 1
             element['children'] = valid_children
         return valid_children
 
@@ -114,7 +116,9 @@ class GUIData:
                 new_children += self.remove_redundant_nesting(child)
                 if child['bounds'] == element['bounds']:
                     redundant = True
+            # only return the children if the node is redundany
             if redundant:
+                self.removed_node_no += 1
                 return new_children
             else:
                 element['children'] = new_children
@@ -130,6 +134,7 @@ class GUIData:
                 element['resource-id'] = child['resource-id']
                 element['class'] = child['class']
                 element['clickable'] = child['clickable']
+                self.removed_node_no += 1
                 del element['children']
             else:
                 new_children = []
@@ -145,16 +150,19 @@ class GUIData:
         element['id'] = self.element_id
         element['layer'] = layer
         self.elements.append(element)
+        children_depth = layer  # record the depth of the children
         if 'children' in element and len(element['children']) > 0:
             element['children-id'] = []
             for child in element['children']:
                 self.element_id += 1
                 element['children-id'].append(self.element_id)
-                self.extract_children_elements(child, layer+1)
+                children_depth = max(children_depth, self.extract_children_elements(child, layer+1))
+            element['children-depth'] = children_depth
             # replace wordy 'children' with 'children-id'
             del element['children']
         if 'ancestors' in element:
             del element['ancestors']
+        return children_depth
 
     def gather_leaf_elements(self):
         i = 0
