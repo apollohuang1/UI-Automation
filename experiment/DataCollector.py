@@ -195,7 +195,7 @@ class DataCollector:
 
     def draw_vh(self, board, element):
         bounds = element['bounds']
-        cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), (255,0,0), 3)
+        cv2.rectangle(board, (bounds[0], bounds[1]), (bounds[2], bounds[3]), (0,255,0), 3)
         if 'children' in element:
             for child in element['children']:
                 self.draw_vh(board, child)
