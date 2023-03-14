@@ -246,20 +246,21 @@ class GUIData:
         => self.element_tree
         => self.blocks
         '''
-        self.element_tree = self.combine_children(self.elements[0])
+        self.element_tree = self.combine_children_to_tree(self.elements[0])
         self.partition_blocks()
         json.dump(self.element_tree, open(self.output_file_path_element_tree, 'w'), indent=4)
         print('Save element tree to', self.output_file_path_element_tree)
 
-    def combine_children(self, element):
+    def combine_children_to_tree(self, element):
         element_cp = copy.deepcopy(element)
         if 'children-id' in element_cp:
             element_cp['children'] = []
             for c_id in element_cp['children-id']:
-                element_cp['children'].append(self.combine_children(self.elements[c_id]))
-        # self.select_ele_attr(element_cp, ['id', 'text', 'resource-id', 'class', 'content-desc', 'clickable', 'scrollable', 'children', 'description'])
-        self.select_ele_attr(element_cp, ['id', 'resource-id', 'class', 'clickable', 'children', 'description', 'layer'])
-        self.revise_ele_attr(element_cp)
+                element_cp['children'].append(self.combine_children_to_tree(self.elements[c_id]))
+            self.select_ele_attr(element_cp, ['scrollable', 'id', 'resource-id', 'class', 'clickable', 'children', 'description', 'layer'])
+        else:
+            self.select_ele_attr(element_cp, ['id', 'resource-id', 'class', 'clickable', 'children', 'description', 'layer'])
+        self.simplify_ele_attr(element_cp)
         return element_cp
 
     def select_ele_attr(self, element, selected_attrs):
@@ -268,7 +269,7 @@ class GUIData:
             if key not in selected_attrs or element[key] is None or element[key] == '':
                 del(element[key])
 
-    def revise_ele_attr(self, element):
+    def simplify_ele_attr(self, element):
         if 'resource-id' in element:
             element['resource-id'] = element['resource-id'].replace('com', '')
             element['resource-id'] = element['resource-id'].replace('android', '')
