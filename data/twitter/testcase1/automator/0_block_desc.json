@@ -1,5 +1,10 @@
 [
-    "[Scrollable] This code snippet describes a portion of the user interface for Twitter's mobile application. The UI features a view pager with multiple views that include a tab layout, a scrollable view, and a list of tweets. Each tweet includes various interactive elements, such as inline reply, retweet, and like buttons, as well as a view count and share option. Users can also access additional options by clicking on a tweet's associated profile image, header, or curation action. Overall, this UI provides a range of functionalities for users to engage with Twitter's content, connect with other users, and customize their experience.",
-    "[Not Scrollable] This code snippet describes a part of the UI which is a view group that contains an image button for composing a new tweet in the Twitter Android application. The image button has an ID of 96 and is clickable, indicating that the user can tap on it to create a new tweet. The view group itself is not clickable.",
-    "[Not Scrollable] This code snippet describes a part of the user interface in the Twitter mobile application. The UI contains horizontal tabs, displaying different options such as search, spaces, notifications, and direct messages. Each tab is represented by a LinearLayout with an associated identification resource-id. The functionalities of these tabs allow users to search for content, view spaces, receive notifications on activities, and check direct messages. These tabs provide quick and easy access to different features within the application."
+    {
+        "resource-id": ":id/statusBarBackground",
+        "class": ".view.View",
+        "clickable": false,
+        "id": 91,
+        "layer": 1
+    },
+    "[Scrollable] This UI snippet is from the Twitter mobile application. The main screen consists of a toolbar at the top that includes the Twitter logo, a navigation drawer button, and a compose tweet button. Below the toolbar is a ViewPager with two tabs labeled \"For You\" and \"Following\". These tabs allow users to switch between their personalized and followed Twitter feeds, respectively. Each tab consists of a RecyclerView displaying a list of tweets that include the primary photo, username, tweet content, views, and engagement icons like reply, retweet, like, and share. At the bottom of the screen, there is a tab bar that includes icons for search and explore, spaces, notifications, and messages. Overall, this UI allows users to navigate through their Twitter feeds quickly and efficiently while also providing access to key features of the application."
 ]

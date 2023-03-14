@@ -5,6 +5,7 @@ import os
 import re
 import cv2
 import tiktoken
+import math
 
 
 class Automator:
@@ -80,11 +81,12 @@ class Automator:
     *** AI Chain Block ***
     **********************
     '''
-    def partition_element_to_short_and_long_blocks(self, element, block_max_token=1000):
+    def partition_element_to_short_and_long_blocks(self, element, long_block_token_thresh=1000, partition_token_thresh=3000):
         '''
         partition an element to long and short blocks according to the token number of block
         :param element: target element
-        :param block_max_token: the threshold to decide whether a block is long or short
+        :param long_block_token_thresh: the threshold to decide whether a block is long or short
+        :param partition_token_thresh: the threshold to decide whether the block needs to be further partitioned
         :return short_blocks: can be fed to chatgpt with vh directly
         :return long_blocks: too long to feed to chatgpt, should be captioned first
         '''
@@ -95,40 +97,72 @@ class Automator:
             short_blocks.append(element)
         else:
             leaves = []   # leaf nodes together as a block
+            # if the element is short, use its vh directly
+            if self.count_token_size(self.element_to_str(element)) < long_block_token_thresh:
+                short_blocks.append(element)
             # if the element is too long, partition its children
-            if self.count_token_size(self.element_to_str(element)) > block_max_token:
+            else:
                 for child in element['children']:
+                    # for leaves nodes, record directly
                     if 'children' not in element:
                         leaves.append(child)
                     else:
-                        if self.count_token_size(self.element_to_str(child)) > block_max_token:
-                            long_blocks.append(child)
-                        else:
+                        token_size = self.count_token_size(self.element_to_str(child))
+                        # token_size < long_block_token_thresh, keep as short block
+                        if token_size < long_block_token_thresh:
                             short_blocks.append(child)
-
+                        # long_block_token_thresh < token_size < partition_token_thresh, keep as long block
+                        elif token_size < partition_token_thresh:
+                            long_blocks.append(child)
+                        # partition_token_thresh < token_size, partition again
+                        else:
+                            sb, lb = self.partition_element_to_short_and_long_blocks(child)
+                            short_blocks += sb
+                            long_blocks += lb
+                # reckon the leaves as a single block and check the token size
                 if len(leaves) > 0:
-                    if self.count_token_size(self.element_to_str(leaves)) > block_max_token:
-                        long_blocks.append(leaves)
-                    else:
+                    token_size = self.count_token_size(self.element_to_str(leaves))
+                    # token_size < long_block_token_thresh, keep as short block
+                    if token_size < long_block_token_thresh:
                         short_blocks.append(leaves)
-            # if the element is short, use its vh directly
-            else:
-                short_blocks.append(element)
+                    # long_block_token_thresh < token_size < partition_token_thresh, keep as long block
+                    elif token_size < partition_token_thresh:
+                        long_blocks.append(leaves)
+                    # partition_token_thresh < token_size, slice into long block parts
+                    else:
+                        slice_no = math.ceil(token_size / partition_token_thresh)
+                        slize_size = len(leaves) // slice_no
+                        for i in range(slice_no - 1):
+                            long_blocks.append(leaves[i * slize_size: (i + 1) * slize_size])
+                        long_blocks.append(leaves[(slice_no - 1) * slize_size:])
         return short_blocks, long_blocks
 
-    def generate_descriptions_for_blocks(self, show=False):
-        print('------ Generate Block Descriptions ------')
-        prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
-        for block in self.gui.blocks:
-            desc = self.ask_openai_prompt(prompt + str(block), self.role)['content']
-            if self.gui.elements[block['id']]['scrollable']:
-                self.block_descriptions.append('[Scrollable] ' + desc)
-            else:
-                self.block_descriptions.append('[Not Scrollable] ' + desc)
-            print(self.block_descriptions[-1])
-            if show:
-                self.gui.show_element(self.gui.elements[block['id']])
-        json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
+    # def generate_block_description(self, block, show=False):
+    #     prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
+    #     desc = self.ask_openai_prompt(prompt + self.element_to_str(block), self.role, printlog=show)['content']
+    #     if show:
+    #         print(desc)
+    #         self.gui.show_element(self.gui.elements[block['id']])
+    #     return desc
+    #
+    # def generate_descriptions_for_blocks(self, show=False):
+    #     print('------ Generate Block Descriptions ------')
+    #     # short, long_blocks: list of block vh
+    #     short_blocks, long_blocks = self.partition_element_to_short_and_long_blocks(self.gui.element_tree)
+    #     # for short blocks, use vh directly
+    #     for block in short_blocks:
+    #         self.block_descriptions.append(block)
+    #         if show:
+    #             print(block)
+    #             self.gui.show_element_by_id(block['id'])
+    #     for block in long_blocks:
+    #         desc = self.generate_block_description(block, show=show)
+    #         if self.gui.elements[block['id']]['scrollable']:
+    #             self.block_descriptions.append('[Scrollable] ' + desc)
+    #         else:
+    #             self.block_descriptions.append('[Not Scrollable] ' + desc)
+    #
+    #     json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
 
     def target_block_identification(self, task=None):
         print('\n------ Target Block Identification ------')

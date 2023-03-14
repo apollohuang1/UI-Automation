@@ -1,6 +1,7 @@
 {
     "class": "root",
     "clickable": false,
+    "scrollable": false,
     "id": 0,
     "layer": 0,
     "children": [
@@ -8,6 +9,7 @@
             "resource-id": ".twitter:id/root_coordinator_layout",
             "class": ".widget.ScrollView",
             "clickable": false,
+            "scrollable": true,
             "id": 1,
             "layer": 1,
             "children": [
@@ -15,6 +17,7 @@
                     "resource-id": ".twitter:id/toolbar",
                     "class": ".view.ViewGroup",
                     "clickable": true,
+                    "scrollable": false,
                     "id": 2,
                     "layer": 2,
                     "children": [
@@ -39,6 +42,7 @@
                     "resource-id": ".twitter:id/view_pager",
                     "class": "x.viewpager.widget.ViewPager",
                     "clickable": false,
+                    "scrollable": true,
                     "id": 5,
                     "layer": 2,
                     "children": [
@@ -46,6 +50,7 @@
                             "resource-id": ".twitter:id/tab_layout",
                             "class": ".widget.HorizontalScrollView",
                             "clickable": false,
+                            "scrollable": false,
                             "id": 6,
                             "layer": 3,
                             "children": [
@@ -69,6 +74,7 @@
                             "resource-id": ".twitter:id/nested_coordinator_layout",
                             "class": ".widget.ScrollView",
                             "clickable": false,
+                            "scrollable": true,
                             "id": 9,
                             "layer": 3,
                             "children": [
@@ -76,12 +82,14 @@
                                     "resource-id": ":id/list",
                                     "class": "x.recyclerview.widget.RecyclerView",
                                     "clickable": false,
+                                    "scrollable": true,
                                     "id": 10,
                                     "layer": 4,
                                     "children": [
                                         {
                                             "class": ".view.ViewGroup",
                                             "clickable": true,
+                                            "scrollable": false,
                                             "id": 11,
                                             "layer": 5,
                                             "children": [
@@ -89,6 +97,7 @@
                                                     "resource-id": ".twitter:id/row",
                                                     "class": ".view.ViewGroup",
                                                     "clickable": true,
+                                                    "scrollable": false,
                                                     "id": 12,
                                                     "layer": 6,
                                                     "children": [
@@ -109,6 +118,7 @@
                                                         {
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
+                                                            "scrollable": false,
                                                             "id": 15,
                                                             "layer": 7,
                                                             "children": [
@@ -140,6 +150,7 @@
                                                         {
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
+                                                            "scrollable": false,
                                                             "id": 19,
                                                             "layer": 7,
                                                             "children": [
@@ -147,6 +158,7 @@
                                                                     "resource-id": ".twitter:id/inline_reply",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
+                                                                    "scrollable": false,
                                                                     "id": 20,
                                                                     "layer": 8,
                                                                     "children": [
@@ -171,6 +183,7 @@
                                                                     "resource-id": ".twitter:id/inline_retweet",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
+                                                                    "scrollable": false,
                                                                     "id": 23,
                                                                     "layer": 8,
                                                                     "children": [
@@ -195,6 +208,7 @@
                                                                     "resource-id": ".twitter:id/inline_like",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
+                                                                    "scrollable": false,
                                                                     "id": 26,
                                                                     "layer": 8,
                                                                     "children": [
@@ -219,6 +233,7 @@
                                                                     "resource-id": ".twitter:id/inline_view_count",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
+                                                                    "scrollable": false,
                                                                     "id": 29,
                                                                     "layer": 8,
                                                                     "children": [
@@ -257,6 +272,7 @@
                                             "resource-id": ".twitter:id/row",
                                             "class": ".view.ViewGroup",
                                             "clickable": true,
+                                            "scrollable": false,
                                             "id": 33,
                                             "layer": 5,
                                             "children": [
@@ -315,6 +331,7 @@
                                                 {
                                                     "class": ".view.ViewGroup",
                                                     "clickable": true,
+                                                    "scrollable": false,
                                                     "id": 41,
                                                     "layer": 6,
                                                     "children": [
@@ -322,6 +339,7 @@
                                                             "resource-id": ".twitter:id/inline_reply",
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
+                                                            "scrollable": false,
                                                             "id": 42,
                                                             "layer": 7,
                                                             "children": [
@@ -346,6 +364,7 @@
                                                             "resource-id": ".twitter:id/inline_retweet",
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
+                                                            "scrollable": false,
                                                             "id": 45,
                                                             "layer": 7,
                                                             "children": [
@@ -370,6 +389,7 @@
                                                             "resource-id": ".twitter:id/inline_like",
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
+                                                            "scrollable": false,
                                                             "id": 48,
                                                             "layer": 7,
                                                             "children": [
@@ -394,6 +414,7 @@
                                                             "resource-id": ".twitter:id/inline_view_count",
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
+                                                            "scrollable": false,
                                                             "id": 51,
                                                             "layer": 7,
                                                             "children": [
@@ -429,6 +450,7 @@
                                         {
                                             "class": ".view.ViewGroup",
                                             "clickable": true,
+                                            "scrollable": false,
                                             "id": 55,
                                             "layer": 5,
                                             "children": [
@@ -436,6 +458,7 @@
                                                     "resource-id": ".twitter:id/row",
                                                     "class": ".view.ViewGroup",
                                                     "clickable": true,
+                                                    "scrollable": false,
                                                     "id": 56,
                                                     "layer": 6,
                                                     "children": [
@@ -479,6 +502,7 @@
                                                         {
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
+                                                            "scrollable": false,
                                                             "id": 62,
                                                             "layer": 7,
                                                             "children": [
@@ -486,6 +510,7 @@
                                                                     "resource-id": ".twitter:id/inline_reply",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
+                                                                    "scrollable": false,
                                                                     "id": 63,
                                                                     "layer": 8,
                                                                     "children": [
@@ -510,6 +535,7 @@
                                                                     "resource-id": ".twitter:id/inline_retweet",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
+                                                                    "scrollable": false,
                                                                     "id": 66,
                                                                     "layer": 8,
                                                                     "children": [
@@ -534,6 +560,7 @@
                                                                     "resource-id": ".twitter:id/inline_like",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
+                                                                    "scrollable": false,
                                                                     "id": 69,
                                                                     "layer": 8,
                                                                     "children": [
@@ -558,6 +585,7 @@
                                                                     "resource-id": ".twitter:id/inline_view_count",
                                                                     "class": ".view.ViewGroup",
                                                                     "clickable": true,
+                                                                    "scrollable": false,
                                                                     "id": 72,
                                                                     "layer": 8,
                                                                     "children": [
@@ -596,6 +624,7 @@
                                             "resource-id": ".twitter:id/row",
                                             "class": ".view.ViewGroup",
                                             "clickable": true,
+                                            "scrollable": false,
                                             "id": 76,
                                             "layer": 5,
                                             "children": [
@@ -631,6 +660,7 @@
                                                 {
                                                     "class": ".widget.FrameLayout",
                                                     "clickable": true,
+                                                    "scrollable": false,
                                                     "id": 81,
                                                     "layer": 6,
                                                     "children": [
@@ -670,6 +700,7 @@
                     "resource-id": ".twitter:id/tabs",
                     "class": ".widget.HorizontalScrollView",
                     "clickable": false,
+                    "scrollable": false,
                     "id": 85,
                     "layer": 2,
                     "children": [
