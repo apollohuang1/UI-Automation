@@ -4,6 +4,7 @@ from os.path import join as pjoin
 import os
 import re
 import cv2
+import tiktoken
 
 
 class Automator:
@@ -79,12 +80,41 @@ class Automator:
     *** AI Chain Block ***
     **********************
     '''
-    def ai_chain_block(self, task=None, show_block=False):
-        self.generate_descriptions_for_blocks(show_block)
-        self.target_block_identification(task)
-        self.scrollable_block_check()
-        self.intermediate_block_check()
-        json.dump(self.chain_block, open(self.output_chain_block, 'w', encoding='utf-8'), indent=4)
+    def partition_element_to_short_and_long_blocks(self, element, block_max_token=1000):
+        '''
+        partition an element to long and short blocks according to the token number of block
+        :param element: target element
+        :param block_max_token: the threshold to decide whether a block is long or short
+        :return short_blocks: can be fed to chatgpt with vh directly
+        :return long_blocks: too long to feed to chatgpt, should be captioned first
+        '''
+        short_blocks = []
+        long_blocks = []
+        # if the element is a leaf node, use its vh directly
+        if 'children' not in element:
+            short_blocks.append(element)
+        else:
+            leaves = []   # leaf nodes together as a block
+            # if the element is too long, partition its children
+            if self.count_token_size(self.element_to_str(element)) > block_max_token:
+                for child in element['children']:
+                    if 'children' not in element:
+                        leaves.append(child)
+                    else:
+                        if self.count_token_size(self.element_to_str(child)) > block_max_token:
+                            long_blocks.append(child)
+                        else:
+                            short_blocks.append(child)
+
+                if len(leaves) > 0:
+                    if self.count_token_size(self.element_to_str(leaves)) > block_max_token:
+                        long_blocks.append(leaves)
+                    else:
+                        short_blocks.append(leaves)
+            # if the element is short, use its vh directly
+            else:
+                short_blocks.append(element)
+        return short_blocks, long_blocks
 
     def generate_descriptions_for_blocks(self, show=False):
         print('------ Generate Block Descriptions ------')
@@ -276,6 +306,16 @@ class Automator:
     *** Utilities ***
     *****************
     '''
+    def count_token_size(self, string):
+        enc = tiktoken.encoding_for_model("gpt-3.5-turbo")
+        return len(enc.encode(string))
+
+    def element_to_str(self, element, indent=None):
+        if not indent:
+            return str(element)
+        else:
+            return json.dumps(element, indent=indent)
+
     def load_conversation(self):
         if os.path.exists(self.output_chain_block):
             self.chain_block = json.load(open(self.output_chain_block, 'r', encoding='utf-8'))

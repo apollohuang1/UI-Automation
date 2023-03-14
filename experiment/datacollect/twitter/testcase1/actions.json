@@ -5,18 +5,18 @@
     ],
     "task": "Open Twitter",
     "testcase-no": 1,
-    "step-no": 3,
+    "step-no": 2,
     "actions": [
         {
             "type": "swipe",
             "coordinate": [
                 [
-                    519,
-                    1485
+                    486,
+                    1815
                 ],
                 [
-                    516,
-                    828
+                    471,
+                    906
                 ]
             ]
         },
@@ -24,25 +24,12 @@
             "type": "click",
             "coordinate": [
                 [
-                    336,
-                    2133
+                    324,
+                    2151
                 ],
                 [
                     -1,
                     -1
-                ]
-            ]
-        },
-        {
-            "type": "swipe",
-            "coordinate": [
-                [
-                    612,
-                    1722
-                ],
-                [
-                    675,
-                    918
                 ]
             ]
         }
