@@ -38,17 +38,24 @@ class Automator:
         self.output_chain_block = pjoin(self.output_root, self.gui_name + '_chain_block.json')
         self.output_chain_element = pjoin(self.output_root, self.gui_name + '_chain_element.json')
 
-    def ai_chain(self, task=None, show_block=False, load_block_desc=False):
+    def ai_chain(self, task=None, load_block_desc=False):
         self.task = task
         # Block description
         if not load_block_desc:
-            self.generate_descriptions_for_blocks(show_block)
-        # 1. Related target block
-        self.target_block_identification(task)
+            self.generate_descriptions_for_blocks()
+        else:
+            self.load_block_descriptions()
+        # 0. Identify elements through leaves node vh
+        ele_id = self.target_element_identification_by_vh(self.block_descriptions['vh'], task)
+        if ele_id is not None:
+            return 'click', ele_id
+        # 1. Identify related block through descriptions
+        self.target_block_identification_by_desc(task)
         # identify the target element if the block is directly related
         if 'Yes' in self.block_identification:
             # *** 1.1 Identify target element in related block
-            ele_id = self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_identification), task=task)
+            block_id = self.extract_block_id_from_sentence(self.block_identification)
+            ele_id = self.target_element_identification_by_vh(target_block=self.gui.blocks[block_id], task=task)
             if ele_id:
                 return 'click', ele_id
             else:
@@ -65,9 +72,10 @@ class Automator:
             else:
                 # 3. Intermediate block that is indirectly related
                 self.intermediate_block_check()
+                block_id = self.extract_block_id_from_sentence(self.block_intermediate_check)
                 if 'Yes' in self.block_intermediate_check:
                     # *** 3.1 Identify target element in related block
-                    ele_id = self.ai_chain_element(block_id=self.extract_block_id_from_sentence(self.block_intermediate_check), task=task)
+                    ele_id = self.target_element_identification_by_vh(self.gui.blocks[block_id], task=task)
                     if ele_id is not None:
                         return 'click', ele_id
                     else:
@@ -81,6 +89,22 @@ class Automator:
     *** Block Partition & Description ***
     *************************************
     '''
+    def generate_descriptions_for_blocks(self, show=False):
+        print('------ Generate Block Descriptions ------')
+        # short, long_blocks: list of block vh
+        leaves, blocks = self.partition_element_to_leaves_and_blocks(self.gui.element_tree)
+        # for leaves, use vh directly
+        self.block_descriptions['vh'] = leaves
+        # for blocks, generate descriptions
+        for block in blocks:
+            desc = self.generate_block_description(block, show=show)
+            if self.gui.elements[block['id']]['scrollable']:
+                self.block_descriptions['desc'].append('[Scrollable] ' + desc)
+            else:
+                self.block_descriptions['desc'].append('[Not Scrollable] ' + desc)
+
+        json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
+
     def partition_element_to_leaves_and_blocks(self, element, max_token_thresh=3500):
         leaves = []     # a list of leave elements
         blocks = []     # a list of block elements
@@ -129,22 +153,6 @@ class Automator:
             self.gui.show_element(self.gui.elements[block['id']])
         return desc
 
-    def generate_descriptions_for_blocks(self, show=False):
-        print('------ Generate Block Descriptions ------')
-        # short, long_blocks: list of block vh
-        leaves, blocks = self.partition_element_to_leaves_and_blocks(self.gui.element_tree)
-        # for leaves, use vh directly
-        self.block_descriptions['vh'] = leaves
-        # for blocks, generate descriptions
-        for block in blocks:
-            desc = self.generate_block_description(block, show=show)
-            if self.gui.elements[block['id']]['scrollable']:
-                self.block_descriptions['desc'].append('[Scrollable] ' + desc)
-            else:
-                self.block_descriptions['desc'].append('[Not Scrollable] ' + desc)
-
-        json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
-
     '''
     ***********************************
     *** Target Block Identification ***
@@ -154,19 +162,6 @@ class Automator:
         prompt = 'There are a few descriptions of UI blocks to descript their functionalities. is any of them related to the task "' + task + '"? '\
                   'If yes, which block is the most related to complete the task?\n'
         for i, block_desc in enumerate(self.block_descriptions['desc']):
-            prompt += '[Block ' + str(i) + ']:' + block_desc + '\n'
-        prompt += '\n Answer [Yes] with the most related block if any or [No] if not.'
-        self.chain_block = [{'role': 'system', 'content': self.role}]
-        self.chain_block.append({'role': 'user', 'content': prompt})
-        self.chain_block.append(self.ask_openai_conversation(self.chain_block))
-        self.block_identification = self.chain_block[-1]['content']
-        print(self.block_identification)
-
-    def target_block_identification(self, task=None):
-        print('\n------ Target Block Identification ------')
-        prompt = 'I will give you a list of blocks in the UI, is any of them related to the task "' + task + '"? ' \
-                 'If yes, which block is the most related to complete the task?\n'
-        for i, block_desc in enumerate(self.block_descriptions):
             prompt += '[Block ' + str(i) + ']:' + block_desc + '\n'
         prompt += '\n Answer [Yes] with the most related block if any or [No] if not.'
         self.chain_block = [{'role': 'system', 'content': self.role}]
@@ -196,13 +191,12 @@ class Automator:
         print(self.block_intermediate_check)
 
     '''
-    ************************
-    *** AI Chain Element ***
-    ************************
+    *************************************
+    *** Target Element Identification ***
+    *************************************
     '''
-    def ai_chain_element(self, block_id, task):
+    def target_element_identification_by_vh(self, target_block, task):
         # print('\n------ Identify the target element in Block %d ------' % block_id)
-        target_block = self.gui.blocks[block_id]
         # check if the task can be completed directly
         self.task_completion_check(target_block, task)
         if 'Yes' in self.element_complete:
