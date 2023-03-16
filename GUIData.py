@@ -220,7 +220,6 @@ class GUIData:
                 # calculate intersected area between text and element
                 intersected = max(0, min(t_b[2], e_b[2]) - max(t_b[0], e_b[0])) * max(0, min(t_b[3], e_b[3]) - max(t_b[1], e_b[1]))
                 if intersected > 0:
-                    print(ele['id'], text['id'])
                     ele['ocr'] += text['content']
                     ele['text'] += text['content']
 

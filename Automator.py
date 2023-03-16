@@ -81,61 +81,45 @@ class Automator:
     *** Block Partition & Description ***
     *************************************
     '''
-    def partition_element_to_short_and_long_blocks(self, element, long_block_token_thresh=1000, partition_token_thresh=3000):
-        '''
-        partition an element to long and short blocks according to the token number of block
-        :param element: target element
-        :param long_block_token_thresh: the threshold to decide whether a block is long or short
-        :param partition_token_thresh: the threshold to decide whether the block needs to be further partitioned
-        :return short_blocks: can be fed to chatgpt with vh directly
-        :return long_blocks: too long to feed to chatgpt, should be captioned first
-        '''
-        short_blocks = []
-        long_blocks = []
+    def partition_element_to_leaves_and_blocks(self, element, max_token_thresh=3500):
+        leaves = []     # a list of leave elements
+        blocks = []     # a list of block elements
         # if the element is a leaf node, use its vh directly
         if 'children' not in element:
-            short_blocks.append(element)
+            leaves.append(element)
         else:
-            leaves = []   # leaf nodes together as a block
-            # if the element is short, use its vh directly
-            if self.count_token_size(self.element_to_str(element)) < long_block_token_thresh:
-                short_blocks.append(element)
-            # if the element is too long, partition its children
-            else:
-                for child in element['children']:
-                    # for leaves nodes, record directly
-                    if 'children' not in element:
-                        leaves.append(child)
+            for child in element['children']:
+                # for leaves elements, record directly
+                if 'children' not in child:
+                    leaves.append(child)
+                # for block elements, check if it is too long
+                else:
+                    token_size = self.count_token_size(self.element_to_str(child))
+                    # token_size < max_token_thresh, keep as block
+                    if token_size < max_token_thresh:
+                        blocks.append(child)
+                    # token_size > max_token_thresh, partition again
                     else:
-                        token_size = self.count_token_size(self.element_to_str(child))
-                        # token_size < long_block_token_thresh, keep as short block
-                        if token_size < long_block_token_thresh:
-                            short_blocks.append(child)
-                        # long_block_token_thresh < token_size < partition_token_thresh, keep as long block
-                        elif token_size < partition_token_thresh:
-                            long_blocks.append(child)
-                        # partition_token_thresh < token_size, partition again
+                        l, b = self.partition_element_to_leaves_and_blocks(child)
+                        if len(l) > 1:
+                            blocks.append(l)
                         else:
-                            sb, lb = self.partition_element_to_short_and_long_blocks(child)
-                            short_blocks += sb
-                            long_blocks += lb
-                # reckon the leaves as a single block and check the token size
-                if len(leaves) > 0:
-                    token_size = self.count_token_size(self.element_to_str(leaves))
-                    # token_size < long_block_token_thresh, keep as short block
-                    if token_size < long_block_token_thresh:
-                        short_blocks.append(leaves)
-                    # long_block_token_thresh < token_size < partition_token_thresh, keep as long block
-                    elif token_size < partition_token_thresh:
-                        long_blocks.append(leaves)
-                    # partition_token_thresh < token_size, slice into long block parts
-                    else:
-                        slice_no = math.ceil(token_size / partition_token_thresh)
-                        slize_size = len(leaves) // slice_no
-                        for i in range(slice_no - 1):
-                            long_blocks.append(leaves[i * slize_size: (i + 1) * slize_size])
-                        long_blocks.append(leaves[(slice_no - 1) * slize_size:])
-        return short_blocks, long_blocks
+                            leaves += l
+                        blocks += b
+            # if the leaves are too long, slice into several pieces (blocks)
+            l_token = self.count_token_size(self.element_to_str(leaves))
+            if l_token > max_token_thresh:
+                slice_no = math.ceil(l_token / max_token_thresh)
+                slize_size = len(leaves) // slice_no
+                for i in range(slice_no - 1):
+                    blocks.append(leaves[i * slize_size: (i + 1) * slize_size])
+                blocks.append(leaves[(slice_no - 1) * slize_size:])
+                leaves = []
+            # if no blocks, use the element as a block as a whole
+            if len(blocks) == 0:
+                leaves = []
+                blocks.append(element)
+        return leaves, blocks
 
     def generate_block_description(self, block, show=False):
         prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
@@ -148,14 +132,11 @@ class Automator:
     def generate_descriptions_for_blocks(self, show=False):
         print('------ Generate Block Descriptions ------')
         # short, long_blocks: list of block vh
-        short_blocks, long_blocks = self.partition_element_to_short_and_long_blocks(self.gui.element_tree)
-        # for short blocks, use vh directly
-        for block in short_blocks:
-            self.block_descriptions['vh'].append(block)
-            if show:
-                print(block)
-                self.gui.show_element_by_id(block['id'])
-        for block in long_blocks:
+        leaves, blocks = self.partition_element_to_leaves_and_blocks(self.gui.element_tree)
+        # for leaves, use vh directly
+        self.block_descriptions['vh'] = leaves
+        # for blocks, generate descriptions
+        for block in blocks:
             desc = self.generate_block_description(block, show=show)
             if self.gui.elements[block['id']]['scrollable']:
                 self.block_descriptions['desc'].append('[Scrollable] ' + desc)

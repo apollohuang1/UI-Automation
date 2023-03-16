@@ -1,120 +1,25 @@
 {
     "vh": [
         {
-            "resource-id": ".twitter:id/toolbar",
-            "class": ".view.ViewGroup",
-            "clickable": true,
-            "scrollable": false,
-            "id": 2,
-            "layer": 2,
-            "children": [
-                {
-                    "class": ".widget.ImageButton",
-                    "clickable": true,
-                    "id": 3,
-                    "layer": 3,
-                    "description": "Show navigation drawer"
-                },
-                {
-                    "resource-id": ".twitter:id/logo",
-                    "class": ".widget.ImageView",
-                    "clickable": true,
-                    "id": 4,
-                    "layer": 3,
-                    "description": "twitter"
-                }
-            ]
-        },
-        {
-            "resource-id": ".twitter:id/tab_layout",
-            "class": ".widget.HorizontalScrollView",
-            "clickable": false,
-            "scrollable": false,
-            "id": 6,
-            "layer": 3,
-            "children": [
-                {
-                    "class": ".widget.TextView",
-                    "clickable": false,
-                    "id": 7,
-                    "layer": 4,
-                    "description": "For you"
-                },
-                {
-                    "class": ".widget.TextView",
-                    "clickable": true,
-                    "id": 8,
-                    "layer": 4,
-                    "description": "Following"
-                }
-            ]
-        },
-        {
             "resource-id": ".twitter:id/poser_write",
             "class": ".widget.ImageButton",
             "clickable": true,
             "id": 84,
             "layer": 2,
-            "description": "add"
-        },
-        {
-            "resource-id": ".twitter:id/tabs",
-            "class": ".widget.HorizontalScrollView",
-            "clickable": false,
-            "scrollable": false,
-            "id": 85,
-            "layer": 2,
-            "children": [
-                {
-                    "resource-id": ".twitter:id/channels",
-                    "class": ".view.View",
-                    "clickable": false,
-                    "id": 86,
-                    "layer": 3,
-                    "description": "close navigation drawer"
-                },
-                {
-                    "class": ".view.View",
-                    "clickable": true,
-                    "id": 87,
-                    "layer": 3,
-                    "description": "Search and Explore"
-                },
-                {
-                    "resource-id": ".twitter:id/spaces",
-                    "class": ".view.View",
-                    "clickable": true,
-                    "id": 88,
-                    "layer": 3,
-                    "description": "Spaces"
-                },
-                {
-                    "resource-id": ".twitter:id/notifications",
-                    "class": ".view.View",
-                    "clickable": true,
-                    "id": 89,
-                    "layer": 3,
-                    "description": "Notifications"
-                },
-                {
-                    "resource-id": ".twitter:id/dms",
-                    "class": ".view.View",
-                    "clickable": true,
-                    "id": 90,
-                    "layer": 3,
-                    "description": "Messages"
-                }
-            ]
+            "description": "+"
         },
         {
             "resource-id": ":id/statusBarBackground",
             "class": ".view.View",
             "clickable": false,
             "id": 91,
-            "layer": 1
+            "layer": 1,
+            "description": "5:08"
         }
     ],
     "desc": [
-        "[Scrollable] The UI element in question appears to be a list view, where each item in the list is composed of multiple sub-elements such as a primary photo, view counts, and various action icons like chat, retweet, and like. The list view may be scrollable and allows for interaction with each item through clicking. Additionally, each item in the list may include features like social context badges, tweet headers, and tweet curation actions. There is also an element in the list that appears to promote a campaign, where users can discover different roles and how they can safeguard the skies."
+        "[Not Scrollable] This code snippet describes a part of a Twitter mobile app's user interface called the toolbar. The toolbar consists of a clickable View Group and two child elements: an ImageButton that opens the app's navigation drawer when clicked, and an ImageView containing the Twitter logo that is also clickable. The toolbar provides quick access to important app features like navigation and branding.",
+        "[Scrollable] This code snippet describes a part of the UI for the Twitter mobile application. The UI consists of a view pager that contains a tab layout with two tabs labeled \"For You\" and \"Following\". The tab content is displayed in a nested coordinator layout that includes a scrollable list of tweets. Each tweet in the list contains information such as the user's name, video or image content, number of views, and engagement actions such as liking, commenting, and sharing. The UI also includes options to reply to tweets and view related tweets.",
+        "[Not Scrollable] This UI code snippet represents the horizontal navigation bar in the Twitter app. The navigation bar contains clickable icons for Search and Explore, Spaces, Notifications, and Messages. The first item on the navigation bar is not clickable, but instead is used to close the navigation drawer. It appears that this navigation bar does not have a scrolling function, meaning all icons are visible at once. The description of each icon provides a clear indication of its respective function."
     ]
 }
