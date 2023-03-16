@@ -20,7 +20,7 @@ class Automator:
         self.task = task                # string, a NL sentence to describe the task, e.g. "Turn on voice"
         self.task_complete = False      # indicate whether the task is complete in this GUI
 
-        self.block_descriptions = []        # list of strings describing block
+        self.block_descriptions = {'vh':[], 'desc':[]}    # UI blocks, 'vh' for short blocks that directly use vh, 'desc' for long blocks that are described with NL description
         self.block_identification = ''      # answer for target_block_identification()
         self.block_scrollable_check = ''    # answer for scrollable_block_check()
         self.block_intermediate_check = ''  # answer for intermediate_block_check()
@@ -77,9 +77,9 @@ class Automator:
                     return None
 
     '''
-    **********************
-    *** AI Chain Block ***
-    **********************
+    *************************************
+    *** Block Partition & Description ***
+    *************************************
     '''
     def partition_element_to_short_and_long_blocks(self, element, long_block_token_thresh=1000, partition_token_thresh=3000):
         '''
@@ -151,18 +151,35 @@ class Automator:
         short_blocks, long_blocks = self.partition_element_to_short_and_long_blocks(self.gui.element_tree)
         # for short blocks, use vh directly
         for block in short_blocks:
-            self.block_descriptions.append(block)
+            self.block_descriptions['vh'].append(block)
             if show:
                 print(block)
                 self.gui.show_element_by_id(block['id'])
         for block in long_blocks:
             desc = self.generate_block_description(block, show=show)
             if self.gui.elements[block['id']]['scrollable']:
-                self.block_descriptions.append('[Scrollable] ' + desc)
+                self.block_descriptions['desc'].append('[Scrollable] ' + desc)
             else:
-                self.block_descriptions.append('[Not Scrollable] ' + desc)
+                self.block_descriptions['desc'].append('[Not Scrollable] ' + desc)
 
         json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
+
+    '''
+    ***********************************
+    *** Target Block Identification ***
+    ***********************************
+    '''
+    def target_block_identification_by_desc(self, task):
+        prompt = 'There are a few descriptions of UI blocks to descript their functionalities. is any of them related to the task "' + task + '"? '\
+                  'If yes, which block is the most related to complete the task?\n'
+        for i, block_desc in enumerate(self.block_descriptions['desc']):
+            prompt += '[Block ' + str(i) + ']:' + block_desc + '\n'
+        prompt += '\n Answer [Yes] with the most related block if any or [No] if not.'
+        self.chain_block = [{'role': 'system', 'content': self.role}]
+        self.chain_block.append({'role': 'user', 'content': prompt})
+        self.chain_block.append(self.ask_openai_conversation(self.chain_block))
+        self.block_identification = self.chain_block[-1]['content']
+        print(self.block_identification)
 
     def target_block_identification(self, task=None):
         print('\n------ Target Block Identification ------')

@@ -1,116 +1,120 @@
-[
-    {
-        "resource-id": ".twitter:id/toolbar",
-        "class": ".view.ViewGroup",
-        "clickable": true,
-        "scrollable": false,
-        "id": 2,
-        "layer": 2,
-        "children": [
-            {
-                "class": ".widget.ImageButton",
-                "clickable": true,
-                "id": 3,
-                "layer": 3,
-                "description": "Show navigation drawer"
-            },
-            {
-                "resource-id": ".twitter:id/logo",
-                "class": ".widget.ImageView",
-                "clickable": true,
-                "id": 4,
-                "layer": 3,
-                "description": "twitter"
-            }
-        ]
-    },
-    {
-        "resource-id": ".twitter:id/tab_layout",
-        "class": ".widget.HorizontalScrollView",
-        "clickable": false,
-        "scrollable": false,
-        "id": 6,
-        "layer": 3,
-        "children": [
-            {
-                "class": ".widget.TextView",
-                "clickable": false,
-                "id": 7,
-                "layer": 4,
-                "description": "For you"
-            },
-            {
-                "class": ".widget.TextView",
-                "clickable": true,
-                "id": 8,
-                "layer": 4,
-                "description": "Following"
-            }
-        ]
-    },
-    {
-        "resource-id": ".twitter:id/poser_write",
-        "class": ".widget.ImageButton",
-        "clickable": true,
-        "id": 84,
-        "layer": 2,
-        "description": "add"
-    },
-    {
-        "resource-id": ".twitter:id/tabs",
-        "class": ".widget.HorizontalScrollView",
-        "clickable": false,
-        "scrollable": false,
-        "id": 85,
-        "layer": 2,
-        "children": [
-            {
-                "resource-id": ".twitter:id/channels",
-                "class": ".view.View",
-                "clickable": false,
-                "id": 86,
-                "layer": 3,
-                "description": "close navigation drawer"
-            },
-            {
-                "class": ".view.View",
-                "clickable": true,
-                "id": 87,
-                "layer": 3,
-                "description": "Search and Explore"
-            },
-            {
-                "resource-id": ".twitter:id/spaces",
-                "class": ".view.View",
-                "clickable": true,
-                "id": 88,
-                "layer": 3,
-                "description": "Spaces"
-            },
-            {
-                "resource-id": ".twitter:id/notifications",
-                "class": ".view.View",
-                "clickable": true,
-                "id": 89,
-                "layer": 3,
-                "description": "Notifications"
-            },
-            {
-                "resource-id": ".twitter:id/dms",
-                "class": ".view.View",
-                "clickable": true,
-                "id": 90,
-                "layer": 3,
-                "description": "Messages"
-            }
-        ]
-    },
-    {
-        "resource-id": ":id/statusBarBackground",
-        "class": ".view.View",
-        "clickable": false,
-        "id": 91,
-        "layer": 1
-    },
-    "[Scrollable] This code snippet describes a RecyclerView UI element with multiple rows of child views. Each row contains a profile picture and tweet content. The tweet content includes text, view counts, social context badges, and various interactive buttons such as reply, retweet, like, and share. The UI element is scrollable and clickable, allowing the user to interact with the tweets and perform various actions on them. Additionally, some rows contain a link to external content, with a preview displayed below the tweet content. Overall, this UI element allows the user to view and engage with tweets in a dynamic and interactive manner."
-]
+{
+    "vh": [
+        {
+            "resource-id": ".twitter:id/toolbar",
+            "class": ".view.ViewGroup",
+            "clickable": true,
+            "scrollable": false,
+            "id": 2,
+            "layer": 2,
+            "children": [
+                {
+                    "class": ".widget.ImageButton",
+                    "clickable": true,
+                    "id": 3,
+                    "layer": 3,
+                    "description": "Show navigation drawer"
+                },
+                {
+                    "resource-id": ".twitter:id/logo",
+                    "class": ".widget.ImageView",
+                    "clickable": true,
+                    "id": 4,
+                    "layer": 3,
+                    "description": "twitter"
+                }
+            ]
+        },
+        {
+            "resource-id": ".twitter:id/tab_layout",
+            "class": ".widget.HorizontalScrollView",
+            "clickable": false,
+            "scrollable": false,
+            "id": 6,
+            "layer": 3,
+            "children": [
+                {
+                    "class": ".widget.TextView",
+                    "clickable": false,
+                    "id": 7,
+                    "layer": 4,
+                    "description": "For you"
+                },
+                {
+                    "class": ".widget.TextView",
+                    "clickable": true,
+                    "id": 8,
+                    "layer": 4,
+                    "description": "Following"
+                }
+            ]
+        },
+        {
+            "resource-id": ".twitter:id/poser_write",
+            "class": ".widget.ImageButton",
+            "clickable": true,
+            "id": 84,
+            "layer": 2,
+            "description": "add"
+        },
+        {
+            "resource-id": ".twitter:id/tabs",
+            "class": ".widget.HorizontalScrollView",
+            "clickable": false,
+            "scrollable": false,
+            "id": 85,
+            "layer": 2,
+            "children": [
+                {
+                    "resource-id": ".twitter:id/channels",
+                    "class": ".view.View",
+                    "clickable": false,
+                    "id": 86,
+                    "layer": 3,
+                    "description": "close navigation drawer"
+                },
+                {
+                    "class": ".view.View",
+                    "clickable": true,
+                    "id": 87,
+                    "layer": 3,
+                    "description": "Search and Explore"
+                },
+                {
+                    "resource-id": ".twitter:id/spaces",
+                    "class": ".view.View",
+                    "clickable": true,
+                    "id": 88,
+                    "layer": 3,
+                    "description": "Spaces"
+                },
+                {
+                    "resource-id": ".twitter:id/notifications",
+                    "class": ".view.View",
+                    "clickable": true,
+                    "id": 89,
+                    "layer": 3,
+                    "description": "Notifications"
+                },
+                {
+                    "resource-id": ".twitter:id/dms",
+                    "class": ".view.View",
+                    "clickable": true,
+                    "id": 90,
+                    "layer": 3,
+                    "description": "Messages"
+                }
+            ]
+        },
+        {
+            "resource-id": ":id/statusBarBackground",
+            "class": ".view.View",
+            "clickable": false,
+            "id": 91,
+            "layer": 1
+        }
+    ],
+    "desc": [
+        "[Scrollable] The UI element in question appears to be a list view, where each item in the list is composed of multiple sub-elements such as a primary photo, view counts, and various action icons like chat, retweet, and like. The list view may be scrollable and allows for interaction with each item through clicking. Additionally, each item in the list may include features like social context badges, tweet headers, and tweet curation actions. There is also an element in the list that appears to promote a campaign, where users can discover different roles and how they can safeguard the skies."
+    ]
+}

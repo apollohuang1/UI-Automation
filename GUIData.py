@@ -206,6 +206,9 @@ class GUIData:
         json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
         print('Save elements to', self.output_file_path_elements)
 
+    def ocr_gui_text(self):
+
+
     def caption_elements(self, elements=None):
         if self.model_icon_caption is None:
             self.model_icon_caption = IconCaption(vocab_path='classification/model_results/vocab_idx2word.json',
