@@ -137,32 +137,32 @@ class Automator:
                         long_blocks.append(leaves[(slice_no - 1) * slize_size:])
         return short_blocks, long_blocks
 
-    # def generate_block_description(self, block, show=False):
-    #     prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
-    #     desc = self.ask_openai_prompt(prompt + self.element_to_str(block), self.role, printlog=show)['content']
-    #     if show:
-    #         print(desc)
-    #         self.gui.show_element(self.gui.elements[block['id']])
-    #     return desc
-    #
-    # def generate_descriptions_for_blocks(self, show=False):
-    #     print('------ Generate Block Descriptions ------')
-    #     # short, long_blocks: list of block vh
-    #     short_blocks, long_blocks = self.partition_element_to_short_and_long_blocks(self.gui.element_tree)
-    #     # for short blocks, use vh directly
-    #     for block in short_blocks:
-    #         self.block_descriptions.append(block)
-    #         if show:
-    #             print(block)
-    #             self.gui.show_element_by_id(block['id'])
-    #     for block in long_blocks:
-    #         desc = self.generate_block_description(block, show=show)
-    #         if self.gui.elements[block['id']]['scrollable']:
-    #             self.block_descriptions.append('[Scrollable] ' + desc)
-    #         else:
-    #             self.block_descriptions.append('[Not Scrollable] ' + desc)
-    #
-    #     json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
+    def generate_block_description(self, block, show=False):
+        prompt = 'This is a code snippet that descript a part of UI, summarize its functionalities in one paragraph.\n'
+        desc = self.ask_openai_prompt(prompt + self.element_to_str(block), self.role, printlog=show)['content']
+        if show:
+            print(desc)
+            self.gui.show_element(self.gui.elements[block['id']])
+        return desc
+
+    def generate_descriptions_for_blocks(self, show=False):
+        print('------ Generate Block Descriptions ------')
+        # short, long_blocks: list of block vh
+        short_blocks, long_blocks = self.partition_element_to_short_and_long_blocks(self.gui.element_tree)
+        # for short blocks, use vh directly
+        for block in short_blocks:
+            self.block_descriptions.append(block)
+            if show:
+                print(block)
+                self.gui.show_element_by_id(block['id'])
+        for block in long_blocks:
+            desc = self.generate_block_description(block, show=show)
+            if self.gui.elements[block['id']]['scrollable']:
+                self.block_descriptions.append('[Scrollable] ' + desc)
+            else:
+                self.block_descriptions.append('[Not Scrollable] ' + desc)
+
+        json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
 
     def target_block_identification(self, task=None):
         print('\n------ Target Block Identification ------')
