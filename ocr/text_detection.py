@@ -1,10 +1,21 @@
-import ocr as ocr
-from Text import Text
+import ocr.ocr as ocr
+from ocr.Text import Text
 import cv2
 import json
 import time
 import os
 from os.path import join as pjoin
+
+
+def wrap_up_texts(texts):
+    texts_json = []
+    for i, text in enumerate(texts):
+        loc = text.location
+        t = {'id': i,
+             'bounds': [loc['left'], loc['top'], loc['right'], loc['bottom']],
+             'content': text.content}
+        texts_json.append(t)
+    return texts_json
 
 
 def save_detection_json(file_path, texts, img_shape):
@@ -131,9 +142,9 @@ def text_detection(input_file='data/0.png', ocr_root='data/output', show=False, 
         visualize_texts(img, texts, shown_resize_height=800, show=show, write_path=pjoin(ocr_root, name+'.jpg'))
         save_detection_json(pjoin(ocr_root, name+'.json'), texts, img.shape)
         print("[Text Detection Completed in %.3f s] Input: %s Output: %s" % (time.time() - start, input_file, pjoin(ocr_root, name+'.json')))
-    return texts
+    return wrap_up_texts(texts)
 
 
 if __name__ == '__main__':
-    text_detection()
+    print(text_detection())
 

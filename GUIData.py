@@ -7,6 +7,7 @@ import copy
 
 from classification.IconClassifier import IconClassifier
 from classification.IconCaption import IconCaption
+from ocr.text_detection import text_detection
 
 import sys
 import warnings
@@ -30,6 +31,7 @@ class GUIData:
         self.blocks = []            # list of blocks from element tree
         self.removed_node_no = 0    # for the record of the number of removed nodes
 
+        self.ocr_text = []               # GUI ocr detection result, list of texts {}
         self.model_icon_caption = None   # IconCaption
         self.model_icon_classification = None  # IconClassification
 
@@ -182,6 +184,8 @@ class GUIData:
         Extract description for UI elements through 'text', 'content-desc', 'classification' and 'caption'
         => element['description']
         '''
+        # use ocr to detect text
+        self.ocr_detect_gui_text()
         # generate caption for non-text elements
         self.caption_elements()
         # classify non-text elements
@@ -206,8 +210,27 @@ class GUIData:
         json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
         print('Save elements to', self.output_file_path_elements)
 
-    def ocr_gui_text(self):
+    def ocr_detect_gui_text(self):
+        def match_text_and_element(ele):
+            '''
+            Match ocr text and element through iou
+            '''
+            for text in self.ocr_text:
+                t_b, e_b = text['bounds'], ele['bounds']
+                # calculate intersected area between text and element
+                intersected = max(0, min(t_b[2], e_b[2]) - max(t_b[0], e_b[0])) * max(0, min(t_b[3], e_b[3]) - max(t_b[1], e_b[1]))
+                if intersected > 0:
+                    print(ele['id'], text['id'])
+                    ele['ocr'] += text['content']
+                    ele['text'] += text['content']
 
+        # google ocr detection for the GUI image
+        self.ocr_text = text_detection(self.img_file)
+        # merge text to elements according to position
+        for element in self.elements_leaves:
+            if element['text'] == '':
+                element['ocr'] = ''
+                match_text_and_element(element)
 
     def caption_elements(self, elements=None):
         if self.model_icon_caption is None:

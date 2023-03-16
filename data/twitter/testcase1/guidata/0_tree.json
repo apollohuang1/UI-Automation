@@ -106,14 +106,14 @@
                                                             "clickable": true,
                                                             "id": 13,
                                                             "layer": 7,
-                                                            "description": "primary photo"
+                                                            "description": "0:59 a woman whoworks atCSIDO"
                                                         },
                                                         {
                                                             "class": ".widget.ImageView",
                                                             "clickable": true,
                                                             "id": 14,
                                                             "layer": 7,
-                                                            "description": "primary photo"
+                                                            "description": "0:59 a woman whoworks atCSIDO"
                                                         },
                                                         {
                                                             "class": ".view.ViewGroup",
@@ -127,7 +127,7 @@
                                                                     "clickable": true,
                                                                     "id": 16,
                                                                     "layer": 8,
-                                                                    "description": "primary photo"
+                                                                    "description": "0:59 a woman whoworks at"
                                                                 },
                                                                 {
                                                                     "resource-id": ".twitter:id/av_badge_duration_text",
@@ -168,7 +168,7 @@
                                                                             "clickable": true,
                                                                             "id": 21,
                                                                             "layer": 9,
-                                                                            "description": "chat"
+                                                                            "description": "Q2"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
@@ -243,7 +243,7 @@
                                                                             "clickable": true,
                                                                             "id": 30,
                                                                             "layer": 9,
-                                                                            "description": "settings"
+                                                                            "description": "\u20814,829"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
@@ -289,7 +289,8 @@
                                                     "class": ".widget.TextView",
                                                     "clickable": true,
                                                     "id": 35,
-                                                    "layer": 6
+                                                    "layer": 6,
+                                                    "description": "Elon Musk replied"
                                                 },
                                                 {
                                                     "class": ".widget.ImageView",
@@ -303,7 +304,8 @@
                                                     "class": ".view.ViewGroup",
                                                     "clickable": true,
                                                     "id": 37,
-                                                    "layer": 6
+                                                    "layer": 6,
+                                                    "description": "Eva Vlaardingerbroek@Eva ...3d ."
                                                 },
                                                 {
                                                     "resource-id": ".twitter:id/tweet_curation_action",
@@ -311,7 +313,7 @@
                                                     "clickable": true,
                                                     "id": 38,
                                                     "layer": 6,
-                                                    "description": "more"
+                                                    "description": "The Dutch government is ramping up the"
                                                 },
                                                 {
                                                     "class": ".view.View",
@@ -424,7 +426,7 @@
                                                                     "clickable": true,
                                                                     "id": 52,
                                                                     "layer": 8,
-                                                                    "description": "settings"
+                                                                    "description": "il\u2081 2.7M"
                                                                 },
                                                                 {
                                                                     "class": ".widget.TextView",
@@ -482,7 +484,8 @@
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
                                                             "id": 59,
-                                                            "layer": 7
+                                                            "layer": 7,
+                                                            "description": "Elon Musk@elonmusk3d."
                                                         },
                                                         {
                                                             "resource-id": ".twitter:id/tweet_curation_action",
@@ -545,7 +548,7 @@
                                                                             "clickable": true,
                                                                             "id": 67,
                                                                             "layer": 9,
-                                                                            "description": "switch direction"
+                                                                            "description": "1698"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
@@ -633,14 +636,15 @@
                                                     "clickable": true,
                                                     "id": 77,
                                                     "layer": 6,
-                                                    "description": "avatar"
+                                                    "description": "NAVYARMYAIR FORCE"
                                                 },
                                                 {
                                                     "resource-id": ".twitter:id/tweet_header",
                                                     "class": ".view.ViewGroup",
                                                     "clickable": true,
                                                     "id": 78,
-                                                    "layer": 6
+                                                    "layer": 6,
+                                                    "description": "Defence Jobs Aust@defencejobsaust"
                                                 },
                                                 {
                                                     "resource-id": ".twitter:id/tweet_curation_action",
@@ -648,7 +652,7 @@
                                                     "clickable": true,
                                                     "id": 79,
                                                     "layer": 6,
-                                                    "description": "more"
+                                                    "description": ":"
                                                 },
                                                 {
                                                     "class": ".view.View",
@@ -669,14 +673,14 @@
                                                             "clickable": true,
                                                             "id": 82,
                                                             "layer": 7,
-                                                            "description": "loading wallpaper"
+                                                            "description": "+"
                                                         },
                                                         {
                                                             "class": ".view.View",
                                                             "clickable": true,
                                                             "id": 83,
                                                             "layer": 7,
-                                                            "description": "loading wallpaper"
+                                                            "description": "+"
                                                         }
                                                     ]
                                                 }
@@ -694,7 +698,7 @@
                     "clickable": true,
                     "id": 84,
                     "layer": 2,
-                    "description": "add"
+                    "description": "+"
                 },
                 {
                     "resource-id": ".twitter:id/tabs",
@@ -752,7 +756,8 @@
             "class": ".view.View",
             "clickable": false,
             "id": 91,
-            "layer": 1
+            "layer": 1,
+            "description": "5:08"
         }
     ]
 }
