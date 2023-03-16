@@ -1,0 +1,16 @@
+{
+    "vh": [
+        {
+            "resource-id": ":id/statusBarBackground",
+            "class": ".view.View",
+            "clickable": false,
+            "id": 48,
+            "layer": 1,
+            "description": "2:41"
+        }
+    ],
+    "desc": [
+        "[Scrollable] This UI element is a RecyclerView that contains buttons for different topics such as World, Africa, Business, and Entertainment, among others. The buttons are clickable and allow the user to navigate to news articles related to the selected topic. The RecyclerView element is scrollable, meaning the user can swipe up and down to view additional topics. Additionally, there is a \"More Topics\" button that expands the list of topics and a collapse button to compress the list if needed. Overall, this UI element serves as a navigation tool to browse news articles by topic.",
+        "[Not Scrollable] This code describes a UI view that includes a toolbar with icons for more topics, search, and additional options. There is also a tab layout with options for top stories, video, my news, popular, and live. The main content of the view includes multiple news cards, each with an image, title, information about the article, and a link to the associated topic. There is also an advertisement and an image related to US and Canada news. Finally, there is an entertainment news card with an image and title. Users can interact with the UI to select news cards, search for articles, or navigate to different tabs."
+    ]
+}

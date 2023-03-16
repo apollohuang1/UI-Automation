@@ -1,0 +1,128 @@
+{
+    "class": "root",
+    "clickable": false,
+    "scrollable": false,
+    "id": 0,
+    "layer": 0,
+    "children": [
+        {
+            "resource-id": "bbc.mobile.news.ww:id/drawer_layout",
+            "class": ".view.ViewGroup",
+            "clickable": false,
+            "scrollable": false,
+            "id": 1,
+            "layer": 1,
+            "children": [
+                {
+                    "resource-id": "bbc.mobile.news.ww:id/toolbar",
+                    "class": ".view.ViewGroup",
+                    "clickable": false,
+                    "scrollable": false,
+                    "id": 2,
+                    "layer": 2,
+                    "children": [
+                        {
+                            "class": ".widget.ImageButton",
+                            "clickable": true,
+                            "id": 3,
+                            "layer": 3,
+                            "description": "Back"
+                        },
+                        {
+                            "resource-id": "bbc.mobile.news.ww:id/search",
+                            "class": ".widget.EditText",
+                            "clickable": true,
+                            "id": 4,
+                            "layer": 3,
+                            "description": "Search topics and articles"
+                        }
+                    ]
+                },
+                {
+                    "resource-id": "bbc.mobile.news.ww:id/search_list",
+                    "class": "x.recyclerview.widget.RecyclerView",
+                    "clickable": false,
+                    "scrollable": false,
+                    "id": 5,
+                    "layer": 2,
+                    "children": [
+                        {
+                            "resource-id": "bbc.mobile.news.ww:id/heading",
+                            "class": ".widget.TextView",
+                            "clickable": false,
+                            "id": 6,
+                            "layer": 3,
+                            "description": "More Topics"
+                        },
+                        {
+                            "resource-id": "bbc.mobile.news.ww:id/chip_set",
+                            "class": "x.recyclerview.widget.RecyclerView",
+                            "clickable": false,
+                            "scrollable": true,
+                            "id": 7,
+                            "layer": 3,
+                            "children": [
+                                {
+                                    "resource-id": "bbc.mobile.news.ww:id/chip_item",
+                                    "class": ".widget.TextView",
+                                    "clickable": true,
+                                    "id": 8,
+                                    "layer": 4,
+                                    "description": "World"
+                                },
+                                {
+                                    "resource-id": "bbc.mobile.news.ww:id/chip_item",
+                                    "class": ".widget.TextView",
+                                    "clickable": true,
+                                    "id": 9,
+                                    "layer": 4,
+                                    "description": "Africa"
+                                },
+                                {
+                                    "resource-id": "bbc.mobile.news.ww:id/chip_item",
+                                    "class": ".widget.TextView",
+                                    "clickable": true,
+                                    "id": 10,
+                                    "layer": 4,
+                                    "description": "Asia"
+                                },
+                                {
+                                    "resource-id": "bbc.mobile.news.ww:id/chip_item",
+                                    "class": ".widget.TextView",
+                                    "clickable": true,
+                                    "id": 11,
+                                    "layer": 4,
+                                    "description": "Australia"
+                                },
+                                {
+                                    "resource-id": "bbc.mobile.news.ww:id/chip_item",
+                                    "class": ".widget.TextView",
+                                    "clickable": true,
+                                    "id": 12,
+                                    "layer": 4,
+                                    "description": "Europe"
+                                },
+                                {
+                                    "resource-id": "bbc.mobile.news.ww:id/chip_item",
+                                    "class": ".widget.TextView",
+                                    "clickable": true,
+                                    "id": 13,
+                                    "layer": 4,
+                                    "description": "Middle East"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource-id": ":id/statusBarBackground",
+            "class": ".view.View",
+            "clickable": false,
+            "id": 14,
+            "layer": 1,
+            "description": "2:38A"
+        }
+    ]
+}

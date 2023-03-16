@@ -104,6 +104,7 @@ class Automator:
                 self.block_descriptions['desc'].append('[Not Scrollable] ' + desc)
 
         json.dump(self.block_descriptions, open(self.output_block_desc, 'w'), indent=4)
+        print(self.block_descriptions)
 
     def partition_element_to_leaves_and_blocks(self, element, max_token_thresh=3500):
         leaves = []     # a list of leave elements
@@ -159,8 +160,9 @@ class Automator:
     ***********************************
     '''
     def target_block_identification_by_desc(self, task):
+        print('\n------ Target Block Identification ------')
         prompt = 'There are a few descriptions of UI blocks to descript their functionalities. is any of them related to the task "' + task + '"? '\
-                  'If yes, which block is the most related to complete the task?\n'
+                 'If yes, which block is the most related to complete the task?\n'
         for i, block_desc in enumerate(self.block_descriptions['desc']):
             prompt += '[Block ' + str(i) + ']:' + block_desc + '\n'
         prompt += '\n Answer [Yes] with the most related block if any or [No] if not.'
@@ -216,7 +218,7 @@ class Automator:
                 return None
 
     def task_completion_check(self, target_block, task):
-        print('\n------ Task Completion Check ------')
+        print('\n------ Element Task Completion Check ------')
         prompt = {'role': 'user',
                   'content': "This given UI block is related to the task '" + task + "'. Can your click on any element in it to complete the task? \n" +
                              "UI block: " + json.dumps(target_block, indent=2) +
@@ -353,10 +355,11 @@ class Automator:
     def load_block_descriptions(self):
         self.block_descriptions = json.load(open(self.output_block_desc, 'r', encoding='utf-8'))
         print('Load block description from', self.output_block_desc)
+        print(self.block_descriptions)
 
     def show_target_element(self, ele_id):
-        print(self.gui.elements_leaves[ele_id])
-        self.gui.show_element(self.gui.elements_leaves[ele_id])
+        print(self.gui.elements[ele_id])
+        self.gui.show_element(self.gui.elements[ele_id])
 
 
 if __name__ == '__main__':

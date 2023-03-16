@@ -1,25 +1,15 @@
 {
     "vh": [
         {
-            "resource-id": ".twitter:id/poser_write",
-            "class": ".widget.ImageButton",
-            "clickable": true,
-            "id": 84,
-            "layer": 2,
-            "description": "+"
-        },
-        {
             "resource-id": ":id/statusBarBackground",
             "class": ".view.View",
             "clickable": false,
-            "id": 91,
+            "id": 30,
             "layer": 1,
-            "description": "5:08"
+            "description": "2:37"
         }
     ],
     "desc": [
-        "[Not Scrollable] This UI code describes a toolbar with clickable and non-scrollable elements. The toolbar includes a button for showing the navigation drawer and an image of the Twitter logo, both of which are clickable. The navigation drawer likely contains various options for the user to select, while the Twitter logo serves as a link to return the user to the main Twitter feed.",
-        "[Scrollable] This UI is a scrollable layout consisting of a View Pager with two tabs: \"For you\" and \"Following\". The View Pager children consist of a horizontal scroll view displaying tweets in form of a list. The tweets are displayed in a recycler view with each tweet containing an avatar, tweet header, tweet text, tweet connectors for chat, retweet, like and settings, all of which are actionable elements. The UI also displays additional tweet details such as view counts in the form of inline icons. The View Pager and corresponding tabs allow users to toggle between trending tweets and tweets from followed users while providing comprehensive functionality to engage with the tweets including chatting, liking, retweeting, and sharing.",
-        "[Not Scrollable] This code snippet describes a UI component of Twitter's mobile application that includes a horizontal scrollable view with tabs representing different functionalities of the app. These tabs include options to close the navigation drawer, search and explore, access Spaces, view notifications, and access direct messages. Each tab is represented by a clickable view that allows the user to easily navigate to and interact with the corresponding functionality."
+        "[Not Scrollable] This UI consists of a toolbar with menu, logo, search and more options buttons, a horizontal scrollable tab layout with options like Top Stories, Video, My News, Popular and LIVE, and a scrollable content list of various news cards with each card featuring a clickable image, title, info, link to the article and an optional advertisement section at the bottom. The UI also includes a button to expand the image of a news card."
     ]
 }
