@@ -4,13 +4,13 @@
             "resource-id": ":id/statusBarBackground",
             "class": ".view.View",
             "clickable": false,
-            "id": 48,
+            "id": 27,
             "layer": 1,
-            "description": "2:41"
+            "description": "3:11"
         }
     ],
     "desc": [
-        "[Scrollable] This UI element is a RecyclerView that contains buttons for different topics such as World, Africa, Business, and Entertainment, among others. The buttons are clickable and allow the user to navigate to news articles related to the selected topic. The RecyclerView element is scrollable, meaning the user can swipe up and down to view additional topics. Additionally, there is a \"More Topics\" button that expands the list of topics and a collapse button to compress the list if needed. Overall, this UI element serves as a navigation tool to browse news articles by topic.",
-        "[Not Scrollable] This code describes a UI view that includes a toolbar with icons for more topics, search, and additional options. There is also a tab layout with options for top stories, video, my news, popular, and live. The main content of the view includes multiple news cards, each with an image, title, information about the article, and a link to the associated topic. There is also an advertisement and an image related to US and Canada news. Finally, there is an entertainment news card with an image and title. Users can interact with the UI to select news cards, search for articles, or navigate to different tabs."
+        "[Not Scrollable] This part of the UI is the top navigation bar for a diary app. It includes a toolbar with options to close the navigation drawer, write a diary entry, and search for entries. It also includes a button to write a new note and additional decorative and informational elements.",
+        "[Not Scrollable] This UI is a navigation menu that provides various functionalities to the user. It includes a sign-in option and an account icon to access the user account, along with the ability to sign in. There is a list of checked text views that offer options such as Codelock, Colors and style, Reminder, Export, Rate and review, Recommend to a friend, Get premium, Visit us on Facebook, Feedback, Help and About. The user can select any of these options according to their needs. Additionally, there are close menu and close navigation drawer options to navigate back to the main screen."
     ]
 }

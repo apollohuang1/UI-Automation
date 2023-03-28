@@ -6,10 +6,10 @@
             "clickable": false,
             "id": 30,
             "layer": 1,
-            "description": "2:37"
+            "description": "2:40"
         }
     ],
     "desc": [
-        "[Not Scrollable] This UI consists of a toolbar with menu, logo, search and more options buttons, a horizontal scrollable tab layout with options like Top Stories, Video, My News, Popular and LIVE, and a scrollable content list of various news cards with each card featuring a clickable image, title, info, link to the article and an optional advertisement section at the bottom. The UI also includes a button to expand the image of a news card."
+        "[Not Scrollable] This code describes a UI that includes the BBC News logo, a search option and a menu. The menu includes options such as Top Stories, Video, My News, Popular and LIVE. There is also a content view which displays recent news stories with their title, category, time stamp and a link to view the story. The content view is scrollable and provides an option to expand the content by clicking on the image. Additionally, there are ads displayed in between news stories. Overall, this UI provides a user-friendly interface to browse through recent news content on the BBC News app."
     ]
 }

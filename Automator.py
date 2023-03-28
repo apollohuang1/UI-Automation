@@ -98,7 +98,7 @@ class Automator:
         # for blocks, generate descriptions
         for block in blocks:
             desc = self.generate_block_description(block, show=show)
-            if self.gui.elements[block['id']]['scrollable']:
+            if 'scrollable' in self.gui.elements[block['id']] and self.gui.elements[block['id']]['scrollable']:
                 self.block_descriptions['desc'].append('[Scrollable] ' + desc)
             else:
                 self.block_descriptions['desc'].append('[Not Scrollable] ' + desc)
@@ -220,7 +220,7 @@ class Automator:
     def task_completion_check(self, target_block, task):
         print('\n------ Element Task Completion Check ------')
         prompt = {'role': 'user',
-                  'content': "This given UI block is related to the task '" + task + "'. Can your click on any element in it to complete the task? \n" +
+                  'content': "This given UI block is related to the task '" + task + "'. Can your click on any leaf element that does not have any children in it to complete the task? \n" +
                              "UI block: " + json.dumps(target_block, indent=2) +
                              "\nAnswer [Yes] with the target element id (for example, 'Yes, Element 1') if any or [No] if not"}
         self.chain_element = [{'role': 'system', 'content': self.role}]

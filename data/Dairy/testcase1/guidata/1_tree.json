@@ -1,0 +1,226 @@
+{
+    "class": "root",
+    "clickable": false,
+    "scrollable": false,
+    "id": 0,
+    "layer": 0,
+    "children": [
+        {
+            "resource-id": ".adpog.diary:id/coord",
+            "class": ".view.ViewGroup",
+            "clickable": false,
+            "scrollable": false,
+            "id": 1,
+            "layer": 1,
+            "children": [
+                {
+                    "resource-id": ".adpog.diary:id/toolbar",
+                    "class": ".view.ViewGroup",
+                    "clickable": false,
+                    "scrollable": false,
+                    "id": 2,
+                    "layer": 2,
+                    "children": [
+                        {
+                            "class": ".widget.ImageButton",
+                            "clickable": true,
+                            "id": 3,
+                            "layer": 3,
+                            "description": "close navigation drawer"
+                        },
+                        {
+                            "class": ".widget.TextView",
+                            "clickable": false,
+                            "id": 4,
+                            "layer": 3,
+                            "description": "WriteDiary"
+                        },
+                        {
+                            "resource-id": ".adpog.diary:id/action_search",
+                            "class": ".widget.Button",
+                            "clickable": true,
+                            "id": 5,
+                            "layer": 3,
+                            "description": "Search"
+                        }
+                    ]
+                },
+                {
+                    "resource-id": ".adpog.diary:id/shade",
+                    "class": ".view.View",
+                    "clickable": false,
+                    "id": 6,
+                    "layer": 2,
+                    "description": "!?CodelockColors and styleReminderExportRate and reviewSign inRecommend to a friendGet premiumVisit us on FacebookFeedbackHelpAbout\u0186 JUUUUU"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/decor",
+                    "class": ".widget.ImageView",
+                    "clickable": false,
+                    "id": 7,
+                    "layer": 2,
+                    "description": "!?Get premiumVisit us on FacebookFeedbackHelpAbout\u0186 JUUUUU"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/fab",
+                    "class": ".widget.ImageButton",
+                    "clickable": true,
+                    "id": 8,
+                    "layer": 2,
+                    "description": "Write note"
+                }
+            ]
+        },
+        {
+            "resource-id": ".adpog.diary:id/design_navigation_view",
+            "class": "x.recyclerview.widget.i",
+            "clickable": false,
+            "scrollable": false,
+            "id": 9,
+            "layer": 1,
+            "children": [
+                {
+                    "class": ".widget.ImageView",
+                    "clickable": false,
+                    "id": 10,
+                    "layer": 2,
+                    "description": "Sign in"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/nav_account_circle",
+                    "class": ".widget.ImageView",
+                    "clickable": true,
+                    "id": 11,
+                    "layer": 2,
+                    "description": "Account"
+                },
+                {
+                    "class": ".view.View",
+                    "clickable": false,
+                    "id": 12,
+                    "layer": 2,
+                    "description": "close navigation drawer"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/nav_button",
+                    "class": ".widget.Button",
+                    "clickable": true,
+                    "id": 13,
+                    "layer": 2,
+                    "description": "Sign in"
+                },
+                {
+                    "class": ".view.View",
+                    "clickable": false,
+                    "id": 14,
+                    "layer": 2,
+                    "description": "close menu"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/nav_email",
+                    "class": ".widget.TextView",
+                    "clickable": true,
+                    "id": 15,
+                    "layer": 2,
+                    "description": "close navigation drawer"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 16,
+                    "layer": 2,
+                    "description": "Codelock"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 17,
+                    "layer": 2,
+                    "description": "Colors and style"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 18,
+                    "layer": 2,
+                    "description": "Reminder"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 19,
+                    "layer": 2,
+                    "description": "Export"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 20,
+                    "layer": 2,
+                    "description": "Rate and review"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 21,
+                    "layer": 2,
+                    "description": "Recommend to a friend"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 22,
+                    "layer": 2,
+                    "description": "Get premium"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 23,
+                    "layer": 2,
+                    "description": "Visit us on Facebook"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 24,
+                    "layer": 2,
+                    "description": "!Feedback"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 25,
+                    "layer": 2,
+                    "description": "?Help"
+                },
+                {
+                    "resource-id": ".adpog.diary:id/design_menu_item_text",
+                    "class": ".widget.CheckedTextView",
+                    "clickable": true,
+                    "id": 26,
+                    "layer": 2,
+                    "description": "About"
+                }
+            ]
+        },
+        {
+            "resource-id": ":id/statusBarBackground",
+            "class": ".view.View",
+            "clickable": false,
+            "id": 27,
+            "layer": 1,
+            "description": "3:11"
+        }
+    ]
+}
