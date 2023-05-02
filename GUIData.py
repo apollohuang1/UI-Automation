@@ -51,7 +51,6 @@ class GUIData:
         self.element_id = self.elements[-1]['id'] + 1         # => self.element_id
         print('Load element tree from', file_path_element_tree)
         self.element_tree = json.load(open(file_path_element_tree, 'r', encoding='utf-8'))   # => self.element_tree
-        self.partition_blocks()     # => self.blocks
 
     '''
     **************************
@@ -265,14 +264,13 @@ class GUIData:
     *** Structural Tree ***
     ***********************
     '''
-    def ui_element_block_tree(self):
+    def ui_element_tree(self):
         '''
         Form a hierarchical element tree with a few key attributes to represent the vh
         => self.element_tree
         => self.blocks
         '''
         self.element_tree = self.combine_children_to_tree(self.elements[0])
-        self.partition_blocks()
         json.dump(self.element_tree, open(self.output_file_path_element_tree, 'w'), indent=4)
         print('Save element tree to', self.output_file_path_element_tree)
 
@@ -282,9 +280,9 @@ class GUIData:
             element_cp['children'] = []
             for c_id in element_cp['children-id']:
                 element_cp['children'].append(self.combine_children_to_tree(self.elements[c_id]))
-            self.select_ele_attr(element_cp, ['scrollable', 'id', 'resource-id', 'class', 'clickable', 'children', 'description', 'layer'])
+            self.select_ele_attr(element_cp, ['scrollable', 'id', 'resource-id', 'class', 'clickable', 'children', 'description'])
         else:
-            self.select_ele_attr(element_cp, ['id', 'resource-id', 'class', 'clickable', 'children', 'description', 'layer'])
+            self.select_ele_attr(element_cp, ['id', 'resource-id', 'class', 'clickable', 'children', 'description'])
         self.simplify_ele_attr(element_cp)
         return element_cp
 
@@ -305,36 +303,6 @@ class GUIData:
             element['class'] = element['class'].replace('..', '.')
             element['class'] = element['class'].replace('.:', ':')
 
-    def partition_blocks(self):
-        '''
-        Partition the UI into several blocks
-        => self.blocks
-        '''
-        l1_children = self.element_tree['children']
-        deeper = False
-        for child in l1_children:
-            desc = ''
-            if 'class' in child:
-                desc += child['class'].lower()
-            if 'resource-id' in child:
-                desc += child['resource-id'].lower()
-            if 'description' in child:
-                desc += child['description'].lower()
-            # if there is a background in the first level of root children, go deeper
-            if 'background' in desc and 'children' not in child:
-                deeper = True
-            else:
-                self.blocks.append(child)
-        if deeper:
-            l2_blocks = []
-            for block in self.blocks:
-                if 'children' in block:
-                    l2_blocks += block['children']
-                else:
-                    if block['bounds'][2] - block['bounds'][0] > 20 and block['bounds'][3] - block['bounds'][1] > 20:
-                        l2_blocks.append(block)
-            self.blocks = l2_blocks
-
     def flatten_block_to_elements(self, block):
         block_cp = copy.deepcopy(block)
         elements = []
@@ -347,6 +315,28 @@ class GUIData:
             nodes += cur_node['children']
             del(cur_node['children'])
         return elements
+
+    def get_ui_element_node_by_id(self, ele_id):
+        ele_id = int(ele_id)
+        if ele_id >= len(self.elements):
+            print('No element with id', ele_id, 'is found')
+            return None
+        return self.search_node_by_id(self.element_tree, ele_id)
+
+    def search_node_by_id(self, node, ele_id):
+        if node['id'] == ele_id:
+            return node
+        if node['id'] > ele_id:
+            return None
+        if 'children' in node:
+            last_child = None
+            for child in node['children']:
+                if child['id'] == ele_id:
+                    return child
+                if child['id'] > ele_id:
+                    break
+                last_child = child
+            return self.search_node_by_id(last_child, ele_id)
 
     '''
     *********************
@@ -409,11 +399,6 @@ class GUIData:
         cv2.waitKey()
         cv2.destroyWindow('screen')
 
-    def show_blocks(self):
-        for block in self.blocks:
-            print(block)
-            self.show_element_by_id(block['id'])
-
 
 if __name__ == '__main__':
     load = False
@@ -427,5 +412,5 @@ if __name__ == '__main__':
     else:
         gui.ui_info_extraction()
         gui.ui_analysis_elements_description()
-        gui.ui_element_block_tree()
+        gui.ui_element_tree()
     gui.show_all_elements(only_leaves=True)
