@@ -13,7 +13,7 @@ class UIAuto:
         self.gui = gui
         self.gui_name = self.gui.gui_name
 
-        self.role = 'You are a mobile virtual assistant that understands and interacts with the user interface to complete given task.'
+        self.role = 'You are a mobile virtual assistant that understands and interacts with the user interface to complete given task. Just output the block id as the answer in format of - Element id: 2.'
         self.openai = OpenAI(role=self.role, model=model)
 
         self.conversation = [{'role': 'system', 'content': self.role}]       # store the conversation history for block ai chain
@@ -33,10 +33,15 @@ class UIAuto:
             {'role': 'system', 'content': self.role},
             {'role': 'user', 'content': 'This is a view hierarchy of a UI, can you segment it into functional blocks? Summarize all of its elements and functionalities, and print the "id" of each block.'},
             {'role': 'user', 'content': str(self.gui.element_tree)},
-            {'role': 'user', 'content': 'To complete the task "' + task + '", which block is the most related one to interact with?'}
+            {'role': 'user', 'content': 'To complete the task "' + task + '", which end element is the most related one to interact with?'}
         ]
         self.ans_target_element = self.openai.ask_openai_conversation(self.conversation, printlog=printlog)
-        self.conversation.append(self.ans_block_sum)
+        self.conversation.append(self.ans_target_element)
+
+    def get_target_element_node(self):
+        e = re.findall('[Ee]lement\s*[Ii][Dd]:\s*\d+', self.ans_target_element['content'])
+        ele_id = int(re.findall('\d+', e[0])[0])
+        return self.gui.get_ui_element_node_by_id(ele_id)
 
     '''
     ******************************
