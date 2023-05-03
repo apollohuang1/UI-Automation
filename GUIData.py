@@ -303,19 +303,6 @@ class GUIData:
             element['class'] = element['class'].replace('..', '.')
             element['class'] = element['class'].replace('.:', ':')
 
-    def flatten_block_to_elements(self, block):
-        block_cp = copy.deepcopy(block)
-        elements = []
-        nodes = [block_cp]
-        while len(nodes) > 0:
-            cur_node = nodes.pop()
-            elements.append(cur_node)
-            if 'children' not in cur_node:
-                continue
-            nodes += cur_node['children']
-            del(cur_node['children'])
-        return elements
-
     def get_ui_element_node_by_id(self, ele_id):
         ele_id = int(ele_id)
         if ele_id >= len(self.elements):

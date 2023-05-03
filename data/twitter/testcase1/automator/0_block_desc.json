@@ -4,12 +4,12 @@
             "resource-id": ":id/statusBarBackground",
             "class": ".view.View",
             "clickable": false,
-            "id": 30,
+            "id": 42,
             "layer": 1,
-            "description": "2:40"
+            "description": "2:15"
         }
     ],
     "desc": [
-        "[Not Scrollable] This code describes a UI that includes the BBC News logo, a search option and a menu. The menu includes options such as Top Stories, Video, My News, Popular and LIVE. There is also a content view which displays recent news stories with their title, category, time stamp and a link to view the story. The content view is scrollable and provides an option to expand the content by clicking on the image. Additionally, there are ads displayed in between news stories. Overall, this UI provides a user-friendly interface to browse through recent news content on the BBC News app."
+        "[Not Scrollable] This UI contains a main layout with several features, including a scrollable RecyclerView with user stories and feed items. Users can interact with elements such as viewing and adding stories, accessing profiles, performing actions on posts (like, comment, share, save), and interacting with captions and comments. Additionally, the ActionBar contains navigation options for Instagram Home Feed, favorites, messages, approval, search and explore, accessing the camera, viewing reels, and navigating to the user's profile."
     ]
 }
