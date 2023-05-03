@@ -28,10 +28,15 @@ class UIAuto:
     *** AI Chain Checking Elements Directly ***
     *******************************************
     '''
-    # def identify_task_target_element(self, task):
-    #     self.conversation += [{'role': 'user', 'content': 'This is a view hierarchy of a UI, can you segment it into functional blocks? Summarize all of its elements and functionalities, and print the "id" of each block.'},
-    #                           {'role': 'user', 'content': str(self.gui.element_tree)},
-    #                           {'role': 'user', 'content': 'To complete the task "' + task + '", which block is the most related one to interact with?'}]
+    def identify_task_target_element(self, task, printlog=False):
+        self.conversation = [
+            {'role': 'system', 'content': self.role},
+            {'role': 'user', 'content': 'This is a view hierarchy of a UI, can you segment it into functional blocks? Summarize all of its elements and functionalities, and print the "id" of each block.'},
+            {'role': 'user', 'content': str(self.gui.element_tree)},
+            {'role': 'user', 'content': 'To complete the task "' + task + '", which block is the most related one to interact with?'}
+        ]
+        self.ans_target_element = self.openai.ask_openai_conversation(self.conversation, printlog=printlog)
+        self.conversation.append(self.ans_block_sum)
 
     '''
     ******************************
