@@ -38,16 +38,20 @@ class UIAuto:
             {'role': 'user', 'content': 'Is this UI directly related to the task "' + task + '"?'},
             {'role': 'user', 'content': 'If yes, answer "Yes" and the related Element id, for example, "Yes, Element id: 2". Otherwise, answer "No"'}
         ]
-        answer = self.openai.ask_openai_conversation(self.conversation, printlog=printlog)
-        self.conversation.append(answer)
+        self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog=printlog))
 
     def check_indirect_ui_relevance(self, task, printlog=False):
         self.conversation += [
             {'role': 'user', 'content': 'The task "' + task + '" may take multiple steps to complete. Is there any UI elements that can direct to the related UI to complete the task?'},
             {'role': 'user', 'content': 'If yes, answer "Yes" and the related Element id, for example, "Yes, Element id: 2". Otherwise, answer "No"'}
         ]
-        answer = self.openai.ask_openai_conversation(self.conversation, printlog=printlog)
-        self.conversation.append(answer)
+        self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog=printlog))
+
+    def incorrect_element(self, ele_id, printlog=False):
+        self.conversation += [
+            {'role': 'user', 'content': 'Element ' + str(ele_id) + ' can not direct to the related UI. Answer the last question again.'}
+        ]
+        self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog=printlog))
 
     def get_target_element_node(self):
         e = re.findall('[Ee]lement\s*[Ii][Dd]:\s*\d+', self.ans_target_element['content'])
