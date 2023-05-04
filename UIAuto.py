@@ -13,30 +13,41 @@ class UIAuto:
         self.gui = gui
         self.gui_name = self.gui.gui_name
 
-        self.role = 'You are a mobile virtual assistant that understands and interacts with the user interface to complete given task. Just output the block id as the answer in format of - Element id: 2.'
+        self.role = 'You are a mobile virtual assistant that understands and interacts with the user interface to complete given task.'
         self.openai = OpenAI(role=self.role, model=model)
 
-        self.conversation = [{'role': 'system', 'content': self.role}]       # store the conversation history for block ai chain
+        self.conversation = None  # store the conversation history for block ai chain
         self.task = task  # string, a NL sentence to describe the task, e.g. "Turn on voice"
 
-        self.ans_block_sum = None
-        self.ans_target_block = None
-        self.ans_target_element = None
+    def init_conversation(self):
+        self.conversation = [
+            {'role': 'system', 'content': self.role},
+            {'role': 'user', 'content': 'This is a view hierarchy of a UI containing various UI blocks and elements.'},
+            {'role': 'user', 'content': str(self.gui.element_tree)},
+            {'role': 'user', 'content': 'I will ask you questions and tasks based on this'}
+        ]
 
     '''
     *******************************************
     *** AI Chain Checking Elements Directly ***
     *******************************************
     '''
-    def identify_task_target_element(self, task, printlog=False):
-        self.conversation = [
-            {'role': 'system', 'content': self.role},
-            {'role': 'user', 'content': 'This is a view hierarchy of a UI, can you segment it into functional blocks? Summarize all of its elements and functionalities, and print the "id" of each block.'},
-            {'role': 'user', 'content': str(self.gui.element_tree)},
-            {'role': 'user', 'content': 'To complete the task "' + task + '", which end element is the most related one to interact with?'}
+    def check_direct_ui_relevance(self, task, printlog=False):
+        self.init_conversation()
+        self.conversation += [
+            {'role': 'user', 'content': 'Is this UI directly related to the task "' + task + '"?'},
+            {'role': 'user', 'content': 'If yes, answer "Yes" and the related Element id, for example, "Yes, Element id: 2". Otherwise, answer "No"'}
         ]
-        self.ans_target_element = self.openai.ask_openai_conversation(self.conversation, printlog=printlog)
-        self.conversation.append(self.ans_target_element)
+        answer = self.openai.ask_openai_conversation(self.conversation, printlog=printlog)
+        self.conversation.append(answer)
+
+    def check_indirect_ui_relevance(self, task, printlog=False):
+        self.conversation += [
+            {'role': 'user', 'content': 'The task "' + task + '" may take multiple steps to complete. Is there any UI elements that can direct to the related UI to complete the task?'},
+            {'role': 'user', 'content': 'If yes, answer "Yes" and the related Element id, for example, "Yes, Element id: 2". Otherwise, answer "No"'}
+        ]
+        answer = self.openai.ask_openai_conversation(self.conversation, printlog=printlog)
+        self.conversation.append(answer)
 
     def get_target_element_node(self):
         e = re.findall('[Ee]lement\s*[Ii][Dd]:\s*\d+', self.ans_target_element['content'])
@@ -90,3 +101,37 @@ class UIAuto:
 
     def load_conv(self, input_file='data/conv.json'):
         self.conversation = json.load(open(input_file, 'r'))
+
+    '''
+    ************************
+    *** Grounding Action ***
+    ************************
+    '''
+    def execute_action(self, action, device, show=False):
+        '''
+        @action: (operation type, element id)
+            => 'click', 'scroll'
+        @device: ppadb device
+        '''
+        op_type, ele_id = action
+        ele = self.gui.elements[ele_id]
+        bounds = ele['bounds']
+        if op_type == 'click':
+            centroid = ((bounds[2] + bounds[0]) // 2, (bounds[3] + bounds[1]) // 2)
+            if show:
+                board = self.gui.img.copy()
+                cv2.circle(board, (centroid[0], centroid[1]), 20, (255, 0, 255), 8)
+                cv2.imshow('click', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
+                cv2.waitKey()
+                cv2.destroyWindow('click')
+            device.input_tap(centroid[0], centroid[1])
+        elif op_type == 'scroll':
+            bias = 5
+            if show:
+                board = self.gui.img.copy()
+                cv2.circle(board, (bounds[2]-bias, bounds[3]+bias), 20, (255, 0, 255), 8)
+                cv2.circle(board, (bounds[0]-bias, bounds[1]+bias), 20, (255, 0, 255), 8)
+                cv2.imshow('scroll', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
+                cv2.waitKey()
+                cv2.destroyWindow('scroll')
+            device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)
