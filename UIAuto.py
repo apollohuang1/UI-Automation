@@ -29,10 +29,22 @@ class UIAuto:
 
     '''
     *******************************************
-    *** AI Chain Checking Elements Directly ***
+    *** Checking Elements Directly ***
     *******************************************
     '''
+    def identify_ui_element(self, task, printlog=False):
+        self.check_direct_ui_relevance(task, printlog)
+        if 'Yes' in self.conversation[-1]['content']:
+            return self.get_target_element_node(self.conversation[-1]['content'])
+        else:
+            self.check_indirect_ui_relevance(task, printlog)
+            if 'Yes' in self.conversation[-1]['content']:
+                return self.get_target_element_node(self.conversation[-1]['content'])
+            else:
+                return None
+
     def check_direct_ui_relevance(self, task, printlog=False):
+        print('------ Check if the UI directly related ------')
         self.init_conversation()
         self.conversation += [
             {'role': 'user', 'content': 'Is this UI directly related to the task "' + task + '"?'},
@@ -41,6 +53,7 @@ class UIAuto:
         self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog=printlog))
 
     def check_indirect_ui_relevance(self, task, printlog=False):
+        print('------ Check if the UI indirectly related ------')
         self.conversation += [
             {'role': 'user', 'content': 'The task "' + task + '" may take multiple steps to complete. Is there any UI elements that can direct to the related UI to complete the task?'},
             {'role': 'user', 'content': 'If yes, answer "Yes" and the related Element id, for example, "Yes, Element id: 2". Otherwise, answer "No"'}
@@ -53,8 +66,8 @@ class UIAuto:
         ]
         self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog=printlog))
 
-    def get_target_element_node(self):
-        e = re.findall('[Ee]lement\s*[Ii][Dd]:\s*\d+', self.ans_target_element['content'])
+    def get_target_element_node(self, sentence):
+        e = re.findall('[Ee]lement\s*[Ii][Dd]:\s*\d+', sentence)
         ele_id = int(re.findall('\d+', e[0])[0])
         return self.gui.get_ui_element_node_by_id(ele_id)
 
@@ -100,11 +113,19 @@ class UIAuto:
         self.ans_target_element = self.openai.ask_openai_conversation(conv_no_element_tree, printlog=printlog)
         self.conversation.append(self.ans_target_element)
 
+    '''
+    ******************************
+    *** Conversation Operation ***
+    ******************************
+    '''
     def save_conv(self, output_file='data/conv.json'):
         json.dump(self.conversation, open(output_file, 'w'), indent=2)
 
     def load_conv(self, input_file='data/conv.json'):
         self.conversation = json.load(open(input_file, 'r'))
+
+    def print_conversation(self):
+        print(json.dumps(self.conversation, indent=2))
 
     '''
     ************************
