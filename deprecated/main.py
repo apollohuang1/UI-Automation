@@ -24,7 +24,7 @@ while True:
                   output_file_root=device.testcase_save_dir)
     gui.ui_info_extraction()
     gui.ui_analysis_elements_description()
-    gui.ui_element_block_tree()
+    gui.ui_element_tree()
     gui.show_all_elements(only_leaves=False)
 
     # 3. Generate description for blocks and ask a chain of questions to identify target block and target element related to the task, save to "data/app_name/test_case_no/automator"

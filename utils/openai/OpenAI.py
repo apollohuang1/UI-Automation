@@ -4,7 +4,7 @@ import tiktoken
 
 class OpenAI:
     def __init__(self, role=None, model='gpt-4'):
-        openai.api_key = open('openaikey.txt', 'r').readline()
+        openai.api_key = open('utils/openai/openaikey.txt', 'r').readline()
         self.role = role
         self.model = model
 

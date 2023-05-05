@@ -1,17 +1,16 @@
 import os
 import cv2
 import json
-import pandas as pd
 from os.path import join as pjoin
 import copy
 
-from classification.IconClassifier import IconClassifier
-from classification.IconCaption import IconCaption
-from ocr.text_detection import text_detection
+from utils.classification.IconClassifier import IconClassifier
+from utils.classification.IconCaption import IconCaption
+from utils.ocr.text_detection import text_detection
 
 import sys
 import warnings
-sys.path.append('classification')
+sys.path.append('utils/classification')
 warnings.filterwarnings("ignore", category=Warning)
 
 
@@ -232,8 +231,8 @@ class GUIData:
 
     def caption_elements(self, elements=None):
         if self.model_icon_caption is None:
-            self.model_icon_caption = IconCaption(vocab_path='classification/model_results/vocab_idx2word.json',
-                                                  model_path='classification/model_results/labeldroid.pt')
+            self.model_icon_caption = IconCaption(vocab_path='utils/classification/model_results/vocab_idx2word.json',
+                                                  model_path='utils/classification/model_results/labeldroid.pt')
         elements = self.elements_leaves if elements is None else elements
         clips = []
         for ele in elements:
@@ -245,8 +244,8 @@ class GUIData:
 
     def classify_elements(self, elements=None):
         if self.model_icon_classification is None:
-            self.model_icon_classification = IconClassifier(model_path='classification/model_results/best-0.93.pt',
-                                                            class_path='classification/model_results/iconModel_labels.json')
+            self.model_icon_classification = IconClassifier(model_path='utils/classification/model_results/best-0.93.pt',
+                                                            class_path='utils/classification/model_results/iconModel_labels.json')
         elements = self.elements_leaves if elements is None else elements
         clips = []
         for ele in elements:

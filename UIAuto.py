@@ -1,15 +1,13 @@
 import json
-from os.path import join as pjoin
-import os
 import re
 import cv2
-import tiktoken
-import math
-from OpenAI import OpenAI
+from utils.openai.OpenAI import OpenAI
 
 
 class UIAuto:
-    def __init__(self, gui, task='', model='gpt-4'):
+    def __init__(self, gui, task='', model='gpt-4', device=None):
+        self.device = device
+
         self.gui = gui
         self.gui_name = self.gui.gui_name
 
@@ -28,9 +26,22 @@ class UIAuto:
         ]
 
     '''
-    *******************************************
+    ****************
+    *** AI Chain ***
+    ****************
+    '''
+    def ai_chain(self, task, printlog=False, show_action=False):
+        element = self.identify_ui_element(task, printlog)
+        if element is not None:
+            action = ['click', element['id']]
+            self.execute_action(action, self.device, show_action)
+        else:
+            print('==== This UI is not related to the task ====')
+
+    '''
+    **********************************
     *** Checking Elements Directly ***
-    *******************************************
+    **********************************
     '''
     def identify_ui_element(self, task, printlog=False):
         self.check_direct_ui_relevance(task, printlog)
@@ -67,6 +78,7 @@ class UIAuto:
         self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog=printlog))
 
     def get_target_element_node(self, sentence):
+        print('------ Get the related element ------')
         e = re.findall('[Ee]lement\s*[Ii][Dd]:\s*\d+', sentence)
         ele_id = int(re.findall('\d+', e[0])[0])
         return self.gui.get_ui_element_node_by_id(ele_id)
@@ -149,7 +161,7 @@ class UIAuto:
                 cv2.imshow('click', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
                 cv2.waitKey()
                 cv2.destroyWindow('click')
-            device.input_tap(centroid[0], centroid[1])
+            device.adb_device.input_tap(centroid[0], centroid[1])
         elif op_type == 'scroll':
             bias = 5
             if show:
@@ -159,4 +171,4 @@ class UIAuto:
                 cv2.imshow('scroll', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
                 cv2.waitKey()
                 cv2.destroyWindow('scroll')
-            device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)
+            device.adb_device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)

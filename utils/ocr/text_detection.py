@@ -1,5 +1,5 @@
-import ocr.ocr as ocr
-from ocr.Text import Text
+from utils.ocr import ocr as ocr
+from utils.ocr.Text import Text
 import cv2
 import json
 import time

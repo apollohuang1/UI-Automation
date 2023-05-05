@@ -3,761 +3,156 @@
     "clickable": false,
     "scrollable": false,
     "id": 0,
-    "layer": 0,
     "children": [
         {
-            "resource-id": ".twitter:id/root_coordinator_layout",
+            "resource-id": ".google.apps.nexuslauncher:id/scrim_view",
+            "class": ".view.View",
+            "clickable": false,
+            "id": 1,
+            "description": "9:52Sat , May110Twitter"
+        },
+        {
+            "resource-id": ".google.apps.nexuslauncher:id/workspace",
             "class": ".widget.ScrollView",
             "clickable": false,
             "scrollable": true,
-            "id": 1,
-            "layer": 1,
+            "id": 2,
             "children": [
                 {
-                    "resource-id": ".twitter:id/toolbar",
                     "class": ".view.ViewGroup",
-                    "clickable": true,
-                    "scrollable": false,
-                    "id": 2,
-                    "layer": 2,
-                    "children": [
-                        {
-                            "class": ".widget.ImageButton",
-                            "clickable": true,
-                            "id": 3,
-                            "layer": 3,
-                            "description": "Show navigation drawer"
-                        },
-                        {
-                            "resource-id": ".twitter:id/logo",
-                            "class": ".widget.ImageView",
-                            "clickable": true,
-                            "id": 4,
-                            "layer": 3,
-                            "description": "twitter"
-                        }
-                    ]
-                },
-                {
-                    "resource-id": ".twitter:id/view_pager",
-                    "class": "x.viewpager.widget.ViewPager",
                     "clickable": false,
-                    "scrollable": true,
-                    "id": 5,
-                    "layer": 2,
+                    "scrollable": false,
+                    "id": 3,
                     "children": [
                         {
-                            "resource-id": ".twitter:id/tab_layout",
-                            "class": ".widget.HorizontalScrollView",
+                            "class": ".view.ViewGroup",
                             "clickable": false,
                             "scrollable": false,
-                            "id": 6,
-                            "layer": 3,
+                            "id": 4,
                             "children": [
                                 {
-                                    "class": ".widget.TextView",
-                                    "clickable": false,
-                                    "id": 7,
-                                    "layer": 4,
-                                    "description": "For you"
+                                    "class": ".view.ViewGroup",
+                                    "clickable": true,
+                                    "scrollable": false,
+                                    "id": 5,
+                                    "children": [
+                                        {
+                                            "resource-id": ".google.apps.nexuslauncher:id/date",
+                                            "class": ".widget.TextView",
+                                            "clickable": true,
+                                            "id": 6,
+                                            "description": "Sat, May 6"
+                                        },
+                                        {
+                                            "resource-id": ".google.apps.nexuslauncher:id/smartspace_subtitle_group",
+                                            "class": ".view.ViewGroup",
+                                            "clickable": true,
+                                            "id": 7,
+                                            "description": "navigate up"
+                                        }
+                                    ]
                                 },
                                 {
                                     "class": ".widget.TextView",
                                     "clickable": true,
                                     "id": 8,
-                                    "layer": 4,
-                                    "description": "Following"
+                                    "description": "Twitter"
                                 }
                             ]
-                        },
-                        {
-                            "resource-id": ".twitter:id/nested_coordinator_layout",
-                            "class": ".widget.ScrollView",
-                            "clickable": false,
-                            "scrollable": true,
-                            "id": 9,
-                            "layer": 3,
-                            "children": [
-                                {
-                                    "resource-id": ":id/list",
-                                    "class": "x.recyclerview.widget.RecyclerView",
-                                    "clickable": false,
-                                    "scrollable": true,
-                                    "id": 10,
-                                    "layer": 4,
-                                    "children": [
-                                        {
-                                            "class": ".view.ViewGroup",
-                                            "clickable": true,
-                                            "scrollable": false,
-                                            "id": 11,
-                                            "layer": 5,
-                                            "children": [
-                                                {
-                                                    "resource-id": ".twitter:id/row",
-                                                    "class": ".view.ViewGroup",
-                                                    "clickable": true,
-                                                    "scrollable": false,
-                                                    "id": 12,
-                                                    "layer": 6,
-                                                    "children": [
-                                                        {
-                                                            "class": "ddw",
-                                                            "clickable": true,
-                                                            "id": 13,
-                                                            "layer": 7,
-                                                            "description": "0:59 a woman whoworks atCSIDO"
-                                                        },
-                                                        {
-                                                            "class": ".widget.ImageView",
-                                                            "clickable": true,
-                                                            "id": 14,
-                                                            "layer": 7,
-                                                            "description": "0:59 a woman whoworks atCSIDO"
-                                                        },
-                                                        {
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "scrollable": false,
-                                                            "id": 15,
-                                                            "layer": 7,
-                                                            "children": [
-                                                                {
-                                                                    "class": ".view.View",
-                                                                    "clickable": true,
-                                                                    "id": 16,
-                                                                    "layer": 8,
-                                                                    "description": "0:59 a woman whoworks at"
-                                                                },
-                                                                {
-                                                                    "resource-id": ".twitter:id/av_badge_duration_text",
-                                                                    "class": ".widget.TextView",
-                                                                    "clickable": true,
-                                                                    "id": 17,
-                                                                    "layer": 8,
-                                                                    "description": "0:59"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/view_counts",
-                                                            "class": ".widget.TextView",
-                                                            "clickable": true,
-                                                            "id": 18,
-                                                            "layer": 7,
-                                                            "description": "1,633 views"
-                                                        },
-                                                        {
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "scrollable": false,
-                                                            "id": 19,
-                                                            "layer": 7,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_reply",
-                                                                    "class": ".view.ViewGroup",
-                                                                    "clickable": true,
-                                                                    "scrollable": false,
-                                                                    "id": 20,
-                                                                    "layer": 8,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 21,
-                                                                            "layer": 9,
-                                                                            "description": "Q2"
-                                                                        },
-                                                                        {
-                                                                            "class": ".widget.TextView",
-                                                                            "clickable": true,
-                                                                            "id": 22,
-                                                                            "layer": 9,
-                                                                            "description": "2"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_retweet",
-                                                                    "class": ".view.ViewGroup",
-                                                                    "clickable": true,
-                                                                    "scrollable": false,
-                                                                    "id": 23,
-                                                                    "layer": 8,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 24,
-                                                                            "layer": 9,
-                                                                            "description": "switch direction"
-                                                                        },
-                                                                        {
-                                                                            "class": ".widget.TextView",
-                                                                            "clickable": true,
-                                                                            "id": 25,
-                                                                            "layer": 9,
-                                                                            "description": "11"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_like",
-                                                                    "class": ".view.ViewGroup",
-                                                                    "clickable": true,
-                                                                    "scrollable": false,
-                                                                    "id": 26,
-                                                                    "layer": 8,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 27,
-                                                                            "layer": 9,
-                                                                            "description": "favorite"
-                                                                        },
-                                                                        {
-                                                                            "class": ".widget.TextView",
-                                                                            "clickable": true,
-                                                                            "id": 28,
-                                                                            "layer": 9,
-                                                                            "description": "54"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_view_count",
-                                                                    "class": ".view.ViewGroup",
-                                                                    "clickable": true,
-                                                                    "scrollable": false,
-                                                                    "id": 29,
-                                                                    "layer": 8,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 30,
-                                                                            "layer": 9,
-                                                                            "description": "\u20814,829"
-                                                                        },
-                                                                        {
-                                                                            "class": ".widget.TextView",
-                                                                            "clickable": true,
-                                                                            "id": 31,
-                                                                            "layer": 9,
-                                                                            "description": "4,829"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 32,
-                                                                    "layer": 8,
-                                                                    "description": "share"
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "resource-id": ".twitter:id/row",
-                                            "class": ".view.ViewGroup",
-                                            "clickable": true,
-                                            "scrollable": false,
-                                            "id": 33,
-                                            "layer": 5,
-                                            "children": [
-                                                {
-                                                    "resource-id": ".twitter:id/social_context_badge",
-                                                    "class": ".widget.ImageView",
-                                                    "clickable": true,
-                                                    "id": 34,
-                                                    "layer": 6,
-                                                    "description": "chat"
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/social_context_text",
-                                                    "class": ".widget.TextView",
-                                                    "clickable": true,
-                                                    "id": 35,
-                                                    "layer": 6,
-                                                    "description": "Elon Musk replied"
-                                                },
-                                                {
-                                                    "class": ".widget.ImageView",
-                                                    "clickable": true,
-                                                    "id": 36,
-                                                    "layer": 6,
-                                                    "description": "avatar"
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/tweet_header",
-                                                    "class": ".view.ViewGroup",
-                                                    "clickable": true,
-                                                    "id": 37,
-                                                    "layer": 6,
-                                                    "description": "Eva Vlaardingerbroek@Eva ...3d ."
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/tweet_curation_action",
-                                                    "class": ".widget.ImageView",
-                                                    "clickable": true,
-                                                    "id": 38,
-                                                    "layer": 6,
-                                                    "description": "The Dutch government is ramping up the"
-                                                },
-                                                {
-                                                    "class": ".view.View",
-                                                    "clickable": true,
-                                                    "id": 39,
-                                                    "layer": 6,
-                                                    "description": "\ud83c\uddf3\ud83c\uddf1 The Dutch government is ramping up the intimidation & obstruction tactics in light of the upcoming farmers protest in The Hague this Saturday: the mayor has said army trucks may be deployed and has ordered the farmers to not take tractors to the protest."
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/tweet_connector_bottom",
-                                                    "class": ".view.View",
-                                                    "clickable": true,
-                                                    "id": 40,
-                                                    "layer": 6,
-                                                    "description": "loading"
-                                                },
-                                                {
-                                                    "class": ".view.ViewGroup",
-                                                    "clickable": true,
-                                                    "scrollable": false,
-                                                    "id": 41,
-                                                    "layer": 6,
-                                                    "children": [
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_reply",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "scrollable": false,
-                                                            "id": 42,
-                                                            "layer": 7,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 43,
-                                                                    "layer": 8,
-                                                                    "description": "chat"
-                                                                },
-                                                                {
-                                                                    "class": ".widget.TextView",
-                                                                    "clickable": true,
-                                                                    "id": 44,
-                                                                    "layer": 8,
-                                                                    "description": "995"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_retweet",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "scrollable": false,
-                                                            "id": 45,
-                                                            "layer": 7,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 46,
-                                                                    "layer": 8,
-                                                                    "description": "switch direction"
-                                                                },
-                                                                {
-                                                                    "class": ".widget.TextView",
-                                                                    "clickable": true,
-                                                                    "id": 47,
-                                                                    "layer": 8,
-                                                                    "description": "4,727"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_like",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "scrollable": false,
-                                                            "id": 48,
-                                                            "layer": 7,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 49,
-                                                                    "layer": 8,
-                                                                    "description": "favorite"
-                                                                },
-                                                                {
-                                                                    "class": ".widget.TextView",
-                                                                    "clickable": true,
-                                                                    "id": 50,
-                                                                    "layer": 8,
-                                                                    "description": "17.8K"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_view_count",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "scrollable": false,
-                                                            "id": 51,
-                                                            "layer": 7,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 52,
-                                                                    "layer": 8,
-                                                                    "description": "il\u2081 2.7M"
-                                                                },
-                                                                {
-                                                                    "class": ".widget.TextView",
-                                                                    "clickable": true,
-                                                                    "id": 53,
-                                                                    "layer": 8,
-                                                                    "description": "2.7M"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                            "class": ".widget.ImageView",
-                                                            "clickable": true,
-                                                            "id": 54,
-                                                            "layer": 7,
-                                                            "description": "share"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "class": ".view.ViewGroup",
-                                            "clickable": true,
-                                            "scrollable": false,
-                                            "id": 55,
-                                            "layer": 5,
-                                            "children": [
-                                                {
-                                                    "resource-id": ".twitter:id/row",
-                                                    "class": ".view.ViewGroup",
-                                                    "clickable": true,
-                                                    "scrollable": false,
-                                                    "id": 56,
-                                                    "layer": 6,
-                                                    "children": [
-                                                        {
-                                                            "resource-id": ".twitter:id/tweet_connector_top",
-                                                            "class": ".view.View",
-                                                            "clickable": true,
-                                                            "id": 57,
-                                                            "layer": 7,
-                                                            "description": "search"
-                                                        },
-                                                        {
-                                                            "class": ".widget.ImageView",
-                                                            "clickable": true,
-                                                            "id": 58,
-                                                            "layer": 7,
-                                                            "description": "avatar"
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/tweet_header",
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "id": 59,
-                                                            "layer": 7,
-                                                            "description": "Elon Musk@elonmusk3d."
-                                                        },
-                                                        {
-                                                            "resource-id": ".twitter:id/tweet_curation_action",
-                                                            "class": ".widget.ImageView",
-                                                            "clickable": true,
-                                                            "id": 60,
-                                                            "layer": 7,
-                                                            "description": "more"
-                                                        },
-                                                        {
-                                                            "class": ".view.View",
-                                                            "clickable": true,
-                                                            "id": 61,
-                                                            "layer": 7,
-                                                            "description": "!"
-                                                        },
-                                                        {
-                                                            "class": ".view.ViewGroup",
-                                                            "clickable": true,
-                                                            "scrollable": false,
-                                                            "id": 62,
-                                                            "layer": 7,
-                                                            "children": [
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_reply",
-                                                                    "class": ".view.ViewGroup",
-                                                                    "clickable": true,
-                                                                    "scrollable": false,
-                                                                    "id": 63,
-                                                                    "layer": 8,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 64,
-                                                                            "layer": 9,
-                                                                            "description": "chat"
-                                                                        },
-                                                                        {
-                                                                            "class": ".widget.TextView",
-                                                                            "clickable": true,
-                                                                            "id": 65,
-                                                                            "layer": 9,
-                                                                            "description": "536"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_retweet",
-                                                                    "class": ".view.ViewGroup",
-                                                                    "clickable": true,
-                                                                    "scrollable": false,
-                                                                    "id": 66,
-                                                                    "layer": 8,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 67,
-                                                                            "layer": 9,
-                                                                            "description": "1698"
-                                                                        },
-                                                                        {
-                                                                            "class": ".widget.TextView",
-                                                                            "clickable": true,
-                                                                            "id": 68,
-                                                                            "layer": 9,
-                                                                            "description": "698"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_like",
-                                                                    "class": ".view.ViewGroup",
-                                                                    "clickable": true,
-                                                                    "scrollable": false,
-                                                                    "id": 69,
-                                                                    "layer": 8,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 70,
-                                                                            "layer": 9,
-                                                                            "description": "favorite"
-                                                                        },
-                                                                        {
-                                                                            "class": ".widget.TextView",
-                                                                            "clickable": true,
-                                                                            "id": 71,
-                                                                            "layer": 9,
-                                                                            "description": "9,049"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_view_count",
-                                                                    "class": ".view.ViewGroup",
-                                                                    "clickable": true,
-                                                                    "scrollable": false,
-                                                                    "id": 72,
-                                                                    "layer": 8,
-                                                                    "children": [
-                                                                        {
-                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                            "class": ".widget.ImageView",
-                                                                            "clickable": true,
-                                                                            "id": 73,
-                                                                            "layer": 9,
-                                                                            "description": "settings"
-                                                                        },
-                                                                        {
-                                                                            "class": ".widget.TextView",
-                                                                            "clickable": true,
-                                                                            "id": 74,
-                                                                            "layer": 9,
-                                                                            "description": "1.3M"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
-                                                                    "class": ".widget.ImageView",
-                                                                    "clickable": true,
-                                                                    "id": 75,
-                                                                    "layer": 8,
-                                                                    "description": "share"
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "resource-id": ".twitter:id/row",
-                                            "class": ".view.ViewGroup",
-                                            "clickable": true,
-                                            "scrollable": false,
-                                            "id": 76,
-                                            "layer": 5,
-                                            "children": [
-                                                {
-                                                    "class": ".widget.ImageView",
-                                                    "clickable": true,
-                                                    "id": 77,
-                                                    "layer": 6,
-                                                    "description": "NAVYARMYAIR FORCE"
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/tweet_header",
-                                                    "class": ".view.ViewGroup",
-                                                    "clickable": true,
-                                                    "id": 78,
-                                                    "layer": 6,
-                                                    "description": "Defence Jobs Aust@defencejobsaust"
-                                                },
-                                                {
-                                                    "resource-id": ".twitter:id/tweet_curation_action",
-                                                    "class": ".widget.ImageView",
-                                                    "clickable": true,
-                                                    "id": 79,
-                                                    "layer": 6,
-                                                    "description": ":"
-                                                },
-                                                {
-                                                    "class": ".view.View",
-                                                    "clickable": true,
-                                                    "id": 80,
-                                                    "layer": 6,
-                                                    "description": "Discover the roles and see how you can safeguard the skies. #WhatIsUp"
-                                                },
-                                                {
-                                                    "class": ".widget.FrameLayout",
-                                                    "clickable": true,
-                                                    "scrollable": false,
-                                                    "id": 81,
-                                                    "layer": 6,
-                                                    "children": [
-                                                        {
-                                                            "class": "ddw",
-                                                            "clickable": true,
-                                                            "id": 82,
-                                                            "layer": 7,
-                                                            "description": "+"
-                                                        },
-                                                        {
-                                                            "class": ".view.View",
-                                                            "clickable": true,
-                                                            "id": 83,
-                                                            "layer": 7,
-                                                            "description": "+"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "resource-id": ".twitter:id/poser_write",
-                    "class": ".widget.ImageButton",
-                    "clickable": true,
-                    "id": 84,
-                    "layer": 2,
-                    "description": "+"
-                },
-                {
-                    "resource-id": ".twitter:id/tabs",
-                    "class": ".widget.HorizontalScrollView",
-                    "clickable": false,
-                    "scrollable": false,
-                    "id": 85,
-                    "layer": 2,
-                    "children": [
-                        {
-                            "resource-id": ".twitter:id/channels",
-                            "class": ".view.View",
-                            "clickable": false,
-                            "id": 86,
-                            "layer": 3,
-                            "description": "close navigation drawer"
-                        },
-                        {
-                            "class": ".view.View",
-                            "clickable": true,
-                            "id": 87,
-                            "layer": 3,
-                            "description": "Search and Explore"
-                        },
-                        {
-                            "resource-id": ".twitter:id/spaces",
-                            "class": ".view.View",
-                            "clickable": true,
-                            "id": 88,
-                            "layer": 3,
-                            "description": "Spaces"
-                        },
-                        {
-                            "resource-id": ".twitter:id/notifications",
-                            "class": ".view.View",
-                            "clickable": true,
-                            "id": 89,
-                            "layer": 3,
-                            "description": "Notifications"
-                        },
-                        {
-                            "resource-id": ".twitter:id/dms",
-                            "class": ".view.View",
-                            "clickable": true,
-                            "id": 90,
-                            "layer": 3,
-                            "description": "Messages"
                         }
                     ]
                 }
             ]
         },
         {
-            "resource-id": ":id/statusBarBackground",
             "class": ".view.View",
             "clickable": false,
-            "id": 91,
-            "layer": 1,
-            "description": "5:08"
+            "id": 9,
+            "description": "Sat , May110Twitter / Home"
+        },
+        {
+            "resource-id": ".google.apps.nexuslauncher:id/page_indicator",
+            "class": ".view.View",
+            "clickable": false,
+            "id": 10,
+            "description": "navigate up"
+        },
+        {
+            "resource-id": ".google.apps.nexuslauncher:id/hotseat",
+            "class": ".view.ViewGroup",
+            "clickable": false,
+            "scrollable": false,
+            "id": 11,
+            "children": [
+                {
+                    "class": ".view.ViewGroup",
+                    "clickable": false,
+                    "scrollable": false,
+                    "id": 12,
+                    "children": [
+                        {
+                            "class": ".widget.TextView",
+                            "clickable": true,
+                            "id": 13,
+                            "description": "Phone"
+                        },
+                        {
+                            "class": ".widget.TextView",
+                            "clickable": true,
+                            "id": 14,
+                            "description": "Messages"
+                        },
+                        {
+                            "class": ".widget.TextView",
+                            "clickable": true,
+                            "id": 15,
+                            "description": "Play Store"
+                        },
+                        {
+                            "class": ".widget.TextView",
+                            "clickable": true,
+                            "id": 16,
+                            "description": "Chrome"
+                        },
+                        {
+                            "class": ".widget.TextView",
+                            "clickable": true,
+                            "id": 17,
+                            "description": "Camera"
+                        }
+                    ]
+                },
+                {
+                    "resource-id": ".google.apps.nexuslauncher:id/search_container_hotseat",
+                    "class": ".widget.FrameLayout",
+                    "clickable": true,
+                    "scrollable": false,
+                    "id": 18,
+                    "children": [
+                        {
+                            "resource-id": ".google.apps.nexuslauncher:id/g_icon",
+                            "class": ".widget.ImageView",
+                            "clickable": true,
+                            "id": 19,
+                            "description": "refresh"
+                        },
+                        {
+                            "resource-id": ".google.apps.nexuslauncher:id/mic_icon",
+                            "class": ".widget.ImageView",
+                            "clickable": true,
+                            "id": 20,
+                            "description": "Voice search"
+                        },
+                        {
+                            "resource-id": ".google.apps.nexuslauncher:id/lens_icon",
+                            "class": ".widget.ImageButton",
+                            "clickable": true,
+                            "id": 21,
+                            "description": "Google Lens"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

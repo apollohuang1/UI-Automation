@@ -1,4 +1,3 @@
-import torch
 import torch.nn as nn
 from models.image_models import ResNetFeats
 import models
