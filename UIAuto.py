@@ -30,13 +30,14 @@ class UIAuto:
     *** AI Chain ***
     ****************
     '''
-    def ai_chain(self, task, printlog=False, show_action=False):
+    def ai_chain_automate_task_on_the_gui(self, task, printlog=False, show_action=False):
         element = self.identify_ui_element(task, printlog)
         if element is not None:
             action = ['click', element['id']]
             self.execute_action(action, self.device, show_action)
         else:
             print('==== This UI is not related to the task ====')
+        return element
 
     '''
     **********************************
