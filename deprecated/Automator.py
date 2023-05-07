@@ -252,34 +252,34 @@ class Automator:
         e = re.findall('[Ee]lement\s*\d+', sentence)[0]
         return int(re.findall('\d+', e)[0])
 
-    def execute_action(self, action, device, show=False):
-        '''
-        @action: (operation type, element id)
-            => 'click', 'scroll'
-        @device: ppadb device
-        '''
-        op_type, ele_id = action
-        ele = self.gui.elements[ele_id]
-        bounds = ele['bounds']
-        if op_type == 'click':
-            centroid = ((bounds[2] + bounds[0]) // 2, (bounds[3] + bounds[1]) // 2)
-            if show:
-                board = self.gui.img.copy()
-                cv2.circle(board, (centroid[0], centroid[1]), 20, (255, 0, 255), 8)
-                cv2.imshow('click', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
-                cv2.waitKey()
-                cv2.destroyWindow('click')
-            device.input_tap(centroid[0], centroid[1])
-        elif op_type == 'scroll':
-            bias = 5
-            if show:
-                board = self.gui.img.copy()
-                cv2.circle(board, (bounds[2]-bias, bounds[3]+bias), 20, (255, 0, 255), 8)
-                cv2.circle(board, (bounds[0]-bias, bounds[1]+bias), 20, (255, 0, 255), 8)
-                cv2.imshow('scroll', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
-                cv2.waitKey()
-                cv2.destroyWindow('scroll')
-            device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)
+    # def execute_action(self, action, device, show=False):
+    #     '''
+    #     @action: (operation type, element id)
+    #         => 'click', 'scroll'
+    #     @device: ppadb device
+    #     '''
+    #     op_type, ele_id = action
+    #     ele = self.gui.elements[ele_id]
+    #     bounds = ele['bounds']
+    #     if op_type == 'click':
+    #         centroid = ((bounds[2] + bounds[0]) // 2, (bounds[3] + bounds[1]) // 2)
+    #         if show:
+    #             board = self.gui.img.copy()
+    #             cv2.circle(board, (centroid[0], centroid[1]), 20, (255, 0, 255), 8)
+    #             cv2.imshow('click', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
+    #             cv2.waitKey()
+    #             cv2.destroyWindow('click')
+    #         device.input_tap(centroid[0], centroid[1])
+    #     elif op_type == 'scroll':
+    #         bias = 5
+    #         if show:
+    #             board = self.gui.img.copy()
+    #             cv2.circle(board, (bounds[2]-bias, bounds[3]+bias), 20, (255, 0, 255), 8)
+    #             cv2.circle(board, (bounds[0]-bias, bounds[1]+bias), 20, (255, 0, 255), 8)
+    #             cv2.imshow('scroll', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
+    #             cv2.waitKey()
+    #             cv2.destroyWindow('scroll')
+    #         device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)
 
     '''
     ***************

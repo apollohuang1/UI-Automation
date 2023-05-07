@@ -2,6 +2,8 @@ from Device import Device
 from GUIData import GUIData
 from AIChain import AIChain
 
+import cv2
+
 
 class Automator:
     def __init__(self, app_name, test_case_no):
@@ -64,6 +66,50 @@ class Automator:
         '''
         print('\n=== 3. Check if the task can complete on the UI through AI chain ===')
         ai_chain = AIChain(gui, model, device=self.device)
-        target_element = ai_chain.ai_chain_automate_task_on_the_gui(task, printlog, show_action)
+        relation, target_element = ai_chain.ai_chain_automate_check_elements(task, printlog)
+
+        if relation == 0:
+            print('Unrelated')
+        elif relation == 1:
+            print('Task Complete')
+        elif relation == 2:
+            print('Execute Action')
+            action = ['click', target_element]
+            self.execute_action(action, self.trace_guis[-1], show_action)
+
         self.trace_elements.append(target_element)
 
+    '''
+    ******************************
+    *** Conversation Operation ***
+    ******************************
+    '''
+    def execute_action(self, action, gui, show=False):
+        '''
+        @action: (operation type, element id)
+            => 'click', 'scroll'
+        @device: ppadb device
+        '''
+        print('--- Execute the action on the GUI ---')
+        op_type, ele_id = action
+        ele = gui.elements[ele_id]
+        bounds = ele['bounds']
+        if op_type == 'click':
+            centroid = ((bounds[2] + bounds[0]) // 2, (bounds[3] + bounds[1]) // 2)
+            if show:
+                board = gui.img.copy()
+                cv2.circle(board, (centroid[0], centroid[1]), 20, (255, 0, 255), 8)
+                cv2.imshow('click', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
+                cv2.waitKey()
+                cv2.destroyWindow('click')
+            self.device.adb_device.input_tap(centroid[0], centroid[1])
+        elif op_type == 'scroll':
+            bias = 5
+            if show:
+                board = gui.img.copy()
+                cv2.circle(board, (bounds[2]-bias, bounds[3]+bias), 20, (255, 0, 255), 8)
+                cv2.circle(board, (bounds[0]-bias, bounds[1]+bias), 20, (255, 0, 255), 8)
+                cv2.imshow('scroll', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
+                cv2.waitKey()
+                cv2.destroyWindow('scroll')
+            self.device.adb_device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)

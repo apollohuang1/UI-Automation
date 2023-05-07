@@ -69,7 +69,7 @@ class AIChain:
         # check completion
         self.check_task_completion(task, printlog)
         if 'Yes' in self.conversation[-1]['content']:
-            return 1
+            return 1, None
         # check relevance
         self.check_direct_ui_relevance(task, printlog)
         if 'Yes' in self.conversation[-1]['content']:

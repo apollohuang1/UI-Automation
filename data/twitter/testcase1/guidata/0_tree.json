@@ -154,7 +154,7 @@
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
                                                             "id": 22,
-                                                            "description": "Jeremy Judkins@jeremy .... 07 May 23"
+                                                            "description": "Jeremy Judkins@jeremyjudkins18h."
                                                         },
                                                         {
                                                             "resource-id": ".twitter:id/tweet_curation_action",
@@ -411,7 +411,7 @@
             "class": ".view.View",
             "clickable": false,
             "id": 57,
-            "description": "9:34"
+            "description": "7:36"
         }
     ]
 }
