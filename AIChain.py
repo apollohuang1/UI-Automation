@@ -24,36 +24,61 @@ class AIChain:
             {'role': 'user', 'content': str(self.gui.element_tree)},
             {'role': 'user', 'content': 'I will ask you questions and tasks based on this'}
         ]
+        self.conversation.append(self.openai.ask_openai_conversation(self.conversation))
 
     '''
-    ****************
-    *** AI Chain ***
-    ****************
+    *******************************************
+    *** AI Chain - Checking UI Relationship ***
+    *******************************************
     '''
-    def ai_chain_automate_task_on_the_gui(self, task, printlog=False, show_action=False):
-        element = self.identify_ui_element(task, printlog)
-        if element is not None:
+    def ai_chain_automate_check_ui_relation(self, task, printlog=False):
+        self.check_ui_relation_with_task(task, printlog=printlog)
+        relation = self.conversation[-1]['content']
+        # return the relationship between the current gui and the task
+        if 'Unrelated' in relation:
+            return 0, None
+        elif 'Completed' in relation:
+            return 1, None
+        elif 'related' in relation:
+            element = self.get_target_element_node(relation)
+            return 2, element
+        else:
+            raise Exception("Incorrect relationship")
+
+    def check_ui_relation_with_task(self, task, printlog=False):
+        print('--- Check the relationship between the task and current gui ---')
+        self.init_conversation()
+        self.conversation += [
+            {'role': 'user', 'content': 'I will give you a task, and please select the relationship between the UI and the task from the three options:'},
+            {'role': 'user', 'content': '1. Directly related, which means there is an element in the UI to complete the task directly; 2. Indirectly related, which means although there is no element in the UI to complete the task directly, there is a certain element that can direct to the related UI to complete the task; 3. Unrelated, which means this UI is not related to the task at all; 4. Completed, which means the UI is already in the completed status of the task.'},
+            {'role': 'user', 'content': 'Please answer in this format: [Relationship: Directly Related/ Indirectly related, Element id: 12], or [Relationship: Unrelated/Completed, Element id: N/A]. No need to detail any explanation.'}
+        ]
+        self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog))
+        self.conversation += [
+            {'role': 'user', 'content': 'The task is "' + task + '".'}
+        ]
+        self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog))
+        print('Relationship -', self.conversation[-1]['content'])
+
+    '''
+    *********************************************
+    *** AI Chain - Checking Elements Directly ***
+    *********************************************
+    '''
+    def ai_chain_automate_check_elements_directly(self, task, printlog=False, show_action=False):
+        self.check_direct_ui_relevance(task, printlog)
+        if 'Yes' in self.conversation[-1]['content']:
+            element = self.get_target_element_node(self.conversation[-1]['content'])
             action = ['click', element['id']]
             self.execute_action(action, self.device, show_action)
         else:
-            print('==== This UI is not related to the task ====')
-        return element
-
-    '''
-    **********************************
-    *** Checking Elements Directly ***
-    **********************************
-    '''
-    def identify_ui_element(self, task, printlog=False):
-        self.check_direct_ui_relevance(task, printlog)
-        if 'Yes' in self.conversation[-1]['content']:
-            return self.get_target_element_node(self.conversation[-1]['content'])
-        else:
             self.check_indirect_ui_relevance(task, printlog)
             if 'Yes' in self.conversation[-1]['content']:
-                return self.get_target_element_node(self.conversation[-1]['content'])
+                element = self.get_target_element_node(self.conversation[-1]['content'])
+                action = ['click', element['id']]
+                self.execute_action(action, self.device, show_action)
             else:
-                return None
+                print('==== This UI is not related to the task ====')
 
     def check_direct_ui_relevance(self, task, printlog=False):
         print('--- Check if the UI directly related ---')
@@ -78,16 +103,10 @@ class AIChain:
         ]
         self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog=printlog))
 
-    def get_target_element_node(self, sentence):
-        print('--- Get the related element ---')
-        e = re.findall('[Ee]lement\s*[Ii][Dd]:\s*\d+', sentence)
-        ele_id = int(re.findall('\d+', e[0])[0])
-        return self.gui.get_ui_element_node_by_id(ele_id)
-
     '''
-    ******************************
-    *** AI Chain with UI Block ***
-    ******************************
+    ***************************
+    *** AI Chain - UI Block ***
+    ***************************
     '''
     def ai_chain_block(self, task, printlog=False):
         self.summarize_block(printlog)
@@ -145,32 +164,8 @@ class AIChain:
     *** Grounding Action ***
     ************************
     '''
-    def execute_action(self, action, device, show=False):
-        '''
-        @action: (operation type, element id)
-            => 'click', 'scroll'
-        @device: ppadb device
-        '''
-        print('--- Execute the action on the GUI ---')
-        op_type, ele_id = action
-        ele = self.gui.elements[ele_id]
-        bounds = ele['bounds']
-        if op_type == 'click':
-            centroid = ((bounds[2] + bounds[0]) // 2, (bounds[3] + bounds[1]) // 2)
-            if show:
-                board = self.gui.img.copy()
-                cv2.circle(board, (centroid[0], centroid[1]), 20, (255, 0, 255), 8)
-                cv2.imshow('click', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
-                cv2.waitKey()
-                cv2.destroyWindow('click')
-            device.adb_device.input_tap(centroid[0], centroid[1])
-        elif op_type == 'scroll':
-            bias = 5
-            if show:
-                board = self.gui.img.copy()
-                cv2.circle(board, (bounds[2]-bias, bounds[3]+bias), 20, (255, 0, 255), 8)
-                cv2.circle(board, (bounds[0]-bias, bounds[1]+bias), 20, (255, 0, 255), 8)
-                cv2.imshow('scroll', cv2.resize(board, (board.shape[1] // 3, board.shape[0] // 3)))
-                cv2.waitKey()
-                cv2.destroyWindow('scroll')
-            device.adb_device.input_swipe(bounds[2]-bias, bounds[3]+bias, bounds[0]-bias, bounds[1]+bias, 500)
+    def get_target_element_node(self, sentence):
+        print('--- Get the related element ---')
+        e = re.findall('[Ee]lement\s*[Ii][Dd]:\s*\d+', sentence)
+        ele_id = int(re.findall('\d+', e[0])[0])
+        return self.gui.get_ui_element_node_by_id(ele_id)
