@@ -18,7 +18,7 @@ class GUIData:
     def __init__(self, gui_img_file, gui_json_file, output_file_root='data/twitter/testcase1'):
         self.img_file = gui_img_file
         self.json_file = gui_json_file
-        self.gui_name = gui_img_file.replace('/', '\\').split('\\')[-1].split('.')[0]
+        self.gui_no = gui_img_file.replace('/', '\\').split('\\')[-1].split('.')[0]
 
         self.img = cv2.resize(cv2.imread(gui_img_file), (1080, 2280))      # resize the image to be consistent with the vh
         self.json = json.load(open(gui_json_file, 'r', encoding='utf-8'))  # json data, the view hierarchy of the GUI
@@ -37,8 +37,8 @@ class GUIData:
         # output file paths
         self.output_dir = pjoin(output_file_root, 'guidata')
         os.makedirs(self.output_dir, exist_ok=True)
-        self.output_file_path_elements = pjoin(self.output_dir, self.gui_name + '_elements.json')
-        self.output_file_path_element_tree = pjoin(self.output_dir, self.gui_name + '_tree.json')
+        self.output_file_path_elements = pjoin(self.output_dir, self.gui_no + '_elements.json')
+        self.output_file_path_element_tree = pjoin(self.output_dir, self.gui_no + '_tree.json')
 
     def load_elements(self, file_path_elements=None, file_path_element_tree=None):
         if not file_path_elements: file_path_elements = self.output_file_path_elements

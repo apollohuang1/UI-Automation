@@ -10,28 +10,44 @@ class Automator:
         self.app_name = app_name
         self.test_case_no = test_case_no
 
-        self.device = None
-
         self.trace_elements = []
         self.trace_guis = []
         self.incorrect_elements = []
 
-    def load_device(self):
+        self.ai_chain = AIChain()
+        self.device = None
+        self.init_device()
+
+    def init_device(self):
         from ppadb.client import Client as AdbClient
         from Device import Device
         client = AdbClient(host="127.0.0.1", port=5037)
         self.device = Device(client.devices()[0], app_name=self.app_name, test_case_no=self.test_case_no)
         print('=== Device Loaded ===')
 
+    def load_gui_data(self, gui_no, show=False):
+        print('\n=== Load and analyzed UI info ===')
+        self.device.init_file_path_by_gui_no(gui_no)
+        gui = GUIData(gui_img_file=self.device.output_file_path_screenshot,
+                      gui_json_file=self.device.output_file_path_json,
+                      output_file_root=self.device.testcase_save_dir)
+        gui.load_elements()
+        if show:
+            gui.show_all_elements(only_leaves=False)
+        self.trace_guis.append(gui)
+
     '''
-    **********************************
-    *** Auto the Task on a New GUI ***
-    **********************************
+    ******************************
+    *** Auto the Task on a GUI ***
+    ******************************
     '''
-    def auto_task_on_new_gui(self, task,
+    def auto_task_on_gui(self, task, load_gui_data=False, gui_no=0,
                              show_gui_ele=False, ai_chain_model='gpt-3.5-turbo', printlog=False, show_action=False):
-        self.collect_gui_data()
-        self.analyze_gui(show_gui_ele)
+        if not load_gui_data:
+            self.collect_gui_data()
+            self.analyze_gui(show_gui_ele)
+        else:
+            self.load_gui_data(gui_no, show_gui_ele)
         self.execute_task_on_gui(task, self.trace_guis[-1], ai_chain_model, printlog, show_action)
 
     def collect_gui_data(self):
@@ -39,7 +55,7 @@ class Automator:
         collect the raw GUI data [raw xml, VH Json, Screenshot] on current screen and save to 'data/app_name/test_case_no/device'
         => ui_no.xml, ui_no.json, ui_no.png
         '''
-        print('\n=== 1. Collect UI metadata from the device ===')
+        print('\n=== Collect UI metadata from the device ===')
         self.device.cap_screenshot()
         self.device.cap_vh()
         self.device.reformat_vh_json()
@@ -49,7 +65,7 @@ class Automator:
         Clean up the VH tree and extract [elements, element_tree] and save to "data/app_name/test_case_no/guidata"
         => ui_no_elements.json, ui_no_tree.json
         '''
-        print('\n=== 2. Extract and analyze UI info ===')
+        print('\n=== Extract and analyze UI info ===')
         gui = GUIData(gui_img_file=self.device.output_file_path_screenshot,
                       gui_json_file=self.device.output_file_path_json,
                       output_file_root=self.device.testcase_save_dir)
@@ -64,9 +80,10 @@ class Automator:
         '''
         Identify the target element and execute the task on the current GUI through AI chain
         '''
-        print('\n=== 3. Check if the task can complete on the UI through AI chain ===')
-        ai_chain = AIChain(gui, model, device=self.device)
-        relation, target_element = ai_chain.ai_chain_automate_check_elements(task, printlog)
+        print('\n=== Check if the task can complete on the UI through AI chain ===')
+        self.ai_chain.gui = gui
+        self.ai_chain.model = model
+        relation, target_element = self.ai_chain.ai_chain_automate_check_elements(task, printlog)
 
         if relation == 0:
             print('Unrelated')
@@ -74,7 +91,7 @@ class Automator:
             print('Task Complete')
         elif relation == 2:
             print('Execute Action')
-            action = ['click', target_element]
+            action = ['click', target_element['id']]
             self.execute_action(action, self.trace_guis[-1], show_action)
 
         self.trace_elements.append(target_element)

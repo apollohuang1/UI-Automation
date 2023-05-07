@@ -5,17 +5,12 @@ from utils.openai.OpenAI import OpenAI
 
 
 class AIChain:
-    def __init__(self, gui, task='', model='gpt-4', device=None):
-        self.device = device
-
+    def __init__(self, gui=None, model='gpt-4'):
         self.gui = gui
-        self.gui_name = self.gui.gui_name
-
+        self.model = model
         self.role = 'You are a mobile virtual assistant that understands and interacts with the user interface to complete given task.'
-        self.openai = OpenAI(role=self.role, model=model)
-
+        self.openai = OpenAI(role=self.role, model=self.model)
         self.conversation = None  # store the conversation history for block ai chain
-        self.task = task  # string, a NL sentence to describe the task, e.g. "Turn on voice"
 
     def init_conversation(self):
         self.conversation = [

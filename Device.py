@@ -7,13 +7,13 @@ import json
 
 
 class Device:
-    def __init__(self, adb_device, app_name='twitter', test_case_no=1, output_file_root='data'):
+    def __init__(self, adb_device, app_name='twitter', test_case_no=1, output_file_root='data', gui_no=0):
         self.adb_device = adb_device  # ppadb device
         self.device_name = self.adb_device.get_serial_no()
 
         self.app_name = app_name
         self.test_case_no = test_case_no
-        self.ui_no = 0
+        self.gui_no = gui_no
 
         self.screenshot = None  # cv2 image
         self.vh = None          # dict
@@ -24,9 +24,14 @@ class Device:
         os.makedirs(self.testcase_save_dir, exist_ok=True)
         os.makedirs(self.device_save_dir, exist_ok=True)
         # print('*** Save data to dir', self.device_save_dir, '***')
-        self.output_file_path_screenshot = pjoin(self.device_save_dir, str(self.ui_no) + '.png')
-        self.output_file_path_xml = pjoin(self.device_save_dir, str(self.ui_no) + '.xml')
-        self.output_file_path_json = pjoin(self.device_save_dir, str(self.ui_no) + '.json')
+        self.output_file_path_screenshot = pjoin(self.device_save_dir, str(self.gui_no) + '.png')
+        self.output_file_path_xml = pjoin(self.device_save_dir, str(self.gui_no) + '.xml')
+        self.output_file_path_json = pjoin(self.device_save_dir, str(self.gui_no) + '.json')
+
+    def init_file_path_by_gui_no(self, gui_no):
+        self.output_file_path_screenshot = pjoin(self.device_save_dir, str(gui_no) + '.png')
+        self.output_file_path_xml = pjoin(self.device_save_dir, str(gui_no) + '.xml')
+        self.output_file_path_json = pjoin(self.device_save_dir, str(gui_no) + '.json')
 
     def get_devices_info(self):
         print("Device Name:%s Resolution:%s" % (self.device_name, self.adb_device.wm_size()))
