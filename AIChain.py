@@ -4,7 +4,7 @@ import cv2
 from utils.openai.OpenAI import OpenAI
 
 
-class UIAuto:
+class AIChain:
     def __init__(self, gui, task='', model='gpt-4', device=None):
         self.device = device
 

@@ -33,7 +33,7 @@
         "children-depth": 5
     },
     {
-        "text": "9:52Sat , May110Twitter",
+        "text": "6:18Sat , May110Twitter",
         "resource-id": "com.google.android.apps.nexuslauncher:id/scrim_view",
         "class": "android.view.View",
         "package": "com.google.android.apps.nexuslauncher",
@@ -57,10 +57,10 @@
         "id": 1,
         "layer": 1,
         "leaf-id": 0,
-        "ocr": "9:52Sat , May110Twitter",
+        "ocr": "6:18Sat , May110Twitter",
         "caption": "channel view window",
         "icon-cls": "more",
-        "description": "9:52Sat , May110Twitter"
+        "description": "6:18Sat , May110Twitter"
     },
     {
         "text": "",

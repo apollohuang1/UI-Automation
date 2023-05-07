@@ -1,12 +1,12 @@
 from Device import Device
 from GUIData import GUIData
-from UIAuto import UIAuto
+from AIChain import AIChain
 
 
 class Automator:
     def __init__(self, app_name, test_case_no):
         self.app_name = app_name
-        self.testcase_no = test_case_no
+        self.test_case_no = test_case_no
 
         self.device = None
 
@@ -14,11 +14,12 @@ class Automator:
         self.trace_guis = []
         self.incorrect_elements = []
 
-    def init_device(self):
+    def load_device(self):
         from ppadb.client import Client as AdbClient
         from Device import Device
         client = AdbClient(host="127.0.0.1", port=5037)
         self.device = Device(client.devices()[0], app_name=self.app_name, test_case_no=self.test_case_no)
+        print('=== Device Loaded ===')
 
     '''
     *******************************
@@ -53,7 +54,7 @@ class Automator:
         '''
         Identify the target element of the task on the current GUI through AI chain
         '''
-        ai_chain = UIAuto(gui, model, device=self.device)
+        ai_chain = AIChain(gui, model, device=self.device)
         element = ai_chain.ai_chain_automate_task_on_the_gui(task)
         self.trace_elements.append(element)
-            
+

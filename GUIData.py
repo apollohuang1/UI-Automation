@@ -70,8 +70,8 @@ class GUIData:
         self.merge_element_with_single_leaf_child(element_root)
         self.extract_children_elements(element_root, 0)
         self.gather_leaf_elements()
-        json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
-        print('Save elements to', self.output_file_path_elements)
+        # json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
+        # print('Save elements to', self.output_file_path_elements)
 
     def prone_invalid_children(self, element):
         '''
