@@ -5,154 +5,413 @@
     "id": 0,
     "children": [
         {
-            "resource-id": ".google.apps.nexuslauncher:id/scrim_view",
-            "class": ".view.View",
-            "clickable": false,
-            "id": 1,
-            "description": "6:18Sat , May110Twitter"
-        },
-        {
-            "resource-id": ".google.apps.nexuslauncher:id/workspace",
+            "resource-id": ".twitter:id/root_coordinator_layout",
             "class": ".widget.ScrollView",
             "clickable": false,
             "scrollable": true,
-            "id": 2,
+            "id": 1,
             "children": [
                 {
+                    "resource-id": ".twitter:id/toolbar",
                     "class": ".view.ViewGroup",
-                    "clickable": false,
+                    "clickable": true,
                     "scrollable": false,
-                    "id": 3,
+                    "id": 2,
                     "children": [
                         {
-                            "class": ".view.ViewGroup",
+                            "class": ".widget.ImageButton",
+                            "clickable": true,
+                            "id": 3,
+                            "description": "Show navigation drawer"
+                        },
+                        {
+                            "resource-id": ".twitter:id/logo",
+                            "class": ".widget.ImageView",
+                            "clickable": true,
+                            "id": 4,
+                            "description": "twitter"
+                        }
+                    ]
+                },
+                {
+                    "resource-id": ".twitter:id/view_pager",
+                    "class": "x.viewpager.widget.ViewPager",
+                    "clickable": false,
+                    "scrollable": true,
+                    "id": 5,
+                    "children": [
+                        {
+                            "resource-id": ".twitter:id/tab_layout",
+                            "class": ".widget.HorizontalScrollView",
                             "clickable": false,
                             "scrollable": false,
-                            "id": 4,
+                            "id": 6,
                             "children": [
                                 {
-                                    "class": ".view.ViewGroup",
-                                    "clickable": true,
-                                    "scrollable": false,
-                                    "id": 5,
-                                    "children": [
-                                        {
-                                            "resource-id": ".google.apps.nexuslauncher:id/date",
-                                            "class": ".widget.TextView",
-                                            "clickable": true,
-                                            "id": 6,
-                                            "description": "Sat, May 6"
-                                        },
-                                        {
-                                            "resource-id": ".google.apps.nexuslauncher:id/smartspace_subtitle_group",
-                                            "class": ".view.ViewGroup",
-                                            "clickable": true,
-                                            "id": 7,
-                                            "description": "navigate up"
-                                        }
-                                    ]
+                                    "class": ".widget.TextView",
+                                    "clickable": false,
+                                    "id": 7,
+                                    "description": "For you"
                                 },
                                 {
                                     "class": ".widget.TextView",
                                     "clickable": true,
                                     "id": 8,
-                                    "description": "Twitter"
+                                    "description": "Following"
+                                }
+                            ]
+                        },
+                        {
+                            "resource-id": ".twitter:id/nested_coordinator_layout",
+                            "class": ".widget.ScrollView",
+                            "clickable": false,
+                            "scrollable": true,
+                            "id": 9,
+                            "children": [
+                                {
+                                    "resource-id": ":id/list",
+                                    "class": "x.recyclerview.widget.RecyclerView",
+                                    "clickable": false,
+                                    "scrollable": true,
+                                    "id": 10,
+                                    "children": [
+                                        {
+                                            "class": ".view.ViewGroup",
+                                            "clickable": false,
+                                            "scrollable": false,
+                                            "id": 11,
+                                            "children": [
+                                                {
+                                                    "resource-id": ".twitter:id/header",
+                                                    "class": ".widget.TextView",
+                                                    "clickable": false,
+                                                    "id": 12,
+                                                    "description": "Want to see who you know on Twitter?"
+                                                },
+                                                {
+                                                    "resource-id": ".twitter:id/body",
+                                                    "class": ".widget.TextView",
+                                                    "clickable": false,
+                                                    "id": 13,
+                                                    "description": "Take a peek at your contacts."
+                                                },
+                                                {
+                                                    "class": ".view.View",
+                                                    "clickable": true,
+                                                    "scrollable": false,
+                                                    "id": 14,
+                                                    "children": [
+                                                        {
+                                                            "class": ".view.View",
+                                                            "clickable": true,
+                                                            "id": 15,
+                                                            "description": "Get started"
+                                                        },
+                                                        {
+                                                            "class": ".widget.TextView",
+                                                            "clickable": true,
+                                                            "id": 16,
+                                                            "description": "Get started"
+                                                        },
+                                                        {
+                                                            "class": ".widget.Button",
+                                                            "clickable": true,
+                                                            "id": 17,
+                                                            "description": "Get started"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "resource-id": ".twitter:id/caret",
+                                                    "class": ".widget.ImageView",
+                                                    "clickable": true,
+                                                    "id": 18,
+                                                    "description": "Want to see who you know / Dismiss"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "class": ".view.ViewGroup",
+                                            "clickable": true,
+                                            "scrollable": false,
+                                            "id": 19,
+                                            "children": [
+                                                {
+                                                    "resource-id": ".twitter:id/row",
+                                                    "class": ".view.ViewGroup",
+                                                    "clickable": true,
+                                                    "scrollable": false,
+                                                    "id": 20,
+                                                    "children": [
+                                                        {
+                                                            "class": ".widget.ImageView",
+                                                            "clickable": true,
+                                                            "id": 21,
+                                                            "description": "avatar"
+                                                        },
+                                                        {
+                                                            "resource-id": ".twitter:id/tweet_header",
+                                                            "class": ".view.ViewGroup",
+                                                            "clickable": true,
+                                                            "id": 22,
+                                                            "description": "Jeremy Judkins@jeremy .... 07 May 23"
+                                                        },
+                                                        {
+                                                            "resource-id": ".twitter:id/tweet_curation_action",
+                                                            "class": ".widget.ImageView",
+                                                            "clickable": true,
+                                                            "id": 23,
+                                                            "description": ":was told Teslas don't"
+                                                        },
+                                                        {
+                                                            "class": ".view.View",
+                                                            "clickable": true,
+                                                            "id": 24,
+                                                            "description": "I\u2019m EXTREMELY upset. I was told Teslas don\u2019t require maintenance \ud83d\ude21\ud83d\ude21\ud83d\ude21\n\nWhy is mine leaking oil everywhere?!"
+                                                        },
+                                                        {
+                                                            "class": ".view.ViewGroup",
+                                                            "clickable": true,
+                                                            "scrollable": false,
+                                                            "id": 25,
+                                                            "children": [
+                                                                {
+                                                                    "class": ".widget.ImageView",
+                                                                    "clickable": true,
+                                                                    "id": 26,
+                                                                    "description": "keepsake photo"
+                                                                },
+                                                                {
+                                                                    "class": ".widget.ImageView",
+                                                                    "clickable": true,
+                                                                    "id": 27,
+                                                                    "description": "ad image"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "class": ".view.ViewGroup",
+                                                            "clickable": true,
+                                                            "scrollable": false,
+                                                            "id": 28,
+                                                            "children": [
+                                                                {
+                                                                    "resource-id": ".twitter:id/inline_reply",
+                                                                    "class": ".view.ViewGroup",
+                                                                    "clickable": true,
+                                                                    "scrollable": false,
+                                                                    "id": 29,
+                                                                    "children": [
+                                                                        {
+                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                            "class": ".widget.ImageView",
+                                                                            "clickable": true,
+                                                                            "id": 30,
+                                                                            "description": "chat"
+                                                                        },
+                                                                        {
+                                                                            "class": ".widget.TextView",
+                                                                            "clickable": true,
+                                                                            "id": 31,
+                                                                            "description": "469"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "resource-id": ".twitter:id/inline_retweet",
+                                                                    "class": ".view.ViewGroup",
+                                                                    "clickable": true,
+                                                                    "scrollable": false,
+                                                                    "id": 32,
+                                                                    "children": [
+                                                                        {
+                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                            "class": ".widget.ImageView",
+                                                                            "clickable": true,
+                                                                            "id": 33,
+                                                                            "description": "1790"
+                                                                        },
+                                                                        {
+                                                                            "class": ".widget.TextView",
+                                                                            "clickable": true,
+                                                                            "id": 34,
+                                                                            "description": "90"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "resource-id": ".twitter:id/inline_like",
+                                                                    "class": ".view.ViewGroup",
+                                                                    "clickable": true,
+                                                                    "scrollable": false,
+                                                                    "id": 35,
+                                                                    "children": [
+                                                                        {
+                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                            "class": ".widget.ImageView",
+                                                                            "clickable": true,
+                                                                            "id": 36,
+                                                                            "description": "favorite"
+                                                                        },
+                                                                        {
+                                                                            "class": ".widget.TextView",
+                                                                            "clickable": true,
+                                                                            "id": 37,
+                                                                            "description": "1,997"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "resource-id": ".twitter:id/inline_view_count",
+                                                                    "class": ".view.ViewGroup",
+                                                                    "clickable": true,
+                                                                    "scrollable": false,
+                                                                    "id": 38,
+                                                                    "children": [
+                                                                        {
+                                                                            "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                            "class": ".widget.ImageView",
+                                                                            "clickable": true,
+                                                                            "id": 39,
+                                                                            "description": "il\u2081434K"
+                                                                        },
+                                                                        {
+                                                                            "class": ".widget.TextView",
+                                                                            "clickable": true,
+                                                                            "id": 40,
+                                                                            "description": "434K"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "resource-id": ".twitter:id/inline_action_item_icon",
+                                                                    "class": ".widget.ImageView",
+                                                                    "clickable": true,
+                                                                    "id": 41,
+                                                                    "description": "share"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "resource-id": ".twitter:id/row",
+                                            "class": ".view.ViewGroup",
+                                            "clickable": true,
+                                            "scrollable": false,
+                                            "id": 42,
+                                            "children": [
+                                                {
+                                                    "class": ".widget.ImageView",
+                                                    "clickable": true,
+                                                    "id": 43
+                                                },
+                                                {
+                                                    "resource-id": ".twitter:id/tweet_header",
+                                                    "class": ".view.ViewGroup",
+                                                    "clickable": true,
+                                                    "id": 44,
+                                                    "description": "Bezenpy@thebezenpy+"
+                                                },
+                                                {
+                                                    "resource-id": ".twitter:id/tweet_curation_action",
+                                                    "class": ".widget.ImageView",
+                                                    "clickable": true,
+                                                    "id": 45,
+                                                    "description": "+"
+                                                },
+                                                {
+                                                    "resource-id": ".twitter:id/tweet_connector_bottom",
+                                                    "class": ".view.View",
+                                                    "clickable": true,
+                                                    "id": 46,
+                                                    "description": "navigate up"
+                                                },
+                                                {
+                                                    "class": ".view.View",
+                                                    "clickable": true,
+                                                    "id": 47,
+                                                    "description": "Your friends and family will be shocked when they see the Illusion Carpet on your floor!\n\ud83d\udc49 bezenpy.com/carpet"
+                                                },
+                                                {
+                                                    "class": "ddw",
+                                                    "clickable": true,
+                                                    "id": 48,
+                                                    "description": "toggle speaker"
+                                                },
+                                                {
+                                                    "class": ".view.View",
+                                                    "clickable": true,
+                                                    "id": 49,
+                                                    "description": "toggle speaker"
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "class": ".view.View",
-            "clickable": false,
-            "id": 9,
-            "description": "Sat , May110Twitter / Home"
-        },
-        {
-            "resource-id": ".google.apps.nexuslauncher:id/page_indicator",
-            "class": ".view.View",
-            "clickable": false,
-            "id": 10,
-            "description": "navigate up"
-        },
-        {
-            "resource-id": ".google.apps.nexuslauncher:id/hotseat",
-            "class": ".view.ViewGroup",
-            "clickable": false,
-            "scrollable": false,
-            "id": 11,
-            "children": [
-                {
-                    "class": ".view.ViewGroup",
-                    "clickable": false,
-                    "scrollable": false,
-                    "id": 12,
-                    "children": [
-                        {
-                            "class": ".widget.TextView",
-                            "clickable": true,
-                            "id": 13,
-                            "description": "Phone"
-                        },
-                        {
-                            "class": ".widget.TextView",
-                            "clickable": true,
-                            "id": 14,
-                            "description": "Messages"
-                        },
-                        {
-                            "class": ".widget.TextView",
-                            "clickable": true,
-                            "id": 15,
-                            "description": "Play Store"
-                        },
-                        {
-                            "class": ".widget.TextView",
-                            "clickable": true,
-                            "id": 16,
-                            "description": "Chrome"
-                        },
-                        {
-                            "class": ".widget.TextView",
-                            "clickable": true,
-                            "id": 17,
-                            "description": "Camera"
-                        }
-                    ]
                 },
                 {
-                    "resource-id": ".google.apps.nexuslauncher:id/search_container_hotseat",
-                    "class": ".widget.FrameLayout",
+                    "resource-id": ".twitter:id/poser_write",
+                    "class": ".widget.ImageButton",
                     "clickable": true,
+                    "id": 50,
+                    "description": "+Your friends and family will be shockethey see the Illusion Carpet on your floor !"
+                },
+                {
+                    "resource-id": ".twitter:id/tabs",
+                    "class": ".widget.HorizontalScrollView",
+                    "clickable": false,
                     "scrollable": false,
-                    "id": 18,
+                    "id": 51,
                     "children": [
                         {
-                            "resource-id": ".google.apps.nexuslauncher:id/g_icon",
-                            "class": ".widget.ImageView",
-                            "clickable": true,
-                            "id": 19,
-                            "description": "refresh"
+                            "resource-id": ".twitter:id/channels",
+                            "class": ".view.View",
+                            "clickable": false,
+                            "id": 52
                         },
                         {
-                            "resource-id": ".google.apps.nexuslauncher:id/mic_icon",
-                            "class": ".widget.ImageView",
+                            "class": ".view.View",
                             "clickable": true,
-                            "id": 20,
-                            "description": "Voice search"
+                            "id": 53,
+                            "description": "Search and Explore"
                         },
                         {
-                            "resource-id": ".google.apps.nexuslauncher:id/lens_icon",
-                            "class": ".widget.ImageButton",
+                            "resource-id": ".twitter:id/spaces",
+                            "class": ".view.View",
                             "clickable": true,
-                            "id": 21,
-                            "description": "Google Lens"
+                            "id": 54,
+                            "description": "Spaces"
+                        },
+                        {
+                            "resource-id": ".twitter:id/notifications",
+                            "class": ".view.View",
+                            "clickable": true,
+                            "id": 55,
+                            "description": "Notifications"
+                        },
+                        {
+                            "resource-id": ".twitter:id/dms",
+                            "class": ".view.View",
+                            "clickable": true,
+                            "id": 56,
+                            "description": "Messages"
                         }
                     ]
                 }
             ]
+        },
+        {
+            "resource-id": ":id/statusBarBackground",
+            "class": ".view.View",
+            "clickable": false,
+            "id": 57,
+            "description": "9:34"
         }
     ]
 }

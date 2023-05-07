@@ -23,7 +23,7 @@ class Device:
         self.device_save_dir = pjoin(self.testcase_save_dir, 'device')
         os.makedirs(self.testcase_save_dir, exist_ok=True)
         os.makedirs(self.device_save_dir, exist_ok=True)
-        print('*** Save data to dir', self.device_save_dir, '***')
+        # print('*** Save data to dir', self.device_save_dir, '***')
         self.output_file_path_screenshot = pjoin(self.device_save_dir, str(self.ui_no) + '.png')
         self.output_file_path_xml = pjoin(self.device_save_dir, str(self.ui_no) + '.xml')
         self.output_file_path_json = pjoin(self.device_save_dir, str(self.ui_no) + '.json')
@@ -47,7 +47,7 @@ class Device:
         print('Save xml to', self.output_file_path_xml)
         self.vh = xmltodict.parse(open(self.output_file_path_xml, 'r', encoding='utf-8').read())
         json.dump(self.vh, open(self.output_file_path_json, 'w', encoding='utf-8'), indent=4)
-        print('Save view hierarchy to', self.output_file_path_json)
+        # print('Save view hierarchy to', self.output_file_path_json)
 
     '''
     ********************************************
@@ -87,7 +87,7 @@ class Device:
     def reformat_vh_json(self):
         self.vh = {'activity': {'root': self.cvt_node_to_rico_format(self.vh['hierarchy']['node'])}}
         json.dump(self.vh, open(self.output_file_path_json, 'w', encoding='utf-8'), indent=4)
-        print('Save reformatted vh to', self.output_file_path_json)
+        print('Save view hierarchy to', self.output_file_path_json)
 
 
 if __name__ == '__main__':
