@@ -24,7 +24,7 @@ class AIChain:
             {'role': 'user', 'content': str(self.gui.element_tree)},
             {'role': 'user', 'content': 'I will ask you questions and tasks based on this'}
         ]
-        self.conversation.append(self.openai.ask_openai_conversation(self.conversation))
+        # self.conversation.append(self.openai.ask_openai_conversation(self.conversation))
 
     '''
     *******************************************
@@ -51,9 +51,9 @@ class AIChain:
         self.conversation += [
             {'role': 'user', 'content': 'I will give you a task, and please select the relationship between the UI and the task from the three options:'},
             {'role': 'user', 'content': '1. Directly related, which means there is an element in the UI to complete the task directly; 2. Indirectly related, which means although there is no element in the UI to complete the task directly, there is a certain element that can direct to the related UI to complete the task; 3. Unrelated, which means this UI is not related to the task at all; 4. Completed, which means the UI is already in the completed status of the task.'},
-            {'role': 'user', 'content': 'Please answer in this format: [Relationship: Directly Related/ Indirectly related, Element id: 12], or [Relationship: Unrelated/Completed, Element id: N/A]. No need to detail any explanation.'}
+            {'role': 'user', 'content': 'Please answer in this format: [Relationship: Directly Related/ Indirectly related, Element id: 12], or [Relationship: Unrelated/Completed, Element id: N/A]. Please explain your choice.'}
         ]
-        self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog))
+        # self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog))
         self.conversation += [
             {'role': 'user', 'content': 'The task is "' + task + '".'}
         ]
@@ -65,20 +65,32 @@ class AIChain:
     *** AI Chain - Checking Elements Directly ***
     *********************************************
     '''
-    def ai_chain_automate_check_elements_directly(self, task, printlog=False, show_action=False):
+    def ai_chain_automate_check_elements(self, task, printlog=False):
+        # check completion
+        self.check_task_completion(task, printlog)
+        if 'Yes' in self.conversation[-1]['content']:
+            return 1
+        # check relevance
         self.check_direct_ui_relevance(task, printlog)
         if 'Yes' in self.conversation[-1]['content']:
             element = self.get_target_element_node(self.conversation[-1]['content'])
-            action = ['click', element['id']]
-            self.execute_action(action, self.device, show_action)
+            return 2, element
         else:
             self.check_indirect_ui_relevance(task, printlog)
             if 'Yes' in self.conversation[-1]['content']:
                 element = self.get_target_element_node(self.conversation[-1]['content'])
-                action = ['click', element['id']]
-                self.execute_action(action, self.device, show_action)
+                return 2, element
             else:
-                print('==== This UI is not related to the task ====')
+                return 0, None
+
+    def check_task_completion(self, task, printlog=False):
+        print('--- Check if the UI completes the task ---')
+        self.init_conversation()
+        self.conversation += [
+            {'role': 'user', 'content': 'the UI is already in the completed status of the task "' + task + '"?'},
+            {'role': 'user', 'content': 'Just answer Yes or No'}
+        ]
+        self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog))
 
     def check_direct_ui_relevance(self, task, printlog=False):
         print('--- Check if the UI directly related ---')
