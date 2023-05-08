@@ -14,7 +14,7 @@ class Automator:
         self.trace_guis = []
         self.incorrect_elements = []
 
-        self.gui_detection_models = {}  # {IconClassification, IconCaption}
+        self.gui_detection_models = {'classification':None, 'caption':None}  # {IconClassification, IconCaption}
         self.ai_chain = AIChain()
         self.device = None
         self.init_device()
@@ -26,7 +26,9 @@ class Automator:
         self.device = Device(client.devices()[0], app_name=self.app_name, test_case_no=self.test_case_no)
         print('=== Device Loaded ===')
 
-    def load_gui_models(self):
+    def load_gui_detection_models(self):
+        if self.gui_detection_models['classification'] is not None:
+            return
         from utils.classification.IconClassifier import IconClassifier
         from utils.classification.IconCaption import IconCaption
         self.gui_detection_models['classification'] = IconClassifier(model_path='utils/classification/model_results/best-0.93.pt', class_path='utils/classification/model_results/iconModel_labels.json')
@@ -38,11 +40,14 @@ class Automator:
     *** Auto the Task on a GUI ***
     ******************************
     '''
-    def auto_task_on_gui(self, task, load_gui_data=False, gui_no=0,
-                         show_gui_ele=False, ai_chain_model='gpt-3.5-turbo', printlog=False, show_action=False):
+    def auto_task_on_gui(self, task,
+                         load_gui_data=False, gui_no=0,
+                         gui_detection=True,
+                         ai_chain_model='gpt-3.5-turbo',
+                         show_gui_ele=False, printlog=False, show_action=False):
         if not load_gui_data:
             self.collect_gui()
-            self.analyze_gui(show_gui_ele)
+            self.analyze_gui(gui_detection, show_gui_ele)
         else:
             self.load_gui_data(gui_no, show_gui_ele)
         self.execute_task_on_gui(task, self.trace_guis[-1], ai_chain_model, printlog, show_action)
@@ -71,19 +76,22 @@ class Automator:
         self.device.cap_vh()
         self.device.reformat_vh_json()
 
-    def analyze_gui(self, show=False):
+    def analyze_gui(self, gui_detection=True, show=False):
         '''
         Clean up the VH tree and extract [elements, element_tree] and save to "data/app_name/test_case_no/guidata"
+        :param gui_detection: True to enable icon classification and captioning
         => ui_no_elements.json, ui_no_tree.json
         '''
         print('\n=== Extract and analyze UI info ===')
+        if gui_detection:
+            self.load_gui_detection_models()
         gui = GUIData(gui_img_file=self.device.output_file_path_screenshot,
                       gui_json_file=self.device.output_file_path_json,
                       output_file_root=self.device.testcase_save_dir,
                       model_icon_caption=self.gui_detection_models['caption'],
                       model_icon_classification=self.gui_detection_models['classification'])
         gui.ui_info_extraction()
-        gui.ui_analysis_elements_description()
+        gui.ui_analysis_elements_description(ocr=True, caption=gui_detection, cls=gui_detection)
         gui.ui_element_tree()
         if show:
             gui.show_all_elements(only_leaves=False)

@@ -26,7 +26,7 @@
         "children-id": [
             1,
             57,
-            103
+            100
         ],
         "children-depth": 9
     },
@@ -118,8 +118,6 @@
         "layer": 3,
         "leaf-id": 0,
         "ocr": "",
-        "caption": "thumbnail",
-        "icon-cls": null,
         "description": "Show navigation drawer"
     },
     {
@@ -148,9 +146,7 @@
         "layer": 3,
         "leaf-id": 1,
         "ocr": "",
-        "caption": "search",
-        "icon-cls": null,
-        "description": "search"
+        "description": null
     },
     {
         "text": "",
@@ -237,8 +233,6 @@
         "id": 7,
         "layer": 4,
         "leaf-id": 2,
-        "caption": "share",
-        "icon-cls": null,
         "description": "For you"
     },
     {
@@ -267,8 +261,6 @@
         "layer": 4,
         "leaf-id": 3,
         "ocr": "",
-        "caption": "illustration",
-        "icon-cls": null,
         "description": "Following"
     },
     {
@@ -388,8 +380,6 @@
         "id": 12,
         "layer": 6,
         "leaf-id": 4,
-        "caption": "<unk> logo",
-        "icon-cls": null,
         "description": "Want to see who you know on Twitter?"
     },
     {
@@ -417,8 +407,6 @@
         "id": 13,
         "layer": 6,
         "leaf-id": 5,
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Take a peek at your contacts."
     },
     {
@@ -478,8 +466,6 @@
         "layer": 7,
         "leaf-id": 6,
         "ocr": "Twitter Blue",
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Twitter Blue / Get started"
     },
     {
@@ -507,8 +493,6 @@
         "id": 16,
         "layer": 7,
         "leaf-id": 7,
-        "caption": "search",
-        "icon-cls": null,
         "description": "Get started"
     },
     {
@@ -537,8 +521,6 @@
         "layer": 7,
         "leaf-id": 8,
         "ocr": "Twitter Blue",
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Twitter Blue"
     },
     {
@@ -567,8 +549,6 @@
         "layer": 6,
         "leaf-id": 9,
         "ocr": "ow",
-        "caption": "icon launcher",
-        "icon-cls": "more",
         "description": "ow / Dismiss"
     },
     {
@@ -660,9 +640,7 @@
         "layer": 7,
         "leaf-id": 10,
         "ocr": "",
-        "caption": "delete",
-        "icon-cls": null,
-        "description": "delete"
+        "description": null
     },
     {
         "text": "Topics23h",
@@ -690,8 +668,6 @@
         "layer": 7,
         "leaf-id": 11,
         "ocr": "Topics23h",
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Topics23h"
     },
     {
@@ -721,8 +697,6 @@
         "layer": 7,
         "leaf-id": 12,
         "ocr": "las don't",
-        "caption": "advanced options",
-        "icon-cls": "more",
         "description": "las don't"
     },
     {
@@ -750,8 +724,6 @@
         "id": 24,
         "layer": 7,
         "leaf-id": 13,
-        "caption": "the <unk> times",
-        "icon-cls": null,
         "description": "I\u2019m EXTREMELY upset. I was told Teslas don\u2019t require maintenance \ud83d\ude21\ud83d\ude21\ud83d\ude21\n\nWhy is mine leaking oil everywhere?!"
     },
     {
@@ -810,8 +782,6 @@
         "layer": 8,
         "leaf-id": 14,
         "ocr": "ListsTwitter CircleProfessional Tools",
-        "caption": "splashscreen",
-        "icon-cls": null,
         "description": "ListsTwitter CircleProfessional Tools"
     },
     {
@@ -840,9 +810,7 @@
         "layer": 8,
         "leaf-id": 15,
         "ocr": "",
-        "caption": "play",
-        "icon-cls": null,
-        "description": "play"
+        "description": null
     },
     {
         "text": "",
@@ -933,9 +901,7 @@
         "layer": 9,
         "leaf-id": 16,
         "ocr": "",
-        "caption": "search",
-        "icon-cls": null,
-        "description": "search"
+        "description": null
     },
     {
         "text": "469",
@@ -962,8 +928,6 @@
         "id": 31,
         "layer": 9,
         "leaf-id": 17,
-        "caption": "search",
-        "icon-cls": null,
         "description": "469"
     },
     {
@@ -1022,9 +986,7 @@
         "layer": 9,
         "leaf-id": 18,
         "ocr": "",
-        "caption": "search",
-        "icon-cls": null,
-        "description": "search"
+        "description": null
     },
     {
         "text": "90",
@@ -1051,8 +1013,6 @@
         "id": 34,
         "layer": 9,
         "leaf-id": 19,
-        "caption": "search",
-        "icon-cls": null,
         "description": "90"
     },
     {
@@ -1111,9 +1071,7 @@
         "layer": 9,
         "leaf-id": 20,
         "ocr": "",
-        "caption": "search",
-        "icon-cls": null,
-        "description": "search"
+        "description": null
     },
     {
         "text": "1,997",
@@ -1140,8 +1098,6 @@
         "id": 37,
         "layer": 9,
         "leaf-id": 21,
-        "caption": "search",
-        "icon-cls": null,
         "description": "1,997"
     },
     {
@@ -1200,9 +1156,7 @@
         "layer": 9,
         "leaf-id": 22,
         "ocr": "",
-        "caption": "search",
-        "icon-cls": null,
-        "description": "search"
+        "description": null
     },
     {
         "text": "434K",
@@ -1229,8 +1183,6 @@
         "id": 40,
         "layer": 9,
         "leaf-id": 23,
-        "caption": "skip",
-        "icon-cls": null,
         "description": "434K"
     },
     {
@@ -1260,9 +1212,7 @@
         "layer": 8,
         "leaf-id": 24,
         "ocr": "",
-        "caption": "an alarm is set for this programme",
-        "icon-cls": "share",
-        "description": "share"
+        "description": null
     },
     {
         "text": "",
@@ -1325,9 +1275,7 @@
         "layer": 6,
         "leaf-id": 25,
         "ocr": "",
-        "caption": "narando",
-        "icon-cls": null,
-        "description": "narando"
+        "description": null
     },
     {
         "text": "+",
@@ -1355,8 +1303,6 @@
         "layer": 6,
         "leaf-id": 26,
         "ocr": "+",
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "+"
     },
     {
@@ -1386,8 +1332,6 @@
         "layer": 6,
         "leaf-id": 27,
         "ocr": "+",
-        "caption": "profile photo",
-        "icon-cls": null,
         "description": "+"
     },
     {
@@ -1416,9 +1360,7 @@
         "layer": 6,
         "leaf-id": 28,
         "ocr": "",
-        "caption": "drawer open",
-        "icon-cls": null,
-        "description": "drawer open"
+        "description": null
     },
     {
         "text": "Your friends and family will be shocked when they see the Illusion Carpet on your floor!\n\ud83d\udc49 bezenpy.com/carpet",
@@ -1445,12 +1387,10 @@
         "id": 47,
         "layer": 6,
         "leaf-id": 29,
-        "caption": "logo",
-        "icon-cls": null,
         "description": "Your friends and family will be shocked when they see the Illusion Carpet on your floor!\n\ud83d\udc49 bezenpy.com/carpet"
     },
     {
-        "text": "Help Center",
+        "text": "",
         "resource-id": "",
         "class": "ddw",
         "package": "com.twitter.android",
@@ -1474,13 +1414,11 @@
         "id": 48,
         "layer": 6,
         "leaf-id": 30,
-        "ocr": "Help Center",
-        "caption": "close navigation drawer",
-        "icon-cls": null,
-        "description": "Help Center"
+        "ocr": "",
+        "description": null
     },
     {
-        "text": "Help Center",
+        "text": "",
         "resource-id": "",
         "class": "android.view.View",
         "package": "com.twitter.android",
@@ -1504,10 +1442,8 @@
         "id": 49,
         "layer": 6,
         "leaf-id": 31,
-        "ocr": "Help Center",
-        "caption": "close navigation drawer",
-        "icon-cls": null,
-        "description": "Help Center"
+        "ocr": "",
+        "description": null
     },
     {
         "text": "+loor !",
@@ -1535,8 +1471,6 @@
         "layer": 2,
         "leaf-id": 32,
         "ocr": "+loor !",
-        "caption": "add <unk> and other items",
-        "icon-cls": "add",
         "description": "+loor !"
     },
     {
@@ -1598,12 +1532,10 @@
         "layer": 3,
         "leaf-id": 33,
         "ocr": "",
-        "caption": "thumbnail",
-        "icon-cls": null,
-        "description": "thumbnail"
+        "description": null
     },
     {
-        "text": "Help Center",
+        "text": "",
         "resource-id": "",
         "class": "android.view.View",
         "package": "com.twitter.android",
@@ -1627,13 +1559,11 @@
         "id": 53,
         "layer": 3,
         "leaf-id": 34,
-        "ocr": "Help Center",
-        "caption": "day mode",
-        "icon-cls": null,
-        "description": "Help Center / Search and Explore"
+        "ocr": "",
+        "description": "Search and Explore"
     },
     {
-        "text": "Help Center",
+        "text": "",
         "resource-id": "com.twitter.android:id/spaces",
         "class": "android.view.View",
         "package": "com.twitter.android",
@@ -1657,10 +1587,8 @@
         "id": 54,
         "layer": 3,
         "leaf-id": 35,
-        "ocr": "Help Center",
-        "caption": "search",
-        "icon-cls": null,
-        "description": "Help Center / Spaces"
+        "ocr": "",
+        "description": "Spaces"
     },
     {
         "text": "",
@@ -1688,8 +1616,6 @@
         "layer": 3,
         "leaf-id": 36,
         "ocr": "",
-        "caption": "search",
-        "icon-cls": null,
         "description": "Notifications"
     },
     {
@@ -1718,8 +1644,6 @@
         "layer": 3,
         "leaf-id": 37,
         "ocr": "",
-        "caption": "<unk>",
-        "icon-cls": "email",
         "description": "Messages"
     },
     {
@@ -1749,7 +1673,7 @@
         "children-id": [
             58,
             75,
-            99
+            96
         ],
         "children-depth": 4
     },
@@ -1812,8 +1736,6 @@
         "layer": 3,
         "leaf-id": 38,
         "ocr": "",
-        "caption": "profile photo",
-        "icon-cls": "avatar",
         "description": "Profile image for Mulong Xie"
     },
     {
@@ -1872,8 +1794,6 @@
         "layer": 4,
         "leaf-id": 39,
         "ocr": ":",
-        "caption": "<unk>",
-        "icon-cls": "more",
         "description": ": / Switch accounts"
     },
     {
@@ -1902,8 +1822,6 @@
         "layer": 4,
         "leaf-id": 40,
         "ocr": ":",
-        "caption": "<unk>",
-        "icon-cls": "more",
         "description": ":"
     },
     {
@@ -1962,8 +1880,6 @@
         "id": 64,
         "layer": 4,
         "leaf-id": 41,
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Mulong Xie"
     },
     {
@@ -1991,8 +1907,6 @@
         "id": 65,
         "layer": 4,
         "leaf-id": 42,
-        "caption": "go to home page",
-        "icon-cls": null,
         "description": "@MulongX"
     },
     {
@@ -2021,8 +1935,6 @@
         "layer": 4,
         "leaf-id": 43,
         "ocr": "Mulong Xie@MulongX",
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Mulong Xie@MulongX"
     },
     {
@@ -2081,8 +1993,6 @@
         "id": 68,
         "layer": 4,
         "leaf-id": 44,
-        "caption": "search",
-        "icon-cls": null,
         "description": "3"
     },
     {
@@ -2110,8 +2020,6 @@
         "id": 69,
         "layer": 4,
         "leaf-id": 45,
-        "caption": "watch live",
-        "icon-cls": null,
         "description": "Following"
     },
     {
@@ -2140,8 +2048,6 @@
         "layer": 4,
         "leaf-id": 46,
         "ocr": "Following",
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Following"
     },
     {
@@ -2200,8 +2106,6 @@
         "id": 72,
         "layer": 4,
         "leaf-id": 47,
-        "caption": "delete",
-        "icon-cls": null,
         "description": "1"
     },
     {
@@ -2229,8 +2133,6 @@
         "id": 73,
         "layer": 4,
         "leaf-id": 48,
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Follower"
     },
     {
@@ -2259,8 +2161,6 @@
         "layer": 4,
         "leaf-id": 49,
         "ocr": "Follower",
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Follower"
     },
     {
@@ -2275,7 +2175,7 @@
         "enabled": true,
         "focusable": false,
         "focused": false,
-        "scrollable": true,
+        "scrollable": false,
         "long-clickable": false,
         "password": false,
         "selected": false,
@@ -2295,8 +2195,7 @@
             88,
             91,
             94,
-            95,
-            96
+            95
         ],
         "children-depth": 4
     },
@@ -2356,9 +2255,7 @@
         "layer": 4,
         "leaf-id": 50,
         "ocr": "",
-        "caption": "<unk>",
-        "icon-cls": "avatar",
-        "description": "avatar"
+        "description": null
     },
     {
         "text": "Profile",
@@ -2385,8 +2282,6 @@
         "id": 78,
         "layer": 4,
         "leaf-id": 51,
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Profile"
     },
     {
@@ -2445,9 +2340,7 @@
         "layer": 4,
         "leaf-id": 52,
         "ocr": "",
-        "caption": "twitter",
-        "icon-cls": "twitter",
-        "description": "twitter"
+        "description": null
     },
     {
         "text": "Twitter Blue",
@@ -2474,8 +2367,6 @@
         "id": 81,
         "layer": 4,
         "leaf-id": 53,
-        "caption": "<unk> <unk>",
-        "icon-cls": "date_range",
         "description": "Twitter Blue"
     },
     {
@@ -2534,9 +2425,7 @@
         "layer": 4,
         "leaf-id": 54,
         "ocr": "",
-        "caption": "comment",
-        "icon-cls": null,
-        "description": "comment"
+        "description": null
     },
     {
         "text": "Topics",
@@ -2563,8 +2452,6 @@
         "id": 84,
         "layer": 4,
         "leaf-id": 55,
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Topics"
     },
     {
@@ -2623,9 +2510,7 @@
         "layer": 4,
         "leaf-id": 56,
         "ocr": "",
-        "caption": "catholic courses",
-        "icon-cls": "bookmark",
-        "description": "bookmark"
+        "description": null
     },
     {
         "text": "Bookmarks",
@@ -2652,8 +2537,6 @@
         "id": 87,
         "layer": 4,
         "leaf-id": 57,
-        "caption": "<unk>",
-        "icon-cls": "date_range",
         "description": "Bookmarks"
     },
     {
@@ -2712,8 +2595,6 @@
         "layer": 4,
         "leaf-id": 58,
         "ocr": "II",
-        "caption": "select <unk>",
-        "icon-cls": null,
         "description": "II"
     },
     {
@@ -2741,8 +2622,6 @@
         "id": 90,
         "layer": 4,
         "leaf-id": 59,
-        "caption": "<unk>",
-        "icon-cls": null,
         "description": "Lists"
     },
     {
@@ -2801,9 +2680,7 @@
         "layer": 4,
         "leaf-id": 60,
         "ocr": "",
-        "caption": "<unk>",
-        "icon-cls": "avatar",
-        "description": "avatar"
+        "description": null
     },
     {
         "text": "Twitter Circle",
@@ -2830,8 +2707,6 @@
         "id": 93,
         "layer": 4,
         "leaf-id": 61,
-        "caption": "<unk>",
-        "icon-cls": "date_range",
         "description": "Twitter Circle"
     },
     {
@@ -2860,8 +2735,6 @@
         "layer": 3,
         "leaf-id": 62,
         "ocr": "Professional Tools",
-        "caption": "money lover",
-        "icon-cls": null,
         "description": "Professional Tools"
     },
     {
@@ -2890,98 +2763,7 @@
         "layer": 3,
         "leaf-id": 63,
         "ocr": "Settings & Support4K",
-        "caption": "close navigation drawer",
-        "icon-cls": null,
         "description": "Settings & Support4K"
-    },
-    {
-        "text": "",
-        "resource-id": "",
-        "class": "android.view.View",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": true,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            0,
-            1942,
-            880,
-            2016
-        ],
-        "id": 96,
-        "layer": 3,
-        "children-id": [
-            97,
-            98
-        ],
-        "children-depth": 4
-    },
-    {
-        "text": "",
-        "resource-id": "",
-        "class": "android.view.View",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            88,
-            1981,
-            143,
-            2016
-        ],
-        "id": 97,
-        "layer": 4,
-        "leaf-id": 64,
-        "ocr": "",
-        "caption": "add to favorites",
-        "icon-cls": null,
-        "description": "add to favorites"
-    },
-    {
-        "text": "Settings and privacy",
-        "resource-id": "",
-        "class": "android.widget.TextView",
-        "package": "com.twitter.android",
-        "content-desc": "",
-        "checkable": false,
-        "checked": false,
-        "clickable": true,
-        "enabled": true,
-        "focusable": false,
-        "focused": false,
-        "scrollable": false,
-        "long-clickable": false,
-        "password": false,
-        "selected": false,
-        "bounds": [
-            209,
-            1984,
-            792,
-            2016
-        ],
-        "id": 98,
-        "layer": 4,
-        "leaf-id": 65,
-        "caption": "<unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk> <unk>",
-        "icon-cls": null,
-        "description": "Settings and privacy"
     },
     {
         "text": "",
@@ -3005,10 +2787,10 @@
             880,
             2214
         ],
-        "id": 99,
+        "id": 96,
         "layer": 2,
         "children-id": [
-            100
+            97
         ],
         "children-depth": 4
     },
@@ -3034,11 +2816,11 @@
             187,
             2181
         ],
-        "id": 100,
+        "id": 97,
         "layer": 3,
         "children-id": [
-            101,
-            102
+            98,
+            99
         ],
         "children-depth": 4
     },
@@ -3064,12 +2846,10 @@
             154,
             2148
         ],
-        "id": 101,
+        "id": 98,
         "layer": 4,
-        "leaf-id": 66,
+        "leaf-id": 64,
         "ocr": "",
-        "caption": "search",
-        "icon-cls": null,
         "description": "Dark mode"
     },
     {
@@ -3094,16 +2874,14 @@
             154,
             2148
         ],
-        "id": 102,
+        "id": 99,
         "layer": 4,
-        "leaf-id": 67,
+        "leaf-id": 65,
         "ocr": "",
-        "caption": "search",
-        "icon-cls": null,
-        "description": "search"
+        "description": null
     },
     {
-        "text": "12:06",
+        "text": "12:18",
         "resource-id": "android:id/statusBarBackground",
         "class": "android.view.View",
         "package": "com.twitter.android",
@@ -3124,12 +2902,10 @@
             1080,
             66
         ],
-        "id": 103,
+        "id": 100,
         "layer": 1,
-        "leaf-id": 68,
-        "ocr": "12:06",
-        "caption": "<unk>",
-        "icon-cls": null,
-        "description": "12:06"
+        "leaf-id": 66,
+        "ocr": "12:18",
+        "description": "12:18"
     }
 ]

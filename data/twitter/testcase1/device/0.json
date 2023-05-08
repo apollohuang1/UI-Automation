@@ -3541,7 +3541,7 @@
                                                                                             "enabled": true,
                                                                                             "focusable": false,
                                                                                             "focused": false,
-                                                                                            "scrollable": true,
+                                                                                            "scrollable": false,
                                                                                             "long-clickable": false,
                                                                                             "password": false,
                                                                                             "selected": false,
@@ -4070,77 +4070,6 @@
                                                                                                                 1846,
                                                                                                                 454,
                                                                                                                 1896
-                                                                                                            ]
-                                                                                                        }
-                                                                                                    ]
-                                                                                                },
-                                                                                                {
-                                                                                                    "text": "",
-                                                                                                    "resource-id": "",
-                                                                                                    "class": "android.view.View",
-                                                                                                    "package": "com.twitter.android",
-                                                                                                    "content-desc": "",
-                                                                                                    "checkable": false,
-                                                                                                    "checked": false,
-                                                                                                    "clickable": true,
-                                                                                                    "enabled": true,
-                                                                                                    "focusable": true,
-                                                                                                    "focused": false,
-                                                                                                    "scrollable": false,
-                                                                                                    "long-clickable": false,
-                                                                                                    "password": false,
-                                                                                                    "selected": false,
-                                                                                                    "bounds": [
-                                                                                                        0,
-                                                                                                        1942,
-                                                                                                        880,
-                                                                                                        2016
-                                                                                                    ],
-                                                                                                    "children": [
-                                                                                                        {
-                                                                                                            "text": "",
-                                                                                                            "resource-id": "",
-                                                                                                            "class": "android.view.View",
-                                                                                                            "package": "com.twitter.android",
-                                                                                                            "content-desc": "",
-                                                                                                            "checkable": false,
-                                                                                                            "checked": false,
-                                                                                                            "clickable": false,
-                                                                                                            "enabled": true,
-                                                                                                            "focusable": false,
-                                                                                                            "focused": false,
-                                                                                                            "scrollable": false,
-                                                                                                            "long-clickable": false,
-                                                                                                            "password": false,
-                                                                                                            "selected": false,
-                                                                                                            "bounds": [
-                                                                                                                88,
-                                                                                                                1981,
-                                                                                                                143,
-                                                                                                                2016
-                                                                                                            ]
-                                                                                                        },
-                                                                                                        {
-                                                                                                            "text": "Settings and privacy",
-                                                                                                            "resource-id": "",
-                                                                                                            "class": "android.widget.TextView",
-                                                                                                            "package": "com.twitter.android",
-                                                                                                            "content-desc": "",
-                                                                                                            "checkable": false,
-                                                                                                            "checked": false,
-                                                                                                            "clickable": false,
-                                                                                                            "enabled": true,
-                                                                                                            "focusable": false,
-                                                                                                            "focused": false,
-                                                                                                            "scrollable": false,
-                                                                                                            "long-clickable": false,
-                                                                                                            "password": false,
-                                                                                                            "selected": false,
-                                                                                                            "bounds": [
-                                                                                                                209,
-                                                                                                                1984,
-                                                                                                                792,
-                                                                                                                2016
                                                                                                             ]
                                                                                                         }
                                                                                                     ]

@@ -182,18 +182,18 @@ class GUIData:
     *** UI Analysis ***
     *******************
     '''
-    def ui_analysis_elements_description(self):
+    def ui_analysis_elements_description(self, ocr=True, caption=True, cls=True):
         '''
         Extract description for UI elements through 'text', 'content-desc', 'classification' and 'caption'
         => element['description']
         '''
-        print('--- Analyze UI elements (OCR, Captioning, Classification) ---')
+        print('--- Analyze UI elements ---')
         # use ocr to detect text
-        self.ocr_detect_gui_text()
+        if ocr: self.ocr_detect_gui_text()
         # generate caption for non-text elements
-        self.caption_elements()
+        if caption: self.caption_elements()
         # classify non-text elements
-        self.classify_elements()
+        if cls: self.classify_elements()
         # extract element description from 'text', 'content-desc', 'icon-cls' and 'caption'
         for ele in self.elements_leaves:
             description = ''
