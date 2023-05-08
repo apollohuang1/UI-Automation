@@ -14,6 +14,7 @@ class Automator:
         self.trace_guis = []
         self.incorrect_elements = []
 
+        self.gui_detection_models = {}  # {IconClassification, IconCaption}
         self.ai_chain = AIChain()
         self.device = None
         self.init_device()
@@ -24,6 +25,13 @@ class Automator:
         client = AdbClient(host="127.0.0.1", port=5037)
         self.device = Device(client.devices()[0], app_name=self.app_name, test_case_no=self.test_case_no)
         print('=== Device Loaded ===')
+
+    def load_gui_models(self):
+        from utils.classification.IconClassifier import IconClassifier
+        from utils.classification.IconCaption import IconCaption
+        self.gui_detection_models['classification'] = IconClassifier(model_path='utils/classification/model_results/best-0.93.pt', class_path='utils/classification/model_results/iconModel_labels.json')
+        self.gui_detection_models['caption'] = IconCaption(vocab_path='utils/classification/model_results/vocab_idx2word.json', model_path='utils/classification/model_results/labeldroid.pt')
+        print('=== GUI Detection Model Loaded ===')
 
     '''
     ******************************
@@ -71,7 +79,9 @@ class Automator:
         print('\n=== Extract and analyze UI info ===')
         gui = GUIData(gui_img_file=self.device.output_file_path_screenshot,
                       gui_json_file=self.device.output_file_path_json,
-                      output_file_root=self.device.testcase_save_dir)
+                      output_file_root=self.device.testcase_save_dir,
+                      model_icon_caption=self.gui_detection_models['caption'],
+                      model_icon_classification=self.gui_detection_models['classification'])
         gui.ui_info_extraction()
         gui.ui_analysis_elements_description()
         gui.ui_element_tree()

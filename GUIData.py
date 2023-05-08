@@ -15,7 +15,8 @@ warnings.filterwarnings("ignore", category=Warning)
 
 
 class GUIData:
-    def __init__(self, gui_img_file, gui_json_file, output_file_root='data/twitter/testcase1'):
+    def __init__(self, gui_img_file, gui_json_file, output_file_root='data/twitter/testcase1',
+                 model_icon_caption=None, model_icon_classification=None):
         self.img_file = gui_img_file
         self.json_file = gui_json_file
         self.gui_no = gui_img_file.replace('/', '\\').split('\\')[-1].split('.')[0]
@@ -31,8 +32,8 @@ class GUIData:
         self.removed_node_no = 0    # for the record of the number of removed nodes
 
         self.ocr_text = []               # GUI ocr detection result, list of texts {}
-        self.model_icon_caption = None   # IconCaption
-        self.model_icon_classification = None  # IconClassification
+        self.model_icon_caption = model_icon_caption   # IconCaption
+        self.model_icon_classification = model_icon_classification  # IconClassification
 
         # output file paths
         self.output_dir = pjoin(output_file_root, 'guidata')
