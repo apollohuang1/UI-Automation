@@ -65,6 +65,7 @@ class GUIData:
         Extract elements from raw view hierarchy Json file and store them as dictionaries
         => self.elements; self.elements_leaves
         '''
+        print('--- Extract elements from VH ---')
         json_cp = copy.deepcopy(self.json)
         element_root = json_cp['activity']['root']
         element_root['class'] = 'root'
@@ -186,6 +187,7 @@ class GUIData:
         Extract description for UI elements through 'text', 'content-desc', 'classification' and 'caption'
         => element['description']
         '''
+        print('--- Analyze UI elements (OCR, Captioning, Classification) ---')
         # use ocr to detect text
         self.ocr_detect_gui_text()
         # generate caption for non-text elements
@@ -196,21 +198,23 @@ class GUIData:
         for ele in self.elements_leaves:
             description = ''
             # check text
-            if len(ele['text']) > 0:
+            if 'text' in ele and len(ele['text']) > 0:
                 description += ele['text']
             # check content description
             if 'content-desc' in ele and len(ele['content-desc']) > 0 and ele['content-desc'] != ele['text']:
                 description = ele['content-desc'] if len(description) == 0 else description + ' / ' + ele['content-desc']
             # if no text and content description, check caption
             if len(description) == 0:
-                if ele['icon-cls']:
+                if 'icon-cls' in ele and ele['icon-cls']:
                     description = ele['icon-cls']
+                elif 'caption' in ele and '<unk>' not in ele['caption']:
+                    description = ele['caption']
                 else:
-                    description = ele['caption'] if '<unk>' not in ele['caption'] else None
+                    description = None
             ele['description'] = description
         # save the elements with 'description' attribute
         json.dump(self.elements, open(self.output_file_path_elements, 'w', encoding='utf-8'), indent=4)
-        print('Save elements to', self.output_file_path_elements)
+        # print('Save elements to', self.output_file_path_elements)
 
     def ocr_detect_gui_text(self):
         def match_text_and_element(ele):
@@ -273,9 +277,10 @@ class GUIData:
         => self.element_tree
         => self.blocks
         '''
+        print('--- Generate element tree ---')
         self.element_tree = self.combine_children_to_tree(self.elements[0])
         json.dump(self.element_tree, open(self.output_file_path_element_tree, 'w'), indent=4)
-        print('Save element tree to', self.output_file_path_element_tree)
+        # print('Save element tree to', self.output_file_path_element_tree)
 
     def combine_children_to_tree(self, element):
         element_cp = copy.deepcopy(element)

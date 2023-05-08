@@ -37,19 +37,21 @@ class Device:
         print("Device Name:%s Resolution:%s" % (self.device_name, self.adb_device.wm_size()))
 
     def cap_screenshot(self, recur_time=0):
+        print('--- Take screenshot ---')
         screen = self.adb_device.screencap()
         with open(self.output_file_path_screenshot, "wb") as fp:
             fp.write(screen)
         self.screenshot = cv2.imread(self.output_file_path_screenshot)
-        print('Save screenshot to', self.output_file_path_screenshot)
+        # print('Save screenshot to', self.output_file_path_screenshot)
         # recurrently load to avoid failure
         if recur_time < 3 and self.screenshot is None:
             self.cap_screenshot(recur_time+1)
 
     def cap_vh(self):
+        print('--- Collect XML ---')
         self.adb_device.shell('uiautomator dump')
         self.adb_device.pull('/sdcard/window_dump.xml', self.output_file_path_xml)
-        print('Save xml to', self.output_file_path_xml)
+        # print('Save xml to', self.output_file_path_xml)
         self.vh = xmltodict.parse(open(self.output_file_path_xml, 'r', encoding='utf-8').read())
         json.dump(self.vh, open(self.output_file_path_json, 'w', encoding='utf-8'), indent=4)
         # print('Save view hierarchy to', self.output_file_path_json)
@@ -90,9 +92,10 @@ class Device:
         return node
 
     def reformat_vh_json(self):
+        print('--- Tidy up View Hierarchy ---')
         self.vh = {'activity': {'root': self.cvt_node_to_rico_format(self.vh['hierarchy']['node'])}}
         json.dump(self.vh, open(self.output_file_path_json, 'w', encoding='utf-8'), indent=4)
-        print('Save view hierarchy to', self.output_file_path_json)
+        # print('Save view hierarchy to', self.output_file_path_json)
 
 
 if __name__ == '__main__':

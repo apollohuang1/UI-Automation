@@ -105,7 +105,7 @@
                                                             "class": ".view.View",
                                                             "clickable": true,
                                                             "id": 15,
-                                                            "description": "Topics / Get started"
+                                                            "description": "Twitter Blue / Get started"
                                                         },
                                                         {
                                                             "class": ".widget.TextView",
@@ -117,7 +117,7 @@
                                                             "class": ".widget.Button",
                                                             "clickable": true,
                                                             "id": 17,
-                                                            "description": "Topics"
+                                                            "description": "Twitter Blue"
                                                         }
                                                     ]
                                                 },
@@ -147,14 +147,14 @@
                                                             "class": ".widget.ImageView",
                                                             "clickable": true,
                                                             "id": 21,
-                                                            "description": "camera"
+                                                            "description": "delete"
                                                         },
                                                         {
                                                             "resource-id": ".twitter:id/tweet_header",
                                                             "class": ".view.ViewGroup",
                                                             "clickable": true,
                                                             "id": 22,
-                                                            "description": "23h"
+                                                            "description": "Topics23h"
                                                         },
                                                         {
                                                             "resource-id": ".twitter:id/tweet_curation_action",
@@ -179,12 +179,13 @@
                                                                     "class": ".widget.ImageView",
                                                                     "clickable": true,
                                                                     "id": 26,
-                                                                    "description": "Professional ToolsSettings & Support"
+                                                                    "description": "ListsTwitter CircleProfessional Tools"
                                                                 },
                                                                 {
                                                                     "class": ".widget.ImageView",
                                                                     "clickable": true,
-                                                                    "id": 27
+                                                                    "id": 27,
+                                                                    "description": "play"
                                                                 }
                                                             ]
                                                         },
@@ -206,7 +207,7 @@
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
                                                                             "id": 30,
-                                                                            "description": "Settings and privacy"
+                                                                            "description": "search"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
@@ -228,7 +229,7 @@
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
                                                                             "id": 33,
-                                                                            "description": "Settings and privacy"
+                                                                            "description": "search"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
@@ -250,7 +251,7 @@
                                                                             "class": ".widget.ImageView",
                                                                             "clickable": true,
                                                                             "id": 36,
-                                                                            "description": "Settings and privacy"
+                                                                            "description": "search"
                                                                         },
                                                                         {
                                                                             "class": ".widget.TextView",
@@ -306,14 +307,14 @@
                                                     "class": ".widget.ImageView",
                                                     "clickable": true,
                                                     "id": 43,
-                                                    "description": "?"
+                                                    "description": "narando"
                                                 },
                                                 {
                                                     "resource-id": ".twitter:id/tweet_header",
                                                     "class": ".view.ViewGroup",
                                                     "clickable": true,
                                                     "id": 44,
-                                                    "description": "Help Center+"
+                                                    "description": "+"
                                                 },
                                                 {
                                                     "resource-id": ".twitter:id/tweet_curation_action",
@@ -327,7 +328,7 @@
                                                     "class": ".view.View",
                                                     "clickable": true,
                                                     "id": 46,
-                                                    "description": "navigate up"
+                                                    "description": "drawer open"
                                                 },
                                                 {
                                                     "class": ".view.View",
@@ -339,13 +340,13 @@
                                                     "class": "ddw",
                                                     "clickable": true,
                                                     "id": 48,
-                                                    "description": "testplaypause"
+                                                    "description": "Help Center"
                                                 },
                                                 {
                                                     "class": ".view.View",
                                                     "clickable": true,
                                                     "id": 49,
-                                                    "description": "testplaypause"
+                                                    "description": "Help Center"
                                                 }
                                             ]
                                         }
@@ -374,20 +375,20 @@
                             "class": ".view.View",
                             "clickable": false,
                             "id": 52,
-                            "description": "settings"
+                            "description": "thumbnail"
                         },
                         {
                             "class": ".view.View",
                             "clickable": true,
                             "id": 53,
-                            "description": "Search and Explore"
+                            "description": "Help Center / Search and Explore"
                         },
                         {
                             "resource-id": ".twitter:id/spaces",
                             "class": ".view.View",
                             "clickable": true,
                             "id": 54,
-                            "description": "Spaces"
+                            "description": "Help Center / Spaces"
                         },
                         {
                             "resource-id": ".twitter:id/notifications",
@@ -534,24 +535,39 @@
                         {
                             "class": ".view.View",
                             "clickable": true,
-                            "id": 76
+                            "scrollable": false,
+                            "id": 76,
+                            "children": [
+                                {
+                                    "class": ".view.View",
+                                    "clickable": true,
+                                    "id": 77,
+                                    "description": "avatar"
+                                },
+                                {
+                                    "class": ".widget.TextView",
+                                    "clickable": true,
+                                    "id": 78,
+                                    "description": "Profile"
+                                }
+                            ]
                         },
                         {
                             "class": ".view.View",
                             "clickable": true,
                             "scrollable": false,
-                            "id": 77,
+                            "id": 79,
                             "children": [
                                 {
                                     "class": ".view.View",
                                     "clickable": true,
-                                    "id": 78,
+                                    "id": 80,
                                     "description": "twitter"
                                 },
                                 {
                                     "class": ".widget.TextView",
                                     "clickable": true,
-                                    "id": 79,
+                                    "id": 81,
                                     "description": "Twitter Blue"
                                 }
                             ]
@@ -560,18 +576,18 @@
                             "class": ".view.View",
                             "clickable": true,
                             "scrollable": false,
-                            "id": 80,
+                            "id": 82,
                             "children": [
                                 {
                                     "class": ".view.View",
                                     "clickable": true,
-                                    "id": 81,
+                                    "id": 83,
                                     "description": "comment"
                                 },
                                 {
                                     "class": ".widget.TextView",
                                     "clickable": true,
-                                    "id": 82,
+                                    "id": 84,
                                     "description": "Topics"
                                 }
                             ]
@@ -580,18 +596,18 @@
                             "class": ".view.View",
                             "clickable": true,
                             "scrollable": false,
-                            "id": 83,
+                            "id": 85,
                             "children": [
                                 {
                                     "class": ".view.View",
                                     "clickable": true,
-                                    "id": 84,
+                                    "id": 86,
                                     "description": "bookmark"
                                 },
                                 {
                                     "class": ".widget.TextView",
                                     "clickable": true,
-                                    "id": 85,
+                                    "id": 87,
                                     "description": "Bookmarks"
                                 }
                             ]
@@ -600,17 +616,18 @@
                             "class": ".view.View",
                             "clickable": true,
                             "scrollable": false,
-                            "id": 86,
+                            "id": 88,
                             "children": [
                                 {
                                     "class": ".view.View",
                                     "clickable": true,
-                                    "id": 87
+                                    "id": 89,
+                                    "description": "II"
                                 },
                                 {
                                     "class": ".widget.TextView",
                                     "clickable": true,
-                                    "id": 88,
+                                    "id": 90,
                                     "description": "Lists"
                                 }
                             ]
@@ -619,18 +636,18 @@
                             "class": ".view.View",
                             "clickable": true,
                             "scrollable": false,
-                            "id": 89,
+                            "id": 91,
                             "children": [
                                 {
                                     "class": ".view.View",
                                     "clickable": true,
-                                    "id": 90,
+                                    "id": 92,
                                     "description": "avatar"
                                 },
                                 {
                                     "class": ".widget.TextView",
                                     "clickable": true,
-                                    "id": 91,
+                                    "id": 93,
                                     "description": "Twitter Circle"
                                 }
                             ]
@@ -638,52 +655,32 @@
                         {
                             "class": ".widget.TextView",
                             "clickable": true,
-                            "id": 92,
+                            "id": 94,
                             "description": "Professional Tools"
                         },
                         {
                             "class": ".widget.TextView",
                             "clickable": true,
-                            "id": 93,
-                            "description": "Settings & Support"
+                            "id": 95,
+                            "description": "Settings & Support4K"
                         },
                         {
                             "class": ".view.View",
                             "clickable": true,
                             "scrollable": false,
-                            "id": 94,
+                            "id": 96,
                             "children": [
                                 {
                                     "class": ".view.View",
                                     "clickable": true,
-                                    "id": 95,
-                                    "description": "settings"
+                                    "id": 97,
+                                    "description": "add to favorites"
                                 },
                                 {
                                     "class": ".widget.TextView",
-                                    "clickable": true,
-                                    "id": 96,
-                                    "description": "Settings and privacy"
-                                }
-                            ]
-                        },
-                        {
-                            "class": ".view.View",
-                            "clickable": true,
-                            "scrollable": false,
-                            "id": 97,
-                            "children": [
-                                {
-                                    "class": ".view.View",
                                     "clickable": true,
                                     "id": 98,
-                                    "description": "?"
-                                },
-                                {
-                                    "class": ".widget.TextView",
-                                    "clickable": true,
-                                    "id": 99,
-                                    "description": "Help Center"
+                                    "description": "Settings and privacy"
                                 }
                             ]
                         }
@@ -693,24 +690,24 @@
                     "class": ".view.View",
                     "clickable": true,
                     "scrollable": false,
-                    "id": 100,
+                    "id": 99,
                     "children": [
                         {
                             "class": ".view.View",
                             "clickable": true,
                             "scrollable": false,
-                            "id": 101,
+                            "id": 100,
                             "children": [
                                 {
                                     "class": ".view.View",
                                     "clickable": true,
-                                    "id": 102,
+                                    "id": 101,
                                     "description": "Dark mode"
                                 },
                                 {
                                     "class": ".widget.Button",
                                     "clickable": true,
-                                    "id": 103,
+                                    "id": 102,
                                     "description": "search"
                                 }
                             ]
@@ -723,8 +720,8 @@
             "resource-id": ":id/statusBarBackground",
             "class": ".view.View",
             "clickable": false,
-            "id": 104,
-            "description": "11:55"
+            "id": 103,
+            "description": "12:06"
         }
     ]
 }

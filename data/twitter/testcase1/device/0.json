@@ -3309,7 +3309,7 @@
                                                                                                         88,
                                                                                                         383,
                                                                                                         303,
-                                                                                                        488
+                                                                                                        515
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
@@ -3428,7 +3428,7 @@
                                                                                                         303,
                                                                                                         383,
                                                                                                         494,
-                                                                                                        488
+                                                                                                        515
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
@@ -3553,7 +3553,6 @@
                                                                                             ],
                                                                                             "children": [
                                                                                                 {
-                                                                                                    "NAF": true,
                                                                                                     "text": "",
                                                                                                     "resource-id": "",
                                                                                                     "class": "android.view.View",
@@ -3571,32 +3570,9 @@
                                                                                                     "selected": false,
                                                                                                     "bounds": [
                                                                                                         0,
-                                                                                                        488,
+                                                                                                        631,
                                                                                                         880,
-                                                                                                        586
-                                                                                                    ]
-                                                                                                },
-                                                                                                {
-                                                                                                    "text": "",
-                                                                                                    "resource-id": "",
-                                                                                                    "class": "android.view.View",
-                                                                                                    "package": "com.twitter.android",
-                                                                                                    "content-desc": "",
-                                                                                                    "checkable": false,
-                                                                                                    "checked": false,
-                                                                                                    "clickable": true,
-                                                                                                    "enabled": true,
-                                                                                                    "focusable": true,
-                                                                                                    "focused": false,
-                                                                                                    "scrollable": false,
-                                                                                                    "long-clickable": false,
-                                                                                                    "password": false,
-                                                                                                    "selected": false,
-                                                                                                    "bounds": [
-                                                                                                        0,
-                                                                                                        586,
-                                                                                                        880,
-                                                                                                        731
+                                                                                                        776
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
@@ -3617,9 +3593,80 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 88,
-                                                                                                                626,
+                                                                                                                671,
                                                                                                                 154,
-                                                                                                                692
+                                                                                                                737
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "text": "Profile",
+                                                                                                            "resource-id": "",
+                                                                                                            "class": "android.widget.TextView",
+                                                                                                            "package": "com.twitter.android",
+                                                                                                            "content-desc": "",
+                                                                                                            "checkable": false,
+                                                                                                            "checked": false,
+                                                                                                            "clickable": false,
+                                                                                                            "enabled": true,
+                                                                                                            "focusable": false,
+                                                                                                            "focused": false,
+                                                                                                            "scrollable": false,
+                                                                                                            "long-clickable": false,
+                                                                                                            "password": false,
+                                                                                                            "selected": false,
+                                                                                                            "bounds": [
+                                                                                                                220,
+                                                                                                                670,
+                                                                                                                792,
+                                                                                                                737
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "text": "",
+                                                                                                    "resource-id": "",
+                                                                                                    "class": "android.view.View",
+                                                                                                    "package": "com.twitter.android",
+                                                                                                    "content-desc": "",
+                                                                                                    "checkable": false,
+                                                                                                    "checked": false,
+                                                                                                    "clickable": true,
+                                                                                                    "enabled": true,
+                                                                                                    "focusable": true,
+                                                                                                    "focused": false,
+                                                                                                    "scrollable": false,
+                                                                                                    "long-clickable": false,
+                                                                                                    "password": false,
+                                                                                                    "selected": false,
+                                                                                                    "bounds": [
+                                                                                                        0,
+                                                                                                        776,
+                                                                                                        880,
+                                                                                                        921
+                                                                                                    ],
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "text": "",
+                                                                                                            "resource-id": "",
+                                                                                                            "class": "android.view.View",
+                                                                                                            "package": "com.twitter.android",
+                                                                                                            "content-desc": "",
+                                                                                                            "checkable": false,
+                                                                                                            "checked": false,
+                                                                                                            "clickable": false,
+                                                                                                            "enabled": true,
+                                                                                                            "focusable": false,
+                                                                                                            "focused": false,
+                                                                                                            "scrollable": false,
+                                                                                                            "long-clickable": false,
+                                                                                                            "password": false,
+                                                                                                            "selected": false,
+                                                                                                            "bounds": [
+                                                                                                                88,
+                                                                                                                816,
+                                                                                                                154,
+                                                                                                                882
                                                                                                             ]
                                                                                                         },
                                                                                                         {
@@ -3640,9 +3687,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 220,
-                                                                                                                625,
+                                                                                                                815,
                                                                                                                 792,
-                                                                                                                692
+                                                                                                                882
                                                                                                             ]
                                                                                                         }
                                                                                                     ]
@@ -3665,9 +3712,9 @@
                                                                                                     "selected": false,
                                                                                                     "bounds": [
                                                                                                         0,
-                                                                                                        731,
+                                                                                                        921,
                                                                                                         880,
-                                                                                                        876
+                                                                                                        1066
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
@@ -3688,9 +3735,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 88,
-                                                                                                                771,
+                                                                                                                961,
                                                                                                                 154,
-                                                                                                                837
+                                                                                                                1027
                                                                                                             ]
                                                                                                         },
                                                                                                         {
@@ -3711,9 +3758,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 220,
-                                                                                                                770,
+                                                                                                                960,
                                                                                                                 792,
-                                                                                                                837
+                                                                                                                1027
                                                                                                             ]
                                                                                                         }
                                                                                                     ]
@@ -3736,9 +3783,9 @@
                                                                                                     "selected": false,
                                                                                                     "bounds": [
                                                                                                         0,
-                                                                                                        876,
+                                                                                                        1066,
                                                                                                         880,
-                                                                                                        1021
+                                                                                                        1211
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
@@ -3759,9 +3806,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 88,
-                                                                                                                916,
+                                                                                                                1106,
                                                                                                                 154,
-                                                                                                                982
+                                                                                                                1172
                                                                                                             ]
                                                                                                         },
                                                                                                         {
@@ -3782,9 +3829,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 220,
-                                                                                                                915,
+                                                                                                                1105,
                                                                                                                 792,
-                                                                                                                982
+                                                                                                                1172
                                                                                                             ]
                                                                                                         }
                                                                                                     ]
@@ -3807,9 +3854,9 @@
                                                                                                     "selected": false,
                                                                                                     "bounds": [
                                                                                                         0,
-                                                                                                        1021,
+                                                                                                        1211,
                                                                                                         880,
-                                                                                                        1166
+                                                                                                        1356
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
@@ -3830,9 +3877,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 88,
-                                                                                                                1061,
+                                                                                                                1251,
                                                                                                                 154,
-                                                                                                                1127
+                                                                                                                1317
                                                                                                             ]
                                                                                                         },
                                                                                                         {
@@ -3853,9 +3900,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 220,
-                                                                                                                1060,
+                                                                                                                1250,
                                                                                                                 792,
-                                                                                                                1127
+                                                                                                                1317
                                                                                                             ]
                                                                                                         }
                                                                                                     ]
@@ -3878,9 +3925,9 @@
                                                                                                     "selected": false,
                                                                                                     "bounds": [
                                                                                                         0,
-                                                                                                        1166,
+                                                                                                        1356,
                                                                                                         880,
-                                                                                                        1311
+                                                                                                        1501
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
@@ -3901,9 +3948,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 88,
-                                                                                                                1206,
+                                                                                                                1396,
                                                                                                                 154,
-                                                                                                                1272
+                                                                                                                1462
                                                                                                             ]
                                                                                                         },
                                                                                                         {
@@ -3924,9 +3971,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 220,
-                                                                                                                1205,
+                                                                                                                1395,
                                                                                                                 792,
-                                                                                                                1272
+                                                                                                                1462
                                                                                                             ]
                                                                                                         }
                                                                                                     ]
@@ -3949,9 +3996,9 @@
                                                                                                     "selected": false,
                                                                                                     "bounds": [
                                                                                                         0,
-                                                                                                        1466,
+                                                                                                        1656,
                                                                                                         880,
-                                                                                                        1609
+                                                                                                        1799
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
@@ -3972,9 +4019,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 88,
-                                                                                                                1513,
+                                                                                                                1703,
                                                                                                                 439,
-                                                                                                                1563
+                                                                                                                1753
                                                                                                             ]
                                                                                                         }
                                                                                                     ]
@@ -3997,9 +4044,9 @@
                                                                                                     "selected": false,
                                                                                                     "bounds": [
                                                                                                         0,
-                                                                                                        1609,
+                                                                                                        1799,
                                                                                                         880,
-                                                                                                        1752
+                                                                                                        1942
                                                                                                     ],
                                                                                                     "children": [
                                                                                                         {
@@ -4020,9 +4067,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 88,
-                                                                                                                1656,
+                                                                                                                1846,
                                                                                                                 454,
-                                                                                                                1706
+                                                                                                                1896
                                                                                                             ]
                                                                                                         }
                                                                                                     ]
@@ -4045,78 +4092,7 @@
                                                                                                     "selected": false,
                                                                                                     "bounds": [
                                                                                                         0,
-                                                                                                        1752,
-                                                                                                        880,
-                                                                                                        1884
-                                                                                                    ],
-                                                                                                    "children": [
-                                                                                                        {
-                                                                                                            "text": "",
-                                                                                                            "resource-id": "",
-                                                                                                            "class": "android.view.View",
-                                                                                                            "package": "com.twitter.android",
-                                                                                                            "content-desc": "",
-                                                                                                            "checkable": false,
-                                                                                                            "checked": false,
-                                                                                                            "clickable": false,
-                                                                                                            "enabled": true,
-                                                                                                            "focusable": false,
-                                                                                                            "focused": false,
-                                                                                                            "scrollable": false,
-                                                                                                            "long-clickable": false,
-                                                                                                            "password": false,
-                                                                                                            "selected": false,
-                                                                                                            "bounds": [
-                                                                                                                88,
-                                                                                                                1791,
-                                                                                                                143,
-                                                                                                                1846
-                                                                                                            ]
-                                                                                                        },
-                                                                                                        {
-                                                                                                            "text": "Settings and privacy",
-                                                                                                            "resource-id": "",
-                                                                                                            "class": "android.widget.TextView",
-                                                                                                            "package": "com.twitter.android",
-                                                                                                            "content-desc": "",
-                                                                                                            "checkable": false,
-                                                                                                            "checked": false,
-                                                                                                            "clickable": false,
-                                                                                                            "enabled": true,
-                                                                                                            "focusable": false,
-                                                                                                            "focused": false,
-                                                                                                            "scrollable": false,
-                                                                                                            "long-clickable": false,
-                                                                                                            "password": false,
-                                                                                                            "selected": false,
-                                                                                                            "bounds": [
-                                                                                                                209,
-                                                                                                                1794,
-                                                                                                                792,
-                                                                                                                1843
-                                                                                                            ]
-                                                                                                        }
-                                                                                                    ]
-                                                                                                },
-                                                                                                {
-                                                                                                    "text": "",
-                                                                                                    "resource-id": "",
-                                                                                                    "class": "android.view.View",
-                                                                                                    "package": "com.twitter.android",
-                                                                                                    "content-desc": "",
-                                                                                                    "checkable": false,
-                                                                                                    "checked": false,
-                                                                                                    "clickable": true,
-                                                                                                    "enabled": true,
-                                                                                                    "focusable": true,
-                                                                                                    "focused": false,
-                                                                                                    "scrollable": false,
-                                                                                                    "long-clickable": false,
-                                                                                                    "password": false,
-                                                                                                    "selected": false,
-                                                                                                    "bounds": [
-                                                                                                        0,
-                                                                                                        1884,
+                                                                                                        1942,
                                                                                                         880,
                                                                                                         2016
                                                                                                     ],
@@ -4139,13 +4115,13 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 88,
-                                                                                                                1923,
+                                                                                                                1981,
                                                                                                                 143,
-                                                                                                                1978
+                                                                                                                2016
                                                                                                             ]
                                                                                                         },
                                                                                                         {
-                                                                                                            "text": "Help Center",
+                                                                                                            "text": "Settings and privacy",
                                                                                                             "resource-id": "",
                                                                                                             "class": "android.widget.TextView",
                                                                                                             "package": "com.twitter.android",
@@ -4162,9 +4138,9 @@
                                                                                                             "selected": false,
                                                                                                             "bounds": [
                                                                                                                 209,
-                                                                                                                1926,
+                                                                                                                1984,
                                                                                                                 792,
-                                                                                                                1975
+                                                                                                                2016
                                                                                                             ]
                                                                                                         }
                                                                                                     ]
