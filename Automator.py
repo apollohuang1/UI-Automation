@@ -25,7 +25,24 @@ class Automator:
         self.device = Device(client.devices()[0], app_name=self.app_name, test_case_no=self.test_case_no)
         print('=== Device Loaded ===')
 
+    '''
+    ******************************
+    *** Auto the Task on a GUI ***
+    ******************************
+    '''
+    def auto_task_on_gui(self, task, load_gui_data=False, gui_no=0,
+                         show_gui_ele=False, ai_chain_model='gpt-3.5-turbo', printlog=False, show_action=False):
+        if not load_gui_data:
+            self.collect_gui()
+            self.analyze_gui(show_gui_ele)
+        else:
+            self.load_gui_data(gui_no, show_gui_ele)
+        self.execute_task_on_gui(task, self.trace_guis[-1], ai_chain_model, printlog, show_action)
+
     def load_gui_data(self, gui_no, show=False):
+        '''
+        Load analyzed result gui data
+        '''
         print('\n=== Load and analyzed UI info ===')
         self.device.init_file_path_by_gui_no(gui_no)
         gui = GUIData(gui_img_file=self.device.output_file_path_screenshot,
@@ -36,21 +53,7 @@ class Automator:
             gui.show_all_elements(only_leaves=False)
         self.trace_guis.append(gui)
 
-    '''
-    ******************************
-    *** Auto the Task on a GUI ***
-    ******************************
-    '''
-    def auto_task_on_gui(self, task, load_gui_data=False, gui_no=0,
-                             show_gui_ele=False, ai_chain_model='gpt-3.5-turbo', printlog=False, show_action=False):
-        if not load_gui_data:
-            self.collect_gui_data()
-            self.analyze_gui(show_gui_ele)
-        else:
-            self.load_gui_data(gui_no, show_gui_ele)
-        self.execute_task_on_gui(task, self.trace_guis[-1], ai_chain_model, printlog, show_action)
-
-    def collect_gui_data(self):
+    def collect_gui(self):
         '''
         collect the raw GUI data [raw xml, VH Json, Screenshot] on current screen and save to 'data/app_name/test_case_no/device'
         => ui_no.xml, ui_no.json, ui_no.png

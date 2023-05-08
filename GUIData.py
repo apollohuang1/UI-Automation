@@ -44,6 +44,9 @@ class GUIData:
         if not file_path_elements: file_path_elements = self.output_file_path_elements
         if not file_path_element_tree: file_path_element_tree = self.output_file_path_element_tree
 
+        if not os.path.exists(file_path_elements) or not os.path.exists(file_path_element_tree):
+            print('Loading FAILED, No such file:', file_path_elements, file_path_element_tree)
+
         print('Load elements from', file_path_elements)
         self.elements = json.load(open(file_path_elements, 'r', encoding='utf-8'))           # => self.elements
         self.gather_leaf_elements()                     # => self.elements_leaves
