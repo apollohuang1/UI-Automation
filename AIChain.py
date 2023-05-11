@@ -82,8 +82,8 @@ class AIChain:
         print('--- Check if the UI completes the task ---')
         self.init_conversation()
         self.conversation += [
-            {'role': 'user', 'content': 'the UI is already in the completed status of the task "' + task + '"?'},
-            {'role': 'user', 'content': 'Just answer Yes or No'}
+            {'role': 'user', 'content': 'Is the UI already in the completed status of the task "' + task + '"?'},
+            {'role': 'user', 'content': 'Just answer Yes or No. Please explain your choice in short.'}
         ]
         self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog))
 
@@ -92,7 +92,7 @@ class AIChain:
         self.init_conversation()
         self.conversation += [
             {'role': 'user', 'content': 'Is this UI directly related to the task "' + task + '"?'},
-            {'role': 'user', 'content': 'If yes, answer "Yes" and the related Element id, for example, "Yes, Element id: 2". Otherwise, answer "No"'}
+            {'role': 'user', 'content': 'If yes, answer "Yes" and the related Element id, for example, "Yes, Element id: 2". Otherwise, answer "No". Please explain your choice in short.'}
         ]
         self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog=printlog))
 
@@ -100,7 +100,7 @@ class AIChain:
         print('--- Check if the UI indirectly related ---')
         self.conversation += [
             {'role': 'user', 'content': 'The task "' + task + '" may take multiple steps to complete. Is there any UI elements that can direct to the related UI to complete the task?'},
-            {'role': 'user', 'content': 'If yes, answer "Yes" and the related Element id, for example, "Yes, Element id: 2". Otherwise, answer "No"'}
+            {'role': 'user', 'content': 'If yes, answer "Yes" and the related Element id, for example, "Yes, Element id: 2". Otherwise, answer "No". Please explain your choice in short.'}
         ]
         self.conversation.append(self.openai.ask_openai_conversation(self.conversation, printlog=printlog))
 
